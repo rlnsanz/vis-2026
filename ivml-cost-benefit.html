@@ -636,10 +636,11 @@
           <footer class="talk-source">Illustrative inputs, not study results. Paper Sec. 4.2, Eq. 14. Only the model-benefit term is valued here.</footer>
           <template class="speaker-notes">
             <p>
-              After relabeling and three retraining runs, accuracy on the same test photos
-              rises from eighty to ninety percent. Suppose that improvement carries over to
-              the next five hundred parts. At eighty percent accuracy, twenty percent are
-              errors: one hundred parts. At ninety percent accuracy, ten percent are errors:
+              Let's return to the defect classifier. After relabeling and three retraining
+              runs, accuracy on the same test photos rises from eighty to ninety percent.
+              Suppose that improvement carries over to the next five hundred parts.
+              At eighty percent accuracy, twenty percent are errors: one hundred parts.
+              At ninety percent accuracy, ten percent are errors:
               fifty parts. That's fifty fewer errors. At four dollars per error in scrap or
               returns, the expected savings are two hundred dollars.
             </p>
@@ -673,7 +674,8 @@
           <footer class="talk-source">Same illustrative example. Paper Sec. 4.1, Eqs. 8-9. Initial training is outside scope; view compute is assumed negligible.</footer>
           <template class="speaker-notes">
             <p>
-              Twenty minutes of relabeling at two dollars per minute costs forty dollars.
+              To get that benefit, we spent twenty minutes relabeling at two dollars per minute:
+              forty dollars.
               Three retraining runs at a dollar each add three dollars. Reviewing predictions
               for six minutes at two dollars per minute adds twelve dollars. The session costs fifty-five dollars,
               leaving one hundred forty-five from our two-hundred-dollar benefit for this batch's
@@ -822,11 +824,11 @@
           <footer class="talk-source">Paper Sec. 5.1. Assumes 23 s of fine-tuning at $3/hr GPU and 1.5 min of re-alignment at $2/min.</footer>
           <template class="speaker-notes">
             <p>
-              Model updates also require cognitive re-alignment. The analyst interprets
-              changed outputs and, after a delay, may need to recover their train of thought.
-              In MitoVis, each fine-tuning run cost about two cents of GPU time. We assume
-              ninety seconds to reorient afterward: about three dollars of expert time. So
-              update frequency and latency drive human effort, not just computing cost.
+              The review time from our example is part of human effort. After a model update,
+              analysts interpret changed outputs and may need to recover their train of thought.
+              In MitoVis, our first case, each fine-tuning run cost about two cents of GPU time.
+              We assume ninety seconds to reorient afterward: about three dollars of expert time. So
+              update frequency and latency affect both compute and human effort.
             </p>
           </template>
         </section>
@@ -876,7 +878,7 @@
           </div>
           <footer class="talk-source"></footer>
           <template class="speaker-notes">
-            <p>That completes the framework. Next, we'll apply it to two cases.</p>
+            <p>We'll apply this accounting to two cases: improving a model, then finding vulnerabilities in a fixed one.</p>
           </template>
         </section>
         <!-- SLIDE 10: MitoVis: When do data and model improvements pay off? -->
@@ -905,8 +907,8 @@
           <footer class="talk-source">Paper Fig. 2, left panel (cropped), pp. 6-7. Both axes use log scales. One point = one percentage point of accuracy.</footer>
           <template class="speaker-notes">
             <p>
-              Now, the two cases. MitoVis combines segmentation correction with fine-tuning.
-              Reported accuracy rises from 77 to 87.1 percent. Our illustrative scenario
+              First, MitoVis applies our example's pattern to segmentation: correct data,
+              then fine-tune the model. Reported accuracy rises from 77 to 87.1 percent. Our illustrative scenario
               aggregates three 19-minute sessions. Read the paper's left panel: the horizontal
               axis is value per percentage point of accuracy; the vertical axis is total
               economic value. Both use log scales. Red is total cost, about 10,123 dollars
@@ -945,10 +947,10 @@
           <footer class="talk-source">Paper Fig. 3, left panel (cropped), Sec. 5.2. Ma et al. (2020). Both axes use log scales.</footer>
           <template class="speaker-notes">
             <p>
-              The second case uses Ma and colleagues' system to inspect data poisoning
-              vulnerabilities. The model stays fixed. This panel uses the same colors and log
-              scales. The horizontal axis now asks how much avoiding a failure is worth. Under
-              full identification and prevention, the blue benefit line reaches the red cost
+              Our second case follows the view loop: inspect a fixed model to find data poisoning
+              vulnerabilities. It uses Ma and colleagues' system. This panel uses the same colors
+              and log scales. The horizontal axis now asks how much avoiding a failure is worth.
+              Under full identification and prevention, the blue benefit line reaches the red cost
               line at 10,038 dollars. That is 10,000 for development plus 38 for a normalized
               19-minute audit. The audit duration is assumed, not measured. Lower prevention
               probability raises the required failure value. This case shows why accuracy
@@ -1002,7 +1004,7 @@
           </div>
           <footer class="talk-source"></footer>
           <template class="speaker-notes">
-            <p>Next, we'll turn these cases into design implications, starting with when to stop.</p>
+            <p>Both cases asked whether benefits cover costs. Now we ask when another minute of interaction stops paying off.</p>
           </template>
         </section>
         <!-- SLIDE 13: Stop when the next interaction costs more than it adds -->
@@ -1014,7 +1016,7 @@
               <li aria-current="step">03. Design implications</li>
             </ol>
           </nav>
-          <header class="talk-top"><div><p class="talk-kicker">Two different decisions</p><h2 class="talk-heading">Stop when the next interaction costs more than it adds</h2></div><span class="talk-counter">13 / 15</span></header>
+          <header class="talk-top"><div><p class="talk-kicker">From break-even to stopping</p><h2 class="talk-heading">Stop when the next interaction costs more than it adds</h2></div><span class="talk-counter">13 / 15</span></header>
           <div class="talk-body">
             <div class="paper-figure-layout">
               <figure class="paper-figure">
@@ -1031,16 +1033,16 @@
           <footer class="talk-source">Paper Fig. 3, right panel (cropped), pp. 8-9. Fixed model. Values depend on assumed discovery and cost curves.</footer>
           <template class="speaker-notes">
             <p>
-              Now, the design implications: break-even asks whether to use the workflow;
-              stopping asks whether to continue. This is the paper's fixed-model stopping
-              panel. Time is horizontal; dollars per additional minute are vertical. Red is
-              marginal cost. Follow the middle blue benefit curve: it falls as useful
+              Stay with the fixed-model audit, but switch from total value to the value of
+              one more minute. This is the paper's stopping panel. Time is horizontal;
+              dollars per additional minute are vertical. Red is marginal cost.
+              Follow the middle blue benefit curve: it falls as useful
               discoveries become harder to find, meeting cost near 150 minutes. The other
               blues assume faster or slower information discovery; their intersections shift
               to 103 and 291 minutes. Those are sensitivity scenarios, not recommended audit
               durations. Discovery speed is a property of the interface: clear encodings,
-              guidance, and filtering expose useful evidence sooner. The decision is where added benefit meets added cost under the
-              assumptions. Use that comparison to support a stopping decision.
+              guidance, and filtering expose useful evidence sooner. The stopping point is
+              where added benefit meets added cost under the assumptions.
             </p>
           </template>
         </section>
@@ -1076,8 +1078,9 @@
           <footer class="talk-source"></footer>
           <template class="speaker-notes">
             <p>
-              Three design implications follow. Choose the interaction target that creates the
-              value the task needs. Control update frequency and the effort of reorienting.
+              Together, the examples and stopping curves suggest three design choices.
+              Choose the interaction target that creates the value the task needs.
+              Control update frequency and the effort of reorienting.
               Plan for reuse to share development costs. This framework connects outcomes to
               effort and complements usability studies and benchmarks. Its estimates support
               conditional design decisions; empirical calibration remains future work.
@@ -1113,10 +1116,10 @@
           </footer>
           <template class="speaker-notes">
             <p>
-              We asked when more visual interaction is worth its cost. One answer surprised us.
-              In our model, better visual design moves the stopping point earlier. Faster
-              discovery captures more value in less time. So judge an interface by how soon
-              analysts can stop, not how long they stay. Thank you.
+              Those choices bring us back to the opening question: when is more interaction
+              worth its cost? In our model, faster discovery can move the stopping point earlier.
+              Better visual design helps analysts capture value sooner and finish with less
+              interaction. Thank you.
             </p>
           </template>
         </section>
