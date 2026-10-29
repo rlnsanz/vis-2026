@@ -197,6 +197,8 @@
       .story-figure .story-line { fill: none; stroke: #64748b; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
       .story-figure .story-indigo-line { fill: none; stroke: #6366f1; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
       .opening-diagram { max-height: 480px; }
+      .opening-scenario { font-size: 30px; line-height: 1.4; color: #475569; text-align: center; }
+      .dark .opening-scenario { color: #cbd5e1; }
       .opening-caption { font-size: 36px; line-height: 1.3; font-weight: 700; text-align: center; letter-spacing: -0.02em; }
       .overview-route { display: grid; grid-template-columns: 1fr 48px 1fr 48px 1fr; gap: 18px; align-items: center; }
       .overview-step { align-self: stretch; border-top: 3px solid #c7d2fe; padding: 24px 8px 0; }
@@ -495,16 +497,17 @@
           </template>
         </section>
         <!-- SLIDE 02: Better outcomes still have a cost. -->
-        <section class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" id="slide-2" data-title="2. Better outcomes still have a cost." data-budget="25">
+        <section class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" id="slide-2" data-title="2. Better outcomes still have a cost." data-budget="30">
           <header class="talk-top"><div><p class="talk-kicker">The question</p><h2 class="talk-heading">Better outcomes still have a cost.</h2></div><span class="talk-counter">02 / 15</span></header>
           <div class="talk-body">
-            <svg class="story-figure opening-diagram" viewBox="0 0 1480 440" role="img" aria-label="An illustrative interaction: an analyst corrects a label, the model updates, and the analyst reviews the new predictions. Better predictions come with analyst time, training, and re-checking costs.">
+            <p class="opening-scenario">Example: a classifier sorts photos of machined parts into pass or defect.</p>
+            <svg class="story-figure opening-diagram" viewBox="0 0 1480 440" role="img" aria-label="An illustrative defect-inspection example: an engineer fixes a mislabeled part photo, the classifier retrains, and the engineer reviews the new predictions. Fewer wrong calls come with engineer time, a training run, and re-checking costs.">
               <defs><marker id="question-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#64748b"/></marker></defs>
               <rect class="story-panel" x="15" y="15" width="420" height="255" rx="20"/>
               <rect class="story-soft" x="530" y="15" width="420" height="255" rx="20"/>
               <rect class="story-panel" x="1045" y="15" width="420" height="255" rx="20"/>
-              <text x="45" y="61" font-size="28" font-weight="700">Correct a label</text>
-              <text x="560" y="61" font-size="28" font-weight="700">Update the model</text>
+              <text x="45" y="61" font-size="28" font-weight="700">Fix a mislabeled part</text>
+              <text x="560" y="61" font-size="28" font-weight="700">Retrain the classifier</text>
               <text x="1075" y="61" font-size="28" font-weight="700">Review predictions</text>
               <!-- A schematic correction, not a measured dataset. -->
               <g fill="#6366f1"><circle cx="100" cy="133" r="11"/><circle cx="148" cy="116" r="11"/><circle cx="126" cy="179" r="11"/><circle cx="177" cy="157" r="11"/></g>
@@ -520,19 +523,19 @@
               <g fill="#10b981"><circle cx="1161" cy="173" r="8"/><circle cx="1230" cy="179" r="8"/><circle cx="1297" cy="144" r="8"/><circle cx="1368" cy="125" r="8"/></g>
               <path class="story-line" d="M 225 274 L 225 310 M 740 274 L 740 310 M 1255 274 L 1255 310"/>
               <rect class="story-benefit-panel" x="15" y="328" width="470" height="95" rx="16"/>
-              <text class="story-green" x="45" y="367" font-size="28" font-weight="700">GAIN</text><text class="story-green" x="45" y="402" font-size="30" font-weight="700">Better predictions</text>
+              <text class="story-green" x="45" y="367" font-size="28" font-weight="700">GAIN</text><text class="story-green" x="45" y="402" font-size="30" font-weight="700">Fewer wrong calls</text>
               <rect class="story-cost-panel" x="515" y="328" width="950" height="95" rx="16"/>
-              <text class="story-rose" x="545" y="367" font-size="28" font-weight="700">EFFORT</text><text class="story-rose" x="545" y="402" font-size="30" font-weight="700">Analyst time + training + re-checking</text>
+              <text class="story-rose" x="545" y="367" font-size="28" font-weight="700">EFFORT</text><text class="story-rose" x="545" y="402" font-size="30" font-weight="700">Engineer time + training run + re-check</text>
             </svg>
             <p class="opening-caption">Is the improvement worth another round?</p>
           </div>
-          <footer class="talk-source"></footer>
+          <footer class="talk-source">Illustrative scenario · Carried through the worked example on slides 4–5.</footer>
           <template class="speaker-notes">
             <p>
-              Start with one label correction. The analyst fixes an error, the model updates,
-              and the analyst checks the new predictions. The predictions may improve, but each
-              round takes analyst time, training, and re-checking. This is a schematic example.
-              The practical question is: is the improvement worth another round?
+              Take a defect classifier that sorts photos of machined parts into pass and defect.
+              An engineer spots a scratched part labeled pass and fixes it. The model retrains,
+              and the engineer checks which calls changed. Accuracy may improve, but each round
+              costs engineer time, a training run, and a re-check. Is that worth another round?
             </p>
           </template>
         </section>
@@ -589,7 +592,7 @@
           </template>
         </section>
         <!-- SLIDE 04: A quality gain needs a task-specific value -->
-        <section class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" id="slide-4" data-title="4. A quality gain needs a task-specific value" data-budget="25" data-talk-section="framework">
+        <section class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" id="slide-4" data-title="4. A quality gain needs a task-specific value" data-budget="35" data-talk-section="framework">
           <nav class="talk-roadmap" aria-label="Talk roadmap">
             <ol>
               <li aria-current="step">01 · Framework</li>
@@ -601,8 +604,8 @@
           <div class="talk-body">
             <div class="worked-value">
               <figure>
-                <figcaption>After label correction and three model updates</figcaption>
-                <svg class="story-figure" viewBox="0 0 690 330" role="img" aria-label="Illustrative accuracy on the same evaluation set rises from 80 percent to 90 percent, a gain of 10 percentage points. Bars share a zero-to-100-percent scale.">
+                <figcaption>Defect classifier after three retraining runs</figcaption>
+                <svg class="story-figure" viewBox="0 0 690 330" role="img" aria-label="Illustrative defect-classifier accuracy on the same test photos rises from 80 percent to 90 percent, a gain of 10 percentage points. Bars share a zero-to-100-percent scale.">
                   <text class="story-muted" x="0" y="34" font-size="28">Before</text>
                   <rect class="story-panel" x="0" y="52" width="600" height="54" rx="5"/>
                   <rect x="0" y="52" width="480" height="54" rx="5" fill="#94a3b8"/>
@@ -613,16 +616,16 @@
                   <text class="story-accent" x="620" y="208" font-size="30" font-weight="700">90%</text>
                   <text class="story-muted" x="0" y="262" font-size="28">0%</text>
                   <text class="story-muted" x="600" y="262" text-anchor="end" font-size="28">100%</text>
-                  <text x="0" y="321" font-size="28" font-weight="650">Same evaluation set · +10 percentage points</text>
+                  <text x="0" y="321" font-size="28" font-weight="650">Same test photos · +10 percentage points</text>
                 </svg>
               </figure>
               <div class="worked-calculation">
                 <p class="worked-label">Model-performance benefit</p>
                 <p class="worked-formula math-serif">B<sub>model</sub> = ΔM × U<sub>M</sub></p>
-                <p class="worked-label">Assume value over the analysis period:</p>
-                <p class="worked-rate"><span class="math-serif">U<sub>M</sub></span> = $20 per percentage point</p>
+                <p class="worked-label">Next batch: 500 parts, ≈ $4 per wrong call</p>
+                <p class="worked-rate"><span class="math-serif">U<sub>M</sub></span> = 5 fewer errors × $4 = $20 per point</p>
                 <p class="worked-result">10 × $20 = $200</p>
-                <p class="worked-label">Expected model benefit</p>
+                <p class="worked-label">Expected model benefit: 50 fewer wrong calls</p>
               </div>
             </div>
             <p class="worked-takeaway">Measure the gain; assign its value for the task.</p>
@@ -630,10 +633,11 @@
           <footer class="talk-source">Illustrative inputs, not study results · Paper §4.2, Eq. 14. Only the model-benefit term is valued here.</footer>
           <template class="speaker-notes">
             <p>
-              Take a worked example. Accuracy rises from eighty to ninety percent on the
-              same evaluation set: ten percentage points. At an assumed twenty dollars per
-              point over the analysis period, model benefit is two hundred dollars. These
-              numbers illustrate the calculation; the task supplies the value.
+              After relabeling and three retraining runs, accuracy on the same test photos
+              rises from eighty to ninety percent. What is a point worth? The next batch has
+              five hundred parts, and each wrong call costs about four dollars in scrap or
+              returns. One point is five fewer errors: twenty dollars. Ten points is fifty
+              fewer wrong calls: two hundred dollars.
             </p>
           </template>
         </section>
@@ -648,12 +652,12 @@
           </nav>
           <header class="talk-top"><div><p class="talk-kicker">Worked example · Cost the same improvement</p><h2 class="talk-heading">Count the session and every update</h2></div><span class="talk-counter">05 / 15</span></header>
           <div class="talk-body">
-            <table class="worked-costs" aria-label="Illustrative runtime costs for the same label-correction session: 40 dollars for exploration, 3 for training, and 12 for re-checking, totaling 55 dollars.">
+            <table class="worked-costs" aria-label="Illustrative runtime costs for the same defect-relabeling session: 40 dollars of engineer time, 3 for retraining, and 12 for re-checking, totaling 55 dollars.">
               <thead><tr><th scope="col">Work in this session</th><th scope="col">Calculation</th><th scope="col">Cost</th></tr></thead>
               <tbody>
-                <tr><th scope="row">Explore &amp; correct labels</th><td>20 min × $2/min</td><td>$40</td></tr>
-                <tr><th scope="row">Train the model</th><td>3 updates × $1/update</td><td>$3</td></tr>
-                <tr><th scope="row">Re-check changed outputs</th><td>3 updates × 2 min × $2/min</td><td>$12</td></tr>
+                <tr><th scope="row">Find &amp; relabel scratched parts</th><td>20 min × $2/min</td><td>$40</td></tr>
+                <tr><th scope="row">Retrain the classifier</th><td>3 runs × $1 GPU time</td><td>$3</td></tr>
+                <tr><th scope="row">Re-check flipped calls</th><td>3 runs × 2 min × $2/min</td><td>$12</td></tr>
               </tbody>
             </table>
             <div class="worked-total">
@@ -665,11 +669,11 @@
           <footer class="talk-source">Same illustrative example · Paper §4.1, Eqs. 8–9. Initial training is outside scope; view compute is assumed negligible.</footer>
           <template class="speaker-notes">
             <p>
-              Now cost that same improvement. Exploration costs forty dollars. Three updates
-              add three dollars for training and twelve for re-checking. Runtime totals
-              fifty-five dollars, leaving one hundred forty-five to cover development.
-              Review time is separate; initial training is outside scope and view compute
-              is negligible here. Next, we generalize to other interaction targets.
+              Now the cost of that same improvement. Twenty minutes of finding and relabeling
+              parts, at a hundred twenty dollars an hour, is forty dollars. Three retraining runs
+              cost a dollar each. Re-checking flipped calls after each run adds twelve. Runtime
+              is fifty-five dollars, leaving one hundred forty-five toward development. Next,
+              we generalize beyond label correction.
             </p>
           </template>
         </section>
@@ -803,16 +807,16 @@
               <rect class="story-cost-panel" x="575" y="397" width="890" height="85" rx="16"/>
               <text class="story-rose" x="1020" y="450" text-anchor="middle" font-size="30" font-weight="700">Human cost: interpreting change + recovering context</text>
             </svg>
-            <p class="framework-caption">Even a fast update can require a careful re-check.</p>
+            <p class="framework-caption">MitoVis: each update used ≈ $0.02 of GPU time but ≈ $3 of expert time.</p>
           </div>
-          <footer class="talk-source"></footer>
+          <footer class="talk-source">Paper §5.1 · 23 s fine-tuning at $3/hr GPU; 1.5 min of re-alignment assumed at $2/min.</footer>
           <template class="speaker-notes">
             <p>
               Model updates also require cognitive re-alignment. The analyst interprets
               changed outputs and, after a delay, may need to recover their train of thought.
-              These costs are separate from computation. Even a fast update can require
-              careful review. Update frequency and latency therefore affect human effort as
-              well as computing cost.
+              In MitoVis, each fine-tuning run cost about two cents of GPU time. We assume
+              ninety seconds to reorient afterward: about three dollars of expert time. So
+              update frequency and latency drive human effort, not just computing cost.
             </p>
           </template>
         </section>
@@ -866,7 +870,7 @@
           </template>
         </section>
         <!-- SLIDE 10: MitoVis: When do data and model improvements pay off? -->
-        <section class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" id="slide-10" data-title="10. MitoVis: When do data and model improvements pay off?" data-budget="80" data-talk-section="cases">
+        <section class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" id="slide-10" data-title="10. MitoVis: When do data and model improvements pay off?" data-budget="75" data-talk-section="cases">
           <nav class="talk-roadmap" aria-label="Talk roadmap">
             <ol>
               <li>01 · Framework</li>
@@ -899,13 +903,13 @@
               including development. Blue is avoided manual work plus model utility. It starts
               above zero because we credit about 1,148 dollars of manual work. At the black
               dot, benefits cover costs: each point of accuracy needs to be worth about 889
-              dollars. To the right, benefits exceed costs. This is conditional on the
+              dollars, versus twenty in our defect example. To the right, benefits exceed costs. This is conditional on the
               assumptions; reuse reduces the development cost charged to each workflow.
             </p>
           </template>
         </section>
         <!-- SLIDE 11: A fixed model can create value through failure prevention -->
-        <section class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" id="slide-11" data-title="11. A fixed model can create value through failure prevention" data-budget="70" data-talk-section="cases">
+        <section class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" id="slide-11" data-title="11. A fixed model can create value through failure prevention" data-budget="60" data-talk-section="cases">
           <nav class="talk-roadmap" aria-label="Talk roadmap">
             <ol>
               <li>01 · Framework</li>
