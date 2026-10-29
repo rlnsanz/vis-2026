@@ -3,7 +3,7 @@ Presentation initialized by Yixuan W
 
 The self-contained presentation is `ivml-cost-benefit.html`. Open it directly in a browser; no server, build step, or network is needed.
 
-The main talk has 15 slides and 867 words of speaker notes, with a 9:30 pacing target inside a 10-minute slot. At 120 words per minute, the notes take about 7.2 minutes to speak, leaving about 2.3 minutes within the target for pointing to figures, transitions, and pauses. Rehearse against the targets below to adjust to your delivery.
+The main talk has 15 slides and 906 words of speaker notes, with a 9:30 pacing target inside a 10-minute slot. At 120 words per minute, the notes take about 7.6 minutes to speak, leaving about 1.9 minutes within the target for pointing to figures, transitions, and pauses. Rehearse against the targets below to adjust to your delivery.
 
 - Left/Right or Space navigates the main talk and stops at slide 15.
 - **G** opens the overview, with the main talk first and 17 backup slides below it.
@@ -22,12 +22,12 @@ The main talk has 15 slides and 867 words of speaker notes, with a 9:30 pacing t
 | 7 | Expected benefits must cover expected costs | 45s | 3:50 |
 | 8 | Model updates also require people to reorient | 35s | 4:25 |
 | 9 | Overview · Two cases | 10s | 4:35 |
-| 10 | MitoVis: When do data and model improvements pay off? | 85s | 6:00 |
-| 11 | A fixed model can create value through failure prevention | 75s | 7:15 |
-| 12 | Overview · Design implications | 10s | 7:25 |
-| 13 | Stop when the next interaction costs more than it adds | 75s | 8:40 |
-| 14 | Design the workflow around the value you need | 35s | 9:15 |
-| 15 | More visual interaction pays while added benefit exceeds added cost. | 15s | 9:30 |
+| 10 | MitoVis: When do data and model improvements pay off? | 80s | 5:55 |
+| 11 | A fixed model can create value through failure prevention | 70s | 7:05 |
+| 12 | Overview · Design implications | 10s | 7:15 |
+| 13 | Stop when the next interaction costs more than it adds | 75s | 8:30 |
+| 14 | Design the workflow around the value you need | 35s | 9:05 |
+| 15 | Better visual design earns more value with less interaction. | 25s | 9:30 |
 
 The title slide focuses on the title, research question, and authors. Slide 2 follows one label correction through its gains and effort. Slides 4–5 turn that setup into a worked example: an illustrative 10-percentage-point accuracy gain at $20 per point yields $200 in model benefit; exploration, three model updates, and separate re-checking cost $55, leaving $145 to cover development. These are teaching inputs, not study results. Initial training is outside the example’s accounting boundary, view compute is assumed negligible, and only model-performance benefit is valued. Slide 6 then generalizes the example to the paper’s three interaction targets.
 
@@ -40,7 +40,7 @@ The paper figures are embedded directly from the PDF, so the deck remains self-c
 - Slide 11: Figure 3, left panel (p. 8), reuses that reading pattern for the $10,038 failure-value threshold.
 - Slide 13: Figure 3, right panel (p. 8), follows the middle blue curve and explains the other two as discovery-rate sensitivity. The plotted times are not recommended audit durations.
 
-The panels retain the original axes, ticks, and curves. Repeated panel headings and compact legends are cropped out; larger legends sit beside the plots. The original system screenshots are retained in backups 15 and 16. The notes include a short walkthrough for every figure, with 65, 85, 75, and 75 seconds allocated to these slides.
+The panels retain the original axes, ticks, and curves. Repeated panel headings and compact legends are cropped out; larger legends sit beside the plots. The original system screenshots are retained in backups 15 and 16. The notes include a short walkthrough for every figure, with 65, 80, 70, and 75 seconds allocated to these slides.
 
 The main talk groups costs into development, human effort, and computation. It preserves the three interaction targets, four benefit pathways, model-update overhead, two case-study thresholds, and the distinction between break-even and stopping decisions. Backup slides retain the full workflows, notation, equations, configuration tables, original reference figures, and explicit assumptions behind the numerical results.
 
