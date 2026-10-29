@@ -477,8 +477,8 @@
           </div>
           <div class="pt-4 border-t border-slate-200/80 dark:border-slate-700/70 flex flex-wrap items-center justify-between gap-4">
             <div class="space-y-2">
-              <p class="title-authors">Yixuan Wang | <span class="underline decoration-2 underline-offset-4">Rolando Garcia</span> | Alex Endert | Ross Maciejewski</p>
-              <p class="title-affiliations">Arizona State University | Georgia Institute of Technology</p>
+              <p class="title-authors">Yixuan Wang, <span class="underline decoration-2 underline-offset-4">Rolando Garcia</span>, Alex Endert, Ross Maciejewski</p>
+              <p class="title-affiliations">Arizona State University, Georgia Institute of Technology</p>
             </div>
             <div class="rounded-xl px-4 py-2 bg-white flex items-center justify-center gap-5 shrink-0">
               <img alt="Visual Analytics &amp; Data Exploration Research -- Arizona State University Ira A. Fulton Schools of Engineering" class="h-14 sm:h-16 w-auto object-contain" data-image="asu-logo"/>
@@ -490,9 +490,11 @@
           <!-- Speaker notes -->
           <template class="speaker-notes">
             <p>
-              I'm Rolando Garcia. This work asks when interactive visual machine learning is worth
-              its human and computational costs. We offer a framework for deciding where interaction
-              adds value, when it pays off, and when to stop.
+              Hi everyone, I'm Rolando Garcia, and it's great to be here. This is joint work with
+              Yixuan Wang, Alex Endert, and Ross Maciejewski. Many of us build tools that
+              put people in the loop with a model. This work asks a question we all run into: when is
+              that interaction worth the time and compute it costs? We offer a framework for deciding
+              where interaction adds value, when it pays off, and when to stop.
             </p>
           </template>
         </section>
@@ -529,7 +531,7 @@
             </svg>
             <p class="opening-caption">Is the improvement worth another round?</p>
           </div>
-          <footer class="talk-source">Illustrative scenario | Carried through the worked example on slides 4-5.</footer>
+          <footer class="talk-source">Illustrative scenario. Carried through the worked example on slides 4-5.</footer>
           <template class="speaker-notes">
             <p>
               Take a defect classifier that sorts photos of machined parts into pass and defect.
@@ -541,7 +543,7 @@
         </section>
         <!-- SLIDE 03: From interaction to a design decision -->
         <section class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" id="slide-3" data-title="3. From interaction to a design decision" data-budget="20">
-          <header class="talk-top"><div><p class="talk-kicker">Overview | The path through this talk</p><h2 class="talk-heading">From interaction to a design decision</h2></div><span class="talk-counter">03 / 15</span></header>
+          <header class="talk-top"><div><p class="talk-kicker">Overview: The path through this talk</p><h2 class="talk-heading">From interaction to a design decision</h2></div><span class="talk-counter">03 / 15</span></header>
           <div class="talk-body">
             <div class="overview-route">
               <div class="overview-step" aria-current="step">
@@ -600,7 +602,7 @@
               <li>03. Design implications</li>
             </ol>
           </nav>
-          <header class="talk-top"><div><p class="talk-kicker">Worked example | Value the improvement</p><h2 class="talk-heading">A quality gain needs a task-specific value</h2></div><span class="talk-counter">04 / 15</span></header>
+          <header class="talk-top"><div><p class="talk-kicker">Worked example: Value the improvement</p><h2 class="talk-heading">A quality gain needs a task-specific value</h2></div><span class="talk-counter">04 / 15</span></header>
           <div class="talk-body">
             <div class="worked-value">
               <figure>
@@ -616,7 +618,7 @@
                   <text class="story-accent" x="620" y="208" font-size="30" font-weight="700">90%</text>
                   <text class="story-muted" x="0" y="262" font-size="28">0%</text>
                   <text class="story-muted" x="600" y="262" text-anchor="end" font-size="28">100%</text>
-                  <text x="0" y="321" font-size="28" font-weight="650">Same test photos | +10 percentage points</text>
+                  <text x="0" y="321" font-size="28" font-weight="650">Same test photos, +10 percentage points</text>
                 </svg>
               </figure>
               <div class="worked-calculation">
@@ -630,7 +632,7 @@
             </div>
             <p class="worked-takeaway">Measure the gain; assign its value for the task.</p>
           </div>
-          <footer class="talk-source">Illustrative inputs, not study results | Paper Sec. 4.2, Eq. 14. Only the model-benefit term is valued here.</footer>
+          <footer class="talk-source">Illustrative inputs, not study results. Paper Sec. 4.2, Eq. 14. Only the model-benefit term is valued here.</footer>
           <template class="speaker-notes">
             <p>
               After relabeling and three retraining runs, accuracy on the same test photos
@@ -650,7 +652,7 @@
               <li>03. Design implications</li>
             </ol>
           </nav>
-          <header class="talk-top"><div><p class="talk-kicker">Worked example | Cost the same improvement</p><h2 class="talk-heading">Count the session and every update</h2></div><span class="talk-counter">05 / 15</span></header>
+          <header class="talk-top"><div><p class="talk-kicker">Worked example: Cost the same improvement</p><h2 class="talk-heading">Count the session and every update</h2></div><span class="talk-counter">05 / 15</span></header>
           <div class="talk-body">
             <table class="worked-costs" aria-label="Illustrative runtime costs for the same defect-relabeling session: 40 dollars of engineer time, 3 for retraining, and 12 for re-checking, totaling 55 dollars.">
               <thead><tr><th scope="col">Work in this session</th><th scope="col">Calculation</th><th scope="col">Cost</th></tr></thead>
@@ -666,7 +668,7 @@
             </div>
             <p class="worked-assumption">Count time once: the 20 minutes excludes the 6 minutes of re-checking.</p>
           </div>
-          <footer class="talk-source">Same illustrative example | Paper Sec. 4.1, Eqs. 8-9. Initial training is outside scope; view compute is assumed negligible.</footer>
+          <footer class="talk-source">Same illustrative example. Paper Sec. 4.1, Eqs. 8-9. Initial training is outside scope; view compute is assumed negligible.</footer>
           <template class="speaker-notes">
             <p>
               Now the cost of that same improvement. Twenty minutes of finding and relabeling
@@ -686,7 +688,7 @@
               <li>03. Design implications</li>
             </ol>
           </nav>
-          <header class="talk-top"><div><p class="talk-kicker">Our contribution | Three interaction targets</p><h2 class="talk-heading">What interaction changes determines the trade-off</h2></div><span class="talk-counter">06 / 15</span></header>
+          <header class="talk-top"><div><p class="talk-kicker">Our contribution: Three interaction targets</p><h2 class="talk-heading">What interaction changes determines the trade-off</h2></div><span class="talk-counter">06 / 15</span></header>
           <div class="talk-body">
             <div class="paper-figure-layout paper-figure-layout--workflow">
               <figure class="paper-figure">
@@ -700,7 +702,7 @@
               </div>
             </div>
           </div>
-          <footer class="talk-source">Paper Fig. 1, p. 3 | Extends Van Wijk (2005). Follow the three interaction targets.</footer>
+          <footer class="talk-source">Paper Fig. 1, p. 3. Extends Van Wijk (2005). Follow the three interaction targets.</footer>
           <template class="speaker-notes">
             <p>
               We now use the paper's workflow. Read left to right: data D enters learning L,
@@ -809,7 +811,7 @@
             </svg>
             <p class="framework-caption">MitoVis: each update used ~$0.02 of GPU time but ~$3 of expert time.</p>
           </div>
-          <footer class="talk-source">Paper Sec. 5.1 | 23 s fine-tuning at $3/hr GPU; 1.5 min of re-alignment assumed at $2/min.</footer>
+          <footer class="talk-source">Paper Sec. 5.1. Assumes 23 s of fine-tuning at $3/hr GPU and 1.5 min of re-alignment at $2/min.</footer>
           <template class="speaker-notes">
             <p>
               Model updates also require cognitive re-alignment. The analyst interprets
@@ -820,9 +822,9 @@
             </p>
           </template>
         </section>
-        <!-- SLIDE 09: Overview | Two cases -->
-        <section class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" id="slide-9" data-title="9. Overview | Two cases" data-budget="10">
-          <header class="talk-top"><div><p class="talk-kicker">Overview | Two cases</p><h2 class="talk-heading">From interaction to a design decision</h2></div><span class="talk-counter">09 / 15</span></header>
+        <!-- SLIDE 09: Overview: Two cases -->
+        <section class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" id="slide-9" data-title="9. Overview: Two cases" data-budget="10">
+          <header class="talk-top"><div><p class="talk-kicker">Overview: Two cases</p><h2 class="talk-heading">From interaction to a design decision</h2></div><span class="talk-counter">09 / 15</span></header>
           <div class="talk-body">
             <div class="overview-route">
               <div class="overview-step">
@@ -878,7 +880,7 @@
               <li>03. Design implications</li>
             </ol>
           </nav>
-          <header class="talk-top"><div><p class="talk-kicker">Case 1 | Data correction + model refinement</p><h2 class="talk-heading">MitoVis: When do data and model improvements pay off?</h2></div><span class="talk-counter">10 / 15</span></header>
+          <header class="talk-top"><div><p class="talk-kicker">Case 1: Data correction + model refinement</p><h2 class="talk-heading">MitoVis: When do data and model improvements pay off?</h2></div><span class="talk-counter">10 / 15</span></header>
           <div class="talk-body">
             <div class="paper-figure-layout">
               <figure class="paper-figure">
@@ -892,7 +894,7 @@
               </div>
             </div>
           </div>
-          <footer class="talk-source">Paper Fig. 2, left panel (cropped), pp. 6-7 | Both axes use log scales. One point = one percentage point of accuracy.</footer>
+          <footer class="talk-source">Paper Fig. 2, left panel (cropped), pp. 6-7. Both axes use log scales. One point = one percentage point of accuracy.</footer>
           <template class="speaker-notes">
             <p>
               Now, the two cases. MitoVis combines segmentation correction with fine-tuning.
@@ -918,7 +920,7 @@
             </ol>
             <p class="talk-roadmap-next">Next: Design implications</p>
           </nav>
-          <header class="talk-top"><div><p class="talk-kicker">Case 2 | Model evaluation and understanding</p><h2 class="talk-heading">A fixed model can create value through failure prevention</h2></div><span class="talk-counter">11 / 15</span></header>
+          <header class="talk-top"><div><p class="talk-kicker">Case 2: Model evaluation and understanding</p><h2 class="talk-heading">A fixed model can create value through failure prevention</h2></div><span class="talk-counter">11 / 15</span></header>
           <div class="talk-body">
             <div class="paper-figure-layout">
               <figure class="paper-figure">
@@ -932,7 +934,7 @@
               </div>
             </div>
           </div>
-          <footer class="talk-source">Paper Fig. 3, left panel (cropped), Sec. 5.2 | Ma et al. (2020). Both axes use log scales.</footer>
+          <footer class="talk-source">Paper Fig. 3, left panel (cropped), Sec. 5.2. Ma et al. (2020). Both axes use log scales.</footer>
           <template class="speaker-notes">
             <p>
               The second case uses Ma and colleagues' system to inspect data poisoning
@@ -946,9 +948,9 @@
             </p>
           </template>
         </section>
-        <!-- SLIDE 12: Overview | Design implications -->
-        <section class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" id="slide-12" data-title="12. Overview | Design implications" data-budget="10">
-          <header class="talk-top"><div><p class="talk-kicker">Overview | Design implications</p><h2 class="talk-heading">From interaction to a design decision</h2></div><span class="talk-counter">12 / 15</span></header>
+        <!-- SLIDE 12: Overview: Design implications -->
+        <section class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" id="slide-12" data-title="12. Overview: Design implications" data-budget="10">
+          <header class="talk-top"><div><p class="talk-kicker">Overview: Design implications</p><h2 class="talk-heading">From interaction to a design decision</h2></div><span class="talk-counter">12 / 15</span></header>
           <div class="talk-body">
             <div class="overview-route">
               <div class="overview-step">
@@ -1018,7 +1020,7 @@
               </div>
             </div>
           </div>
-          <footer class="talk-source">Paper Fig. 3, right panel (cropped), pp. 8-9 | Fixed model. Values depend on assumed discovery and cost curves.</footer>
+          <footer class="talk-source">Paper Fig. 3, right panel (cropped), pp. 8-9. Fixed model. Values depend on assumed discovery and cost curves.</footer>
           <template class="speaker-notes">
             <p>
               Now, the design implications: break-even asks whether to use the workflow;
@@ -1096,7 +1098,7 @@
           </div>
           <footer class="closing-footer">
             <div>
-              <p class="closing-authors">Yixuan Wang | <strong>Rolando Garcia</strong> | Alex Endert | Ross Maciejewski</p>
+              <p class="closing-authors">Yixuan Wang, <strong>Rolando Garcia</strong>, Alex Endert, Ross Maciejewski</p>
               <p class="closing-contact"><a href="mailto:rolando.garcia@asu.edu">rolando.garcia@asu.edu</a> | <a href="https://rlnsanz.github.io" target="_blank" rel="noopener noreferrer">rlnsanz.github.io</a></p>
             </div>
             <p class="closing-thanks">Thank you.</p>
@@ -1437,7 +1439,7 @@
             </div>
             <!-- Right Dynamic Inspector Card -->
             <div class="lg:col-span-4 p-5 rounded-2xl bg-sky-50/80 dark:bg-slate-800/90 border-sky-200/80 dark:border-slate-700 border shadow-xs flex flex-col justify-start space-y-3.5" id="backup-3-pathwayDetailCard">
-              <span class="px-3 py-1 rounded-lg text-xs font-bold bg-sky-100 dark:bg-sky-900/80 text-sky-800 dark:text-sky-200 w-fit">Target 1 | Data-Targeted Loop (dD/dt)</span>
+              <span class="px-3 py-1 rounded-lg text-xs font-bold bg-sky-100 dark:bg-sky-900/80 text-sky-800 dark:text-sky-200 w-fit">Target 1: Data-Targeted Loop (dD/dt)</span>
               <h3 class="text-xl font-bold text-slate-900 dark:text-slate-100">Modify training data</h3>
               <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Users edit training data D through the visual interface. These changes improve data quality and can affect future model training.</p>
               <div class="pt-2 border-t border-slate-200/80 dark:border-slate-700 space-y-2">
@@ -1556,7 +1558,7 @@
             </div>
             <!-- Right Dynamic Inspector Card -->
             <div class="lg:col-span-4 p-5 rounded-2xl bg-purple-50/80 dark:bg-slate-800/90 border-purple-200/80 dark:border-slate-700 border shadow-xs flex flex-col justify-start space-y-3.5" id="backup-4-pathwayDetailCard">
-              <span class="px-3 py-1 rounded-lg text-xs font-bold bg-purple-100 dark:bg-purple-900/80 text-purple-800 dark:text-purple-200 w-fit">Target 2 | Model-Targeted Loop (dM/dt)</span>
+              <span class="px-3 py-1 rounded-lg text-xs font-bold bg-purple-100 dark:bg-purple-900/80 text-purple-800 dark:text-purple-200 w-fit">Target 2: Model-Targeted Loop (dM/dt)</span>
               <h3 class="text-xl font-bold text-slate-900 dark:text-slate-100">Modify model state</h3>
               <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Users adjust model parameters, constraints, or architecture M. These changes can require retraining and a fresh review of model outputs.</p>
               <div class="pt-2 border-t border-slate-200/80 dark:border-slate-700 space-y-2">
@@ -1676,7 +1678,7 @@
             </div>
             <!-- Right Dynamic Inspector Card -->
             <div class="lg:col-span-4 p-5 rounded-2xl bg-emerald-50/80 dark:bg-slate-800/90 border-emerald-200/80 dark:border-slate-700 border shadow-xs flex flex-col justify-start space-y-3.5" id="backup-5-pathwayDetailCard">
-              <span class="px-3 py-1 rounded-lg text-xs font-bold bg-emerald-100 dark:bg-emerald-900/80 text-emerald-800 dark:text-emerald-200 w-fit">Target 3 | Understanding-Oriented Loop (dS/dt, dK/dt)</span>
+              <span class="px-3 py-1 rounded-lg text-xs font-bold bg-emerald-100 dark:bg-emerald-900/80 text-emerald-800 dark:text-emerald-200 w-fit">Target 3: Understanding-Oriented Loop (dS/dt, dK/dt)</span>
               <h3 class="text-xl font-bold text-slate-900 dark:text-slate-100">Support model evaluation and understanding</h3>
               <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Data D and model state M remain fixed. Users adjust the visualization S to inspect model behavior and build knowledge K.</p>
               <div class="pt-2 border-t border-slate-200/80 dark:border-slate-700 space-y-2">
@@ -2714,7 +2716,7 @@ Risk Reduction (B<sub>risk</sub>)
         </section>
         <!-- BACKUP 15: MitoVis: Assumptions behind the $889 threshold -->
         <section class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" id="slide-30" data-title="Backup 15. MitoVis: Assumptions behind the $889 threshold" data-backup="true">
-          <header class="talk-top"><div><p class="talk-kicker">Backup | Supporting calculations</p><h2 class="talk-heading">MitoVis: Assumptions behind the $889 threshold</h2></div><span class="talk-counter">Backup 15 / 17</span></header>
+          <header class="talk-top"><div><p class="talk-kicker">Backup: Supporting calculations</p><h2 class="talk-heading">MitoVis: Assumptions behind the $889 threshold</h2></div><span class="talk-counter">Backup 15 / 17</span></header>
           <div class="talk-body"><div class="talk-backup-calculation"><div><img class="backup-interface" data-image="mitovis-interface" alt="MitoVis interface for neuronal segmentation correction and model fine-tuning"/><h3>Illustrative inputs</h3><p>3 x 19-minute sessions; $2/min labor</p><p>32 s initial processing + 3 x 23 s fine-tuning; $3/hr GPU</p><p>3 x 1.5-minute re-alignment periods; $10,000 development</p></div><div><h3>Calculation</h3><p>Runtime: $114.00 + $0.08 + $9.00 = $123.08</p><p>Total cost: $10,123.08</p><p>Benefit: $1,148.40 + 10.1 * U<sub>M</sub></p><p class="talk-formula">U<sub>M</sub> ~ ($10,123.08 - $1,148.40) / 10.1 ~$889</p></div></div></div>
           <footer class="talk-source">Ground truth: paper Sec. 5.1, pp. 6-7. U_M is dollars per percentage point of accuracy improvement.</footer>
           <template class="speaker-notes">
@@ -2732,7 +2734,7 @@ Risk Reduction (B<sub>risk</sub>)
         </section>
         <!-- BACKUP 16: Fixed-model audit: Assumptions behind the $10,038 threshold -->
         <section class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" id="slide-31" data-title="Backup 16. Fixed-model audit: Assumptions behind the $10,038 threshold" data-backup="true">
-          <header class="talk-top"><div><p class="talk-kicker">Backup | Supporting calculations</p><h2 class="talk-heading">Fixed-model audit: Assumptions behind the $10,038 threshold</h2></div><span class="talk-counter">Backup 16 / 17</span></header>
+          <header class="talk-top"><div><p class="talk-kicker">Backup: Supporting calculations</p><h2 class="talk-heading">Fixed-model audit: Assumptions behind the $10,038 threshold</h2></div><span class="talk-counter">Backup 16 / 17</span></header>
           <div class="talk-body"><div class="talk-backup-calculation"><div><img class="backup-interface" data-image="stingray-interface" alt="Ma and colleagues' visual analytics interface for inspecting data poisoning vulnerabilities"/><h3>Illustrative inputs</h3><p>19-minute normalized audit; $2/min labor</p><p>$10,000 development cost</p><p>Initial training outside the accounting boundary; no model updates</p></div><div><h3>Upper-bound calculation</h3><p>Total cost: $10,000 + $38 = $10,038</p><p>Risk benefit: Delta K * P<sub>fp</sub> * C<sub>f</sub></p><p class="talk-formula">C<sub>f</sub> >= $10,038 / (Delta K * P<sub>fp</sub>)</p><p>At Delta K = P<sub>fp</sub> = 1, the threshold is $10,038.</p></div></div></div>
           <footer class="talk-source">Ground truth: paper Sec. 5.2, p. 8. This is a conditional estimate, not measured financial return.</footer>
           <template class="speaker-notes">
@@ -2750,7 +2752,7 @@ Risk Reduction (B<sub>risk</sub>)
         </section>
         <!-- BACKUP 17: Stopping times depend on information discovery and cost assumptions -->
         <section class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" id="slide-32" data-title="Backup 17. Stopping times depend on information discovery and cost assumptions" data-backup="true">
-          <header class="talk-top"><div><p class="talk-kicker">Backup | Supporting calculations</p><h2 class="talk-heading">Stopping times depend on information discovery and cost assumptions</h2></div><span class="talk-counter">Backup 17 / 17</span></header>
+          <header class="talk-top"><div><p class="talk-kicker">Backup: Supporting calculations</p><h2 class="talk-heading">Stopping times depend on information discovery and cost assumptions</h2></div><span class="talk-counter">Backup 17 / 17</span></header>
           <div class="talk-body"><div class="talk-backup-calculation"><div><h3>Illustrative marginal model</h3><p class="talk-formula">MC(t) = 2e<sup>0.00348t</sup> + s<sub>C</sub>(t)</p><p class="talk-formula">MB(t) = 10,123.08 lambda e<sup>-lambda t</sup></p><p>Retraining at minutes 19, 38, and 57 adds ~$1.01/min for three minutes after each update.</p></div><div><h3>MitoVis sensitivity results</h3><p>lambda = 0.01 -> ~291 minutes</p><p>lambda = 0.03 -> ~150 minutes</p><p>lambda = 0.05 -> ~103 minutes</p><p>lambda describes how quickly useful information is found.</p></div></div></div>
           <footer class="talk-source">Ground truth: paper Sec. 5.1-5.2, pp. 7-9. Time t is in minutes; all values depend on the assumed model.</footer>
           <template class="speaker-notes">
