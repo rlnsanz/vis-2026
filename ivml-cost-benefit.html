@@ -2,7 +2,7 @@
 <!--
   EDITING GUIDE — everything stays in this file; no build step or network is needed.
   1. STYLES: global typography, animation settings, and slide overview layout.
-  2. SLIDES: "SLIDE 01"–"SLIDE 12" form the 10-minute talk. "BACKUP 01"–"BACKUP 17" hold detail.
+  2. SLIDES: "SLIDE 01"–"SLIDE 13" form the 10-minute talk. "BACKUP 01"–"BACKUP 17" hold detail.
      Arrow navigation stops at the closing slide; choose backup slides from Grid.
      Each main slide’s data-budget is its target duration in seconds (9:30 total).
      Each section's data-title labels the grid/presenter; its speaker-notes template
@@ -66,13 +66,13 @@
       /* Main talk: large type, open layouts, and one message per slide. */
       .talk-slide { padding: 44px 58px 34px; min-height: 0; }
       .talk-top { display: flex; align-items: start; justify-content: space-between; gap: 28px; }
-      .talk-kicker { color: #4f46e5; font-size: 19px; line-height: 1.4; font-weight: 700; margin-bottom: 12px; }
+      .talk-kicker { color: #4338ca; font-size: 32px; line-height: 1.3; font-weight: 700; margin-bottom: 14px; }
       .talk-heading { font-size: 42px; line-height: 1.15; letter-spacing: -0.025em; font-weight: 750; max-width: 1320px; }
-      .talk-counter { font-size: 18px; line-height: 1.5; color: #64748b; white-space: nowrap; padding-top: 7px; }
+      .talk-counter { font-size: 24px; line-height: 1.4; color: #475569; white-space: nowrap; padding-top: 7px; }
       .talk-body { flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: center; gap: 36px; padding: 28px 0; }
-      .talk-source { font-size: 17px; line-height: 1.35; color: #64748b; min-height: 23px; }
+      .talk-source { font-size: 24px; line-height: 1.35; color: #475569; min-height: 33px; }
       .talk-columns { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 50px; align-items: start; }
-      .talk-number { font-size: 24px; font-weight: 700; color: var(--accent); margin-bottom: 24px; }
+      .talk-number { font-size: 28px; font-weight: 700; color: var(--accent); margin-bottom: 24px; }
       .talk-column h3, .talk-ledger h3, .talk-case h3, .talk-stopping h3, .talk-decisions h3, .talk-backup-calculation h3 { font-size: 34px; line-height: 1.2; font-weight: 750; margin-bottom: 18px; }
       .talk-column > p:last-child, .talk-case-results > div > p:last-child { font-size: 28px; line-height: 1.5; color: #475569; }
       .talk-statement > p:first-child { font-size: 40px; color: #64748b; margin-bottom: 30px; }
@@ -87,7 +87,7 @@
       .talk-ledger h3 { font-size: 28px; color: #64748b; }
       .talk-ledger ul { list-style: none; padding: 0; margin: 0; font-size: 30px; line-height: 1.7; }
       .talk-steps { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 35px; align-items: start; }
-      .talk-steps > div > span { font-size: 24px; font-weight: 700; color: #9333ea; }
+      .talk-steps > div > span { font-size: 28px; font-weight: 700; color: #9333ea; }
       .talk-steps h3 { font-size: 48px; font-weight: 750; margin: 20px 0 14px; }
       .talk-steps p { font-size: 28px; line-height: 1.4; color: #475569; }
       .talk-step-arrow { font-size: 48px; color: #94a3b8; margin-top: 48px; }
@@ -95,17 +95,17 @@
       .talk-case { display: grid; grid-template-columns: 1fr 1fr; gap: 54px; align-items: center; }
       .talk-case figure { min-width: 0; }
       .talk-case img { width: 100%; height: 340px; object-fit: contain; background: white; border-radius: 8px; }
-      .talk-case figcaption { font-size: 23px; line-height: 1.4; color: #475569; margin-top: 16px; }
+      .talk-case figcaption { font-size: 28px; line-height: 1.4; color: #475569; margin-top: 16px; }
       .talk-case-results { display: flex; flex-direction: column; gap: 32px; }
       .talk-case-results .talk-metric { font-size: 52px; line-height: 1.12; font-weight: 750; letter-spacing: -0.03em; margin-bottom: 12px; }
       .talk-result { border-left: 4px solid #4f46e5; padding-left: 25px; }
-      .talk-assumption { font-size: 23px; line-height: 1.4; color: #64748b; }
+      .talk-assumption { font-size: 28px; line-height: 1.4; color: #475569; }
       .talk-stopping { display: grid; grid-template-columns: 1.6fr 1fr; gap: 32px; align-items: center; }
       .talk-chart { width: 100%; max-height: 470px; }
       .chart-axis { stroke: #94a3b8; stroke-width: 2; }
-      .talk-chart text { font-size: 23px; font-family: inherit; font-weight: 600; }
+      .talk-chart text { font-size: 28px; font-family: inherit; font-weight: 600; }
       .chart-label { fill: #475569; }
-      .chart-benefit { fill: #059669; }
+      .chart-benefit { fill: #047857; }
       .chart-cost { fill: #e11d48; }
       .chart-stop { fill: #4f46e5; }
       .talk-stopping h3 { margin-bottom: 12px; }
@@ -118,7 +118,7 @@
       .talk-closing { display: flex; flex-direction: column; gap: 65px; }
       .talk-closing > p { font-size: 50px; font-weight: 650; line-height: 1.45; }
       .talk-closing h3 { font-size: 32px; font-weight: 700; margin-bottom: 12px; }
-      .talk-closing > div > p { font-size: 24px; line-height: 1.6; color: #475569; }
+      .talk-closing > div > p { font-size: 28px; line-height: 1.6; color: #475569; }
       .talk-closing a { text-decoration: underline; text-underline-offset: 4px; }
       .talk-backup-calculation { display: grid; grid-template-columns: 1fr 1fr; gap: 55px; }
       .talk-backup-calculation p { font-size: 26px; line-height: 1.5; margin-bottom: 16px; color: #475569; }
@@ -135,6 +135,143 @@
       .dark .chart-benefit { fill: #34d399; }
       .dark .chart-cost { fill: #fb7185; }
       .dark .talk-backup-calculation .talk-formula { color: #a5b4fc; }
+
+      /* Opening story: editable, self-contained diagrams; all coordinates use slide units. */
+      .opening-title { margin: auto 0; max-width: 1450px; }
+      .opening-title h1 { font-size: 72px; line-height: 1.14; letter-spacing: -0.035em; font-weight: 800; }
+      .opening-title h1 span:last-child { color: #4338ca; }
+      .opening-title .opening-question { font-size: 34px; line-height: 1.4; color: #475569; margin-top: 36px; max-width: 1320px; }
+      .title-authors { font-size: 28px; line-height: 1.4; font-weight: 650; }
+      .title-affiliations { font-size: 24px; line-height: 1.4; color: #475569; }
+      .story-figure { width: 100%; overflow: visible; }
+      .story-figure text { font-family: inherit; fill: #0f172a; }
+      .story-figure .story-muted { fill: #64748b; }
+      .story-figure .story-accent { fill: #4f46e5; }
+      .story-figure .story-green { fill: #047857; }
+      .story-figure .story-rose { fill: #be123c; }
+      .story-figure .story-panel { fill: #fff; stroke: #cbd5e1; stroke-width: 2; }
+      .story-figure .story-soft { fill: #eef2ff; stroke: #c7d2fe; stroke-width: 2; }
+      .story-figure .story-benefit-panel { fill: #ecfdf5; stroke: #a7f3d0; stroke-width: 2; }
+      .story-figure .story-cost-panel { fill: #fff1f2; stroke: #fecdd3; stroke-width: 2; }
+      .story-figure .story-line { fill: none; stroke: #64748b; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+      .story-figure .story-indigo-line { fill: none; stroke: #6366f1; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+      .opening-diagram { max-height: 480px; }
+      .opening-caption { font-size: 36px; line-height: 1.3; font-weight: 700; text-align: center; letter-spacing: -0.02em; }
+      .overview-route { display: grid; grid-template-columns: 1fr 48px 1fr 48px 1fr; gap: 18px; align-items: center; }
+      .overview-step { align-self: stretch; border-top: 3px solid #c7d2fe; padding: 24px 8px 0; }
+      .overview-step .story-figure { height: 185px; margin: 15px 0 26px; }
+      .overview-step .route-number { font-size: 28px; line-height: 1.3; font-weight: 700; color: #4338ca; }
+      .overview-step h3 { font-size: 34px; line-height: 1.2; font-weight: 750; margin-bottom: 16px; }
+      .overview-step > p:last-child { font-size: 28px; line-height: 1.4; color: #475569; }
+      .overview-arrow { color: #94a3b8; font-size: 40px; }
+      .overview-promise { font-size: 29px; line-height: 1.4; color: #475569; border-top: 1px solid #cbd5e1; padding-top: 25px; }
+      .dark .opening-title .opening-question, .dark .overview-step > p:last-child, .dark .overview-promise { color: #cbd5e1; }
+      .dark .opening-title h1 span:last-child { color: #a5b4fc; }
+      .dark .title-affiliations { color: #cbd5e1; }
+      @supports ((background-clip: text) or (-webkit-background-clip: text)) {
+        .opening-title h1 span:last-child {
+          background-image: linear-gradient(to right, #4338ca, #0369a1, #047857);
+          background-clip: text;
+          -webkit-background-clip: text;
+          color: transparent;
+        }
+        .dark .opening-title h1 span:last-child {
+          background-image: linear-gradient(to right, #a5b4fc, #7dd3fc, #6ee7b7);
+          color: transparent;
+        }
+      }
+      @media (forced-colors: active) {
+        .opening-title h1 span:last-child, .dark .opening-title h1 span:last-child {
+          background-image: none;
+          color: CanvasText;
+        }
+      }
+      .dark .story-figure text { fill: #f1f5f9; }
+      .dark .story-figure .story-muted { fill: #94a3b8; }
+      .dark .story-figure .story-accent { fill: #a5b4fc; }
+      .dark .story-figure .story-green { fill: #6ee7b7; }
+      .dark .story-figure .story-rose { fill: #fda4af; }
+      .dark .story-figure .story-panel { fill: #1e293b; stroke: #475569; }
+      .dark .story-figure .story-soft { fill: #25254b; stroke: #6366f1; }
+      .dark .story-figure .story-benefit-panel { fill: #102f2d; stroke: #047857; }
+      .dark .story-figure .story-cost-panel { fill: #351c30; stroke: #9f1239; }
+      .dark .story-figure .story-line { stroke: #94a3b8; }
+      .dark .overview-step { border-color: #6366f1; }
+      .dark .overview-step .route-number { color: #a5b4fc; }
+      .dark .overview-promise { border-color: #475569; }
+
+      /* Framework story: continue the opening slides' diagram language. */
+      .framework-body { gap: 24px; }
+      .framework-diagram { max-height: 500px; }
+      .story-figure .story-sky { fill: #0369a1; }
+      .story-figure .story-violet { fill: #7e22ce; }
+      .story-figure .story-data-panel { fill: #f0f9ff; stroke: #bae6fd; stroke-width: 2; }
+      .story-figure .story-model-panel { fill: #faf5ff; stroke: #e9d5ff; stroke-width: 2; }
+      .framework-caption { font-size: 32px; line-height: 1.4; font-weight: 650; text-align: center; }
+      .benefit-cost-ledger { display: grid; grid-template-columns: 1fr 86px 1fr; align-items: stretch; }
+      .ledger-side { border: 2px solid #a7f3d0; border-radius: 20px; padding: 30px 34px; background: #ecfdf5; }
+      .ledger-side--cost { border-color: #fecdd3; background: #fff1f2; }
+      .ledger-eyebrow { font-size: 28px; line-height: 1.3; font-weight: 700; color: #047857; margin-bottom: 12px; }
+      .ledger-side h3 { font-size: 42px; line-height: 1.2; letter-spacing: -0.025em; font-weight: 750; color: #047857; padding-bottom: 26px; border-bottom: 2px solid #a7f3d0; }
+      .ledger-side--cost .ledger-eyebrow, .ledger-side--cost h3 { color: #be123c; border-color: #fecdd3; }
+      .ledger-side ul { list-style: none; padding: 20px 0 0; margin: 0; display: flex; flex-direction: column; gap: 22px; }
+      .ledger-side li { display: flex; gap: 20px; align-items: center; font-size: 30px; line-height: 1.3; font-weight: 600; }
+      .ledger-side li svg { width: 38px; height: 38px; flex-shrink: 0; fill: none; stroke: #059669; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+      .ledger-side--cost li svg { stroke: #e11d48; }
+      .ledger-side li span { display: block; }
+      .ledger-side li .ledger-detail { font-size: 28px; line-height: 1.4; font-weight: 400; color: #475569; margin-top: 4px; }
+      .ledger-side--cost ul { gap: 24px; }
+      .ledger-operator { align-self: start; text-align: center; padding-top: 75px; font-size: 60px; line-height: 1.2; color: #64748b; font-weight: 600; }
+      .framework-note { border-top: 1px solid #cbd5e1; padding-top: 24px; font-size: 28px; line-height: 1.4; color: #475569; }
+      .dark .story-figure .story-sky { fill: #7dd3fc; }
+      .dark .story-figure .story-violet { fill: #d8b4fe; }
+      .dark .story-figure .story-data-panel { fill: #122c43; stroke: #0369a1; }
+      .dark .story-figure .story-model-panel { fill: #2c2145; stroke: #7e22ce; }
+      .dark .ledger-side { background: #102f2d; border-color: #047857; }
+      .dark .ledger-side--cost { background: #351c30; border-color: #9f1239; }
+      .dark .ledger-eyebrow, .dark .ledger-side h3 { color: #6ee7b7; border-color: #047857; }
+      .dark .ledger-side--cost .ledger-eyebrow, .dark .ledger-side--cost h3 { color: #fda4af; border-color: #9f1239; }
+      .dark .ledger-side li svg { stroke: #6ee7b7; }
+      .dark .ledger-side--cost li svg { stroke: #fda4af; }
+      .dark .ledger-side li .ledger-detail, .dark .framework-note { color: #cbd5e1; }
+      .dark .framework-note { border-color: #475569; }
+      .dark .ledger-operator { color: #94a3b8; }
+
+      /* Design implications and the closing return to the opening's visual rhythm. */
+      .design-implications { display: flex; flex-direction: column; }
+      .design-implication { display: grid; grid-template-columns: 70px 410px 1fr; align-items: center; gap: 24px; padding: 34px 0; border-bottom: 1px solid #cbd5e1; }
+      .design-implication:last-child { border-bottom: 0; }
+      .design-number { font-size: 28px; line-height: 1.3; font-weight: 700; color: #4338ca; }
+      .design-implication h3 { font-size: 36px; line-height: 1.2; letter-spacing: -0.02em; font-weight: 750; }
+      .design-implication > p:last-child { font-size: 30px; line-height: 1.4; color: #475569; }
+      .closing-body { gap: 52px; }
+      .closing-message { font-size: 76px; line-height: 1.12; letter-spacing: -0.035em; font-weight: 800; }
+      .closing-message span { display: block; }
+      .closing-message span:last-child { color: #4338ca; }
+      .closing-decisions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 44px; }
+      .closing-decision { display: flex; align-items: center; gap: 22px; border-top: 3px solid #bae6fd; padding-top: 24px; }
+      .closing-decision:nth-child(2) { border-color: #c7d2fe; }
+      .closing-decision:nth-child(3) { border-color: #a7f3d0; }
+      .closing-decision svg { width: 48px; height: 48px; flex-shrink: 0; fill: none; stroke: #0369a1; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+      .closing-decision:nth-child(2) svg { stroke: #4f46e5; }
+      .closing-decision:nth-child(3) svg { stroke: #047857; }
+      .closing-decision p { font-size: 32px; line-height: 1.3; font-weight: 650; }
+      .closing-footer { display: flex; justify-content: space-between; align-items: end; gap: 32px; border-top: 1px solid #cbd5e1; padding-top: 26px; }
+      .closing-authors, .closing-contact { font-size: 28px; line-height: 1.5; color: #475569; }
+      .closing-contact { margin-top: 10px; }
+      .closing-contact a { text-decoration: underline; text-underline-offset: 5px; }
+      .closing-contact a:focus-visible { outline: 3px solid #6366f1; outline-offset: 5px; border-radius: 2px; }
+      .closing-thanks { font-size: 36px; line-height: 1.3; font-weight: 750; white-space: nowrap; }
+      .dark .design-implication { border-color: #475569; }
+      .dark .closing-decision { border-color: #0369a1; }
+      .dark .closing-decision:nth-child(2) { border-color: #6366f1; }
+      .dark .closing-decision:nth-child(3) { border-color: #047857; }
+      .dark .design-number, .dark .closing-message span:last-child { color: #a5b4fc; }
+      .dark .design-implication > p:last-child, .dark .closing-authors, .dark .closing-contact { color: #cbd5e1; }
+      .dark .closing-decision svg { stroke: #7dd3fc; }
+      .dark .closing-decision:nth-child(2) svg { stroke: #a5b4fc; }
+      .dark .closing-decision:nth-child(3) svg { stroke: #6ee7b7; }
+      .dark .closing-footer { border-color: #475569; }
 
       #gridThumbnailContainer {
         display: grid;
@@ -213,7 +350,7 @@
           <!-- Slide Stepper -->
           <div class="inline-flex items-center rounded-xl bg-slate-100 dark:bg-slate-900/80 p-1 border border-slate-200/70 dark:border-slate-700/70">
             <button class="px-2.5 py-1 rounded-lg text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-800 transition cursor-pointer" id="prevSlideButton" onclick="prevSlide()" title="Previous slide (Left Arrow)">← Prev</button>
-            <span class="px-3 py-1 text-xs font-bold tabular-nums text-indigo-700 dark:text-indigo-300" id="slideCounterBadge">1 / 12</span>
+            <span class="px-3 py-1 text-xs font-bold tabular-nums text-indigo-700 dark:text-indigo-300" id="slideCounterBadge">1 / 13</span>
             <button class="px-2.5 py-1 rounded-lg text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-800 transition cursor-pointer" id="nextSlideButton" onclick="nextSlide()" title="Next slide (Right Arrow / Space)">Next →</button>
           </div>
           <!-- Grid Overview & Speaker Notes -->
@@ -248,21 +385,21 @@
           data-title="1. Cost-Benefit Modeling of IVML Systems" data-budget="20">
           <div class="flex items-center justify-between">
             <span></span>
-            <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 tabular-nums">Slide 01 / 12</span>
+            <span class="talk-counter tabular-nums">Slide 01 / 13</span>
           </div>
-          <div class="my-auto max-w-[1400px] space-y-8">
-            <h1 class="text-[64px] font-extrabold tracking-tight text-slate-900 dark:text-slate-100 leading-[1.16]" style="line-height: 1.16;">
+          <div class="opening-title">
+            <h1>
               <span class="block">Cost-Benefit Modeling of</span>
-              <span class="block bg-gradient-to-r from-indigo-600 via-sky-600 to-emerald-600 dark:from-indigo-400 dark:via-sky-400 dark:to-emerald-400 bg-clip-text text-transparent">Interactive Visual Machine Learning Systems</span>
+              <span class="block">Interactive Visual Machine Learning Systems</span>
             </h1>
-            <p class="text-[30px] text-slate-600 dark:text-slate-300 leading-relaxed">
-            When is more visual interaction worth its human and computational cost?
+            <p class="opening-question">
+              When is more visual interaction worth its human and computational cost?
             </p>
           </div>
           <div class="pt-4 border-t border-slate-200/80 dark:border-slate-700/70 flex flex-wrap items-center justify-between gap-4">
             <div class="space-y-2">
-              <p class="text-base font-semibold text-slate-900 dark:text-slate-100">Yixuan Wang · <span class="underline decoration-2 underline-offset-4">Rolando Garcia</span> · Alex Endert · Ross Maciejewski</p>
-              <p class="text-sm text-slate-500 dark:text-slate-400">Arizona State University · Georgia Institute of Technology</p>
+              <p class="title-authors">Yixuan Wang · <span class="underline decoration-2 underline-offset-4">Rolando Garcia</span> · Alex Endert · Ross Maciejewski</p>
+              <p class="title-affiliations">Arizona State University · Georgia Institute of Technology</p>
             </div>
             <div class="rounded-xl px-4 py-2 bg-white flex items-center justify-center gap-5 shrink-0">
               <img alt="Visual Analytics &amp; Data Exploration Research — Arizona State University Ira A. Fulton Schools of Engineering" class="h-14 sm:h-16 w-auto object-contain" data-image="asu-logo"/>
@@ -282,52 +419,217 @@
         </section>
         <!-- SLIDE 02: Better outcomes still have a cost. -->
         <section class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" id="slide-2" data-title="2. Better outcomes still have a cost." data-budget="25">
-          <header class="talk-top"><div><p class="talk-kicker">The question</p><h2 class="talk-heading">Better outcomes still have a cost.</h2></div><span class="talk-counter">02 / 12</span></header>
-          <div class="talk-body"><div class="talk-statement"><p>Accuracy. Usability. Insight.</p><p class="talk-emphasis">Are the gains worth the effort?</p><p class="talk-lead">Connect what improves to what it takes to get there.</p></div></div>
+          <header class="talk-top"><div><p class="talk-kicker">The question</p><h2 class="talk-heading">Better outcomes still have a cost.</h2></div><span class="talk-counter">02 / 13</span></header>
+          <div class="talk-body">
+            <svg class="story-figure opening-diagram" viewBox="0 0 1480 440" role="img" aria-label="An illustrative interaction: an analyst corrects a label, the model updates, and the analyst reviews the new predictions. Better predictions come with analyst time, training, and re-checking costs.">
+              <defs><marker id="question-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#64748b"/></marker></defs>
+              <rect class="story-panel" x="15" y="15" width="420" height="255" rx="20"/>
+              <rect class="story-soft" x="530" y="15" width="420" height="255" rx="20"/>
+              <rect class="story-panel" x="1045" y="15" width="420" height="255" rx="20"/>
+              <text x="45" y="61" font-size="28" font-weight="700">Correct a label</text>
+              <text x="560" y="61" font-size="28" font-weight="700">Update the model</text>
+              <text x="1075" y="61" font-size="28" font-weight="700">Review predictions</text>
+              <!-- A schematic correction, not a measured dataset. -->
+              <g fill="#6366f1"><circle cx="100" cy="133" r="11"/><circle cx="148" cy="116" r="11"/><circle cx="126" cy="179" r="11"/><circle cx="177" cy="157" r="11"/></g>
+              <g fill="#10b981"><circle cx="286" cy="143" r="11"/><circle cx="327" cy="175" r="11"/><circle cx="353" cy="122" r="11"/><circle cx="275" cy="207" r="11"/></g>
+              <circle cx="205" cy="196" r="12" fill="#10b981"/><circle cx="205" cy="196" r="23" fill="none" stroke="#e11d48" stroke-width="3" stroke-dasharray="5 4"/>
+              <path class="story-line" d="M 245 240 L 220 211" marker-end="url(#question-arrow)"/><text class="story-rose" x="256" y="248" font-size="28">Fix</text>
+              <path class="story-line" d="M 452 145 L 510 145" marker-end="url(#question-arrow)"/>
+              <g class="story-indigo-line"><path d="M 625 119 L 735 153 L 845 111 M 625 219 L 735 153 L 845 209 M 625 119 L 735 217 L 845 111 M 625 219 L 735 107 L 845 209"/></g>
+              <g fill="#6366f1"><circle cx="625" cy="119" r="12"/><circle cx="625" cy="219" r="12"/><circle cx="735" cy="107" r="12"/><circle cx="735" cy="153" r="12"/><circle cx="735" cy="217" r="12"/><circle cx="845" cy="111" r="12"/><circle cx="845" cy="209" r="12"/></g>
+              <path class="story-line" d="M 967 145 L 1025 145" marker-end="url(#question-arrow)"/>
+              <path class="story-line" d="M 1112 218 L 1112 97 M 1112 218 L 1398 218"/>
+              <path d="M 1135 197 C 1200 165 1290 180 1380 109" fill="none" stroke="#059669" stroke-width="5"/>
+              <g fill="#10b981"><circle cx="1161" cy="173" r="8"/><circle cx="1230" cy="179" r="8"/><circle cx="1297" cy="144" r="8"/><circle cx="1368" cy="125" r="8"/></g>
+              <path class="story-line" d="M 225 274 L 225 310 M 740 274 L 740 310 M 1255 274 L 1255 310"/>
+              <rect class="story-benefit-panel" x="15" y="328" width="470" height="95" rx="16"/>
+              <text class="story-green" x="45" y="367" font-size="28" font-weight="700">GAIN</text><text class="story-green" x="45" y="402" font-size="30" font-weight="700">Better predictions</text>
+              <rect class="story-cost-panel" x="515" y="328" width="950" height="95" rx="16"/>
+              <text class="story-rose" x="545" y="367" font-size="28" font-weight="700">EFFORT</text><text class="story-rose" x="545" y="402" font-size="30" font-weight="700">Analyst time + training + re-checking</text>
+            </svg>
+            <p class="opening-caption">Is the improvement worth another round?</p>
+          </div>
           <footer class="talk-source"></footer>
           <template class="speaker-notes">
             <p>
-              IVML evaluations often measure accuracy, usability, or insight. Those outcomes matter.
-              But they leave a practical design question: are the gains worth the effort? Building
-              an interface, spending analyst time, and updating a model all have costs. Our
-              framework connects those costs to the value interaction creates.
+              Start with one label correction. The analyst fixes an error, the model updates,
+              and the analyst checks the new predictions. The predictions may improve, but each
+              round takes analyst time, training, and re-checking. This is a schematic example.
+              The practical question is: is the improvement worth another round?
             </p>
           </template>
         </section>
-        <!-- SLIDE 03: Human–AI feedback loops create three forms of value -->
-        <section class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" id="slide-3" data-title="3. Human–AI feedback loops create three forms of value" data-budget="35">
-          <header class="talk-top"><div><p class="talk-kicker">Why interact?</p><h2 class="talk-heading">Human–AI feedback loops create three forms of value</h2></div><span class="talk-counter">03 / 12</span></header>
-          <div class="talk-body"><div class="talk-columns"><div class="talk-column" style="--accent:#4f46e5"><p class="talk-number">01</p><h3>Improve quality</h3><p>Correct labels, refine features,<br>and improve predictions.</p></div><div class="talk-column" style="--accent:#0284c7"><p class="talk-number">02</p><h3>Understand models</h3><p>Explore uncertainty, explanations,<br>and failure cases.</p></div><div class="talk-column" style="--accent:#059669"><p class="talk-number">03</p><h3>Guide decisions</h3><p>Use what you learn to make<br>better decisions and identify risks.</p></div></div></div>
+        <!-- SLIDE 03: From interaction to a design decision -->
+        <section class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" id="slide-3" data-title="3. From interaction to a design decision" data-budget="20">
+          <header class="talk-top"><div><p class="talk-kicker">Overview · The path through this talk</p><h2 class="talk-heading">From interaction to a design decision</h2></div><span class="talk-counter">03 / 13</span></header>
+          <div class="talk-body">
+            <div class="overview-route">
+              <div class="overview-step">
+                <p class="route-number">01 · FRAMEWORK</p>
+                <svg class="story-figure" viewBox="0 0 390 180" role="img" aria-label="A workflow with a feedback loop connects interaction targets to costs and benefits.">
+                  <defs><marker id="overview-loop-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#6366f1"/></marker></defs>
+                  <rect class="story-panel" x="8" y="30" width="100" height="65" rx="12"/><rect class="story-soft" x="145" y="30" width="100" height="65" rx="12"/><rect class="story-panel" x="282" y="30" width="100" height="65" rx="12"/>
+                  <text x="58" y="70" text-anchor="middle" font-size="28" font-weight="650">Data</text><text x="195" y="70" text-anchor="middle" font-size="28" font-weight="650">Model</text><text x="332" y="70" text-anchor="middle" font-size="28" font-weight="650">View</text>
+                  <path class="story-indigo-line" d="M 110 62 L 139 62 M 247 62 L 276 62" marker-end="url(#overview-loop-arrow)"/>
+                  <path class="story-indigo-line" d="M 332 98 L 332 151 L 58 151 L 58 103" marker-end="url(#overview-loop-arrow)"/>
+                  <text class="story-accent" x="195" y="139" text-anchor="middle" font-size="28">Human feedback</text>
+                </svg>
+                <h3>Model the workflow</h3><p>What changes?<br>What does it cost or improve?</p>
+              </div>
+              <span class="overview-arrow" aria-hidden="true">→</span>
+              <div class="overview-step">
+                <p class="route-number">02 · TWO CASES</p>
+                <svg class="story-figure" viewBox="0 0 390 180" role="img" aria-label="Two case studies: improve a model or inspect a fixed model for vulnerabilities.">
+                  <rect class="story-soft" x="8" y="20" width="374" height="65" rx="12"/>
+                  <path class="story-indigo-line" d="M 32 62 L 45 48 L 57 55 L 79 31"/><text x="104" y="61" font-size="28" font-weight="650">Improve the model</text>
+                  <rect class="story-benefit-panel" x="8" y="103" width="374" height="65" rx="12"/>
+                  <path d="M 55 114 L 76 122 L 76 137 Q 76 150 55 158 Q 34 150 34 137 L 34 122 Z" fill="none" stroke="#059669" stroke-width="3"/><path d="M 44 136 L 52 144 L 67 128" fill="none" stroke="#059669" stroke-width="3"/>
+                  <text x="104" y="144" font-size="28" font-weight="650">Find vulnerabilities</text>
+                </svg>
+                <h3>Test two cases</h3><p>MitoVis refinement.<br>Fixed-model vulnerability analysis.</p>
+              </div>
+              <span class="overview-arrow" aria-hidden="true">→</span>
+              <div class="overview-step">
+                <p class="route-number">03 · DESIGN IMPLICATIONS</p>
+                <svg class="story-figure" viewBox="0 0 390 180" role="img" aria-label="A schematic stopping decision where the added benefit of interaction meets its added cost.">
+                  <path class="story-line" d="M 25 15 L 25 156 L 370 156"/>
+                  <path d="M 35 24 C 85 31 115 103 180 113 S 295 140 360 143" fill="none" stroke="#059669" stroke-width="4"/>
+                  <path d="M 35 140 L 360 85" fill="none" stroke="#e11d48" stroke-width="4"/>
+                  <path class="story-line" d="M 190 114 L 190 156" stroke-dasharray="5 5"/><circle cx="190" cy="114" r="8" fill="#6366f1"/>
+                  <text class="story-accent" x="211" y="54" font-size="28" font-weight="700">Continue?</text>
+                </svg>
+                <h3>Decide when it pays</h3><p>When does it break even?<br>When should interaction stop?</p>
+              </div>
+            </div>
+            <p class="overview-promise">A framework for deciding where to spend human attention.</p>
+          </div>
+          <footer class="talk-source"></footer>
+          <template class="speaker-notes">
+            <p>First, map what interaction changes to its costs and benefits. Then apply the
+              framework to model refinement and fixed-model vulnerability analysis. Finally,
+              ask when a workflow pays off and when further interaction should stop.</p>
+          </template>
+        </section>
+        <!-- SLIDE 04: Human–AI feedback loops create three forms of value -->
+        <section class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" id="slide-4" data-title="4. Human–AI feedback loops create three forms of value" data-budget="30">
+          <header class="talk-top"><div><p class="talk-kicker">Why interact?</p><h2 class="talk-heading">Human–AI feedback loops create three forms of value</h2></div><span class="talk-counter">04 / 13</span></header>
+          <div class="talk-body">
+            <svg class="story-figure" viewBox="0 0 1480 530" role="img" aria-label="An analyst steers a model and inspects visual feedback. This feedback loop can improve predictions, build understanding, and guide decisions.">
+              <defs><marker id="value-loop-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#6366f1"/></marker></defs>
+              <rect class="story-panel" x="20" y="185" width="250" height="160" rx="20"/>
+              <circle cx="145" cy="227" r="20" fill="none" stroke="#6366f1" stroke-width="4"/><path class="story-indigo-line" d="M 109 285 Q 109 250 145 250 Q 181 250 181 285"/>
+              <text x="145" y="322" text-anchor="middle" font-size="30" font-weight="700">Analyst</text>
+              <rect class="story-soft" x="450" y="35" width="280" height="155" rx="20"/>
+              <path class="story-indigo-line" d="M 520 67 L 583 99 L 656 63 M 520 126 L 583 99 L 656 128"/>
+              <g fill="#6366f1"><circle cx="520" cy="67" r="7"/><circle cx="520" cy="126" r="7"/><circle cx="583" cy="99" r="9"/><circle cx="656" cy="63" r="7"/><circle cx="656" cy="128" r="7"/></g>
+              <text x="590" y="167" text-anchor="middle" font-size="30" font-weight="700">Model</text>
+              <rect class="story-panel" x="450" y="340" width="280" height="155" rx="20"/>
+              <path class="story-line" d="M 490 446 L 490 368 M 490 446 L 687 446"/><path class="story-indigo-line" d="M 510 429 L 550 389 L 590 412 L 661 365"/>
+              <text x="590" y="479" text-anchor="middle" font-size="28" font-weight="700">Visual feedback</text>
+              <path class="story-indigo-line" d="M 145 181 L 145 112 L 440 112" marker-end="url(#value-loop-arrow)"/>
+              <text class="story-accent" x="220" y="95" font-size="28" font-weight="650">Steer</text>
+              <path class="story-indigo-line" d="M 590 196 L 590 327" marker-end="url(#value-loop-arrow)"/>
+              <path class="story-indigo-line" d="M 440 418 L 145 418 L 145 357" marker-end="url(#value-loop-arrow)"/>
+              <text class="story-accent" x="212" y="401" font-size="28" font-weight="650">Inspect</text>
+              <path class="story-line" d="M 760 265 L 846 265 M 846 112 L 846 418 M 846 112 L 894 112 M 846 265 L 894 265 M 846 418 L 894 418"/>
+              <rect class="story-soft" x="904" y="44" width="555" height="134" rx="18"/><text class="story-accent" x="937" y="91" font-size="32" font-weight="700">Improve quality</text><text x="937" y="138" font-size="28">Better data and predictions</text>
+              <rect class="story-panel" x="904" y="197" width="555" height="134" rx="18"/><text x="937" y="244" font-size="32" font-weight="700">Understand models</text><text x="937" y="291" font-size="28">Uncertainty, explanations, failures</text>
+              <rect class="story-benefit-panel" x="904" y="350" width="555" height="134" rx="18"/><text class="story-green" x="937" y="397" font-size="32" font-weight="700">Guide decisions</text><text x="937" y="444" font-size="28">Use insight to identify risks</text>
+            </svg>
+          </div>
           <footer class="talk-source">Background: Dudley &amp; Kristensson (2018) · Wang et al. (2016). Full references and original figures in backup.</footer>
           <template class="speaker-notes">
             <p>
-              The motivation for interaction is familiar. People can improve data and model quality,
-              understand how a model behaves, and turn that understanding into better decisions.
-              These are three broad forms of value. The question is how much effort each one
-              requires in a particular workflow.
+              Follow the loop: the analyst steers the model, gets visual feedback, and inspects
+              the results before acting again. The value can take three forms: better data and
+              predictions, a better understanding of model behavior, or better decisions about
+              risks. Improving accuracy is only one reason to interact. Each form of value can
+              justify a different workflow.
             </p>
           </template>
         </section>
-        <!-- SLIDE 04: Interaction uses development, attention, and compute -->
-        <section class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" id="slide-4" data-title="4. Interaction uses development, attention, and compute" data-budget="45">
-          <header class="talk-top"><div><p class="talk-kicker">What does it cost?</p><h2 class="talk-heading">Interaction uses development, attention, and compute</h2></div><span class="talk-counter">04 / 12</span></header>
-          <div class="talk-body"><div class="talk-columns"><div class="talk-column" style="--accent:#d97706"><p class="talk-number">Build</p><h3>Develop the system</h3><p>Design the workflow, build the interface,<br>and integrate machine learning.</p></div><div class="talk-column" style="--accent:#e11d48"><p class="talk-number">Use</p><h3>Spend analyst time</h3><p>Read the views, explore the results,<br>and decide what to do next.</p></div><div class="talk-column" style="--accent:#9333ea"><p class="talk-number">Update</p><h3>Revise the model</h3><p>Run training and help the analyst<br>interpret the changed outputs.</p></div></div></div>
+        <!-- SLIDE 05: Interaction uses development, attention, and compute -->
+        <section class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" id="slide-5" data-title="5. Interaction uses development, attention, and compute" data-budget="35">
+          <header class="talk-top"><div><p class="talk-kicker">What does it cost?</p><h2 class="talk-heading">Interaction uses development, attention, and compute</h2></div><span class="talk-counter">05 / 13</span></header>
+          <div class="talk-body">
+            <svg class="story-figure opening-diagram" viewBox="0 0 1480 460" role="img" aria-label="Development is an upfront investment. During use, analyst attention, computation for views and model updates, and re-checking accumulate with repeated interaction.">
+              <defs><marker id="cost-loop-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#64748b"/></marker></defs>
+              <text class="story-muted" x="30" y="38" font-size="28" font-weight="700">UPFRONT INVESTMENT</text>
+              <text class="story-rose" x="480" y="38" font-size="28" font-weight="700">COSTS ACCUMULATE DURING USE</text>
+              <path d="M 427 65 L 427 435" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="7 8"/>
+              <rect class="story-panel" x="15" y="100" width="350" height="210" rx="20"/>
+              <path class="story-indigo-line" d="M 56 145 L 75 126 L 94 145 M 75 126 L 75 174 M 114 145 L 133 164 L 152 145 M 133 164 L 133 116"/>
+              <text x="45" y="223" font-size="32" font-weight="700">Build the system</text><text class="story-muted" x="45" y="268" font-size="28">Workflow · UI · ML</text>
+              <path class="story-line" d="M 372 205 L 461 205" marker-end="url(#cost-loop-arrow)"/>
+              <rect class="story-cost-panel" x="480" y="100" width="300" height="210" rx="20"/>
+              <circle cx="535" cy="144" r="17" fill="none" stroke="#e11d48" stroke-width="3"/><path d="M 508 181 Q 508 159 535 159 Q 562 159 562 181" fill="none" stroke="#e11d48" stroke-width="3"/>
+              <text x="510" y="223" font-size="32" font-weight="700">Explore</text><text class="story-muted" x="510" y="268" font-size="28">Attention + views</text>
+              <path class="story-line" d="M 788 205 L 817 205" marker-end="url(#cost-loop-arrow)"/>
+              <rect class="story-cost-panel" x="835" y="100" width="275" height="210" rx="20"/>
+              <rect x="865" y="125" width="50" height="50" rx="8" fill="none" stroke="#e11d48" stroke-width="3"/><path d="M 878 139 L 902 139 M 878 151 L 902 151 M 878 163 L 893 163" fill="none" stroke="#e11d48" stroke-width="3"/>
+              <text x="865" y="223" font-size="32" font-weight="700">Update</text><text class="story-muted" x="865" y="268" font-size="28">Training + delay</text>
+              <path class="story-line" d="M 1118 205 L 1147 205" marker-end="url(#cost-loop-arrow)"/>
+              <rect class="story-cost-panel" x="1165" y="100" width="300" height="210" rx="20"/>
+              <circle cx="1218" cy="146" r="20" fill="none" stroke="#e11d48" stroke-width="3"/><path d="M 1234 163 L 1251 180" stroke="#e11d48" stroke-width="4"/>
+              <text x="1195" y="223" font-size="32" font-weight="700">Re-check</text><text class="story-muted" x="1195" y="268" font-size="28">Interpret changes</text>
+              <path class="story-line" d="M 1315 320 L 1315 410 L 630 410 L 630 320" marker-end="url(#cost-loop-arrow)"/>
+              <text class="story-rose" x="975" y="393" text-anchor="middle" font-size="28" font-weight="650">Repeat as interaction continues</text>
+            </svg>
+            <p class="opening-caption">Each round spends attention and computation.</p>
+          </div>
           <footer class="talk-source"></footer>
           <template class="speaker-notes">
             <p>
-              For the talk, I’ll group costs into three buckets. First, building the system: the
-              workflow, interface, and machine learning integration. Second, using it: the analyst’s
-              time and effort, along with the computation needed to generate views. Third, updating
-              the model: training consumes resources, and users must interpret the changed outputs.
-              The paper separates these into seven cost components. Here, the important distinction
-              is upfront investment versus costs that accumulate during use.
+              The same loop also spends resources. Building the workflow, interface, and machine
+              learning integration is an upfront investment. During use, exploring takes analyst
+              attention and computation for views. If interaction updates the model, training adds
+              compute and delay, and the analyst must interpret what changed. These recurring
+              costs accumulate with each round. The paper separates them into seven components.
             </p>
           </template>
         </section>
-        <!-- SLIDE 05: What interaction changes determines the trade-off -->
-        <section class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" id="slide-5" data-title="5. What interaction changes determines the trade-off" data-budget="60">
-          <header class="talk-top"><div><p class="talk-kicker">Our contribution: Organize workflows by interaction target</p><h2 class="talk-heading">What interaction changes determines the trade-off</h2></div><span class="talk-counter">05 / 12</span></header>
-          <div class="talk-body"><div class="talk-pipeline" aria-label="Data feeds learning, learning produces a visual view, and people interpret the view"><span>Data</span><span aria-hidden="true">→</span><span>Learning</span><span aria-hidden="true">→</span><span>Visual view</span><span aria-hidden="true">→</span><span>Understanding</span></div><div class="talk-columns"><div class="talk-column" style="--accent:#0284c7"><p class="talk-number">01</p><h3>Change data</h3><p>Correct labels or features.<br>Retraining may follow.</p></div><div class="talk-column" style="--accent:#9333ea"><p class="talk-number">02</p><h3>Change the model</h3><p>Adjust parameters or constraints.<br>Re-optimization may follow.</p></div><div class="talk-column" style="--accent:#059669"><p class="talk-number">03</p><h3>Explore results</h3><p>Inspect a fixed model.<br>Build knowledge and reduce risk.</p></div></div></div>
+        <!-- SLIDE 06: What interaction changes determines the trade-off -->
+        <section class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" id="slide-6" data-title="6. What interaction changes determines the trade-off" data-budget="55">
+          <header class="talk-top"><div><p class="talk-kicker">Our contribution · Three interaction targets</p><h2 class="talk-heading">What interaction changes determines the trade-off</h2></div><span class="talk-counter">06 / 13</span></header>
+          <div class="talk-body framework-body">
+            <svg class="story-figure framework-diagram" viewBox="0 0 1480 500" role="img" aria-label="Data flows through a model to a visual view and understanding. Interaction can change data, change the model, or explore results with the model fixed. The first two may trigger training; the third builds knowledge and reduces risk through inspection.">
+              <defs><marker id="target-flow-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#64748b"/></marker></defs>
+              <rect class="story-data-panel" x="15" y="22" width="265" height="92" rx="16"/>
+              <text x="147" y="80" text-anchor="middle" font-size="32" font-weight="700">Data</text>
+              <rect class="story-model-panel" x="455" y="22" width="265" height="92" rx="16"/>
+              <text x="587" y="80" text-anchor="middle" font-size="32" font-weight="700">Model</text>
+              <rect class="story-panel" x="890" y="22" width="245" height="92" rx="16"/>
+              <text x="1012" y="80" text-anchor="middle" font-size="32" font-weight="700">Visual view</text>
+              <rect class="story-benefit-panel" x="1190" y="22" width="275" height="92" rx="16"/>
+              <text x="1327" y="80" text-anchor="middle" font-size="30" font-weight="700">Understanding</text>
+              <path class="story-line" d="M 290 68 L 443 68" marker-end="url(#target-flow-arrow)"/>
+              <text class="story-muted" x="367" y="42" text-anchor="middle" font-size="28">Learn</text>
+              <path class="story-line" d="M 730 68 L 878 68" marker-end="url(#target-flow-arrow)"/>
+              <path class="story-line" d="M 1143 68 L 1178 68" marker-end="url(#target-flow-arrow)"/>
+              <path d="M 147 122 L 147 165 L 240 165 L 240 205" fill="none" stroke="#0284c7" stroke-width="3"/>
+              <path d="M 587 122 L 587 165 L 740 165 L 740 205" fill="none" stroke="#9333ea" stroke-width="3"/>
+              <path d="M 1110 122 L 1110 165 L 1240 165 L 1240 205" fill="none" stroke="#059669" stroke-width="3"/>
+              <rect class="story-data-panel" x="15" y="205" width="450" height="275" rx="20"/>
+              <text class="story-sky" x="45" y="251" font-size="28" font-weight="700">01 · DATA</text>
+              <text x="45" y="305" font-size="34" font-weight="750">Change data</text>
+              <text class="story-muted" x="45" y="353" font-size="28">Correct labels or features.</text>
+              <path d="M 45 388 L 435 388" stroke="#bae6fd" stroke-width="2"/>
+              <text class="story-sky" x="45" y="436" font-size="28" font-weight="650">May trigger retraining</text>
+              <rect class="story-model-panel" x="515" y="205" width="450" height="275" rx="20"/>
+              <text class="story-violet" x="545" y="251" font-size="28" font-weight="700">02 · MODEL</text>
+              <text x="545" y="305" font-size="34" font-weight="750">Change the model</text>
+              <text class="story-muted" x="545" y="353" font-size="28">Set parameters or constraints.</text>
+              <path d="M 545 388 L 935 388" stroke="#e9d5ff" stroke-width="2"/>
+              <text class="story-violet" x="545" y="436" font-size="28" font-weight="650">May trigger re-optimization</text>
+              <rect class="story-benefit-panel" x="1015" y="205" width="450" height="275" rx="20"/>
+              <text class="story-green" x="1045" y="251" font-size="28" font-weight="700">03 · RESULTS</text>
+              <text x="1045" y="305" font-size="34" font-weight="750">Explore results</text>
+              <text class="story-muted" x="1045" y="353" font-size="28">Inspect a fixed model.</text>
+              <path d="M 1045 388 L 1435 388" stroke="#a7f3d0" stroke-width="2"/>
+              <text class="story-green" x="1045" y="436" font-size="28" font-weight="650">Build knowledge; reduce risk</text>
+            </svg>
+            <p class="framework-caption">The target determines which costs and benefits to count.</p>
+          </div>
           <footer class="talk-source">Extends Van Wijk (2005). Full workflow and notation in backup.</footer>
           <template class="speaker-notes">
             <p>
@@ -341,10 +643,34 @@
             </p>
           </template>
         </section>
-        <!-- SLIDE 06: Expected benefits must cover expected costs -->
-        <section class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" id="slide-6" data-title="6. Expected benefits must cover expected costs" data-budget="60">
-          <header class="talk-top"><div><p class="talk-kicker">The cost-benefit model</p><h2 class="talk-heading">Expected benefits must cover expected costs</h2></div><span class="talk-counter">06 / 12</span></header>
-          <div class="talk-body"><div class="talk-inequality"><span>Expected benefits</span><span aria-label="greater than or equal to">≥</span><span>Expected costs</span></div><div class="talk-ledger"><div><h3>Benefits</h3><ul><li>Less recurring work</li><li>Better predictions</li><li>Fewer failures</li><li>Knowledge in its own right</li></ul></div><div><h3>Costs</h3><ul><li>System development</li><li>Human effort</li><li>Computation</li></ul></div></div></div>
+        <!-- SLIDE 07: Expected benefits must cover expected costs -->
+        <section class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" id="slide-7" data-title="7. Expected benefits must cover expected costs" data-budget="60">
+          <header class="talk-top"><div><p class="talk-kicker">The cost-benefit model</p><h2 class="talk-heading">Expected benefits must cover expected costs</h2></div><span class="talk-counter">07 / 13</span></header>
+          <div class="talk-body framework-body">
+            <div class="benefit-cost-ledger" role="group" aria-label="Break-even rule: expected benefits must be greater than or equal to expected costs.">
+              <div class="ledger-side">
+                <p class="ledger-eyebrow">FOUR PATHWAYS TO VALUE</p>
+                <h3>Expected benefits</h3>
+                <ul>
+                  <li><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="15"/><path d="M 20 10 L 20 20 L 27 24"/></svg><span>Less recurring work</span></li>
+                  <li><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M 5 31 L 5 7 M 5 31 L 35 31 M 11 25 L 19 18 L 25 21 L 35 9 M 28 9 L 35 9 L 35 16"/></svg><span>Better predictions</span></li>
+                  <li><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M 20 4 L 33 10 L 33 22 Q 33 31 20 36 Q 7 31 7 22 L 7 10 Z M 13 20 L 18 25 L 28 14"/></svg><span>Fewer failures</span></li>
+                  <li><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M 5 8 Q 13 5 20 11 Q 27 5 35 8 L 35 32 Q 27 29 20 35 Q 13 29 5 32 Z M 20 11 L 20 35"/></svg><span>Knowledge in its own right</span></li>
+                </ul>
+              </div>
+              <span class="ledger-operator" aria-label="greater than or equal to">≥</span>
+              <div class="ledger-side ledger-side--cost">
+                <p class="ledger-eyebrow">UPFRONT + RECURRING COSTS</p>
+                <h3>Expected costs</h3>
+                <ul>
+                  <li><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="5" y="6" width="30" height="27" rx="4"/><path d="M 5 14 L 35 14 M 15 20 L 11 24 L 15 28 M 25 20 L 29 24 L 25 28"/></svg><div>System development<span class="ledger-detail">Upfront workflow, UI, and ML</span></div></li>
+                  <li><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="12" r="7"/><path d="M 6 35 L 6 31 Q 6 21 20 21 Q 34 21 34 31 L 34 35"/></svg><div>Human effort<span class="ledger-detail">Interaction and interpretation</span></div></li>
+                  <li><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="10" y="10" width="20" height="20" rx="3"/><path d="M 16 3 L 16 10 M 24 3 L 24 10 M 16 30 L 16 37 M 24 30 L 24 37 M 3 16 L 10 16 M 3 24 L 10 24 M 30 16 L 37 16 M 30 24 L 37 24 M 16 16 L 24 16 L 24 24 L 16 24 Z"/></svg><div>Computation<span class="ledger-detail">Views and model updates</span></div></li>
+                </ul>
+              </div>
+            </div>
+            <p class="framework-note">Compare with an alternative over the same period. Count each source of value once.</p>
+          </div>
           <footer class="talk-source"></footer>
           <template class="speaker-notes">
             <p>
@@ -358,10 +684,45 @@
             </p>
           </template>
         </section>
-        <!-- SLIDE 07: Model updates also require people to reorient -->
-        <section class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" id="slide-7" data-title="7. Model updates also require people to reorient" data-budget="40">
-          <header class="talk-top"><div><p class="talk-kicker">A cost that is easy to overlook</p><h2 class="talk-heading">Model updates also require people to reorient</h2></div><span class="talk-counter">07 / 12</span></header>
-          <div class="talk-body"><div class="talk-steps"><div><span>1</span><h3>Steer</h3><p>Choose an intervention.</p></div><span class="talk-step-arrow" aria-hidden="true">→</span><div><span>2</span><h3>Wait</h3><p>The model updates.</p></div><span class="talk-step-arrow" aria-hidden="true">→</span><div><span>3</span><h3>Re-check</h3><p>Interpret what changed.</p></div></div><p class="talk-takeaway">Training has a compute cost.<br>Changed outputs and delays also have a human cost.</p></div>
+        <!-- SLIDE 08: Model updates also require people to reorient -->
+        <section class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" id="slide-8" data-title="8. Model updates also require people to reorient" data-budget="40">
+          <header class="talk-top"><div><p class="talk-kicker">A cost that is easy to overlook</p><h2 class="talk-heading">Model updates also require people to reorient</h2></div><span class="talk-counter">08 / 13</span></header>
+          <div class="talk-body framework-body">
+            <svg class="story-figure framework-diagram" viewBox="0 0 1480 500" role="img" aria-label="An analyst steers the model, waits for training, then re-checks changed outputs. Training uses computation. Re-checking requires interpreting changes and, after an interruption, recovering analytical context.">
+              <defs><marker id="reorient-flow-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#64748b"/></marker></defs>
+              <rect class="story-panel" x="15" y="15" width="400" height="315" rx="20"/>
+              <text class="story-accent" x="45" y="63" font-size="28" font-weight="700">01 · STEER</text>
+              <path class="story-line" d="M 70 111 L 234 111 M 70 146 L 234 146 M 70 181 L 188 181"/>
+              <rect class="story-soft" x="265" y="90" width="82" height="114" rx="12"/>
+              <path class="story-indigo-line" d="M 286 148 L 300 162 L 329 125"/>
+              <text x="45" y="265" font-size="34" font-weight="750">Choose a change</text>
+              <text class="story-muted" x="45" y="307" font-size="28">Labels or model settings</text>
+              <path class="story-line" d="M 427 173 L 501 173" marker-end="url(#reorient-flow-arrow)"/>
+              <rect class="story-soft" x="515" y="15" width="400" height="315" rx="20"/>
+              <text class="story-accent" x="545" y="63" font-size="28" font-weight="700">02 · WAIT</text>
+              <path class="story-indigo-line" d="M 571 114 L 632 146 L 693 110 M 571 180 L 632 146 L 693 181"/>
+              <g fill="#6366f1"><circle cx="571" cy="114" r="8"/><circle cx="571" cy="180" r="8"/><circle cx="632" cy="146" r="10"/><circle cx="693" cy="110" r="8"/><circle cx="693" cy="181" r="8"/></g>
+              <circle cx="817" cy="148" r="44" fill="none" stroke="#6366f1" stroke-width="3"/>
+              <path class="story-indigo-line" d="M 817 122 L 817 148 L 838 159"/>
+              <text x="545" y="265" font-size="34" font-weight="750">The model updates</text>
+              <text class="story-muted" x="545" y="307" font-size="28">Compute + training delay</text>
+              <path class="story-line" d="M 927 173 L 1001 173" marker-end="url(#reorient-flow-arrow)"/>
+              <rect class="story-cost-panel" x="1015" y="15" width="450" height="315" rx="20"/>
+              <text class="story-rose" x="1045" y="63" font-size="28" font-weight="700">03 · RE-CHECK</text>
+              <rect class="story-panel" x="1045" y="91" width="155" height="116" rx="10"/>
+              <rect class="story-panel" x="1275" y="91" width="155" height="116" rx="10"/>
+              <path class="story-line" d="M 1216 149 L 1259 149" marker-end="url(#reorient-flow-arrow)"/>
+              <g fill="#94a3b8"><circle cx="1070" cy="175" r="7"/><circle cx="1106" cy="128" r="7"/><circle cx="1140" cy="166" r="7"/><circle cx="1170" cy="117" r="7"/><circle cx="1300" cy="175" r="7"/><circle cx="1370" cy="166" r="7"/></g>
+              <g fill="#e11d48"><circle cx="1336" cy="153" r="8"/><circle cx="1400" cy="136" r="8"/></g>
+              <circle cx="1336" cy="153" r="18" fill="none" stroke="#e11d48" stroke-width="2"/>
+              <text x="1045" y="265" font-size="34" font-weight="750">Interpret the changes</text>
+              <text class="story-muted" x="1045" y="307" font-size="28">Review outputs; regain context.</text>
+              <path class="story-line" d="M 715 339 L 715 375 L 1240 375 L 1240 339 M 977 375 L 977 397"/>
+              <rect class="story-cost-panel" x="575" y="397" width="890" height="85" rx="16"/>
+              <text class="story-rose" x="1020" y="450" text-anchor="middle" font-size="30" font-weight="700">Human cost: interpreting change + recovering context</text>
+            </svg>
+            <p class="framework-caption">Even a fast update can require a careful re-check.</p>
+          </div>
           <footer class="talk-source"></footer>
           <template class="speaker-notes">
             <p>
@@ -373,9 +734,9 @@
             </p>
           </template>
         </section>
-        <!-- SLIDE 08: MitoVis: When do data and model improvements pay off? -->
-        <section class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" id="slide-8" data-title="8. MitoVis: When do data and model improvements pay off?" data-budget="85">
-          <header class="talk-top"><div><p class="talk-kicker">Case 1 · Data correction + model refinement</p><h2 class="talk-heading">MitoVis: When do data and model improvements pay off?</h2></div><span class="talk-counter">08 / 12</span></header>
+        <!-- SLIDE 09: MitoVis: When do data and model improvements pay off? -->
+        <section class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" id="slide-9" data-title="9. MitoVis: When do data and model improvements pay off?" data-budget="85">
+          <header class="talk-top"><div><p class="talk-kicker">Case 1 · Data correction + model refinement</p><h2 class="talk-heading">MitoVis: When do data and model improvements pay off?</h2></div><span class="talk-counter">09 / 13</span></header>
           <div class="talk-body"><div class="talk-case"><figure><img data-image="mitovis-interface" alt="MitoVis interface for correcting neuronal segmentation and fine-tuning models"/><figcaption>Correct segmentation errors → Fine-tune the model</figcaption></figure><div class="talk-case-results"><div><p class="talk-metric">77.0% → 87.1%</p><p>Reported classification accuracy<br>after three fine-tuning iterations.</p></div><div class="talk-result"><p class="talk-metric">≈ $889</p><p>Value needed per percentage point<br>of accuracy gain to break even.</p></div></div></div><p class="talk-assumption">Illustrative calculation: $10,000 development cost; three 19-minute sessions. The threshold depends on these assumptions.</p></div>
           <footer class="talk-source">Choi et al. (2024), MitoVis. Cost-benefit instantiation: paper §5.1. Calculation and assumptions in backup.</footer>
           <template class="speaker-notes">
@@ -393,9 +754,9 @@
             </p>
           </template>
         </section>
-        <!-- SLIDE 09: A fixed model can create value through failure prevention -->
-        <section class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" id="slide-9" data-title="9. A fixed model can create value through failure prevention" data-budget="80">
-          <header class="talk-top"><div><p class="talk-kicker">Case 2 · Model evaluation and understanding</p><h2 class="talk-heading">A fixed model can create value through failure prevention</h2></div><span class="talk-counter">09 / 12</span></header>
+        <!-- SLIDE 10: A fixed model can create value through failure prevention -->
+        <section class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" id="slide-10" data-title="10. A fixed model can create value through failure prevention" data-budget="80">
+          <header class="talk-top"><div><p class="talk-kicker">Case 2 · Model evaluation and understanding</p><h2 class="talk-heading">A fixed model can create value through failure prevention</h2></div><span class="talk-counter">10 / 13</span></header>
           <div class="talk-body"><div class="talk-case"><figure><img data-image="stingray-interface" alt="Ma and colleagues’ visual analytics interface for exploring data poisoning vulnerabilities"/><figcaption>Inspect vulnerabilities → Identify risks</figcaption></figure><div class="talk-case-results"><div><h3>Model stays fixed</h3><p>No interaction-triggered retraining.<br>Value comes from detecting failures.</p></div><div class="talk-result"><p class="talk-metric">≈ $10,038</p><p>Failure cost needed to break even<br>under full identification and prevention.</p></div></div></div><p class="talk-assumption">Illustrative upper bound: a normalized 19-minute audit, $10,000 development cost, and full identification and prevention.</p></div>
           <footer class="talk-source">Ma et al. (2020), Explaining vulnerabilities to adversarial machine learning through visual analytics. Paper §5.2.</footer>
           <template class="speaker-notes">
@@ -412,9 +773,9 @@
             </p>
           </template>
         </section>
-        <!-- SLIDE 10: Stop when the next interaction costs more than it adds -->
-        <section class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" id="slide-10" data-title="10. Stop when the next interaction costs more than it adds" data-budget="65">
-          <header class="talk-top"><div><p class="talk-kicker">Two different decisions</p><h2 class="talk-heading">Stop when the next interaction costs more than it adds</h2></div><span class="talk-counter">10 / 12</span></header>
+        <!-- SLIDE 11: Stop when the next interaction costs more than it adds -->
+        <section class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" id="slide-11" data-title="11. Stop when the next interaction costs more than it adds" data-budget="65">
+          <header class="talk-top"><div><p class="talk-kicker">Two different decisions</p><h2 class="talk-heading">Stop when the next interaction costs more than it adds</h2></div><span class="talk-counter">11 / 13</span></header>
           <div class="talk-body"><div class="talk-stopping"><svg class="talk-chart" viewBox="0 0 820 445" role="img" aria-label="Illustrative marginal benefit declines over time while marginal cost rises. Their intersection marks when further interaction stops paying off."><line class="chart-axis" x1="95" y1="365" x2="790" y2="365"/><line class="chart-axis" x1="95" y1="365" x2="95" y2="35"/><text class="chart-label" x="430" y="420" text-anchor="middle">Time spent interacting</text><text class="chart-label" x="24" y="205" text-anchor="middle" transform="rotate(-90 24 205)">Value / cost of the next minute</text><path d="M 95.00 65.00 L 101.65 73.87 L 108.30 82.47 L 114.95 90.82 L 121.60 98.92 L 128.25 106.79 L 134.90 114.42 L 141.55 121.82 L 148.20 129.01 L 154.85 135.99 L 161.50 142.75 L 168.15 149.32 L 174.80 155.70 L 181.45 161.88 L 188.10 167.89 L 194.75 173.71 L 201.40 179.36 L 208.05 184.85 L 214.70 190.18 L 221.35 195.34 L 228.00 200.36 L 234.65 205.22 L 241.30 209.94 L 247.95 214.53 L 254.60 218.97 L 261.25 223.29 L 267.90 227.48 L 274.55 231.54 L 281.20 235.49 L 287.85 239.31 L 294.50 243.03 L 301.15 246.63 L 307.80 250.13 L 314.45 253.53 L 321.10 256.82 L 327.75 260.02 L 334.40 263.12 L 341.05 266.13 L 347.70 269.05 L 354.35 271.89 L 361.00 274.64 L 367.65 277.31 L 374.30 279.90 L 380.95 282.42 L 387.60 284.86 L 394.25 287.23 L 400.90 289.53 L 407.55 291.76 L 414.20 293.92 L 420.85 296.02 L 427.50 298.06 L 434.15 300.04 L 440.80 301.96 L 447.45 303.82 L 454.10 305.63 L 460.75 307.39 L 467.40 309.09 L 474.05 310.74 L 480.70 312.34 L 487.35 313.90 L 494.00 315.41 L 500.65 316.88 L 507.30 318.30 L 513.95 319.68 L 520.60 321.02 L 527.25 322.32 L 533.90 323.58 L 540.55 324.80 L 547.20 325.99 L 553.85 327.14 L 560.50 328.26 L 567.15 329.35 L 573.80 330.40 L 580.45 331.42 L 587.10 332.42 L 593.75 333.38 L 600.40 334.31 L 607.05 335.22 L 613.70 336.10 L 620.35 336.96 L 627.00 337.78 L 633.65 338.59 L 640.30 339.37 L 646.95 340.13 L 653.60 340.86 L 660.25 341.58 L 666.90 342.27 L 673.55 342.94 L 680.20 343.59 L 686.85 344.22 L 693.50 344.84 L 700.15 345.43 L 706.80 346.01 L 713.45 346.57 L 720.10 347.12 L 726.75 347.65 L 733.40 348.16 L 740.05 348.66 L 746.70 349.14 L 753.35 349.61 L 760.00 350.06" fill="none" stroke="#059669" stroke-width="5"/><path d="M 95.00 305.00 L 101.65 303.80 L 108.30 302.60 L 114.95 301.40 L 121.60 300.20 L 128.25 299.00 L 134.90 297.80 L 141.55 296.60 L 148.20 295.40 L 154.85 294.20 L 161.50 293.00 L 168.15 291.80 L 174.80 290.60 L 181.45 289.40 L 188.10 288.20 L 194.75 287.00 L 201.40 285.80 L 208.05 284.60 L 214.70 283.40 L 221.35 282.20 L 228.00 281.00 L 234.65 279.80 L 241.30 278.60 L 247.95 277.40 L 254.60 276.20 L 261.25 275.00 L 267.90 273.80 L 274.55 272.60 L 281.20 271.40 L 287.85 270.20 L 294.50 269.00 L 301.15 267.80 L 307.80 266.60 L 314.45 265.40 L 321.10 264.20 L 327.75 263.00 L 334.40 261.80 L 341.05 260.60 L 347.70 259.40 L 354.35 258.20 L 361.00 257.00 L 367.65 255.80 L 374.30 254.60 L 380.95 253.40 L 387.60 252.20 L 394.25 251.00 L 400.90 249.80 L 407.55 248.60 L 414.20 247.40 L 420.85 246.20 L 427.50 245.00 L 434.15 243.80 L 440.80 242.60 L 447.45 241.40 L 454.10 240.20 L 460.75 239.00 L 467.40 237.80 L 474.05 236.60 L 480.70 235.40 L 487.35 234.20 L 494.00 233.00 L 500.65 231.80 L 507.30 230.60 L 513.95 229.40 L 520.60 228.20 L 527.25 227.00 L 533.90 225.80 L 540.55 224.60 L 547.20 223.40 L 553.85 222.20 L 560.50 221.00 L 567.15 219.80 L 573.80 218.60 L 580.45 217.40 L 587.10 216.20 L 593.75 215.00 L 600.40 213.80 L 607.05 212.60 L 613.70 211.40 L 620.35 210.20 L 627.00 209.00 L 633.65 207.80 L 640.30 206.60 L 646.95 205.40 L 653.60 204.20 L 660.25 203.00 L 666.90 201.80 L 673.55 200.60 L 680.20 199.40 L 686.85 198.20 L 693.50 197.00 L 700.15 195.80 L 706.80 194.60 L 713.45 193.40 L 720.10 192.20 L 726.75 191.00 L 733.40 189.80 L 740.05 188.60 L 746.70 187.40 L 753.35 186.20 L 760.00 185.00" fill="none" stroke="#e11d48" stroke-width="5"/><text class="chart-benefit" x="130" y="60">Added benefit</text><text class="chart-cost" x="585" y="185">Added cost</text><line x1="332.34" y1="262.17" x2="332.34" y2="365" stroke="#64748b" stroke-width="2" stroke-dasharray="6 6"/><circle cx="332.34" cy="262.17" r="9" fill="#4f46e5"/><text class="chart-stop" x="350.34" y="236.17">Stop here</text></svg><div><h3>Break-even</h3><p>Is the workflow worth using?</p><h3>Stopping</h3><p>Is it worth continuing?</p></div></div><p class="talk-assumption">Illustrative curves. Stopping estimates depend on how quickly useful information is found and how costs accumulate.</p></div>
           <footer class="talk-source">Paper §5: Marginal efficiency analysis. Full equations and sensitivity results in backup.</footer>
           <template class="speaker-notes">
@@ -431,10 +792,28 @@
             </p>
           </template>
         </section>
-        <!-- SLIDE 11: Design the workflow around the value you need -->
-        <section class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" id="slide-11" data-title="11. Design the workflow around the value you need" data-budget="40">
-          <header class="talk-top"><div><p class="talk-kicker">What this means for system design</p><h2 class="talk-heading">Design the workflow around the value you need</h2></div><span class="talk-counter">11 / 12</span></header>
-          <div class="talk-body"><div class="talk-decisions"><div><h3>Choose the target</h3><p>Match data correction, model steering, or inspection to the task.</p></div><div><h3>Control interruptions</h3><p>Balance update frequency and latency with the effort of reorienting.</p></div><div><h3>Plan for reuse</h3><p>Spread development costs across repeated use.</p></div></div><p class="talk-assumption">The framework complements empirical evaluation. Estimates depend on the task, measurements, and assumptions.</p></div>
+        <!-- SLIDE 12: Design the workflow around the value you need -->
+        <section class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" id="slide-12" data-title="12. Design the workflow around the value you need" data-budget="40">
+          <header class="talk-top"><div><p class="talk-kicker">What this means for system design</p><h2 class="talk-heading">Design the workflow around the value you need</h2></div><span class="talk-counter">12 / 13</span></header>
+          <div class="talk-body">
+            <div class="design-implications">
+              <article class="design-implication">
+                <p class="design-number">01</p>
+                <h3>Choose the target</h3>
+                <p>Match interaction to the task.</p>
+              </article>
+              <article class="design-implication">
+                <p class="design-number">02</p>
+                <h3>Control interruptions</h3>
+                <p>Balance updates with the effort of reorienting.</p>
+              </article>
+              <article class="design-implication">
+                <p class="design-number">03</p>
+                <h3>Plan for reuse</h3>
+                <p>Share development costs across repeated use.</p>
+              </article>
+            </div>
+          </div>
           <footer class="talk-source"></footer>
           <template class="speaker-notes">
             <p>
@@ -448,11 +827,33 @@
             </p>
           </template>
         </section>
-        <!-- SLIDE 12: Spend human attention where it creates value. -->
-        <section class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" id="slide-12" data-title="12. Spend human attention where it creates value." data-budget="15">
-          <header class="talk-top"><div><p class="talk-kicker">Cost-aware human–AI collaboration</p><h2 class="talk-heading">Spend human attention where it creates value.</h2></div><span class="talk-counter">12 / 12</span></header>
-          <div class="talk-body"><div class="talk-closing"><p>Where to interact.<br>When it pays off.<br>When to stop.</p><div><h3>Thank you.</h3><p>Yixuan Wang · <strong>Rolando Garcia</strong> · Alex Endert · Ross Maciejewski</p><p><a href="mailto:rolando.garcia@asu.edu">rolando.garcia@asu.edu</a> · <a href="https://rlnsanz.github.io" target="_blank" rel="noopener noreferrer">rlnsanz.github.io</a></p></div></div></div>
-          <footer class="talk-source"></footer>
+        <!-- SLIDE 13: Spend human attention where it creates value. -->
+        <section class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" id="slide-13" data-title="13. Spend human attention where it creates value." data-budget="15">
+          <header class="talk-top"><p class="talk-kicker">Cost-aware human–AI collaboration</p><span class="talk-counter">13 / 13</span></header>
+          <div class="talk-body closing-body">
+            <h2 class="closing-message"><span>Spend human attention</span><span>where it creates value.</span></h2>
+            <div class="closing-decisions" aria-label="Three decisions the framework supports">
+              <div class="closing-decision">
+                <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="17"/><circle cx="24" cy="24" r="9"/><path d="M 24 3 L 24 11 M 24 37 L 24 45 M 3 24 L 11 24 M 37 24 L 45 24"/></svg>
+                <p>Where to interact.</p>
+              </div>
+              <div class="closing-decision">
+                <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M 12 8 L 36 20 L 12 32 M 12 40 L 36 40"/></svg>
+                <p>When it pays off.</p>
+              </div>
+              <div class="closing-decision">
+                <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M 5 5 L 5 42 L 44 42 M 10 9 C 17 9 20 29 28 30 L 42 34 M 10 37 L 42 22"/><circle cx="27" cy="30" r="4"/></svg>
+                <p>When to stop.</p>
+              </div>
+            </div>
+          </div>
+          <footer class="closing-footer">
+            <div>
+              <p class="closing-authors">Yixuan Wang · <strong>Rolando Garcia</strong> · Alex Endert · Ross Maciejewski</p>
+              <p class="closing-contact"><a href="mailto:rolando.garcia@asu.edu">rolando.garcia@asu.edu</a> · <a href="https://rlnsanz.github.io" target="_blank" rel="noopener noreferrer">rlnsanz.github.io</a></p>
+            </div>
+            <p class="closing-thanks">Thank you.</p>
+          </footer>
           <template class="speaker-notes">
             <p>
               The goal is to spend human attention where it creates value: choose where to interact,
@@ -463,7 +864,7 @@
 
         <!-- Supporting material: choose a backup slide from Grid. -->
         <!-- BACKUP 01: Theoretical Foundation: Van Wijk’s Visualization Model -->
-        <section class="slide-section hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10" id="slide-13"
+        <section class="slide-section hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10" id="slide-14"
           data-title="Backup 01. Theoretical Foundation: Van Wijk’s Visualization Model" data-backup="true">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex items-center justify-between">
             <div>
@@ -570,7 +971,7 @@
           </template>
         </section>
         <!-- BACKUP 02: Extending Van Wijk: Learning and Model State -->
-        <section class="slide-section hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10" id="slide-14"
+        <section class="slide-section hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10" id="slide-15"
           data-title="Backup 02. Extending Van Wijk: Learning and Model State" data-backup="true">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex items-center justify-between">
             <div>
@@ -692,7 +1093,7 @@
           </template>
         </section>
         <!-- BACKUP 03: Interaction Target 1: Modify Training Data -->
-        <section class="slide-section hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10" id="slide-15"
+        <section class="slide-section hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10" id="slide-16"
           data-title="Backup 03. Interaction Target 1: Modify Training Data" data-backup="true">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex flex-wrap items-center justify-between gap-2">
             <div>
@@ -811,7 +1212,7 @@
           </template>
         </section>
         <!-- BACKUP 04: Interaction Target 2: Modify Model State -->
-        <section class="slide-section hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10" id="slide-16"
+        <section class="slide-section hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10" id="slide-17"
           data-title="Backup 04. Interaction Target 2: Modify Model State" data-backup="true">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex flex-wrap items-center justify-between gap-2">
             <div>
@@ -931,7 +1332,7 @@
           </template>
         </section>
         <!-- BACKUP 05: Interaction Target 3: Build Model Understanding -->
-        <section class="slide-section hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10" id="slide-17"
+        <section class="slide-section hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10" id="slide-18"
           data-title="Backup 05. Interaction Target 3: Build Model Understanding" data-backup="true">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex flex-wrap items-center justify-between gap-2">
             <div>
@@ -1051,7 +1452,7 @@
           </template>
         </section>
         <!-- BACKUP 06: Cost-Benefit Model: Expected Benefits Must Cover Costs -->
-        <section class="slide-section hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10" id="slide-18"
+        <section class="slide-section hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10" id="slide-19"
           data-title="Backup 06. Cost-Benefit Model: Expected Benefits Must Cover Costs" data-backup="true">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex items-center justify-between">
             <div>
@@ -1143,7 +1544,7 @@
           </template>
         </section>
         <!-- BACKUP 07: Costs: Upfront Development and Ongoing Session Effort -->
-        <section class="slide-section hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10" id="slide-19"
+        <section class="slide-section hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10" id="slide-20"
           data-title="Backup 07. Costs: Upfront Development and Ongoing Session Effort" data-backup="true">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex items-center justify-between">
             <div>
@@ -1207,7 +1608,7 @@
           </template>
         </section>
         <!-- BACKUP 08: Costs: Model Training and Cognitive Re-alignment -->
-        <section class="slide-section hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10" id="slide-20"
+        <section class="slide-section hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10" id="slide-21"
           data-title="Backup 08. Costs: Model Training and Cognitive Re-alignment" data-backup="true">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex items-center justify-between">
             <div>
@@ -1301,7 +1702,7 @@
           </template>
         </section>
         <!-- BACKUP 09: Benefits: Savings, Predictions, Risk Reduction, and Knowledge -->
-        <section class="slide-section hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10" id="slide-21"
+        <section class="slide-section hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10" id="slide-22"
           data-title="Backup 09. Benefits: Savings, Predictions, Risk Reduction, and Knowledge" data-backup="true">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex items-center justify-between">
             <div>
@@ -1385,7 +1786,7 @@ Risk Reduction (B<sub>risk</sub>)
           </template>
         </section>
         <!-- BACKUP 10: Applying the Model (1/3): Training Data -->
-        <section class="slide-section hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10" id="slide-22"
+        <section class="slide-section hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10" id="slide-23"
           data-title="Backup 10. Applying the Model (1/3): Training Data" data-backup="true">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex items-center justify-between">
             <div>
@@ -1554,7 +1955,7 @@ Risk Reduction (B<sub>risk</sub>)
           </template>
         </section>
         <!-- BACKUP 11: Applying the Model (2/3): Model State -->
-        <section class="slide-section hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10" id="slide-23"
+        <section class="slide-section hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10" id="slide-24"
           data-title="Backup 11. Applying the Model (2/3): Model State" data-backup="true">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex items-center justify-between">
             <div>
@@ -1722,7 +2123,7 @@ Risk Reduction (B<sub>risk</sub>)
           </template>
         </section>
         <!-- BACKUP 12: Applying the Model (3/3): Model Understanding -->
-        <section class="slide-section hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10" id="slide-24"
+        <section class="slide-section hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10" id="slide-25"
           data-title="Backup 12. Applying the Model (3/3): Model Understanding" data-backup="true">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex items-center justify-between">
             <div>
@@ -1893,7 +2294,7 @@ Risk Reduction (B<sub>risk</sub>)
           </template>
         </section>
         <!-- BACKUP 13: Applying the Framework: Map the Variables -->
-        <section class="slide-section hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10" id="slide-25"
+        <section class="slide-section hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10" id="slide-26"
           data-title="Backup 13. Applying the Framework: Map the Variables" data-backup="true">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex items-center justify-between gap-4">
             <div class="min-w-0">
@@ -2002,7 +2403,7 @@ Risk Reduction (B<sub>risk</sub>)
           </template>
         </section>
         <!-- BACKUP 14: Motivation: The Value of Feedback Loops -->
-        <section class="slide-section hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10" id="slide-26"
+        <section class="slide-section hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10" id="slide-27"
           data-title="Backup 14. Motivation: The Value of Feedback Loops" data-backup="true">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex items-center justify-between">
             <div>
@@ -2065,7 +2466,7 @@ Risk Reduction (B<sub>risk</sub>)
           </template>
         </section>
         <!-- BACKUP 15: MitoVis: Assumptions behind the $889 threshold -->
-        <section class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" id="slide-27" data-title="Backup 15. MitoVis: Assumptions behind the $889 threshold" data-backup="true">
+        <section class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" id="slide-28" data-title="Backup 15. MitoVis: Assumptions behind the $889 threshold" data-backup="true">
           <header class="talk-top"><div><p class="talk-kicker">Backup · Supporting calculations</p><h2 class="talk-heading">MitoVis: Assumptions behind the $889 threshold</h2></div><span class="talk-counter">Backup 15 / 17</span></header>
           <div class="talk-body"><div class="talk-backup-calculation"><div><h3>Illustrative inputs</h3><p>3 × 19-minute sessions; $2/min labor</p><p>32 s initial processing + 3 × 23 s fine-tuning; $3/hr GPU</p><p>3 × 1.5-minute re-alignment periods; $10,000 development</p></div><div><h3>Calculation</h3><p>Runtime: $114.00 + $0.08 + $9.00 = $123.08</p><p>Total cost: $10,123.08</p><p>Benefit: $1,148.40 + 10.1 × U<sub>M</sub></p><p class="talk-formula">U<sub>M</sub> ≈ ($10,123.08 − $1,148.40) / 10.1 ≈ $889</p></div></div></div>
           <footer class="talk-source">Ground truth: paper §5.1, pp. 6–7. U_M is dollars per percentage point of accuracy improvement.</footer>
@@ -2083,7 +2484,7 @@ Risk Reduction (B<sub>risk</sub>)
           </template>
         </section>
         <!-- BACKUP 16: Fixed-model audit: Assumptions behind the $10,038 threshold -->
-        <section class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" id="slide-28" data-title="Backup 16. Fixed-model audit: Assumptions behind the $10,038 threshold" data-backup="true">
+        <section class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" id="slide-29" data-title="Backup 16. Fixed-model audit: Assumptions behind the $10,038 threshold" data-backup="true">
           <header class="talk-top"><div><p class="talk-kicker">Backup · Supporting calculations</p><h2 class="talk-heading">Fixed-model audit: Assumptions behind the $10,038 threshold</h2></div><span class="talk-counter">Backup 16 / 17</span></header>
           <div class="talk-body"><div class="talk-backup-calculation"><div><h3>Illustrative inputs</h3><p>19-minute normalized audit; $2/min labor</p><p>$10,000 development cost</p><p>Initial training outside the accounting boundary; no model updates</p></div><div><h3>Upper-bound calculation</h3><p>Total cost: $10,000 + $38 = $10,038</p><p>Risk benefit: ΔK × P<sub>fp</sub> × C<sub>f</sub></p><p class="talk-formula">C<sub>f</sub> ≥ $10,038 / (ΔK × P<sub>fp</sub>)</p><p>At ΔK = P<sub>fp</sub> = 1, the threshold is $10,038.</p></div></div></div>
           <footer class="talk-source">Ground truth: paper §5.2, p. 8. This is a conditional estimate, not measured financial return.</footer>
@@ -2101,7 +2502,7 @@ Risk Reduction (B<sub>risk</sub>)
           </template>
         </section>
         <!-- BACKUP 17: Stopping times depend on information discovery and cost assumptions -->
-        <section class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" id="slide-29" data-title="Backup 17. Stopping times depend on information discovery and cost assumptions" data-backup="true">
+        <section class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" id="slide-30" data-title="Backup 17. Stopping times depend on information discovery and cost assumptions" data-backup="true">
           <header class="talk-top"><div><p class="talk-kicker">Backup · Supporting calculations</p><h2 class="talk-heading">Stopping times depend on information discovery and cost assumptions</h2></div><span class="talk-counter">Backup 17 / 17</span></header>
           <div class="talk-body"><div class="talk-backup-calculation"><div><h3>Illustrative marginal model</h3><p class="talk-formula">MC(t) = 2e<sup>0.00348t</sup> + s<sub>C</sub>(t)</p><p class="talk-formula">MB(t) = 10,123.08 λe<sup>−λt</sup></p><p>Retraining at minutes 19, 38, and 57 adds ≈ $1.01/min for three minutes after each update.</p></div><div><h3>MitoVis sensitivity results</h3><p>λ = 0.01 → ≈ 291 minutes</p><p>λ = 0.03 → ≈ 150 minutes</p><p>λ = 0.05 → ≈ 103 minutes</p><p>λ describes how quickly useful information is found.</p></div></div></div>
           <footer class="talk-source">Ground truth: paper §5.1–5.2, pp. 7–9. Time t is in minutes; all values depend on the assumed model.</footer>
@@ -2169,7 +2570,7 @@ Risk Reduction (B<sub>risk</sub>)
     <template id="presenterTemplate">
       <header class="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-slate-800">
         <div class="flex items-center gap-3">
-          <span class="px-3 py-1.5 rounded-xl bg-indigo-600 text-white font-extrabold text-sm tabular-nums" id="pSlideBadge">Slide 01 / 12</span>
+          <span class="px-3 py-1.5 rounded-xl bg-indigo-600 text-white font-extrabold text-sm tabular-nums" id="pSlideBadge">Slide 01 / 13</span>
           <h1 class="text-lg sm:text-xl font-bold text-slate-100 truncate max-w-2xl" id="pSlideTitle"></h1>
         </div>
         <div class="flex items-center gap-3 flex-wrap">
