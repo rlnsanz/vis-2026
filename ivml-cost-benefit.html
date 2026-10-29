@@ -152,7 +152,7 @@ Check your Browserslist config to be sure that your targets are set up correctly
 <button class="px-2.5 py-1 rounded-lg text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-800 transition cursor-pointer" onclick="nextSlide()" title="Next slide (Right Arrow / Space)">Next →</button>
 </div>
 <!-- Grid Overview & Speaker Notes -->
-<button class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200/70 dark:border-slate-700/70 hover:bg-slate-200 dark:hover:bg-slate-700 transition cursor-pointer shrink-0" onclick="openSlideGridModal()" title="Slide grid overview (G)">
+<button class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200/70 dark:border-slate-700/70 hover:bg-slate-200 dark:hover:bg-slate-700 transition cursor-pointer shrink-0" onclick="openSlideGridModal()" title="Slide grid overview (G)" aria-haspopup="dialog" aria-controls="slideGridModal">
           ⊞ Grid <kbd class="ml-1 text-[10px] opacity-70">G</kbd>
 </button>
 <button class="px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200/70 dark:border-slate-700/70 hover:bg-slate-200 dark:hover:bg-slate-700 transition cursor-pointer shrink-0" id="notesToggleBtn" onclick="toggleSpeakerNotes()" title="Toggle speaker notes (N)">
@@ -2164,6 +2164,19 @@ Risk Reduction (B<sub>risk</sub>)
 </aside>
 <!-- Presentation Stage Footer -->
 </div>
+<!-- Slide Grid Overview (outside the scaled presentation stage) -->
+<div class="hidden fixed inset-0 z-[60] bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4" id="slideGridModal" role="dialog" aria-modal="true" aria-labelledby="slideGridTitle" aria-describedby="slideGridHint" onclick="closeSlideGridModal()">
+<div class="w-full max-w-6xl max-h-[90vh] flex flex-col overflow-hidden rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-2xl" onclick="event.stopPropagation()">
+<div class="flex items-center justify-between gap-4 p-5 border-b border-slate-200 dark:border-slate-700">
+<div>
+<h2 class="text-xl font-bold text-slate-900 dark:text-slate-100" id="slideGridTitle">Slide overview</h2>
+<p class="text-sm text-slate-600 dark:text-slate-300 mt-1" id="slideGridHint">Select a slide to jump to it. Press G or Escape to close.</p>
+</div>
+<button type="button" class="px-3 py-1.5 rounded-lg text-sm font-semibold bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-indigo-500" onclick="closeSlideGridModal()">✕ Close</button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 p-5 overflow-y-auto min-h-0" id="gridThumbnailContainer"></div>
+</div>
+</div>
 <!-- Glossary Definition Popover Modal -->
 <div class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4" id="customPopoverModal" onclick="closeCustomPopover(event)">
 <div class="max-w-lg w-full rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-6 shadow-2xl space-y-3" onclick="event.stopPropagation()">
@@ -2273,6 +2286,7 @@ Risk Reduction (B<sub>risk</sub>)
 
     let activeIndex = 0;
     let currentZoom = 1.0;
+    let slideGridReturnFocus = null;
 
     function goToSlide(idx) {
       const slides = document.querySelectorAll('.slide-section');
@@ -2362,7 +2376,8 @@ Risk Reduction (B<sub>risk</sub>)
     function openImageZoomModal(src, caption) { /* Disabled */ }
 
     function closeImageZoomModal() {
-      document.getElementById('imageZoomModal').classList.add('hidden');
+      const modal = document.getElementById('imageZoomModal');
+      if (modal) modal.classList.add('hidden');
     }
 
     function initGrid() {
@@ -2372,24 +2387,34 @@ Risk Reduction (B<sub>risk</sub>)
       SLIDE_TITLES.forEach((title, idx) => {
         const btn = document.createElement('button');
         const isCurrent = idx === activeIndex;
-        btn.className = 'p-4 rounded-2xl text-left border transition cursor-pointer flex flex-col justify-between ' +
+        btn.type = 'button';
+        if (isCurrent) btn.setAttribute('aria-current', 'page');
+        btn.className = 'p-4 rounded-2xl text-left border transition cursor-pointer flex flex-col justify-between focus-visible:outline focus-visible:outline-2 focus-visible:outline-indigo-500 ' +
           (isCurrent
             ? 'bg-indigo-50 dark:bg-indigo-950/70 border-indigo-500 text-indigo-900 dark:text-indigo-100'
             : 'bg-slate-50 dark:bg-slate-900/70 border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700/70');
         btn.onclick = () => goToSlide(idx);
-        btn.innerHTML = '<span class="text-xs font-bold text-indigo-600 dark:text-indigo-400">Slide ' + String(idx + 1).padStart(2, '0') + '</span>' +
+        btn.innerHTML = '<span class="text-xs font-bold text-indigo-600 dark:text-indigo-400">Slide ' + String(idx + 1).padStart(2, '0') + (isCurrent ? ' • Current' : '') + '</span>' +
           '<p class="text-sm font-bold text-slate-900 dark:text-slate-100 mt-1">' + title + '</p>';
         container.appendChild(btn);
       });
     }
 
     function openSlideGridModal() {
+      const modal = document.getElementById('slideGridModal');
+      if (!modal || !modal.classList.contains('hidden')) return;
+      slideGridReturnFocus = document.activeElement;
       initGrid();
-      document.getElementById('slideGridModal').classList.remove('hidden');
+      modal.classList.remove('hidden');
+      modal.querySelector('[aria-current="page"]').focus();
     }
 
     function closeSlideGridModal() {
-      document.getElementById('slideGridModal').classList.add('hidden');
+      const modal = document.getElementById('slideGridModal');
+      if (!modal || modal.classList.contains('hidden')) return;
+      modal.classList.add('hidden');
+      if (slideGridReturnFocus) slideGridReturnFocus.focus({ preventScroll: true });
+      slideGridReturnFocus = null;
     }
 
     // Widget 1: Interactive Workflow Pathway Explorer (Slide 8)
@@ -2538,6 +2563,25 @@ Risk Reduction (B<sub>risk</sub>)
 
     document.addEventListener('keydown', (e) => {
       if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'SELECT')) return;
+      const gridModal = document.getElementById('slideGridModal');
+      if (gridModal && !gridModal.classList.contains('hidden')) {
+        if (e.key === 'Escape' || e.key.toLowerCase() === 'g') {
+          e.preventDefault();
+          closeSlideGridModal();
+        } else if (e.key === 'Tab') {
+          const buttons = gridModal.querySelectorAll('button');
+          const first = buttons[0];
+          const last = buttons[buttons.length - 1];
+          if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+        return;
+      }
       if (e.key === 'ArrowRight' || e.key === ' ') {
         e.preventDefault();
         nextSlide();
