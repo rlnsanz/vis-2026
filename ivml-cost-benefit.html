@@ -674,11 +674,11 @@
           <template class="speaker-notes">
             <p>
               Twenty minutes of relabeling at two dollars per minute costs forty dollars.
-              Three retraining runs at a dollar each add three dollars. Reviewing changed
-              predictions takes six minutes total at two dollars per minute: twelve dollars.
-              Forty plus three plus twelve gives a session cost of fifty-five dollars.
-              Subtract that from the two-hundred-dollar benefit, leaving one hundred forty-five
-              for this batch's share of development. Next, we generalize beyond label correction.
+              Three retraining runs at a dollar each add three dollars. Reviewing predictions
+              for six minutes at two dollars per minute adds twelve dollars. The session costs fifty-five dollars,
+              leaving one hundred forty-five from our two-hundred-dollar benefit for this batch's
+              share of development. Those costs followed from changing the data. Next, compare
+              changing the model or just the view.
             </p>
           </template>
         </section>
@@ -691,15 +691,15 @@
               <li>03. Design implications</li>
             </ol>
           </nav>
-          <header class="talk-top"><div><p class="talk-kicker">Our contribution: Three interaction targets</p><h2 class="talk-heading">What interaction changes determines the trade-off</h2></div><span class="talk-counter">06 / 15</span></header>
+          <header class="talk-top"><div><p class="talk-kicker">From our example to three interaction targets</p><h2 class="talk-heading">What interaction changes determines the trade-off</h2></div><span class="talk-counter">06 / 15</span></header>
           <div class="talk-body">
             <div class="paper-figure-layout paper-figure-layout--workflow">
               <figure class="paper-figure">
                 <img data-image="paper-fig1-workflow" alt="Original Figure 1: data D and model M feed learning L and derived outputs D-prime; visualization V, image I and perception P build knowledge K. Interaction E returns to data, model or view specification S."/>
-                <figcaption>Read left to right; follow the return arrows.</figcaption>
+                <figcaption>Our example follows the blue loop: fix labels, retrain, review.</figcaption>
               </figure>
               <div class="paper-explanation">
-                <div class="paper-target paper-target--data"><h3>Blue -> Data D</h3><p>Correct labels or features.<br>May trigger training.</p></div>
+                <div class="paper-target paper-target--data"><h3>Blue -> Data D</h3><p>Our example: fix labels.<br>Retrain, then review predictions.</p></div>
                 <div class="paper-target paper-target--model"><h3>Purple -> Model M</h3><p>Steer the model.<br>May trigger re-optimization.</p></div>
                 <div class="paper-target"><h3>Black -> View S</h3><p>Explore a fixed model.<br>Build knowledge K.</p></div>
               </div>
@@ -708,14 +708,19 @@
           <footer class="talk-source">Paper Fig. 1, p. 3. Extends Van Wijk (2005). Follow the three interaction targets.</footer>
           <template class="speaker-notes">
             <p>
-              We now use the paper's workflow. Read left to right: data D enters learning L,
-              using model M to produce outputs D-prime. Visualization V turns them into an
-              image; perception P builds knowledge K. That knowledge drives interaction E.
-              Focus on where the return arrows go. The blue loop changes data; the purple loop
-              changes the model. Both can trigger training and require re-checking. The black
-              return loop changes the view S, building understanding while data and model stay
-              fixed. These three targets determine which costs and benefits we count. A system
-              can combine targets, as MitoVis does.
+              When we fix labels, we're following the blue loop: change data, retrain, review.
+              That's why the previous slide counted training and review time.
+            </p>
+            <p>
+              This diagram places that example in a broader workflow. Data and a model produce
+              outputs; a visualization helps the analyst learn from them. The return arrows show
+              three places the analyst can act. Blue changes data, as in our example. Purple steers
+              the model directly, which can also require re-optimization and review. Black changes
+              only the view: the model stays fixed, but the analyst gains understanding.
+            </p>
+            <p>
+              Different targets can produce different benefits and costs. On the next slide,
+              we'll bring those into the same cost-benefit ledger.
             </p>
           </template>
         </section>
