@@ -1,0 +1,30 @@
+Hard to follow for VIS folks
+
+One of the case studies with more depth to explain the cost-benefit trade off.
+How much do we value insight?
+As we plot these curves, have a conversation with your client.
+Estimate their cost and worth, so I can developers and product managers.
+
+Why are we making this system useful?Get to better evaluation of Vis Analytics systems.
+
+If you have all these bespoke things and they say yeah it works.. because instead of using scissors they use lawn mower, but when you had no tool or the wrong tool, everything is better.
+
+Tell different story than what we have.
+Don’t just compare against your current or legacy or naive, compare against others in state of the art.
+
+I’m irritated with all these papers, we should have a better way of comparing.
+
+Comparing 10 or 20 systems.
+
+Here’s what the curves look like when we compare groups.
+
+What’s the return on investment if you’re a boss with spend budget and you’re comparing Vis and Vast systems.
+
+High level why we did this, then one example with curves for the concrete parts.
+Adversarial scenario: we don’t know how much insight is worth.
+
+This is a higher level idea, and then 
+
+
+Put on the slides that I’m on the job market.
+Higher level concepts, think about from a professor insight.
