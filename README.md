@@ -3,9 +3,9 @@ Presentation initialized by Yixuan W
 
 The self-contained presentation is `ivml-cost-benefit.html`. Open it directly in a browser; no server, build step, or network is needed.
 
-The main talk has 13 slides and 897 words of speaker notes, with a 9:30 pacing target inside a 10-minute slot. At 120 words per minute, the notes take about 7.5 minutes to speak, leaving roughly two minutes for transitions, diagrams, and pauses. Rehearse against the targets below to adjust to your delivery.
+The main talk has 15 slides and 867 words of speaker notes, with a 9:30 pacing target inside a 10-minute slot. At 120 words per minute, the notes take about 7.2 minutes to speak, leaving about 2.3 minutes within the target for pointing to figures, transitions, and pauses. Rehearse against the targets below to adjust to your delivery.
 
-- Left/Right or Space navigates the main talk and stops at slide 13.
+- Left/Right or Space navigates the main talk and stops at slide 15.
 - **G** opens the overview, with the main talk first and 17 backup slides below it.
 - Choose a backup slide for questions; **Return to the talk** in Grid restores your last main slide.
 - **P** opens synchronized presenter notes, with each slide’s target duration and cumulative finish time.
@@ -16,18 +16,31 @@ The main talk has 13 slides and 897 words of speaker notes, with a 9:30 pacing t
 | 1 | Cost-Benefit Modeling of IVML Systems | 20s | 0:20 |
 | 2 | Better outcomes still have a cost. | 25s | 0:45 |
 | 3 | Overview: From interaction to a design decision | 20s | 1:05 |
-| 4 | Human–AI feedback loops create three forms of value | 30s | 1:35 |
-| 5 | Interaction uses development, attention, and compute | 35s | 2:10 |
-| 6 | What interaction changes determines the trade-off | 55s | 3:05 |
-| 7 | Expected benefits must cover expected costs | 60s | 4:05 |
-| 8 | Model updates also require people to reorient | 40s | 4:45 |
-| 9 | MitoVis: When do data and model improvements pay off? | 85s | 6:10 |
-| 10 | A fixed model can create value through failure prevention | 80s | 7:30 |
-| 11 | Stop when the next interaction costs more than it adds | 65s | 8:35 |
-| 12 | Design the workflow around the value you need | 40s | 9:15 |
-| 13 | Spend human attention where it creates value. | 15s | 9:30 |
+| 4 | A quality gain needs a task-specific value | 25s | 1:30 |
+| 5 | Count the session and every update | 30s | 2:00 |
+| 6 | What interaction changes determines the trade-off | 65s | 3:05 |
+| 7 | Expected benefits must cover expected costs | 45s | 3:50 |
+| 8 | Model updates also require people to reorient | 35s | 4:25 |
+| 9 | Overview · Two cases | 10s | 4:35 |
+| 10 | MitoVis: When do data and model improvements pay off? | 85s | 6:00 |
+| 11 | A fixed model can create value through failure prevention | 75s | 7:15 |
+| 12 | Overview · Design implications | 10s | 7:25 |
+| 13 | Stop when the next interaction costs more than it adds | 75s | 8:40 |
+| 14 | Design the workflow around the value you need | 35s | 9:15 |
+| 15 | More visual interaction pays while added benefit exceeds added cost. | 15s | 9:30 |
 
-The title slide focuses on the title, research question, and authors. The following slides use editable SVG diagrams to follow one label correction through its gains and effort, explain the human–model feedback loop, and distinguish upfront development from recurring interaction costs. Slide 3 provides a visual roadmap from the framework through the two case studies to design decisions. Main-talk section labels use 32px type; diagram labels and supporting content use at least 28px, while source footers and slide counters use 24px on the 1600 × 900 canvas. The diagrams are conceptual illustrations; the case-study measurements remain on slides 9 and 10.
+The title slide focuses on the title, research question, and authors. Slide 2 follows one label correction through its gains and effort. Slides 4–5 turn that setup into a worked example: an illustrative 10-percentage-point accuracy gain at $20 per point yields $200 in model benefit; exploration, three model updates, and separate re-checking cost $55, leaving $145 to cover development. These are teaching inputs, not study results. Initial training is outside the example’s accounting boundary, view compute is assumed negligible, and only model-performance benefit is valued. Slide 6 then generalizes the example to the paper’s three interaction targets.
+
+Slide 3 provides a visual roadmap from the framework through the two case studies to design decisions, with Framework highlighted as the starting point. The full roadmap returns at slide 9 with Two cases highlighted and at slide 12 with Design implications highlighted. Each repeat has a 10-second target and its own transition notes. A section roadmap stays visible on the content slides: Framework on 4–8, Two cases on 10–11, and Design implications on 13–14. Slides 8 and 11 preview the next section. Main-talk section labels use 32px type; diagram labels and supporting content use at least 28px, while source footers and slide counters use 24px on the 1600 × 900 canvas. The opening diagrams and worked example use editable SVG and HTML. Original paper figures appear on slides 6, 10, 11, and 13. They retain their own typography, with larger slide text explaining the relevant paths, colors, and thresholds.
+
+The paper figures are embedded directly from the PDF, so the deck remains self-contained:
+
+- Slide 6: Figure 1 (p. 3), explained through the three return paths to data, model, and view.
+- Slide 10: Figure 2, left panel (p. 7), explained through the axes, benefit/cost lines, and $889 crossing.
+- Slide 11: Figure 3, left panel (p. 8), reuses that reading pattern for the $10,038 failure-value threshold.
+- Slide 13: Figure 3, right panel (p. 8), follows the middle blue curve and explains the other two as discovery-rate sensitivity. The plotted times are not recommended audit durations.
+
+The panels retain the original axes, ticks, and curves. Repeated panel headings and compact legends are cropped out; larger legends sit beside the plots. The original system screenshots are retained in backups 15 and 16. The notes include a short walkthrough for every figure, with 65, 85, 75, and 75 seconds allocated to these slides.
 
 The main talk groups costs into development, human effort, and computation. It preserves the three interaction targets, four benefit pathways, model-update overhead, two case-study thresholds, and the distinction between break-even and stopping decisions. Backup slides retain the full workflows, notation, equations, configuration tables, original reference figures, and explicit assumptions behind the numerical results.
 
