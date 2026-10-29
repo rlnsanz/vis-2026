@@ -626,7 +626,7 @@
                 <p class="worked-label">Model-performance benefit</p>
                 <p class="worked-formula math-serif">B<sub>model</sub> = Delta M * U<sub>M</sub></p>
                 <p class="worked-label">Next batch: 500 parts, ~$4 per wrong call</p>
-                <p class="worked-rate"><span class="math-serif">U<sub>M</sub></span> = 5 fewer errors x $4 = $20 per point</p>
+                <p class="worked-rate"><span class="math-serif">U<sub>M</sub></span> = 5 fewer errors x $4 = $20 per percentage point</p>
                 <p class="worked-result">10 x $20 = $200</p>
                 <p class="worked-label">Expected model benefit: 50 fewer wrong calls</p>
               </div>
@@ -637,10 +637,11 @@
           <template class="speaker-notes">
             <p>
               After relabeling and three retraining runs, accuracy on the same test photos
-              rises from eighty to ninety percent. What is a point worth? The next batch has
-              five hundred parts, and each wrong call costs about four dollars in scrap or
-              returns. One point is five fewer errors: twenty dollars. Ten points is fifty
-              fewer wrong calls: two hundred dollars.
+              rises from eighty to ninety percent. Suppose that improvement carries over to
+              the next five hundred parts. At eighty percent accuracy, twenty percent are
+              errors: one hundred parts. At ninety percent accuracy, ten percent are errors:
+              fifty parts. That's fifty fewer errors. At four dollars per error in scrap or
+              returns, the expected savings are two hundred dollars.
             </p>
           </template>
         </section>
@@ -655,28 +656,29 @@
           </nav>
           <header class="talk-top"><div><p class="talk-kicker">Worked example: Cost the same improvement</p><h2 class="talk-heading">Count the session and every update</h2></div><span class="talk-counter">05 / 15</span></header>
           <div class="talk-body">
-            <table class="worked-costs" aria-label="Illustrative runtime costs for the same defect-relabeling session: 40 dollars of engineer time, 3 for retraining, and 12 for re-checking, totaling 55 dollars.">
+            <table class="worked-costs" aria-label="Illustrative session costs for the same defect-relabeling example: 40 dollars for relabeling, 3 for retraining, and 12 for reviewing changed predictions, totaling 55 dollars.">
               <thead><tr><th scope="col">Work in this session</th><th scope="col">Calculation</th><th scope="col">Cost</th></tr></thead>
               <tbody>
                 <tr><th scope="row">Find &amp; relabel scratched parts</th><td>20 min x $2/min</td><td>$40</td></tr>
                 <tr><th scope="row">Retrain the classifier</th><td>3 runs x $1 GPU time</td><td>$3</td></tr>
-                <tr><th scope="row">Re-check flipped calls</th><td>3 runs x 2 min x $2/min</td><td>$12</td></tr>
+                <tr><th scope="row">Review changed predictions</th><td>3 runs x 2 min x $2/min</td><td>$12</td></tr>
               </tbody>
             </table>
             <div class="worked-total">
-              <p>Total cost = development + <strong>$55 runtime</strong></p>
-              <p>The $200 model benefit leaves $145 to cover development.</p>
+              <p>Total cost = development + <strong>$55 session cost</strong></p>
+              <p>The $200 model benefit leaves $145 for this batch's share of development.</p>
             </div>
-            <p class="worked-assumption">Count time once: the 20 minutes excludes the 6 minutes of re-checking.</p>
+            <p class="worked-assumption">Count time once: the 20 minutes of relabeling excludes the 6 minutes of reviewing predictions.</p>
           </div>
           <footer class="talk-source">Same illustrative example. Paper Sec. 4.1, Eqs. 8-9. Initial training is outside scope; view compute is assumed negligible.</footer>
           <template class="speaker-notes">
             <p>
-              Now the cost of that same improvement. Twenty minutes of finding and relabeling
-              parts, at a hundred twenty dollars an hour, is forty dollars. Three retraining runs
-              cost a dollar each. Re-checking flipped calls after each run adds twelve. Runtime
-              is fifty-five dollars, leaving one hundred forty-five toward development. Next,
-              we generalize beyond label correction.
+              Twenty minutes of relabeling at two dollars per minute costs forty dollars.
+              Three retraining runs at a dollar each add three dollars. Reviewing changed
+              predictions takes six minutes total at two dollars per minute: twelve dollars.
+              Forty plus three plus twelve gives a session cost of fifty-five dollars.
+              Subtract that from the two-hundred-dollar benefit, leaving one hundred forty-five
+              for this batch's share of development. Next, we generalize beyond label correction.
             </p>
           </template>
         </section>
