@@ -1,47 +1,69 @@
 # vis-2026
-Presentation initialized by Yixuan W
+Presentation initialized by Yixuan W.
 
-The self-contained presentation is `ivml-cost-benefit.html`. Open it directly in a browser; no server, build step, or network is needed.
+Open [ivml-cost-benefit.html](ivml-cost-benefit.html) directly in a browser. The presentation is self-contained: no server, build step, or network is needed.
 
-The main talk has 15 slides and 945 words of speaker notes, with a 9:30 pacing target inside a 10-minute slot. At 120 words per minute, the notes take about 7.9 minutes to speak, leaving about 1.6 minutes within the target for pointing to figures, transitions, and pauses. Rehearse against the targets below to adjust to your delivery.
+The revised talk responds to Ross’s [round-one feedback](round1-feedback.txt) by following a skeptical stakeholder choosing between workflows for neuronal mitochondria analysis. Its central question is: **What additional value does a proposed visualization create over credible alternatives, and when is that value worth its additional cost?**
 
-- Left/Right or Space navigates the main talk and stops at slide 15.
-- **G** opens the overview, with the main talk first and 17 backup slides below it.
-- Choose a backup slide for questions; **Return to the talk** in Grid restores your last main slide.
-- **P** opens synchronized presenter notes, with each slide’s target duration and cumulative finish time.
-- **N** toggles notes in the presentation window. **F** toggles fullscreen.
+There are 11 main slides, 23 backups, and 1,061 words of main-talk speaker notes. The pacing target is 9:30 inside a ten-minute slot. At 120 words per minute, the notes take about 8:50, leaving roughly 40 seconds for pointing and pauses. Rehearse against the per-slide targets, particularly the comparison and threshold slides.
 
-| Slide | Message | Target duration | Finish by |
+- Left/Right or Space navigates the talk and stops at slide 11.
+- **G** opens the overview: the main talk comes first, followed by backups.
+- Choose backups for questions; **Return to the talk** restores the last main slide.
+- **P** opens synchronized presenter notes with slide targets and cumulative finish times.
+- **N** toggles notes, **F** toggles fullscreen, and the theme control switches light/dark mode.
+
+| Slide | Message | Target | Finish by |
 | --- | --- | --- | --- |
-| 1 | Cost-Benefit Modeling of IVML Systems | 20s | 0:20 |
-| 2 | Better outcomes still have a cost. | 30s | 0:50 |
-| 3 | Overview: From interaction to a design decision | 20s | 1:10 |
-| 4 | A quality gain needs a task-specific value | 35s | 1:45 |
-| 5 | Count the session and every update | 30s | 2:15 |
-| 6 | What interaction changes determines the trade-off | 65s | 3:20 |
-| 7 | Expected benefits must cover expected costs | 45s | 4:05 |
-| 8 | Model updates also require people to reorient | 35s | 4:40 |
-| 9 | Overview · Two cases | 10s | 4:50 |
-| 10 | MitoVis: When do data and model improvements pay off? | 75s | 6:05 |
-| 11 | A fixed model can create value through failure prevention | 60s | 7:05 |
-| 12 | Overview · Design implications | 10s | 7:15 |
-| 13 | Stop when the next interaction costs more than it adds | 75s | 8:30 |
-| 14 | Design the workflow around the value you need | 35s | 9:05 |
-| 15 | Better visual design earns more value with less interaction. | 25s | 9:30 |
+| 1 | When does a new visualization earn its place? | 25s | 0:25 |
+| 2 | Showing that a system helps leaves a comparison unanswered. | 40s | 1:05 |
+| 3 | You need results. Which workflow should you fund? | 55s | 2:00 |
+| 4 | Agree on the task before comparing the tools. | 45s | 2:45 |
+| 5 | Every workflow needs the same cost–benefit ledger. | 60s | 3:45 |
+| 6 | Model updates also consume expert attention. | 45s | 4:30 |
+| 7 | Covering its costs does not make it the best choice. | 70s | 5:40 |
+| 8 | Unknown value becomes a decision threshold. | 85s | 7:05 |
+| 9 | Repeated use can change the decision. | 50s | 7:55 |
+| 10 | What evidence would make the contribution convincing? | 60s | 8:55 |
+| 11 | A first framework for comparing contributions. | 35s | 9:30 |
 
-The title slide focuses on the title, research question, and authors. Slide 2 follows one label correction in an illustrative defect classifier that sorts photos of machined parts into pass or defect. Slides 4–5 carry that scenario into a worked example: a 10-percentage-point accuracy gain on a 500-part batch, at about $4 per wrong call, is 50 fewer wrong calls and $200 in model benefit; relabeling, three retraining runs, and separate re-checking cost $55, leaving $145 to cover development. These are teaching inputs, not study results. Initial training is outside the example’s accounting boundary, view compute is assumed negligible, and only model-performance benefit is valued. Slide 6 then generalizes the example to the paper’s three interaction targets. Slide 8 grounds re-alignment cost in MitoVis: each update used about $0.02 of GPU time but about $3 of assumed expert re-orientation time.
+Slide 3 introduces the lab director’s decision and three workflows: manual work, an existing ML-assisted editing workflow, and the proposed MitoVis workflow. Slide 4 defines a fair comparison. Slides 5–6 build the ledger from that decision, including expert reorientation after model updates. Slides 7–9 work through an explicitly hypothetical alternative, a value threshold, and reuse. Slide 10 states the evidence needed to evaluate the contribution. The title and closing slides include the requested faculty-job-market line.
 
-Slide 3 provides a visual roadmap from the framework through the two case studies to design decisions, with Framework highlighted as the starting point. The full roadmap returns at slide 9 with Two cases highlighted and at slide 12 with Design implications highlighted. Each repeat has a 10-second target and its own transition notes. A section roadmap stays visible on the content slides: Framework on 4–8, Two cases on 10–11, and Design implications on 13–14. Slides 8 and 11 preview the next section. Main-talk section labels use 32px type; diagram labels and supporting content use at least 28px, while source footers and slide counters use 24px on the 1600 × 900 canvas. The opening diagrams and worked example use editable SVG and HTML. Original paper figures appear on slides 6, 10, 11, and 13. They retain their own typography, with larger slide text explaining the relevant paths, colors, and thresholds.
+The evidence boundary is explicit throughout. Source: [IVML_Cost_Benefit_2026_VIS.pdf](IVML_Cost_Benefit_2026_VIS.pdf), especially Sections 4 and 5.1. The following inputs have different evidential status:
 
-The paper figures are embedded directly from the PDF, so the deck remains self-contained:
+| Quantity | Value or definition | Status |
+| --- | --- | --- |
+| Manual vs. MitoVis workflow time | 191.4 vs. 19.0 minutes | Measurements reported in the source study, as summarized in the paper. |
+| Neurite-wise classification accuracy | 77.0% → 87.1%, across three iterations | Reported classifier result; separate from segmentation-mask quality. |
+| Initial processing / fine-tuning | 32 seconds / 23 seconds per update | Reported processing times. |
+| Analysis workload | Three 19-minute sessions | Paper’s illustrative aggregation, not an observed three-session experiment. |
+| Expert time / GPU price | $2/minute / $3/hour | Assumed economic proxies. |
+| Reorientation | 1.5 minutes per update | Assumed overhead requiring empirical calibration. |
+| V: development / runtime | $10,000 / $123.08 | Paper’s illustrative development proxy and runtime calculation. |
+| Avoided manual-work credit | $1,148.40 per aggregated workload | Paper’s scaled manual-effort reference; runtime is subtracted separately. |
+| A: development / runtime / classifier gain | $8,000 / $83.08 / 8.1 percentage points | Invented teaching inputs for an ML-assisted editor. No measured head-to-head result. |
+| Comparative adoption costs | Learning, integration, and maintenance differences | Need measurement; additional differences are assumed zero in the worked arithmetic. |
+| Sustained use and recurring gains | Continued use, workload count, costs, outcomes | Need longitudinal evidence; no adoption claim is made. |
 
-- Slide 6: Figure 1 (p. 3), explained through the three return paths to data, model, and view.
-- Slide 10: Figure 2, left panel (p. 7), explained through the axes, benefit/cost lines, and $889 crossing.
-- Slide 11: Figure 3, left panel (p. 8), reuses that reading pattern for the $10,038 failure-value threshold.
-- Slide 13: Figure 3, right panel (p. 8), follows the middle blue curve and explains the other two as discovery-rate sensitivity. The plotted times are not recommended audit durations.
+The hypothetical A workflow uses predictions, conventional editing, and fine-tuning. It specifies a comparison to conduct; it is not presented as an identified, empirically evaluated state-of-the-art competitor. A real recommendation requires choosing the strongest relevant tools and measuring their performance on the same task. Hold the starting model and training recipe fixed to help separate the visual workflow’s contribution from the learner’s contribution.
 
-The panels retain the original axes, ticks, and curves. Repeated panel headings and compact legends are cropped out; larger legends sit beside the plots. The original system screenshots are retained in backups 15 and 16. The notes include a short walkthrough for every figure, with 65, 75, 60, and 75 seconds allocated to these slides.
+Both A and V receive the same $1,148.40 avoided-manual-work credit and use the same value U per percentage point of downstream classifier improvement. Count model utility beyond the corrected outputs so the same outcome is not credited twice. With all other incremental costs assumed zero:
 
-The main talk groups costs into development, human effort, and computation. It preserves the three interaction targets, four benefit pathways, model-update overhead, two case-study thresholds, and the distinction between break-even and stopping decisions. Backup slides retain the full workflows, notation, equations, configuration tables, original reference figures, and explicit assumptions behind the numerical results.
+- Net V = $1,148.40 + 10.1U − $10,123.08.
+- Net A = $1,148.40 + 8.1U − $8,083.08.
+- At U = $1,000/point, V returns $1,125.32 and A returns $1,165.32: V pays off against manual work but trails A by $40.
+- V’s additional net value is 2U − $2,040. The choice reverses at U = $1,020/point. At U = $1,500/point, V leads by $960.
 
-Ground truth: `IVML_Cost_Benefit_2026_VIS.pdf`, especially Sections 4 and 5. The case-study values are illustrative calculations based on published measurements and proxy assumptions. They are not measured financial returns.
+Slide 8 uses an editable SVG with linear axes to show this crossing. It asks the stakeholder for a defensible range, rather than requiring an exact valuation. A range crossing the threshold leaves the choice unresolved. For insight without a defensible monetary value, connect knowledge to a decision or avoided loss, retain uncertainty, or compare effort to a defined knowledge outcome.
+
+Slide 9 spreads the hypothetical additional $2,000 development cost across N independent workloads. Assuming the extra $40 runtime cost and 2-point gain recur on each workload, the threshold becomes ($2,000/N + $40) / 2: $1,020 at N=1, $120 at N=10, and $30 at N=100. These projections assume no additional learning or maintenance cost. Each workload must separately realize its benefit; repeatedly using one improved model does not automatically generate a new accuracy gain. Reuse projections do not establish lasting impact.
+
+The 23 backups contain:
+
+- 01–02: comparison assumptions/arithmetic and the challenge of valuing insight.
+- 03–06: the paper’s MitoVis break-even curve, fixed-model failure-prevention case, stopping-time analysis, and unified workflow figure.
+- 07–23: the original 17 technical backups, including taxonomy, equations, benefit pathways, application tables, and supporting calculations.
+
+The original MitoVis threshold of about $889 per point remains in backup 03 with its manual reference. It answers a different question from the main talk’s $1,020 comparative threshold. The fixed-model audit’s $10,038 threshold and the stopping-time curves also remain conditional worked examples. Neither ranks alternative solutions to the MitoVis task.
+
+Embedded image assets and offline presentation behavior are preserved. Slide IDs are consecutive; main/backup counts and presenter timing derive from slide metadata. Keep visible content, source assumptions, and each slide’s speaker-notes template together when editing.
