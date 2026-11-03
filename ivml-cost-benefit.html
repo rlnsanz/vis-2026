@@ -8,6 +8,10 @@
      Each main slide's data-budget is its target duration in seconds (9:30 total).
      Each section's data-title labels the grid/presenter; its speaker-notes template
      supplies the notes drawer and presenter. Use <p> for separate note paragraphs.
+     data-reveal="1", "2", ... groups content into click-driven builds. Matching
+     <p class="reveal-cue" data-click="1">[CLICK 1] ...</p> notes mark each reveal.
+     Click the slide, Right Arrow, or Space to reveal; Left Arrow undoes a reveal.
+     Forward entry starts at build 0; backward entry shows the completed slide.
   3. PRESENTER VIEW: the notes window's HTML template.
   4. PRESENTATION BEHAVIOR: navigation, shortcuts, grid, dock, and window sync.
   5. EMBEDDED ASSETS: images and the Tailwind library; usually keep this folded.
@@ -43,10 +47,40 @@
         transform: none !important;
         transition: none !important;
       }
-      *, *::before, *::after {
-        transition-property: none !important;
-        animation-duration: 0s !important;
-        animation: none !important;
+      /* Reveal groups keep their space so the layout stays still between clicks. */
+      [data-reveal] {
+        transition: opacity 240ms ease-out;
+      }
+      [data-reveal].reveal-pending {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: none;
+      }
+      .reveal-cue {
+        margin: 0.7em 0;
+        padding: 0.35em 0.6em;
+        border-left: 4px solid #818cf8;
+        background: #eef2ff;
+        color: #3730a3;
+        font-size: 0.82em;
+        font-weight: 700;
+        line-height: 1.4;
+        white-space: normal;
+      }
+      .reveal-cue[data-cue-state="done"] { opacity: 0.5; }
+      .reveal-cue[data-cue-state="next"] { outline: 2px solid #818cf8; }
+      .dark .reveal-cue, #pNotesText .reveal-cue {
+        color: #c7d2fe;
+        background: #25244a;
+      }
+      #speakerNotesContent, #pNotesText { white-space: normal; }
+      #speakerNotesContent > p + p, #pNotesText > p + p { margin-top: 0.75em; }
+      @media (prefers-reduced-motion: reduce) {
+        [data-reveal] { transition: none; }
+      }
+      @media print {
+        [data-reveal].reveal-pending { opacity: 1; visibility: visible; }
       }
       .math-serif {
         font-family: "Cambria Math", "STIX Two Math", Georgia, serif;
@@ -557,7 +591,7 @@
         <section class="slide-section talk-slide decision-slide slide-animate flex-1 flex flex-col decision-title" id="slide-1" data-title="1. Cost-Benefit Modeling of IVML Systems" data-budget="25">
           <header class="talk-top"><div><p class="talk-kicker">IEEE VIS 2026</p><h1 class="talk-heading"><span class="block">Cost-Benefit Modeling of</span> <span class="block">Interactive Visual Machine</span> <span class="block">Learning Systems</span></h1></div><span class="talk-counter">01 / 11</span></header>
           <div class="talk-body">
-            <div class="decision-opening">
+            <div class="decision-opening" data-reveal="1">
               <p class="decision-big">When does a new visualization earn its place?</p>
             </div>
             <div class="decision-title-footer">
@@ -565,7 +599,11 @@
               <p class="title-affiliations">Arizona State University · Georgia Institute of Technology</p></div>
               <div class="decision-logos"><img data-image="asu-logo" alt="Arizona State University"/><img data-image="vis-logo" alt="IEEE VIS 2026"/></div>
             </div></div>
-          <template class="speaker-notes"><p>I&#x27;m Rolando Garcia, presenting joint work with Yixuan Wang, Alex Endert, and Ross Maciejewski. In interactive visual machine learning, people inspect results and give feedback through a visual interface. Our question is whether a new workflow creates enough additional value to justify choosing it over the alternatives.</p></template>
+          <template class="speaker-notes">
+            <p>I&#x27;m Rolando Garcia, presenting joint work with Yixuan Wang, Alex Endert, and Ross Maciejewski. In interactive visual machine learning, people inspect results and give feedback through a visual interface.</p>
+            <p class="reveal-cue" data-click="1">[CLICK 1] Reveal the opening question.</p>
+            <p>Our question is whether a new workflow creates enough additional value to justify choosing it over the alternatives.</p>
+          </template>
         </section>
         <!-- SLIDE 02: Useful compared with what? -->
         <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-2" data-title="2. Useful compared with what?" data-budget="40">
@@ -573,10 +611,16 @@
           <div class="talk-body">
             <div class="decision-two">
               <article class="decision-panel"><p class="decision-label">The current workflow</p><h3>Does it help?</h3><p>Compare with manual work<br>or the previous workflow.</p></article>
-              <article class="decision-panel decision-highlight"><p class="decision-label">Credible alternatives</p><h3>What does it add?</h3><p>Compare with the strongest<br>practical alternatives.</p></article>
+              <article class="decision-panel decision-highlight" data-reveal="1"><p class="decision-label">Credible alternatives</p><h3>What does it add?</h3><p>Compare with the strongest<br>practical alternatives.</p></article>
             </div>
-            <p class="decision-takeaway">Beating a weak baseline leaves the real contribution uncertain.</p></div>
-          <template class="speaker-notes"><p>A new system can look impressive when the previous workflow had no suitable tool. That tells us it helps. But would another available approach help just as much, at lower cost? The challenge is to take that comparison seriously. Put yourself in the position of someone choosing a tool: what does this proposal add over the strongest practical alternatives? That&#x27;s the decision we want the model to support.</p></template>
+            <p class="decision-takeaway" data-reveal="2">Beating a weak baseline leaves the real contribution uncertain.</p></div>
+          <template class="speaker-notes">
+            <p>A new system can look impressive when the previous workflow had no suitable tool. That tells us it helps.</p>
+            <p class="reveal-cue" data-click="1">[CLICK 1] Reveal credible alternatives: “What does it add?”</p>
+            <p>But would another available approach help just as much, at lower cost?</p>
+            <p class="reveal-cue" data-click="2">[CLICK 2] Reveal the weak-baseline takeaway.</p>
+            <p>The challenge is to take that comparison seriously. Put yourself in the position of someone choosing a tool: what does this proposal add over the strongest practical alternatives? That&#x27;s the decision we want the model to support.</p>
+          </template>
         </section>
         <!-- SLIDE 03: Which workflow should the lab invest in? -->
         <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-3" data-title="3. Which workflow should the lab invest in?" data-budget="55">
@@ -587,12 +631,20 @@
               <div><p class="decision-lead">You run a lab with limited expert time.</p><p>Proofread segmentation masks and improve the model used in later analysis.</p><p class="decision-question">Compare expert effort, output quality, and the cost of adoption.</p></div>
             </div>
             <div class="decision-options">
-              <div><strong>Manual workflow</strong><span>A reference for current effort.</span></div>
-              <div><strong>A · ML-assisted alternative</strong><span>Hypothetical: conventional editing + fine-tuning.</span></div>
-              <div><strong>V · MitoVis workflow</strong><span>Interactive proofreading + fine-tuning.</span></div>
+              <div data-reveal="1"><strong>Manual workflow</strong><span>A reference for current effort.</span></div>
+              <div data-reveal="2"><strong>A · ML-assisted alternative</strong><span>Hypothetical: conventional editing + fine-tuning.</span></div>
+              <div data-reveal="3"><strong>V · MitoVis workflow</strong><span>Interactive proofreading + fine-tuning.</span></div>
             </div></div>
           <footer class="talk-source">MitoVis case: paper Sec. 5.1. A is a hypothetical comparison workflow.</footer>
-          <template class="speaker-notes"><p>You run a lab studying neuronal mitochondria. Experts correct segmentation masks, and their feedback can improve predictions for later work. You need useful results within a limited budget.</p><p>Manual work is the reference. Alternative A uses predictions, conventional editing, and fine-tuning. V is the MitoVis workflow. Both assisted workflows use ML and visual interfaces; we want to know what the proposed workflow adds. The paper does not evaluate A. We&#x27;ll give it hypothetical inputs to show how the comparison would work, then identify the measurements needed for a real decision.</p></template>
+          <template class="speaker-notes">
+            <p>You run a lab studying neuronal mitochondria. Experts correct segmentation masks, and their feedback can improve predictions for later work. You need useful results within a limited budget.</p>
+            <p class="reveal-cue" data-click="1">[CLICK 1] Reveal the manual reference.</p>
+            <p>Manual work is the reference.</p>
+            <p class="reveal-cue" data-click="2">[CLICK 2] Reveal hypothetical alternative A.</p>
+            <p>Alternative A uses predictions, conventional editing, and fine-tuning.</p>
+            <p class="reveal-cue" data-click="3">[CLICK 3] Reveal workflow V: MitoVis.</p>
+            <p>V is the MitoVis workflow. Both assisted workflows use ML and visual interfaces; we want to know what the proposed workflow adds. The paper does not evaluate A. We&#x27;ll give it hypothetical inputs to show how the comparison would work, then identify the measurements needed for a real decision.</p>
+          </template>
         </section>
         <!-- SLIDE 04: Compare workflows on the same task. -->
         <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-4" data-title="4. Compare workflows on the same task." data-budget="45">
@@ -600,11 +652,19 @@
           <div class="talk-body">
             <div class="decision-three">
               <article class="decision-panel"><h3>Same task</h3><p>Common dataset, corrected-mask target, and held-out classification test.</p></article>
-              <article class="decision-panel"><h3>Same learner</h3><p>Match the starting model, training recipe, expert access, and budget ceiling.</p></article>
-              <article class="decision-panel"><h3>Same period of use</h3><p>Include learning, integration, maintenance, and the number of future workloads.</p></article>
+              <article class="decision-panel" data-reveal="1"><h3>Same learner</h3><p>Match the starting model, training recipe, expert access, and budget ceiling.</p></article>
+              <article class="decision-panel" data-reveal="2"><h3>Same period of use</h3><p>Include learning, integration, maintenance, and the number of future workloads.</p></article>
             </div>
-            <p class="decision-takeaway">Hold the learner fixed to test what the workflow adds.</p></div>
-          <template class="speaker-notes"><p>Agree on the task before comparing tools. Require a common quality target for corrected masks, and evaluate the resulting classifier on the same held-out data. Mask quality and classifier accuracy are separate outcomes.</p><p>To study the workflow&#x27;s contribution, match the starting model, training recipe, access to experts, and budget ceiling. Compare costs over the same period of use. This helps distinguish a workflow improvement from simply adding a better learner. Isolating a particular visual design choice would require a more controlled comparison.</p></template>
+            <p class="decision-takeaway" data-reveal="3">Hold the learner fixed to test what the workflow adds.</p></div>
+          <template class="speaker-notes">
+            <p>Agree on the task before comparing tools. Require a common quality target for corrected masks, and evaluate the resulting classifier on the same held-out data. Mask quality and classifier accuracy are separate outcomes.</p>
+            <p class="reveal-cue" data-click="1">[CLICK 1] Reveal the matched learner and resources.</p>
+            <p>To study the workflow&#x27;s contribution, match the starting model, training recipe, access to experts, and budget ceiling.</p>
+            <p class="reveal-cue" data-click="2">[CLICK 2] Reveal the common period of use.</p>
+            <p>Compare costs over the same period of use.</p>
+            <p class="reveal-cue" data-click="3">[CLICK 3] Reveal what holding the learner fixed lets us test.</p>
+            <p>This helps distinguish a workflow improvement from simply adding a better learner. Isolating a particular visual design choice would require a more controlled comparison.</p>
+          </template>
         </section>
         <!-- SLIDE 05: Every workflow needs the same cost–benefit ledger. -->
         <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-5" data-title="5. Every workflow needs the same cost–benefit ledger." data-budget="60">
@@ -612,12 +672,22 @@
           <div class="talk-body">
             <div class="decision-ledger">
               <div><p class="decision-label">Expected benefits</p><h3>What changes for the lab?</h3><ul><li>Less manual work</li><li>Better downstream predictions</li><li>Fewer failures; useful knowledge</li></ul></div>
-              <div><p class="decision-label">Expected costs</p><h3>What does it take?</h3><ul><li>Development and integration</li><li>Learning, interaction, and review</li><li>Compute and maintenance</li></ul></div>
+              <div data-reveal="1"><p class="decision-label">Expected costs</p><h3>What does it take?</h3><ul><li>Development and integration</li><li>Learning, interaction, and review</li><li>Compute and maintenance</li></ul></div>
             </div>
-            <div class="decision-facts"><div><strong>Reported MitoVis outcomes</strong><span>19.0 min vs. 191.4 min manual work;<br>classifier accuracy: 77.0% → 87.1%.</span></div><div><strong>Our valuation scenario</strong><span>Three 19-minute sessions, with assumed labor prices and development cost.</span></div></div>
-            <p class="decision-takeaway">Net value = benefits − costs.</p></div>
+            <div class="decision-facts"><div data-reveal="2"><strong>Reported MitoVis outcomes</strong><span>19.0 min vs. 191.4 min manual work;<br>classifier accuracy: 77.0% → 87.1%.</span></div><div data-reveal="3"><strong>Our valuation scenario</strong><span>Three 19-minute sessions, with assumed labor prices and development cost.</span></div></div>
+            <p class="decision-takeaway" data-reveal="4">Net value = benefits − costs.</p></div>
           <footer class="talk-source">Paper Secs. 4–5.1. Reported outcomes combined into an illustrative economic scenario.</footer>
-          <template class="speaker-notes"><p>Use the same ledger for every workflow. Benefits include avoided manual work, better predictions, reduced risk, and useful knowledge. Costs include development, human effort, and computation, plus the work of adopting and maintaining the tool. Count each outcome once.</p><p>MitoVis reports nineteen minutes versus 191.4 minutes of manual work, and a neurite-wise classification gain from seventy-seven to 87.1 percent. The paper combines these measurements into an illustrative three-session scenario with assumed prices. Subtract costs from benefits to get net value. The next step is to compare that net value across workflows.</p></template>
+          <template class="speaker-notes">
+            <p>Use the same ledger for every workflow. Benefits include avoided manual work, better predictions, reduced risk, and useful knowledge.</p>
+            <p class="reveal-cue" data-click="1">[CLICK 1] Reveal the cost side of the ledger.</p>
+            <p>Costs include development, human effort, and computation, plus the work of adopting and maintaining the tool. Count each outcome once.</p>
+            <p class="reveal-cue" data-click="2">[CLICK 2] Reveal the reported time and accuracy outcomes.</p>
+            <p>MitoVis reports nineteen minutes versus 191.4 minutes of manual work, and a neurite-wise classification gain from seventy-seven to 87.1 percent.</p>
+            <p class="reveal-cue" data-click="3">[CLICK 3] Reveal the illustrative valuation assumptions.</p>
+            <p>The paper combines these measurements into an illustrative three-session scenario with assumed prices.</p>
+            <p class="reveal-cue" data-click="4">[CLICK 4] Reveal “Net value = benefits − costs.”</p>
+            <p>Subtract costs from benefits to get net value. The next step is to compare that net value across workflows.</p>
+          </template>
         </section>
         <!-- SLIDE 06: Model updates also consume expert attention. -->
         <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-6" data-title="6. Model updates also consume expert attention." data-budget="45">
@@ -625,29 +695,43 @@
           <div class="talk-body">
             <div class="decision-three decision-update">
               <article><p class="decision-label">01 · Steer</p><h3>Correct outputs</h3><p>Choose what the model should learn from.</p></article>
-              <article><p class="decision-label">02 · Wait</p><h3>Fine-tune</h3><p>Reported update latency:<br><strong>23 seconds.</strong></p></article>
-              <article><p class="decision-label">03 · Review</p><h3>Regain context</h3><p>Interpret changed outputs and resume analysis.</p></article>
+              <article data-reveal="1"><p class="decision-label">02 · Wait</p><h3>Fine-tune</h3><p>Reported update latency:<br><strong>23 seconds.</strong></p></article>
+              <article data-reveal="2"><p class="decision-label">03 · Review</p><h3>Regain context</h3><p>Interpret changed outputs and resume analysis.</p></article>
             </div>
-            <div class="decision-two decision-metrics"><div><p class="decision-label">GPU cost per update</p><strong>~$0.02</strong><p>23 seconds at an assumed $3/hour.</p></div><div><p class="decision-label">Assumed reorientation cost</p><strong>$3.00</strong><p>1.5 minutes at $2/minute.</p></div></div>
-            <p class="decision-muted">Measure review time separately from direct interaction; count each minute once.</p></div>
+            <div class="decision-two decision-metrics"><div data-reveal="1"><p class="decision-label">GPU cost per update</p><strong>~$0.02</strong><p>23 seconds at an assumed $3/hour.</p></div><div data-reveal="2"><p class="decision-label">Assumed reorientation cost</p><strong>$3.00</strong><p>1.5 minutes at $2/minute.</p></div></div>
+            <p class="decision-muted" data-reveal="3">Measure review time separately from direct interaction; count each minute once.</p></div>
           <footer class="talk-source">Paper Sec. 5.1. Update latency is reported; prices and reorientation time are assumed.</footer>
-          <template class="speaker-notes"><p>One cost is easy to overlook. After the expert corrects outputs and the model updates, someone has to inspect what changed. MitoVis reports a twenty-three-second update, costing about two cents at our assumed GPU price.</p><p>We assume ninety seconds to reorient afterward: three dollars of expert time. That overhead needs measurement, but it shows why compute cost alone can miss the larger expense. Separate direct interaction from post-update review so each minute is counted once.</p></template>
+          <template class="speaker-notes">
+            <p>One cost is easy to overlook.</p>
+            <p class="reveal-cue" data-click="1">[CLICK 1] Reveal fine-tuning latency and the ~$0.02 GPU cost.</p>
+            <p>MitoVis reports a twenty-three-second update, costing about two cents at our assumed GPU price.</p>
+            <p class="reveal-cue" data-click="2">[CLICK 2] Reveal post-update review and the assumed $3 expert cost.</p>
+            <p>After the expert corrects outputs and the model updates, someone has to inspect what changed. We assume ninety seconds to reorient afterward: three dollars of expert time. That overhead needs measurement, but it shows why compute cost alone can miss the larger expense.</p>
+            <p class="reveal-cue" data-click="3">[CLICK 3] Reveal the reminder to measure review separately.</p>
+            <p>Separate direct interaction from post-update review so each minute is counted once.</p>
+          </template>
         </section>
         <!-- SLIDE 07: Covering its costs does not make it the best choice. -->
         <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-7" data-title="7. Covering its costs does not make it the best choice." data-budget="70">
           <header class="talk-top"><div><p class="talk-kicker">Worked example · A is hypothetical</p><h2 class="talk-heading">Covering its costs does not make it the best choice.</h2></div><span class="talk-counter">07 / 11</span></header>
           <div class="talk-body">
             <table class="decision-table"><caption>Illustrative three-session workload · Value one accuracy point at $1,000.</caption>
-              <thead><tr><th scope="col">Input</th><th scope="col">A · Alternative<br><span>Hypothetical inputs</span></th><th scope="col">V · MitoVis<br><span>Paper scenario</span></th><th scope="col">V − A<br><span>What V adds</span></th></tr></thead>
-              <tbody><tr><th scope="row">Development</th><td>$8,000</td><td>$10,000</td><td>+$2,000</td></tr>
-              <tr><th scope="row">Human + compute</th><td>$83</td><td>$123</td><td>+$40</td></tr>
-              <tr><th scope="row">Classifier gain</th><td>8.1 points</td><td>10.1 points</td><td>+2 points</td></tr>
-              <tr class="decision-result-row"><th scope="row">Net value</th><td>+$1,165</td><td>+$1,125</td><td class="decision-negative">−$40</td></tr></tbody>
+              <thead><tr><th scope="col">Input</th><th scope="col">A · Alternative<br><span>Hypothetical inputs</span></th><th scope="col">V · MitoVis<br><span>Paper scenario</span></th><th scope="col" data-reveal="2">V − A<br><span>What V adds</span></th></tr></thead>
+              <tbody><tr><th scope="row">Development</th><td>$8,000</td><td>$10,000</td><td data-reveal="2">+$2,000</td></tr>
+              <tr><th scope="row">Human + compute</th><td>$83</td><td>$123</td><td data-reveal="2">+$40</td></tr>
+              <tr><th scope="row">Classifier gain</th><td>8.1 points</td><td>10.1 points</td><td data-reveal="2">+2 points</td></tr>
+              <tr class="decision-result-row" data-reveal="1"><th scope="row">Net value</th><td>+$1,165</td><td>+$1,125</td><td class="decision-negative" data-reveal="2">−$40</td></tr></tbody>
             </table>
             <p class="decision-muted">Both receive the same $1,148 credit for avoided manual work; other added costs are assumed zero.</p>
-            <p class="decision-takeaway">V costs $2,040 more for 2 extra accuracy points.</p></div>
+            <p class="decision-takeaway" data-reveal="2">V costs $2,040 more for 2 extra accuracy points.</p></div>
           <footer class="talk-source">Rounded dollars; one point = one percentage point. V: paper Sec. 5.1. Full arithmetic: backup 01.</footer>
-          <template class="speaker-notes"><p>Give alternative A hypothetical costs and outcomes. V uses the paper&#x27;s MitoVis scenario. We assume comparable corrected outputs and credit both with the same avoided manual work. Dollar values are rounded on this slide; the full arithmetic is in backup.</p><p>At one thousand dollars per accuracy point, both have positive net value against manual work. Yet A delivers forty dollars more. The last column shows why: V costs two thousand and forty dollars more for two extra points. Are those points worth enough? For a real adoption decision, use costs still to be incurred and measured outcomes. Here, the comparison is illustrative.</p></template>
+          <template class="speaker-notes">
+            <p>Give alternative A hypothetical costs and outcomes. V uses the paper&#x27;s MitoVis scenario. We assume comparable corrected outputs and credit both with the same avoided manual work. Dollar values are rounded on this slide; the full arithmetic is in backup.</p>
+            <p class="reveal-cue" data-click="1">[CLICK 1] Reveal net values. Pause: both are positive, but A is $40 ahead.</p>
+            <p>At one thousand dollars per accuracy point, both have positive net value against manual work. Yet A delivers forty dollars more.</p>
+            <p class="reveal-cue" data-click="2">[CLICK 2] Reveal the V − A column and the $2,040-for-2-points takeaway.</p>
+            <p>The last column shows why: V costs two thousand and forty dollars more for two extra points. Are those points worth enough? For a real adoption decision, use costs still to be incurred and measured outcomes. Here, the comparison is illustrative.</p>
+          </template>
         </section>
         <!-- SLIDE 08: How much must the extra improvement be worth? -->
         <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-8" data-title="8. How much must the extra improvement be worth?" data-budget="85">
@@ -656,27 +740,39 @@
             <div class="decision-chart-layout">
               <figure><svg class="story-figure decision-chart" viewBox="0 0 980 520" role="img" aria-label="Illustrative additional net value of V over hypothetical A equals two times U minus 2040 dollars. It crosses zero at U equals 1020 dollars per additional percentage point. Below the threshold A has higher net value; above it V has higher net value. This is a pairwise comparison; manual work remains another option.">
                 <text x="130" y="40" font-size="29" font-weight="700">V − A net value ($)</text>
-                <rect class="story-cost-panel" x="130" y="80" width="377.4" height="350" rx="10"/>
-                <rect class="story-benefit-panel" x="507.4" y="80" width="362.6" height="350" rx="10"/>
+                <rect data-reveal="2" class="story-cost-panel" x="130" y="80" width="377.4" height="350" rx="10"/>
+                <rect data-reveal="2" class="story-benefit-panel" x="507.4" y="80" width="362.6" height="350" rx="10"/>
                 <path class="story-line" d="M 130 80 V 430 M 130 260 H 870"/>
-                <path class="story-line" d="M 507.4 90 V 440" stroke-dasharray="6 6"/>
-                <path class="story-indigo-line" d="M 130 413 L 870 113"/>
-                <circle cx="507.4" cy="260" r="9" fill="#4f46e5"/>
+                <path data-reveal="2" class="story-line" d="M 507.4 90 V 440" stroke-dasharray="6 6"/>
+                <path data-reveal="1" class="story-indigo-line" d="M 130 413 L 870 113"/>
+                <circle data-reveal="2" cx="507.4" cy="260" r="9" fill="#4f46e5"/>
                 <text class="story-muted" x="113" y="118" font-size="27" text-anchor="end">+2,000</text>
                 <text class="story-muted" x="113" y="269" font-size="27" text-anchor="end">0</text>
                 <text class="story-muted" x="113" y="418" font-size="27" text-anchor="end">−2,000</text>
-                <text class="story-rose" x="180" y="188" font-size="34" font-weight="700">A ahead</text>
-                <text class="story-green" x="635" y="345" font-size="34" font-weight="700">V ahead</text>
+                <text data-reveal="2" class="story-rose" x="180" y="188" font-size="34" font-weight="700">A ahead</text>
+                <text data-reveal="2" class="story-green" x="635" y="345" font-size="34" font-weight="700">V ahead</text>
                 <text x="130" y="463" font-size="28" text-anchor="middle">0</text>
-                <text class="story-accent" x="507.4" y="463" font-size="30" font-weight="700" text-anchor="middle">1,020</text>
+                <text data-reveal="2" class="story-accent" x="507.4" y="463" font-size="30" font-weight="700" text-anchor="middle">1,020</text>
                 <text x="870" y="463" font-size="28" text-anchor="middle">2,000</text>
                 <text x="500" y="510" font-size="29" text-anchor="middle">U: value per percentage point ($)</text>
-              </svg><figcaption>Added net value = 2U − $2,040.</figcaption></figure>
-              <div class="decision-chart-notes"><div><p class="decision-label">At $1,000 / point</p><h3>V trails by $40.</h3></div><div><p class="decision-label">At $1,500 / point</p><h3>V leads by $960.</h3></div><p>What range of values can the lab defend?</p><p class="decision-muted">If that range crosses $1,020, the choice remains unresolved.</p></div>
+              </svg><figcaption data-reveal="1">Added net value = 2U − $2,040.</figcaption></figure>
+              <div class="decision-chart-notes"><div data-reveal="3"><p class="decision-label">At $1,000 / point</p><h3>V trails by $40.</h3></div><div data-reveal="4"><p class="decision-label">At $1,500 / point</p><h3>V leads by $960.</h3></div><p data-reveal="5">What range of values can the lab defend?</p><p class="decision-muted" data-reveal="5">If that range crosses $1,020, the choice remains unresolved.</p></div>
             </div>
-            <p class="decision-muted">For insight, start with the decision it changes or the loss it helps avoid.</p></div>
+            <p class="decision-muted" data-reveal="5">For insight, start with the decision it changes or the loss it helps avoid.</p></div>
           <footer class="talk-source">Illustrative A–V comparison with linear utility. Manual work remains another option.</footer>
-          <template class="speaker-notes"><p>Let the value per accuracy point vary. The horizontal axis is that value, U. The vertical axis is V&#x27;s net value minus A&#x27;s. The line crosses zero where their net values tie.</p><p>Two extra points must cover two thousand and forty dollars, so the threshold is one thousand and twenty dollars per point. Below it, A is ahead. Above it, V is ahead. At fifteen hundred dollars per point, V leads by nine hundred and sixty dollars. Manual work remains another option, especially at low values.</p><p>Ask the lab director for a plausible range. If it crosses the threshold, we need more information to choose. For insight, ask which decision changes or which loss might be avoided. If no price is defensible, compare effort to a defined knowledge outcome. The model makes the uncertainty explicit.</p></template>
+          <template class="speaker-notes">
+            <p>Let the value per accuracy point vary. The horizontal axis is that value, U. The vertical axis is V&#x27;s net value minus A&#x27;s.</p>
+            <p class="reveal-cue" data-click="1">[CLICK 1] Reveal the net-value line and its equation.</p>
+            <p>The line crosses zero where their net values tie.</p>
+            <p class="reveal-cue" data-click="2">[CLICK 2] Reveal the $1,020 threshold and the A-ahead / V-ahead regions.</p>
+            <p>Two extra points must cover two thousand and forty dollars, so the threshold is one thousand and twenty dollars per point. Below it, A is ahead. Above it, V is ahead.</p>
+            <p class="reveal-cue" data-click="3">[CLICK 3] Reveal the $1,000 example: V trails by $40.</p>
+            <p>At one thousand dollars per point, V trails by forty dollars.</p>
+            <p class="reveal-cue" data-click="4">[CLICK 4] Reveal the $1,500 example: V leads by $960.</p>
+            <p>At fifteen hundred dollars per point, V leads by nine hundred and sixty dollars. Manual work remains another option, especially at low values.</p>
+            <p class="reveal-cue" data-click="5">[CLICK 5] Reveal the stakeholder question and the uncertainty / insight prompts.</p>
+            <p>Ask the lab director for a plausible range. If it crosses the threshold, we need more information to choose. For insight, ask which decision changes or which loss might be avoided. If no price is defensible, compare effort to a defined knowledge outcome. The model makes the uncertainty explicit.</p>
+          </template>
         </section>
         <!-- SLIDE 09: Repeated use can change the decision. -->
         <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-9" data-title="9. Repeated use can change the decision." data-budget="50">
@@ -685,13 +781,21 @@
             <p class="decision-lead">Spread the extra $2,000 development cost across independent workloads.</p>
             <div class="decision-three decision-reuse">
               <article class="decision-panel"><p class="decision-label">1 workload</p><strong>$1,020</strong><p>Required value per point.</p></article>
-              <article class="decision-panel"><p class="decision-label">10 workloads</p><strong>$120</strong><p>Required value per point.</p></article>
-              <article class="decision-panel"><p class="decision-label">100 workloads</p><strong>$30</strong><p>Required value per point.</p></article>
+              <article class="decision-panel" data-reveal="1"><p class="decision-label">10 workloads</p><strong>$120</strong><p>Required value per point.</p></article>
+              <article class="decision-panel" data-reveal="2"><p class="decision-label">100 workloads</p><strong>$30</strong><p>Required value per point.</p></article>
             </div>
-            <p class="decision-muted">Assume the same 2-point advantage and $40 extra running cost on every workload.</p>
-            <p class="decision-takeaway">Follow actual use to test whether this advantage lasts.</p></div>
+            <p class="decision-muted" data-reveal="3">Assume the same 2-point advantage and $40 extra running cost on every workload.</p>
+            <p class="decision-takeaway" data-reveal="3">Follow actual use to test whether this advantage lasts.</p></div>
           <footer class="talk-source">Illustrative reuse: development shared across independent workloads; no added learning or maintenance cost.</footer>
-          <template class="speaker-notes"><p>The one-workload comparison charges all development up front. Spread the extra two thousand dollars across ten independent workloads, and the required value falls from one thousand and twenty to one hundred and twenty dollars per point. Across a hundred, it falls to thirty.</p><p>That assumes the two-point advantage and forty-dollar extra running cost recur on each workload, with no extra learning or maintenance cost. Each workload must separately realize its benefit. Reusing one improved model does not create another accuracy gain. Follow actual use to see whether the projected advantage lasts.</p></template>
+          <template class="speaker-notes">
+            <p>The one-workload comparison charges all development up front.</p>
+            <p class="reveal-cue" data-click="1">[CLICK 1] Reveal 10 workloads: $120 per point.</p>
+            <p>Spread the extra two thousand dollars across ten independent workloads, and the required value falls from one thousand and twenty to one hundred and twenty dollars per point.</p>
+            <p class="reveal-cue" data-click="2">[CLICK 2] Reveal 100 workloads: $30 per point.</p>
+            <p>Across a hundred, it falls to thirty.</p>
+            <p class="reveal-cue" data-click="3">[CLICK 3] Reveal the recurring-benefit assumption and the need to follow actual use.</p>
+            <p>That assumes the two-point advantage and forty-dollar extra running cost recur on each workload, with no extra learning or maintenance cost. Each workload must separately realize its benefit. Reusing one improved model does not create another accuracy gain. Follow actual use to see whether the projected advantage lasts.</p>
+          </template>
         </section>
         <!-- SLIDE 10: What evidence would make the contribution convincing? -->
         <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-10" data-title="10. What evidence would make the contribution convincing?" data-budget="60">
@@ -699,21 +803,35 @@
           <div class="talk-body">
             <div class="decision-evidence">
               <div><p class="decision-label">01 · Compare</p><h3>Strong alternatives</h3><p>Use the same task and the strongest practical comparison workflows.</p></div>
-              <div><p class="decision-label">02 · Measure</p><h3>Outcomes and effort</h3><p>Measure output quality, expert effort, update recovery, and adoption costs.</p></div>
-              <div><p class="decision-label">03 · Follow up</p><h3>Value in practice</h3><p>Test whether the advantage survives uncertain values, real costs, and continued use.</p></div>
+              <div data-reveal="1"><p class="decision-label">02 · Measure</p><h3>Outcomes and effort</h3><p>Measure output quality, expert effort, update recovery, and adoption costs.</p></div>
+              <div data-reveal="2"><p class="decision-label">03 · Follow up</p><h3>Value in practice</h3><p>Test whether the advantage survives uncertain values, real costs, and continued use.</p></div>
             </div>
-            <p class="decision-takeaway">Use a common task and ledger to compare many systems.</p>
-            <p class="decision-muted">This paper supplies the framework and worked scenarios. Comparative measurements are the next step.</p></div>
-          <template class="speaker-notes"><p>This gives us an evaluation agenda. Compare strong alternatives on the same task. Measure the outcomes and effort in the ledger, including adoption and update recovery. Test whether the advantage survives plausible values and costs, then follow continued use.</p><p>For ten or twenty systems, use a common task and ledger so the comparisons mean something. The paper supplies the framework and worked scenarios. Comparative measurements are the next step. They would let us say where a proposed workflow adds value, and where an existing approach is the better investment.</p></template>
+            <p class="decision-takeaway" data-reveal="3">Use a common task and ledger to compare many systems.</p>
+            <p class="decision-muted" data-reveal="3">This paper supplies the framework and worked scenarios. Comparative measurements are the next step.</p></div>
+          <template class="speaker-notes">
+            <p>This gives us an evaluation agenda. Compare strong alternatives on the same task.</p>
+            <p class="reveal-cue" data-click="1">[CLICK 1] Reveal the outcomes and effort to measure.</p>
+            <p>Measure the outcomes and effort in the ledger, including adoption and update recovery.</p>
+            <p class="reveal-cue" data-click="2">[CLICK 2] Reveal follow-up: uncertain values and continued use.</p>
+            <p>Test whether the advantage survives plausible values and costs, then follow continued use.</p>
+            <p class="reveal-cue" data-click="3">[CLICK 3] Reveal the common-ledger agenda and the next empirical step.</p>
+            <p>For ten or twenty systems, use a common task and ledger so the comparisons mean something. The paper supplies the framework and worked scenarios. Comparative measurements are the next step. They would let us say where a proposed workflow adds value, and where an existing approach is the better investment.</p>
+          </template>
         </section>
         <!-- SLIDE 11: Make the value of a new workflow explicit. -->
         <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-11" data-title="11. Make the value of a new workflow explicit." data-budget="35">
           <header class="talk-top"><div><p class="talk-kicker">Cost–benefit modeling</p><h2 class="talk-heading">Make the value of a new workflow explicit.</h2></div><span class="talk-counter">11 / 11</span></header>
           <div class="talk-body">
             <div class="decision-opening"><p class="decision-big">What does it add?<br>When is that worth its cost?</p></div>
-            <div class="decision-closing-points"><span>Compare strong alternatives.</span><span>Show when the choice changes.</span><span>Measure value in use.</span></div>
-            <div class="closing-footer"><div><p class="closing-authors">Yixuan Wang, <strong>Rolando Garcia</strong>, Alex Endert, Ross Maciejewski</p><p class="decision-job">Rolando Garcia · On the faculty job market</p><p class="closing-contact"><a href="mailto:rolando.garcia@asu.edu">rolando.garcia@asu.edu</a> · <a href="https://rlnsanz.github.io" target="_blank" rel="noopener noreferrer">rlnsanz.github.io</a></p></div><p class="closing-thanks">Thank you.</p></div></div>
-          <template class="speaker-notes"><p>We want to judge a new workflow by what it adds over credible alternatives and whether that addition earns its cost. Cost–benefit modeling makes those comparisons explicit: where the choice changes, which assumptions matter, and what evidence is missing. Testing those claims in continued use is how we learn whether the contribution lasts. I&#x27;m on the faculty job market and would welcome a conversation. Thank you.</p></template>
+            <div class="decision-closing-points" data-reveal="1"><span>Compare strong alternatives.</span><span>Show when the choice changes.</span><span>Measure value in use.</span></div>
+            <div class="closing-footer" data-reveal="2"><div><p class="closing-authors">Yixuan Wang, <strong>Rolando Garcia</strong>, Alex Endert, Ross Maciejewski</p><p class="decision-job">Rolando Garcia · On the faculty job market</p><p class="closing-contact">Email: <a href="mailto:rolando.garcia@asu.edu">rolando.garcia@asu.edu</a> · Homepage: <a href="https://rlnsanz.github.io" target="_blank" rel="noopener noreferrer">rlnsanz.github.io</a></p></div><p class="closing-thanks">Thank you.</p></div></div>
+          <template class="speaker-notes">
+            <p>We want to judge a new workflow by what it adds over credible alternatives and whether that addition earns its cost.</p>
+            <p class="reveal-cue" data-click="1">[CLICK 1] Reveal the three closing actions.</p>
+            <p>Cost–benefit modeling makes those comparisons explicit: where the choice changes, which assumptions matter, and what evidence is missing. Testing those claims in continued use is how we learn whether the contribution lasts.</p>
+            <p class="reveal-cue" data-click="2">[CLICK 2] Reveal contact details, job-market note, and thanks. This is the final build.</p>
+            <p>I&#x27;m on the faculty job market and would welcome a conversation. Thank you.</p>
+          </template>
         </section>
         <!-- BACKUP 01: Assumptions behind the illustrative comparison -->
         <section data-backup="true" id="slide-12" class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 01. Assumptions behind the illustrative comparison">
@@ -2470,7 +2588,7 @@ Risk Reduction (B<sub>risk</sub>)
           <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400">Presenter Speaker Notes</span>
           <button class="text-xs font-semibold text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 cursor-pointer" onclick="toggleSpeakerNotes()">Close</button>
         </div>
-        <p class="whitespace-pre-line text-sm text-slate-700 dark:text-slate-200 leading-relaxed" id="speakerNotesContent"></p>
+        <div class="whitespace-pre-line text-sm text-slate-700 dark:text-slate-200 leading-relaxed" id="speakerNotesContent"></div>
       </aside>
       <!-- Presentation Stage Footer -->
     </div>
@@ -2480,7 +2598,7 @@ Risk Reduction (B<sub>risk</sub>)
         <div class="flex flex-wrap items-center justify-between gap-4 p-5 border-b border-slate-200 dark:border-slate-700 shrink-0">
           <div>
             <h2 class="text-xl font-bold text-slate-900 dark:text-slate-100" id="slideGridTitle">Slide overview <span class="text-sm font-medium text-slate-500 dark:text-slate-400" id="gridSlideCount"></span></h2>
-            <p class="text-sm text-slate-600 dark:text-slate-300 mt-1" id="slideGridHint">The 12-slide talk comes first; backup details follow. Normal navigation stops at the closing slide. Select any preview to jump.</p>
+            <p class="text-sm text-slate-600 dark:text-slate-300 mt-1" id="slideGridHint">The 11-slide talk comes first; backup details follow. Normal navigation stops at the closing slide. Select any preview to jump.</p>
           </div>
           <div class="flex items-center gap-3">
             <div class="inline-flex rounded-xl bg-slate-100 dark:bg-slate-900 p-1 text-xs font-semibold text-slate-600 dark:text-slate-300" role="group" aria-label="Preview size">
@@ -2537,7 +2655,7 @@ Risk Reduction (B<sub>risk</sub>)
         <section class="lg:col-span-8 p-7 rounded-2xl bg-slate-900/90 border border-slate-800 flex flex-col justify-between overflow-y-auto">
           <div>
             <div class="flex items-center justify-between mb-4">
-              <span class="text-xs font-bold uppercase tracking-wider text-indigo-400">Speaker Notes (Read Aloud)</span>
+              <span class="text-xs font-bold uppercase tracking-wider text-indigo-400">Speaker Notes · Boxed cues are click prompts</span>
               <div class="text-right"><p class="text-sm font-semibold text-emerald-400 tabular-nums" id="pPacing"></p><p class="text-xs font-semibold text-slate-400 tabular-nums mt-1" id="pWordCount"></p></div>
             </div>
             <div id="pNotesText" class="text-slate-100 leading-relaxed whitespace-pre-line font-normal" style="font-size: 26px;"></div>
@@ -2547,12 +2665,12 @@ Risk Reduction (B<sub>risk</sub>)
         <aside class="lg:col-span-4 flex flex-col gap-5">
           <div class="p-6 rounded-2xl bg-slate-900/90 border border-slate-800 flex-1 flex flex-col justify-between">
             <div>
-              <span class="text-xs font-bold uppercase tracking-wider text-emerald-400">Up Next</span>
+              <span id="pUpNextLabel" class="text-xs font-bold uppercase tracking-wider text-emerald-400">Up Next</span>
               <h2 id="pNextTitle" class="text-lg font-bold text-white mt-2"></h2>
               <p id="pNextPreview" class="text-sm text-slate-400 mt-3 leading-relaxed line-clamp-6"></p>
             </div>
             <div class="pt-4 border-t border-slate-800 text-xs text-slate-400 space-y-1">
-              <p><strong class="text-slate-200">Shortcuts:</strong> <kbd class="px-1.5 py-0.5 rounded bg-slate-800 text-slate-200">Left</kbd> / <kbd class="px-1.5 py-0.5 rounded bg-slate-800 text-slate-200">Right</kbd> or <kbd class="px-1.5 py-0.5 rounded bg-slate-800 text-slate-200">Space</kbd> syncs both screens automatically.</p>
+              <p><strong class="text-slate-200">Shortcuts:</strong> Right / Space reveals the next build, then advances. Left undoes a reveal, then returns to the previous slide. Both screens stay in sync.</p>
             </div>
           </div>
         </aside>
@@ -2574,6 +2692,12 @@ Risk Reduction (B<sub>risk</sub>)
       const MAIN_SLIDE_COUNT = Array.from(getSlides()).filter(slide => !slide.hasAttribute('data-backup')).length;
       const BACKUP_SLIDE_COUNT = SLIDE_TITLES.length - MAIN_SLIDE_COUNT;
       const SLIDE_BUDGETS = Array.from(getSlides(), slide => Number(slide.dataset.budget) || 0);
+      // Cache slide content before the presenter replaces the document body.
+      const REVEAL_GROUPS = Array.from(getSlides(), slide => Array.from(slide.querySelectorAll('[data-reveal]')));
+      const REVEAL_COUNTS = REVEAL_GROUPS.map(elements => Math.max(0, ...elements.map(el => Number(el.dataset.reveal))));
+      const NOTE_PARAGRAPHS = Array.from(getSlides(), slide =>
+        Array.from(slide.querySelector('.speaker-notes')?.content.querySelectorAll('p') || [])
+      );
       const formatDuration = seconds => Math.floor(seconds / 60) + ':' + String(seconds % 60).padStart(2, '0');
       const slideLabel = idx => idx < MAIN_SLIDE_COUNT
         ? 'Slide ' + String(idx + 1).padStart(2, '0') + ' / ' + MAIN_SLIDE_COUNT
@@ -2637,48 +2761,91 @@ Risk Reduction (B<sub>risk</sub>)
 
       // Navigation, theme, notes, and zoom.
       let activeIndex = 0;
+      let revealStep = 0;
+      let presenterRenderer = null;
       let lastMainIndex = 0;
       let currentZoom = 1.0;
       let slideGridReturnFocus = null;
       let slideGridResizeObserver = null;
 
-      function goToSlide(idx) {
+      function renderSpeakerNotes(container, idx) {
+        if (!container) return;
+        const paragraphs = NOTE_PARAGRAPHS[idx].map(source => {
+          const paragraph = source.cloneNode(true);
+          paragraph.textContent = paragraph.textContent.trim().replace(/\s*\n\s*/g, ' ');
+          if (paragraph.hasAttribute('data-click')) {
+            const click = Number(paragraph.dataset.click);
+            paragraph.dataset.cueState = click <= revealStep ? 'done' : click === revealStep + 1 ? 'next' : 'pending';
+            if (click === revealStep + 1) paragraph.setAttribute('aria-current', 'step');
+          }
+          return paragraph;
+        });
+        container.replaceChildren(...paragraphs);
+      }
+
+      function goToSlide(idx, step = 0, shouldBroadcast = true) {
+        if (!Number.isInteger(idx) || !Number.isInteger(step)) return;
+        activeIndex = Math.max(0, Math.min(idx, SLIDE_TITLES.length - 1));
+        revealStep = Math.max(0, Math.min(step, REVEAL_COUNTS[activeIndex]));
+        if (activeIndex < MAIN_SLIDE_COUNT) lastMainIndex = activeIndex;
+        if (presenterRenderer) {
+          presenterRenderer();
+        } else {
+          renderAudienceState();
+        }
+        if (typeof history !== 'undefined' && history.replaceState) {
+          history.replaceState(null, '', '#slide-' + (activeIndex + 1) + (revealStep ? '/reveal-' + revealStep : ''));
+        }
+        if (shouldBroadcast) broadcastSlideChange(activeIndex, revealStep);
+        closeSlideGridModal();
+      }
+
+      function renderAudienceState() {
         const slides = getSlides();
         if (!slides.length) return;
-        activeIndex = Math.max(0, Math.min(idx, slides.length - 1));
         slides.forEach((slide, i) => {
           slide.classList.toggle('hidden', i !== activeIndex);
         });
+        REVEAL_GROUPS[activeIndex].forEach(el => {
+          const pending = Number(el.dataset.reveal) > revealStep;
+          el.classList.toggle('reveal-pending', pending);
+          el.toggleAttribute('inert', pending);
+          if (pending) el.setAttribute('aria-hidden', 'true');
+          else el.removeAttribute('aria-hidden');
+        });
+        const hasReveal = revealStep < REVEAL_COUNTS[activeIndex];
         const counter = byId('slideCounterBadge');
-        if (activeIndex < MAIN_SLIDE_COUNT) lastMainIndex = activeIndex;
         if (counter) counter.textContent = activeIndex < MAIN_SLIDE_COUNT
-          ? (activeIndex + 1) + ' / ' + MAIN_SLIDE_COUNT
+          ? (activeIndex + 1) + ' / ' + MAIN_SLIDE_COUNT + ' · Reveal ' + revealStep + '/' + REVEAL_COUNTS[activeIndex]
           : 'B' + (activeIndex - MAIN_SLIDE_COUNT + 1) + ' / ' + BACKUP_SLIDE_COUNT;
-        byId('prevSlideButton').disabled = stepSlideIndex(activeIndex, -1) === activeIndex;
-        byId('nextSlideButton').disabled = stepSlideIndex(activeIndex, 1) === activeIndex;
+        byId('prevSlideButton').disabled = revealStep === 0 && stepSlideIndex(activeIndex, -1) === activeIndex;
+        byId('prevSlideButton').title = revealStep ? 'Undo reveal (Left Arrow)' : 'Previous slide (Left Arrow)';
+        byId('nextSlideButton').disabled = !hasReveal && stepSlideIndex(activeIndex, 1) === activeIndex;
+        byId('nextSlideButton').textContent = hasReveal ? 'Reveal' : 'Next';
+        byId('nextSlideButton').title = hasReveal ? 'Next reveal (Right Arrow / Space / Click)' : 'Next slide (Right Arrow / Space / Click)';
         const dockTitle = byId('dockSlideTitle');
         if (dockTitle && SLIDE_TITLES[activeIndex]) {
           dockTitle.textContent = SLIDE_TITLES[activeIndex];
         }
-        const notesEl = byId('speakerNotesContent');
-        if (notesEl && SPEAKER_NOTES[activeIndex]) {
-          notesEl.textContent = SPEAKER_NOTES[activeIndex];
-        }
-        if (typeof history !== 'undefined' && history.replaceState) {
-          history.replaceState(null, '', '#slide-' + (activeIndex + 1));
-        }
-        if (typeof broadcastSlideChange === 'function') {
-          broadcastSlideChange(activeIndex);
-        }
-        closeSlideGridModal();
+        renderSpeakerNotes(byId('speakerNotesContent'), activeIndex);
       }
 
       function nextSlide() {
-        goToSlide(stepSlideIndex(activeIndex, 1));
+        if (revealStep < REVEAL_COUNTS[activeIndex]) {
+          goToSlide(activeIndex, revealStep + 1);
+        } else {
+          const next = stepSlideIndex(activeIndex, 1);
+          if (next !== activeIndex) goToSlide(next);
+        }
       }
 
       function prevSlide() {
-        goToSlide(stepSlideIndex(activeIndex, -1));
+        if (revealStep > 0) {
+          goToSlide(activeIndex, revealStep - 1);
+        } else {
+          const previous = stepSlideIndex(activeIndex, -1);
+          if (previous !== activeIndex) goToSlide(previous, REVEAL_COUNTS[previous]);
+        }
       }
 
       function toggleTheme() {
@@ -2746,6 +2913,11 @@ Risk Reduction (B<sub>risk</sub>)
         stage.classList.remove('w-full', 'h-full', 'flex-1', 'relative');
         const clone = slide.cloneNode(true);
         clone.classList.remove('hidden');
+        clone.querySelectorAll('[data-reveal]').forEach(el => {
+          el.classList.remove('reveal-pending');
+          el.removeAttribute('aria-hidden');
+          el.removeAttribute('inert');
+        });
 
         // Keep SVG markers and other fragment references local to this preview.
         const elements = [clone, ...clone.querySelectorAll('*')];
@@ -2863,10 +3035,10 @@ Risk Reduction (B<sub>risk</sub>)
       // URL navigation and keyboard shortcuts.
       function syncFromHash() {
         const h = window.location.hash || '';
-        const m = h.match(/^#slide-(\d+)$/);
+        const m = h.match(/^#slide-(\d+)(?:\/reveal-(\d+))?$/);
         if (m) {
           const idx = parseInt(m[1], 10) - 1;
-          goToSlide(idx);
+          goToSlide(idx, Number(m[2]) || 0);
         } else {
           goToSlide(0);
         }
@@ -2875,7 +3047,11 @@ Risk Reduction (B<sub>risk</sub>)
       window.addEventListener('hashchange', syncFromHash);
 
       document.addEventListener('keydown', (e) => {
-        if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'SELECT')) return;
+        if (e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey) return;
+        if (e.target?.closest('input, textarea, select, [contenteditable="true"]')) return;
+        // Let focused controls handle Space/Enter without also advancing the deck.
+        if ((e.key === ' ' || e.key === 'Enter') && e.target?.closest('button, a')) return;
+        if (e.repeat && ['ArrowRight', 'ArrowLeft', ' '].includes(e.key)) return;
         const gridModal = byId('slideGridModal');
         if (gridModal && !gridModal.classList.contains('hidden')) {
           if (e.key === 'Escape' || e.key.toLowerCase() === 'g') {
@@ -2906,6 +3082,16 @@ Risk Reduction (B<sub>risk</sub>)
           }
           return;
         }
+        const popover = byId('customPopoverModal');
+        if (popover && !popover.classList.contains('hidden')) {
+          if (e.key === 'Escape') { e.preventDefault(); closeCustomPopover(); }
+          return;
+        }
+        if (presenterRenderer) {
+          const action = { ArrowRight: nextSlide, ' ': nextSlide, ArrowLeft: prevSlide }[e.key];
+          if (action) { e.preventDefault(); action(); }
+          return;
+        }
         const shortcuts = {
           arrowright: nextSlide,
           ' ': nextSlide,
@@ -2928,6 +3114,13 @@ Risk Reduction (B<sub>risk</sub>)
         }
       });
 
+      // Only the audience canvas advances on click; links and controls keep their behavior.
+      byId('slideCanvas').addEventListener('click', event => {
+        if (event.target.closest('a, button, input, textarea, select, [onclick], [contenteditable="true"]')) return;
+        if (window.getSelection()?.toString()) return;
+        nextSlide();
+      });
+
       window.addEventListener('resize', applyZoom);
       window.addEventListener('resize', updateSlideGridPreviews);
       document.addEventListener('fullscreenchange', () => {
@@ -2936,20 +3129,21 @@ Risk Reduction (B<sub>risk</sub>)
 
 
       // Dual-Screen Presenter Mode Sync (BroadcastChannel + localStorage)
-      const SYNC_CHANNEL_NAME = 'ivml_slides_presenter_sync_v1';
-      const SYNC_STORAGE_KEY = 'ivml_slides_active_index_v1';
+      const SYNC_CHANNEL_NAME = 'ivml_slides_presenter_sync_v2';
+      const SYNC_STORAGE_KEY = 'ivml_slides_state_v2';
       let syncChannel = null;
       try {
         syncChannel = new BroadcastChannel(SYNC_CHANNEL_NAME);
       } catch (e) {}
 
-      function broadcastSlideChange(idx) {
+      function broadcastSlideChange(idx, step) {
+        const state = { type: 'SLIDE_CHANGE', index: idx, step };
         try {
-          localStorage.setItem(SYNC_STORAGE_KEY, String(idx));
+          localStorage.setItem(SYNC_STORAGE_KEY, JSON.stringify(state));
         } catch (e) {}
         if (syncChannel) {
           try {
-            syncChannel.postMessage({ type: 'SLIDE_CHANGE', index: idx });
+            syncChannel.postMessage(state);
           } catch (e) {}
         }
       }
@@ -3015,95 +3209,89 @@ Risk Reduction (B<sub>risk</sub>)
 
       function openPresenterWindow() {
         const baseUrl = window.location.href.split('?')[0].split('#')[0];
-        const presenterUrl = baseUrl + '?presenter=1#slide-' + (activeIndex + 1);
+        const presenterUrl = baseUrl + '?presenter=1#slide-' + (activeIndex + 1) + '/reveal-' + revealStep;
         window.open(presenterUrl, 'IVMLPresenterConsole', 'width=1280,height=800,menubar=no,toolbar=no,location=no,status=no');
       }
 
       // Both windows accept the same BroadcastChannel and localStorage messages.
-      function listenForSlideChanges(getIndex, updateSlide) {
-        const receive = index => {
-          if (index !== getIndex()) updateSlide(index);
+      function listenForSlideChanges() {
+        const receive = data => {
+          if (!data || data.type !== 'SLIDE_CHANGE' || !Number.isInteger(data.index) || !Number.isInteger(data.step)) return;
+          if (data.index !== activeIndex || data.step !== revealStep) goToSlide(data.index, data.step, false);
         };
         if (syncChannel) {
           syncChannel.onmessage = ({ data }) => {
-            if (data && data.type === 'SLIDE_CHANGE' && typeof data.index === 'number') {
-              receive(data.index);
-            }
+            receive(data);
           };
         }
         window.addEventListener('storage', event => {
           if (event.key === SYNC_STORAGE_KEY && event.newValue !== null) {
-            const index = parseInt(event.newValue, 10);
-            if (!isNaN(index)) receive(index);
+            try { receive(JSON.parse(event.newValue)); } catch (e) {}
           }
         });
       }
 
-      listenForSlideChanges(() => activeIndex, goToSlide);
+      listenForSlideChanges();
 
       // Dedicated Presenter View Console when opened with ?presenter=1
       function initPresenterConsoleIfRequested() {
         const params = new URLSearchParams(window.location.search);
         if (params.get('presenter') !== '1') return;
 
-        let pIndex = 0;
-        const hashMatch = (window.location.hash || '').match(/^#slide-(\d+)$/);
-        if (hashMatch) {
-          pIndex = Math.max(0, Math.min(SPEAKER_NOTES.length - 1, parseInt(hashMatch[1], 10) - 1));
-        } else {
-          try {
-            const saved = parseInt(localStorage.getItem(SYNC_STORAGE_KEY) || '0', 10);
-            if (!isNaN(saved)) pIndex = Math.max(0, Math.min(SPEAKER_NOTES.length - 1, saved));
-          } catch (e) {}
-        }
-
         let noteFontSize = 26;
         let timerSeconds = 0;
         let timerRunning = true;
 
         document.title = 'Presenter Notes -- Cost-Benefit Modeling of IVML Systems';
-        document.body.className = 'bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between p-6 select-none';
+        document.body.className = 'bg-slate-950 text-slate-100 h-screen overflow-hidden flex flex-col justify-between p-6 select-none';
         const presenterContent = byId('presenterTemplate').content.cloneNode(true);
         document.body.replaceChildren(presenterContent);
 
-        function renderPresenterState(idx, shouldBroadcast) {
-          pIndex = Math.max(0, Math.min(SPEAKER_NOTES.length - 1, idx));
-          const total = SPEAKER_NOTES.length;
-          const note = SPEAKER_NOTES[pIndex] || '';
+        function renderPresenterState() {
+          const note = NOTE_PARAGRAPHS[activeIndex].filter(p => !p.hasAttribute('data-click')).map(p => p.textContent).join(' ');
+          const count = REVEAL_COUNTS[activeIndex];
+          const hasReveal = revealStep < count;
           const words = note.trim() ? note.trim().split(/\s+/).length : 0;
 
-          byId('pSlideBadge').textContent = slideLabel(pIndex);
-          if (pIndex < MAIN_SLIDE_COUNT) lastMainIndex = pIndex;
-          byId('pReturnToTalk').classList.toggle('hidden', pIndex < MAIN_SLIDE_COUNT);
-          const finishBy = SLIDE_BUDGETS.slice(0, pIndex + 1).reduce((sum, seconds) => sum + seconds, 0);
-          byId('pPacing').textContent = pIndex < MAIN_SLIDE_COUNT
-            ? 'Aim ' + formatDuration(SLIDE_BUDGETS[pIndex]) + ' | Finish by ' + formatDuration(finishBy)
+          byId('pSlideBadge').textContent = slideLabel(activeIndex) + (count ? ' · Reveal ' + revealStep + '/' + count : '');
+          if (activeIndex < MAIN_SLIDE_COUNT) lastMainIndex = activeIndex;
+          byId('pReturnToTalk').classList.toggle('hidden', activeIndex < MAIN_SLIDE_COUNT);
+          const finishBy = SLIDE_BUDGETS.slice(0, activeIndex + 1).reduce((sum, seconds) => sum + seconds, 0);
+          byId('pPacing').textContent = activeIndex < MAIN_SLIDE_COUNT
+            ? 'Aim ' + formatDuration(SLIDE_BUDGETS[activeIndex]) + ' | Finish by ' + formatDuration(finishBy)
             : 'Backup material | Outside the 10-minute talk';
-          byId('pPrevBtn').disabled = stepSlideIndex(pIndex, -1) === pIndex;
-          byId('pNextBtn').disabled = stepSlideIndex(pIndex, 1) === pIndex;
-          byId('pSlideTitle').textContent = SLIDE_TITLES[pIndex] || ('Slide ' + (pIndex + 1));
-          byId('pNotesText').textContent = note;
+          byId('pPrevBtn').disabled = revealStep === 0 && stepSlideIndex(activeIndex, -1) === activeIndex;
+          byId('pNextBtn').disabled = !hasReveal && stepSlideIndex(activeIndex, 1) === activeIndex;
+          byId('pPrevBtn').textContent = revealStep ? 'Undo Reveal' : 'Previous Slide';
+          byId('pNextBtn').textContent = hasReveal ? 'Reveal ' + (revealStep + 1) + ' / ' + count : 'Next Slide';
+          byId('pSlideTitle').textContent = SLIDE_TITLES[activeIndex] || ('Slide ' + (activeIndex + 1));
+          const notesEl = byId('pNotesText');
+          // Preserve the reading position when only the current click cue changes.
+          const notesPane = notesEl.closest('section');
+          const scrollTop = notesPane.scrollTop;
+          const sameSlide = notesEl.dataset.slide === String(activeIndex);
+          renderSpeakerNotes(notesEl, activeIndex);
+          notesEl.dataset.slide = String(activeIndex);
+          notesPane.scrollTop = sameSlide ? scrollTop : 0;
           byId('pWordCount').textContent = words + ' words (~' + Math.max(10, Math.round((words / 120) * 60)) + 's speaking at 120 wpm)';
 
-          if (stepSlideIndex(pIndex, 1) !== pIndex) {
-            byId('pNextTitle').textContent = SLIDE_TITLES[pIndex + 1] || ('Slide ' + (pIndex + 2));
-            byId('pNextPreview').textContent = SPEAKER_NOTES[pIndex + 1] || '';
+          byId('pUpNextLabel').textContent = hasReveal ? 'Next reveal · Click ' + (revealStep + 1) : 'Up Next';
+          if (hasReveal) {
+            const cue = NOTE_PARAGRAPHS[activeIndex].find(p => Number(p.dataset.click) === revealStep + 1);
+            byId('pNextTitle').textContent = cue?.textContent.replace(/^\[CLICK \d+\]\s*/, '') || 'Reveal next group';
+            byId('pNextPreview').textContent = 'This click reveals content on the current slide. After the last reveal, the next click advances to the next slide.';
+          } else if (stepSlideIndex(activeIndex, 1) !== activeIndex) {
+            byId('pNextTitle').textContent = SLIDE_TITLES[activeIndex + 1] || ('Slide ' + (activeIndex + 2));
+            byId('pNextPreview').textContent = SPEAKER_NOTES[activeIndex + 1] || '';
           } else {
-            byId('pNextTitle').textContent = pIndex < MAIN_SLIDE_COUNT ? 'End of the talk' : 'End of backup material';
+            byId('pNextTitle').textContent = activeIndex < MAIN_SLIDE_COUNT ? 'End of the talk' : 'End of backup material';
             byId('pNextPreview').textContent = 'Ready for questions. Backup slides are available through Grid in the presentation window.';
-          }
-
-          if (typeof history !== 'undefined' && history.replaceState) {
-            history.replaceState(null, '', '?presenter=1#slide-' + (pIndex + 1));
-          }
-          if (shouldBroadcast) {
-            broadcastSlideChange(pIndex);
           }
         }
 
-        byId('pPrevBtn').onclick = () => renderPresenterState(stepSlideIndex(pIndex, -1), true);
-        byId('pNextBtn').onclick = () => renderPresenterState(stepSlideIndex(pIndex, 1), true);
-        byId('pReturnToTalk').onclick = () => renderPresenterState(lastMainIndex, true);
+        byId('pPrevBtn').onclick = prevSlide;
+        byId('pNextBtn').onclick = nextSlide;
+        byId('pReturnToTalk').onclick = () => goToSlide(lastMainIndex);
         function adjustNoteFont(delta) {
           noteFontSize = Math.max(18, Math.min(44, noteFontSize + delta));
           byId('pNotesText').style.fontSize = noteFontSize + 'px';
@@ -3134,27 +3322,16 @@ Risk Reduction (B<sub>risk</sub>)
           }
         }, 1000);
 
-        document.addEventListener('keydown', (e) => {
-          if (e.key === 'ArrowRight' || e.key === ' ') {
-            e.preventDefault();
-            renderPresenterState(stepSlideIndex(pIndex, 1), true);
-          } else if (e.key === 'ArrowLeft') {
-            e.preventDefault();
-            renderPresenterState(stepSlideIndex(pIndex, -1), true);
-          }
-        }, true);
-
-        listenForSlideChanges(() => pIndex, index => renderPresenterState(index, false));
-
-        renderPresenterState(pIndex, false);
+        presenterRenderer = renderPresenterState;
+        renderPresenterState();
       }
 
       // Initialization runs after the embedded assets and styling library are ready.
       document.addEventListener('DOMContentLoaded', () => {
         loadEmbeddedImages();
+        syncFromHash();
         initPresenterConsoleIfRequested();
         applyZoom();
-        syncFromHash();
       });
     </script>
 
