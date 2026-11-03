@@ -15,7 +15,7 @@ There are 11 main slides, 23 backups, and 1,061 words of main-talk speaker notes
 
 | Slide | Message | Target | Finish by |
 | --- | --- | --- | --- |
-| 1 | When does a new visualization earn its place? | 25s | 0:25 |
+| 1 | Cost-Benefit Modeling of IVML Systems | 25s | 0:25 |
 | 2 | Showing that a system helps leaves a comparison unanswered. | 40s | 1:05 |
 | 3 | You need results. Which workflow should you fund? | 55s | 2:00 |
 | 4 | Agree on the task before comparing the tools. | 45s | 2:45 |
@@ -27,7 +27,7 @@ There are 11 main slides, 23 backups, and 1,061 words of main-talk speaker notes
 | 10 | What evidence would make the contribution convincing? | 60s | 8:55 |
 | 11 | A first framework for comparing contributions. | 35s | 9:30 |
 
-Slide 3 introduces the lab director’s decision and three workflows: manual work, an existing ML-assisted editing workflow, and the proposed MitoVis workflow. Slide 4 defines a fair comparison. Slides 5–6 build the ledger from that decision, including expert reorientation after model updates. Slides 7–9 work through an explicitly hypothetical alternative, a value threshold, and reuse. Slide 10 states the evidence needed to evaluate the contribution. The title and closing slides include the requested faculty-job-market line.
+Slide 1 foregrounds the full paper title, with the stakeholder question as a subtitle. Slide 3 introduces the lab director’s decision and three workflows: manual work, an existing ML-assisted editing workflow, and the proposed MitoVis workflow. Slide 4 defines a fair comparison. Slides 5–6 build the ledger from that decision, including expert reorientation after model updates. Slides 7–9 work through an explicitly hypothetical alternative, a value threshold, and reuse. Slide 10 states the evidence needed to evaluate the contribution. The closing thank-you slide includes the faculty-job-market line.
 
 The evidence boundary is explicit throughout. Source: [IVML_Cost_Benefit_2026_VIS.pdf](IVML_Cost_Benefit_2026_VIS.pdf), especially Sections 4 and 5.1. The following inputs have different evidential status:
 
