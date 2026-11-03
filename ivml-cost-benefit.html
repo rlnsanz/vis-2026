@@ -68,7 +68,8 @@
         line-height: 1.4;
         white-space: normal;
       }
-      .reveal-cue[data-cue-state="done"] { opacity: 0.5; }
+      .reveal-cue[data-cue-state="done"] { border-left-color: #64748b; }
+      .reveal-cue[data-cue-state="done"]::before { content: "✓ "; }
       .reveal-cue[data-cue-state="next"] { outline: 2px solid #818cf8; }
       .dark .reveal-cue, #pNotesText .reveal-cue {
         color: #c7d2fe;
@@ -469,7 +470,7 @@
       .decision-title .talk-body { justify-content: space-evenly; }
       .decision-title .decision-big { font-size: 42px; line-height: 1.25; }
       .decision-title-footer { display: flex; justify-content: space-between; align-items: end; gap: 20px; padding-top: 22px; border-top: 1px solid #cbd5e1; }
-      .decision-job { font-size: 26px; line-height: 1.4; color: #4338ca; font-weight: 700; margin-top: 12px !important; }
+      .decision-job { font-size: 36px; line-height: 1.4; color: #4338ca; font-weight: 700; margin-top: 12px !important; }
       .decision-logos { display: flex; align-items: center; gap: 24px; padding: 15px; border-radius: 12px; background: #fff; flex-shrink: 0; }
       .decision-logos img { width: auto; max-width: 220px; height: 50px; object-fit: contain; }
       .decision-case { display: grid; grid-template-columns: 1.15fr 1fr; gap: 40px; align-items: center; }
@@ -520,7 +521,9 @@
       .decision-closing-points { display: flex; justify-content: space-between; gap: 24px; font-size: 28px; line-height: 1.35; font-weight: 650; }
       .decision-closing-points span { border-top: 3px solid #a5b4fc; padding-top: 16px; }
       .decision-slide .closing-footer { padding-top: 18px; }
-      .decision-slide .closing-authors, .decision-slide .closing-contact { font-size: 26px; }
+      .decision-slide .closing-authors { font-size: 26px; }
+      .decision-slide .closing-contact { font-size: 36px; line-height: 1.35; font-weight: 600; }
+      .closing-contact > span { display: block; }
       .decision-arithmetic { font-size: 30px; line-height: 1.5; display: flex; flex-direction: column; gap: 12px; }
       .dark .decision-panel { background: #172033; border-color: #475569; }
       .dark .decision-highlight, .dark .decision-result-row { background: #24264a; }
@@ -538,6 +541,50 @@
       .dark .decision-result-row td.decision-negative { color: #fda4af; }
       .dark .decision-title-footer, .dark .decision-facts, .dark .decision-metrics,
       .dark .decision-table th, .dark .decision-table td, .dark .decision-evidence > div { border-color: #475569; }
+
+      /* Projection legibility for the technical backup slides. Slide units are
+         measured on the 1600 × 900 canvas, before fitting it to the display. */
+      .legacy-backup { font-size: 24px; line-height: 1.3; }
+      .legacy-backup .text-\[10px\], .legacy-backup .text-\[11px\],
+      .legacy-backup .text-xs, .legacy-backup .text-sm {
+        font-size: 24px !important; line-height: 1.3 !important;
+      }
+      .legacy-backup .text-base, .legacy-backup .text-lg {
+        font-size: 26px !important; line-height: 1.3 !important;
+      }
+      .legacy-backup .text-xl { font-size: 28px !important; line-height: 1.3 !important; }
+      .legacy-backup .text-2xl { font-size: 32px !important; line-height: 1.25 !important; }
+      .legacy-backup h2[class] { font-size: 36px !important; line-height: 1.15 !important; }
+      .legacy-backup h3[class] { font-size: 30px !important; line-height: 1.25 !important; }
+      .legacy-backup svg text[class] { font-size: 30px !important; }
+      .legacy-backup svg text.math-serif { font-size: 32px !important; }
+      .legacy-backup svg text.text-xl { font-size: 34px !important; }
+      .legacy-backup > div:first-child { gap: 24px; align-items: start; flex-shrink: 0; }
+      .legacy-backup > div:first-child > span:last-child { white-space: nowrap; padding-top: 6px; }
+      .legacy-backup > div:first-child > div { min-width: 0; }
+      .legacy-backup div.math-serif.text-xl { font-size: 26px !important; }
+      #slide-30 svg text[class] { font-size: 18px !important; }
+      #slide-31 .py-4 { padding-top: 12px; padding-bottom: 12px; }
+      #slide-31 > .flex-1 { gap: 12px; }
+      .legacy-backup table { table-layout: fixed; }
+      .legacy-backup table th, .legacy-backup table td { padding: 18px; }
+      .legacy-backup table .math-serif { white-space: normal; }
+      .legacy-backup [class~="bg-emerald-600"] { background-color: #047857; }
+      .legacy-backup [class~="bg-sky-600"] { background-color: #0369a1; }
+      .figure-expand { font-size: 24px; line-height: 1.35; font-weight: 650; color: #3730a3; text-decoration: underline; text-underline-offset: 4px; cursor: zoom-in; }
+      .dark .figure-expand { color: #c7d2fe; }
+      .figure-expand:focus-visible { outline: 3px solid #4f46e5; outline-offset: 4px; }
+      #figureDialog { width: 94vw; max-width: 1800px; height: 94vh; max-height: 1100px; padding: 24px; border: 2px solid #475569; border-radius: 16px; background: #f8fafc; color: #0f172a; }
+      #figureDialog[open] { display: flex; flex-direction: column; gap: 20px; }
+      #figureDialog::backdrop { background: #0f172acc; }
+      .figure-dialog-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; flex-shrink: 0; }
+      #figureDialogTitle { font-size: 26px; line-height: 1.3; font-weight: 700; flex: 1; min-width: 260px; }
+      .figure-dialog-actions { display: flex; align-items: center; gap: 12px; }
+      .figure-dialog-actions button { padding: 8px 14px; border: 2px solid #475569; border-radius: 8px; font-size: 24px; line-height: 1.3; font-weight: 650; background: #fff; color: #0f172a; cursor: pointer; }
+      .figure-dialog-actions button:focus-visible { outline: 3px solid #4338ca; outline-offset: 3px; }
+      #figureZoomLabel { font-size: 24px; min-width: 64px; text-align: center; }
+      .figure-dialog-content { flex: 1; min-height: 0; overflow: auto; background: #fff; border: 1px solid #64748b; }
+      #figureDialogImage { display: block; height: auto; max-width: none; margin: 0 auto; }
     </style>
   </head>
   <body class="w-screen h-screen overflow-hidden m-0 p-0 flex items-center justify-center bg-slate-200/80 dark:bg-slate-900 text-slate-900 dark:text-slate-100 antialiased selection:bg-indigo-500 selection:text-white">
@@ -824,7 +871,7 @@
           <div class="talk-body">
             <div class="decision-opening"><p class="decision-big">What does it add?<br>When is that worth its cost?</p></div>
             <div class="decision-closing-points" data-reveal="1"><span>Compare strong alternatives.</span><span>Show when the choice changes.</span><span>Measure value in use.</span></div>
-            <div class="closing-footer" data-reveal="2"><div><p class="closing-authors">Yixuan Wang, <strong>Rolando Garcia</strong>, Alex Endert, Ross Maciejewski</p><p class="decision-job">Rolando Garcia · On the faculty job market</p><p class="closing-contact">Email: <a href="mailto:rolando.garcia@asu.edu">rolando.garcia@asu.edu</a> · Homepage: <a href="https://rlnsanz.github.io" target="_blank" rel="noopener noreferrer">rlnsanz.github.io</a></p></div><p class="closing-thanks">Thank you.</p></div></div>
+            <div class="closing-footer" data-reveal="2"><div><p class="closing-authors">Yixuan Wang, <strong>Rolando Garcia</strong>, Alex Endert, Ross Maciejewski</p><p class="decision-job">Rolando Garcia · On the faculty job market</p><p class="closing-contact"><span>Email: <a href="mailto:rolando.garcia@asu.edu">rolando.garcia@asu.edu</a></span><span>Homepage: <a href="https://rlnsanz.github.io" target="_blank" rel="noopener noreferrer">rlnsanz.github.io</a></span></p></div><p class="closing-thanks">Thank you.</p></div></div>
           <template class="speaker-notes">
             <p>We want to judge a new workflow by what it adds over credible alternatives and whether that addition earns its cost.</p>
             <p class="reveal-cue" data-click="1">[CLICK 1] Reveal the three closing actions.</p>
@@ -856,7 +903,7 @@
             <div class="paper-figure-layout">
               <figure class="paper-figure">
                 <img data-image="paper-fig2-break-even" alt="Figure 2, left panel: on logarithmic axes, total benefit from avoided manual work and model improvement crosses total cost of $10,123 at about $889 per percentage point of accuracy gain."/>
-                <figcaption><span class="paper-legend">Blue: benefit</span><span class="paper-legend paper-legend--cost">Red: total cost</span></figcaption>
+                <figcaption><span class="paper-legend">Benefit curve</span><span class="paper-legend paper-legend--cost">Flat total cost</span><button type="button" class="figure-expand" onclick="openFigure('paper-fig2-break-even')">Enlarge figure</button></figcaption>
               </figure>
               <div class="paper-explanation">
                 <div><h3>Correct data + fine-tune</h3><p class="paper-context">77.0% -> 87.1% accuracy</p><p>Reported classifier gain across three iterations.</p></div>
@@ -875,7 +922,7 @@
             <div class="paper-figure-layout">
               <figure class="paper-figure">
                 <img data-image="paper-fig3-break-even" alt="Figure 3, left panel: under full failure identification and prevention, avoided loss crosses total cost at a failure value of approximately $10,038. Both axes use logarithmic scales."/>
-                <figcaption><span class="paper-legend">Blue: benefit</span><span class="paper-legend paper-legend--cost">Red: total cost</span></figcaption>
+                <figcaption><span class="paper-legend">Benefit curve</span><span class="paper-legend paper-legend--cost">Flat total cost</span><button type="button" class="figure-expand" onclick="openFigure('paper-fig3-break-even')">Enlarge figure</button></figcaption>
               </figure>
               <div class="paper-explanation">
                 <div><h3>Inspect a fixed model</h3><p>Explore data poisoning vulnerabilities.<br>Value comes from preventing failure.</p></div>
@@ -894,7 +941,7 @@
             <div class="paper-figure-layout">
               <figure class="paper-figure">
                 <img data-image="paper-fig3-stopping" alt="Figure 3, right panel: declining marginal benefits cross rising marginal cost at approximately 103, 150 and 291 minutes under three assumed information-discovery rates."/>
-                <figcaption><span class="paper-legend">Blue: added benefit</span><span class="paper-legend paper-legend--cost">Red: added cost</span></figcaption>
+                <figcaption><span class="paper-legend">Falling benefit curves</span><span class="paper-legend paper-legend--cost">Rising cost</span><button type="button" class="figure-expand" onclick="openFigure('paper-fig3-stopping')">Enlarge figure</button></figcaption>
               </figure>
               <div class="paper-explanation">
                 <div><h3>Crossing = stopping point</h3><p>Follow the middle blue curve:<br>added benefit meets cost at ~150 min.</p></div>
@@ -913,7 +960,7 @@
             <div class="paper-figure-layout paper-figure-layout--workflow">
               <figure class="paper-figure">
                 <img data-image="paper-fig1-workflow" alt="Original Figure 1: data D and model M feed learning L and derived outputs D-prime; visualization V, image I and perception P build knowledge K. Interaction E returns to data, model or view specification S."/>
-                <figcaption>Three targets: change data, steer the model, or explore a fixed model.</figcaption>
+                <figcaption>Three targets: change data, steer the model, or explore a fixed model.<button type="button" class="figure-expand" onclick="openFigure('paper-fig1-workflow')">Enlarge figure</button></figcaption>
               </figure>
               <div class="paper-explanation">
                 <div class="paper-target paper-target--data"><h3>Blue -> Data D</h3><p>Fix labels.<br>Retrain, then review predictions.</p></div>
@@ -926,14 +973,14 @@
           <template class="speaker-notes"><p>The workflow has three interaction targets. Changing data can trigger training and review. Steering model state can also require re-optimization and review. Changing only the view leaves the model fixed and builds understanding. This taxonomy maps each workflow to the cost and benefit terms in the ledger. It is available here for technical questions.</p></template>
         </section>
         <!-- BACKUP 07: Theoretical Foundation: Van Wijk's Visualization Model -->
-        <section id="slide-18" class="slide-section hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
+        <section id="slide-18" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
           data-title="Backup 07. Theoretical Foundation: Van Wijk's Visualization Model" data-backup="true">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex items-center justify-between">
             <div>
-              <span class="text-xs font-bold text-sky-600 dark:text-sky-400">02. Theoretical Foundation (Part 1 of 2)</span>
+              <span class="text-xs font-bold text-sky-700 dark:text-sky-400">02. Theoretical Foundation (Part 1 of 2)</span>
               <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-100 mt-0.5">Starting point: Van Wijk's (2005) economic model of visualization</h2>
             </div>
-            <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 tabular-nums">Backup 07 / 23</span>
+            <span class="text-xs font-semibold text-slate-600 dark:text-slate-300 tabular-nums">Backup 07 / 23</span>
           </div>
           <div class="flex-1 my-3 flex flex-col gap-4 min-h-0">
             <!-- Top Card: Compact Van Wijk (2005) Blueprint Diagram -->
@@ -949,7 +996,7 @@
                   Circle = Process (<span class="math-serif">V, P, E</span>)
                   </span>
                 </div>
-                <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">Van Wijk, IEEE VIS 2005</span>
+                <span class="text-xs font-semibold text-slate-600 dark:text-slate-300">Van Wijk, IEEE VIS 2005</span>
               </div>
               <svg class="w-full max-h-[300px] my-auto" viewbox="0 0 860 250">
                 <defs>
@@ -957,7 +1004,7 @@
                     <path class="fill-slate-700 dark:fill-slate-200" d="M 0 1 L 10 5 L 0 9 z"></path>
                   </marker>
                   <marker id="backup-1-slide_6_vwArrowSky" markerheight="6" markerwidth="6" orient="auto-start-reverse" refx="8" refy="5" viewbox="0 0 10 10">
-                    <path class="fill-sky-600 dark:fill-sky-400" d="M 0 1 L 10 5 L 0 9 z"></path>
+                    <path class="fill-sky-700 dark:fill-sky-400" d="M 0 1 L 10 5 L 0 9 z"></path>
                   </marker>
                 </defs>
                 <!-- Backdrop region for Classical Visualization Loop -->
@@ -994,7 +1041,7 @@
                 <!-- K -> E -> S exploration loop -->
                 <line class="stroke-sky-600 dark:stroke-sky-400" marker-end="url(#backup-1-slide_6_vwArrowSky)" stroke-width="2.5" x1="745" x2="745" y1="125" y2="145"></line>
                 <line class="stroke-sky-600 dark:stroke-sky-400 flow-animated" marker-end="url(#backup-1-slide_6_vwArrowSky)" stroke-width="2.5" x1="711" x2="383" y1="187" y2="187"></line>
-                <text class="fill-sky-700 dark:fill-sky-300 font-bold text-base math-serif" text-anchor="middle" x="545" y="176">dS/dt (Interactive Exploration)</text>
+                <text class="fill-sky-700 dark:fill-sky-300 font-bold text-base math-serif" text-anchor="middle" x="545" y="176">dS/dt · Explore</text>
               </svg>
               <p class="text-xs leading-snug text-slate-600 dark:text-slate-300 bg-slate-50/90 dark:bg-slate-900/60 px-3.5 py-2 rounded-xl border border-slate-200/80 dark:border-slate-700/70">
                 <span class="font-bold text-slate-800 dark:text-slate-100">Workflow Notation:</span> Rectangles represent data <span class="math-serif">D</span>, visualization specification <span class="math-serif">S</span>, and knowledge <span class="math-serif">K</span>. Circles represent visualization <span class="math-serif">V</span>, perception <span class="math-serif">P</span>, and interaction <span class="math-serif">E</span>. <span class="math-serif">I</span> is the rendered image.
@@ -1033,14 +1080,14 @@
           </template>
         </section>
         <!-- BACKUP 08: Extending Van Wijk: Learning and Model State -->
-        <section id="slide-19" class="slide-section hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
+        <section id="slide-19" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
           data-title="Backup 08. Extending Van Wijk: Learning and Model State" data-backup="true">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex items-center justify-between">
             <div>
               <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400">02. Theoretical Foundation (Part 2 of 2)</span>
               <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-100 mt-0.5">Extending Van Wijk: Adding learning (L) and model state (M)</h2>
             </div>
-            <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 tabular-nums">Backup 08 / 23</span>
+            <span class="text-xs font-semibold text-slate-600 dark:text-slate-300 tabular-nums">Backup 08 / 23</span>
           </div>
           <div class="flex-1 my-3 flex flex-col gap-4 min-h-0">
             <!-- Top Card: Compact Unified IVML Workflow Diagram -->
@@ -1060,16 +1107,15 @@
                     <path class="fill-indigo-600 dark:fill-indigo-400" d="M 0 1 L 10 5 L 0 9 z"></path>
                   </marker>
                   <marker id="backup-2-slide_7_ivmlArrSky" markerheight="6" markerwidth="6" orient="auto-start-reverse" refx="8" refy="5" viewbox="0 0 10 10">
-                    <path class="fill-sky-600 dark:fill-sky-400" d="M 0 1 L 10 5 L 0 9 z"></path>
+                    <path class="fill-sky-700 dark:fill-sky-400" d="M 0 1 L 10 5 L 0 9 z"></path>
                   </marker>
                 </defs>
                 <!-- Raw Data Zone -->
-                <rect class="fill-slate-100/90 dark:fill-slate-900/60 stroke-slate-300 dark:stroke-slate-700" height="205" rx="14" width="125" x="20" y="20"></rect>
+                <rect class="fill-slate-100/90 dark:fill-slate-900/60 stroke-slate-600 dark:stroke-slate-700" height="205" rx="14" width="125" x="20" y="20"></rect>
                 <!-- Highlighted New ML Zone -->
                 <rect class="fill-indigo-50/90 dark:fill-indigo-950/60 stroke-indigo-500 dark:stroke-indigo-400" height="205" rx="14" stroke-dasharray="6 4" stroke-width="2" width="285" x="160" y="20"></rect>
-                <text class="fill-indigo-700 dark:fill-indigo-300 font-bold text-xs" text-anchor="middle" x="302" y="40">Added Machine Learning Components</text>
                 <!-- Visual Analytics Zone -->
-                <rect class="fill-slate-100/90 dark:fill-slate-900/60 stroke-slate-300 dark:stroke-slate-700" height="205" rx="14" width="440" x="460" y="20"></rect>
+                <rect class="fill-slate-100/90 dark:fill-slate-900/60 stroke-slate-600 dark:stroke-slate-700" height="205" rx="14" width="440" x="460" y="20"></rect>
                 <!-- D -> V direct bypass arrow (top) -->
                 <path class="stroke-sky-600 dark:stroke-sky-400" d="M 82 55 L 82 10 L 515 10 L 515 47" fill="none" marker-end="url(#backup-2-slide_7_ivmlArrSky)" stroke-width="2"></path>
                 <!-- Top K -> P prior knowledge feedback -->
@@ -1155,7 +1201,7 @@
           </template>
         </section>
         <!-- BACKUP 09: Interaction Target 1: Modify Training Data -->
-        <section id="slide-20" class="slide-section hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
+        <section id="slide-20" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
           data-title="Backup 09. Interaction Target 1: Modify Training Data" data-backup="true">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex flex-wrap items-center justify-between gap-2">
             <div>
@@ -1164,7 +1210,7 @@
             </div>
             <div class="flex items-center gap-3 shrink-0">
               <span class="text-xs font-semibold text-indigo-600 dark:text-indigo-400">Interaction Target</span>
-              <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 tabular-nums">Backup 09 / 23</span>
+              <span class="text-xs font-semibold text-slate-600 dark:text-slate-300 tabular-nums">Backup 09 / 23</span>
             </div>
           </div>
           <!-- Interactive SVG Canvas + Dynamic Pathway Inspector -->
@@ -1176,13 +1222,13 @@
                     <path class="fill-slate-600 dark:fill-slate-300" d="M 0 1 L 10 5 L 0 9 z"></path>
                   </marker>
                   <marker id="backup-3-slide_8_arrSky" markerheight="6" markerwidth="6" orient="auto-start-reverse" refx="8" refy="5" viewbox="0 0 10 10">
-                    <path class="fill-sky-600 dark:fill-sky-400" d="M 0 1 L 10 5 L 0 9 z"></path>
+                    <path class="fill-sky-700 dark:fill-sky-400" d="M 0 1 L 10 5 L 0 9 z"></path>
                   </marker>
                   <marker id="backup-3-slide_8_arrPurple" markerheight="6" markerwidth="6" orient="auto-start-reverse" refx="8" refy="5" viewbox="0 0 10 10">
                     <path class="fill-purple-600 dark:fill-purple-400" d="M 0 1 L 10 5 L 0 9 z"></path>
                   </marker>
                   <marker id="backup-3-slide_8_arrEmerald" markerheight="6" markerwidth="6" orient="auto-start-reverse" refx="8" refy="5" viewbox="0 0 10 10">
-                    <path class="fill-emerald-600 dark:fill-emerald-400" d="M 0 1 L 10 5 L 0 9 z"></path>
+                    <path class="fill-emerald-700 dark:fill-emerald-400" d="M 0 1 L 10 5 L 0 9 z"></path>
                   </marker>
                 </defs>
                 <!-- Grey Zones matching Slide 5 of original deck -->
@@ -1204,19 +1250,19 @@
                 <text class="fill-slate-800 dark:fill-slate-200 font-bold text-sm math-serif" text-anchor="middle" x="717" y="70">dK/dt</text>
                 <line class="stroke-slate-700 dark:stroke-slate-200" marker-end="url(#backup-3-slide_8_arrBase)" stroke-width="2.5" x1="800" x2="800" y1="112" y2="136"></line>
                 <!-- PATHWAY 3: Understanding dS/dt -->
-                <g id="backup-3-svgPath-understand" style="opacity: 0.12;">
+                <g id="backup-3-svgPath-understand" style="opacity: 1;">
                   <line class="stroke-emerald-600 dark:stroke-emerald-400 flow-animated" marker-end="url(#backup-3-slide_8_arrEmerald)" stroke-width="3" x1="768" x2="548" y1="172" y2="172"></line>
-                  <text class="fill-emerald-700 dark:fill-emerald-300 font-bold text-sm math-serif" text-anchor="middle" x="658" y="162">dS/dt (Explore S &amp; K)</text>
+                  <text class="fill-emerald-700 dark:fill-emerald-300 font-bold text-sm math-serif" text-anchor="middle" x="658" y="162">dS/dt · Explore</text>
                 </g>
                 <!-- PATHWAY 2: Model dM/dt -->
-                <g id="backup-3-svgPath-model" style="opacity: 0.12;">
+                <g id="backup-3-svgPath-model" style="opacity: 1;">
                   <path class="stroke-purple-600 dark:stroke-purple-400 flow-animated" d="M 785 202 L 785 245 L 215 245 L 215 210" fill="none" marker-end="url(#backup-3-slide_8_arrPurple)" stroke-width="3"></path>
-                  <text class="fill-purple-700 dark:fill-purple-300 font-bold text-sm math-serif" x="410" y="237">dM/dt -- IVML for changing model state M</text>
+                  <text class="fill-purple-700 dark:fill-purple-300 font-bold text-sm math-serif" x="410" y="237">dM/dt · Model feedback</text>
                 </g>
                 <!-- PATHWAY 1: Data dD/dt -->
                 <g id="backup-3-svgPath-data" style="opacity: 1;">
                   <path class="stroke-sky-600 dark:stroke-sky-400 flow-animated" d="M 815 202 L 815 282 L 80 282 L 80 120" fill="none" marker-end="url(#backup-3-slide_8_arrSky)" stroke-width="3"></path>
-                  <text class="fill-sky-700 dark:fill-sky-300 font-bold text-sm math-serif" x="260" y="274">dD/dt -- IVML for improving training data D</text>
+                  <text class="fill-sky-700 dark:fill-sky-300 font-bold text-sm math-serif" x="260" y="274">dD/dt · Data feedback</text>
                 </g>
                 <!-- Interactive Clickable State & Process Nodes -->
                 <g>
@@ -1226,7 +1272,7 @@
                 <circle class="fill-white dark:fill-slate-800 stroke-slate-800 dark:stroke-slate-200" cx="215" cy="80" r="31" stroke-width="2.5"></circle>
                 <text class="fill-slate-900 dark:fill-slate-100 font-bold text-xl math-serif" text-anchor="middle" x="215" y="87">L</text>
                 <g>
-                  <rect 2"="" class="fill-white dark:fill-slate-800 stroke-slate-300 dark:stroke-slate-700 stroke-width=" height="62" rx="6" width="76" x="177" y="140"></rect>
+                  <rect 2"="" class="fill-white dark:fill-slate-800 stroke-slate-600 dark:stroke-slate-700 stroke-width=" height="62" rx="6" width="76" x="177" y="140"></rect>
                   <text class="fill-slate-900 dark:fill-slate-100 font-bold text-xl math-serif" text-anchor="middle" x="215" y="178">M</text>
                 </g>
                 <rect class="fill-white dark:fill-slate-800 stroke-slate-800 dark:stroke-slate-200" height="62" rx="6" stroke-width="2.5" width="77" x="318" y="50"></rect>
@@ -1234,13 +1280,13 @@
                 <circle class="fill-white dark:fill-slate-800 stroke-slate-800 dark:stroke-slate-200" cx="500" cy="80" r="31" stroke-width="2.5"></circle>
                 <text class="fill-slate-900 dark:fill-slate-100 font-bold text-xl math-serif" text-anchor="middle" x="500" y="87">V</text>
                 <g>
-                  <rect 2"="" class="fill-white dark:fill-slate-800 stroke-slate-300 dark:stroke-slate-700 stroke-width=" height="62" rx="6" width="76" x="462" y="140"></rect>
+                  <rect 2"="" class="fill-white dark:fill-slate-800 stroke-slate-600 dark:stroke-slate-700 stroke-width=" height="62" rx="6" width="76" x="462" y="140"></rect>
                   <text class="fill-slate-900 dark:fill-slate-100 font-bold text-xl math-serif" text-anchor="middle" x="500" y="178">S</text>
                 </g>
                 <circle class="fill-white dark:fill-slate-800 stroke-slate-800 dark:stroke-slate-200" cx="650" cy="80" r="31" stroke-width="2.5"></circle>
                 <text class="fill-slate-900 dark:fill-slate-100 font-bold text-xl math-serif" text-anchor="middle" x="650" y="87">P</text>
                 <g>
-                  <rect 2"="" class="fill-white dark:fill-slate-800 stroke-slate-300 dark:stroke-slate-700 stroke-width=" height="62" rx="6" width="76" x="762" y="50"></rect>
+                  <rect 2"="" class="fill-white dark:fill-slate-800 stroke-slate-600 dark:stroke-slate-700 stroke-width=" height="62" rx="6" width="76" x="762" y="50"></rect>
                   <text class="fill-slate-900 dark:fill-slate-100 font-bold text-xl math-serif" text-anchor="middle" x="800" y="88">K</text>
                 </g>
                 <circle class="fill-indigo-600 stroke-indigo-700 dark:stroke-indigo-300" cx="800" cy="172" r="30" stroke-width="2.5"></circle>
@@ -1257,7 +1303,7 @@
               <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Users edit training data D through the visual interface. These changes improve data quality and can affect future model training.</p>
               <div class="pt-2 border-t border-slate-200/80 dark:border-slate-700 space-y-2">
                 <div class="p-3 rounded-xl bg-white dark:bg-slate-900/70 border border-slate-200/60 dark:border-slate-800">
-                  <span class="text-xs font-bold text-slate-500 dark:text-slate-400">Example Actions</span>
+                  <span class="text-xs font-bold text-slate-600 dark:text-slate-300">Example Actions</span>
                   <p class="text-sm font-semibold text-slate-800 dark:text-slate-200 mt-0.5">Correct labels, refine features, adjust data weights</p>
                 </div>
               </div>
@@ -1274,7 +1320,7 @@
           </template>
         </section>
         <!-- BACKUP 10: Interaction Target 2: Modify Model State -->
-        <section id="slide-21" class="slide-section hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
+        <section id="slide-21" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
           data-title="Backup 10. Interaction Target 2: Modify Model State" data-backup="true">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex flex-wrap items-center justify-between gap-2">
             <div>
@@ -1283,7 +1329,7 @@
             </div>
             <div class="flex items-center gap-3 shrink-0">
               <span class="text-xs font-semibold text-indigo-600 dark:text-indigo-400">Interaction Target</span>
-              <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 tabular-nums">Backup 10 / 23</span>
+              <span class="text-xs font-semibold text-slate-600 dark:text-slate-300 tabular-nums">Backup 10 / 23</span>
             </div>
           </div>
           <!-- Interactive SVG Canvas + Dynamic Pathway Inspector -->
@@ -1295,13 +1341,13 @@
                     <path class="fill-slate-600 dark:fill-slate-300" d="M 0 1 L 10 5 L 0 9 z"></path>
                   </marker>
                   <marker id="backup-4-slide_9_arrSky" markerheight="6" markerwidth="6" orient="auto-start-reverse" refx="8" refy="5" viewbox="0 0 10 10">
-                    <path class="fill-sky-600 dark:fill-sky-400" d="M 0 1 L 10 5 L 0 9 z"></path>
+                    <path class="fill-sky-700 dark:fill-sky-400" d="M 0 1 L 10 5 L 0 9 z"></path>
                   </marker>
                   <marker id="backup-4-slide_9_arrPurple" markerheight="6" markerwidth="6" orient="auto-start-reverse" refx="8" refy="5" viewbox="0 0 10 10">
                     <path class="fill-purple-600 dark:fill-purple-400" d="M 0 1 L 10 5 L 0 9 z"></path>
                   </marker>
                   <marker id="backup-4-slide_9_arrEmerald" markerheight="6" markerwidth="6" orient="auto-start-reverse" refx="8" refy="5" viewbox="0 0 10 10">
-                    <path class="fill-emerald-600 dark:fill-emerald-400" d="M 0 1 L 10 5 L 0 9 z"></path>
+                    <path class="fill-emerald-700 dark:fill-emerald-400" d="M 0 1 L 10 5 L 0 9 z"></path>
                   </marker>
                 </defs>
                 <!-- Grey Zones matching Slide 5 of original deck -->
@@ -1323,23 +1369,23 @@
                 <text class="fill-slate-800 dark:fill-slate-200 font-bold text-sm math-serif" text-anchor="middle" x="717" y="70">dK/dt</text>
                 <line class="stroke-slate-700 dark:stroke-slate-200" marker-end="url(#backup-4-slide_9_arrBase)" stroke-width="2.5" x1="800" x2="800" y1="112" y2="136"></line>
                 <!-- PATHWAY 3: Understanding dS/dt -->
-                <g id="backup-4-svgPath-understand" style="opacity: 0.12;">
+                <g id="backup-4-svgPath-understand" style="opacity: 1;">
                   <line class="stroke-emerald-600 dark:stroke-emerald-400 flow-animated" marker-end="url(#backup-4-slide_9_arrEmerald)" stroke-width="3" x1="768" x2="548" y1="172" y2="172"></line>
-                  <text class="fill-emerald-700 dark:fill-emerald-300 font-bold text-sm math-serif" text-anchor="middle" x="658" y="162">dS/dt (Explore S &amp; K)</text>
+                  <text class="fill-emerald-700 dark:fill-emerald-300 font-bold text-sm math-serif" text-anchor="middle" x="658" y="162">dS/dt · Explore</text>
                 </g>
                 <!-- PATHWAY 2: Model dM/dt -->
                 <g id="backup-4-svgPath-model" style="opacity: 1;">
                   <path class="stroke-purple-600 dark:stroke-purple-400 flow-animated" d="M 785 202 L 785 245 L 215 245 L 215 210" fill="none" marker-end="url(#backup-4-slide_9_arrPurple)" stroke-width="3"></path>
-                  <text class="fill-purple-700 dark:fill-purple-300 font-bold text-sm math-serif" x="410" y="237">dM/dt -- IVML for changing model state M</text>
+                  <text class="fill-purple-700 dark:fill-purple-300 font-bold text-sm math-serif" x="410" y="237">dM/dt · Model feedback</text>
                 </g>
                 <!-- PATHWAY 1: Data dD/dt -->
-                <g id="backup-4-svgPath-data" style="opacity: 0.12;">
+                <g id="backup-4-svgPath-data" style="opacity: 1;">
                   <path class="stroke-sky-600 dark:stroke-sky-400 flow-animated" d="M 815 202 L 815 282 L 80 282 L 80 120" fill="none" marker-end="url(#backup-4-slide_9_arrSky)" stroke-width="3"></path>
-                  <text class="fill-sky-700 dark:fill-sky-300 font-bold text-sm math-serif" x="260" y="274">dD/dt -- IVML for improving training data D</text>
+                  <text class="fill-sky-700 dark:fill-sky-300 font-bold text-sm math-serif" x="260" y="274">dD/dt · Data feedback</text>
                 </g>
                 <!-- Interactive Clickable State & Process Nodes -->
                 <g>
-                  <rect 2"="" class="fill-white dark:fill-slate-800 stroke-slate-300 dark:stroke-slate-700 stroke-width=" height="62" rx="6" width="76" x="42" y="50"></rect>
+                  <rect 2"="" class="fill-white dark:fill-slate-800 stroke-slate-600 dark:stroke-slate-700 stroke-width=" height="62" rx="6" width="76" x="42" y="50"></rect>
                   <text class="fill-slate-900 dark:fill-slate-100 font-bold text-xl math-serif" text-anchor="middle" x="80" y="88">D</text>
                 </g>
                 <circle class="fill-white dark:fill-slate-800 stroke-slate-800 dark:stroke-slate-200" cx="215" cy="80" r="31" stroke-width="2.5"></circle>
@@ -1353,13 +1399,13 @@
                 <circle class="fill-white dark:fill-slate-800 stroke-slate-800 dark:stroke-slate-200" cx="500" cy="80" r="31" stroke-width="2.5"></circle>
                 <text class="fill-slate-900 dark:fill-slate-100 font-bold text-xl math-serif" text-anchor="middle" x="500" y="87">V</text>
                 <g>
-                  <rect 2"="" class="fill-white dark:fill-slate-800 stroke-slate-300 dark:stroke-slate-700 stroke-width=" height="62" rx="6" width="76" x="462" y="140"></rect>
+                  <rect 2"="" class="fill-white dark:fill-slate-800 stroke-slate-600 dark:stroke-slate-700 stroke-width=" height="62" rx="6" width="76" x="462" y="140"></rect>
                   <text class="fill-slate-900 dark:fill-slate-100 font-bold text-xl math-serif" text-anchor="middle" x="500" y="178">S</text>
                 </g>
                 <circle class="fill-white dark:fill-slate-800 stroke-slate-800 dark:stroke-slate-200" cx="650" cy="80" r="31" stroke-width="2.5"></circle>
                 <text class="fill-slate-900 dark:fill-slate-100 font-bold text-xl math-serif" text-anchor="middle" x="650" y="87">P</text>
                 <g>
-                  <rect 2"="" class="fill-white dark:fill-slate-800 stroke-slate-300 dark:stroke-slate-700 stroke-width=" height="62" rx="6" width="76" x="762" y="50"></rect>
+                  <rect 2"="" class="fill-white dark:fill-slate-800 stroke-slate-600 dark:stroke-slate-700 stroke-width=" height="62" rx="6" width="76" x="762" y="50"></rect>
                   <text class="fill-slate-900 dark:fill-slate-100 font-bold text-xl math-serif" text-anchor="middle" x="800" y="88">K</text>
                 </g>
                 <circle class="fill-indigo-600 stroke-indigo-700 dark:stroke-indigo-300" cx="800" cy="172" r="30" stroke-width="2.5"></circle>
@@ -1376,7 +1422,7 @@
               <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Users adjust model parameters, constraints, or architecture M. These changes can require retraining and a fresh review of model outputs.</p>
               <div class="pt-2 border-t border-slate-200/80 dark:border-slate-700 space-y-2">
                 <div class="p-3 rounded-xl bg-white dark:bg-slate-900/70 border border-slate-200/60 dark:border-slate-800">
-                  <span class="text-xs font-bold text-slate-500 dark:text-slate-400">Example Actions</span>
+                  <span class="text-xs font-bold text-slate-600 dark:text-slate-300">Example Actions</span>
                   <p class="text-sm font-semibold text-slate-800 dark:text-slate-200 mt-0.5">Tune parameters, add constraints, retrain or re-optimize models</p>
                 </div>
               </div>
@@ -1394,7 +1440,7 @@
           </template>
         </section>
         <!-- BACKUP 11: Interaction Target 3: Build Model Understanding -->
-        <section id="slide-22" class="slide-section hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
+        <section id="slide-22" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
           data-title="Backup 11. Interaction Target 3: Build Model Understanding" data-backup="true">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex flex-wrap items-center justify-between gap-2">
             <div>
@@ -1403,7 +1449,7 @@
             </div>
             <div class="flex items-center gap-3 shrink-0">
               <span class="text-xs font-semibold text-indigo-600 dark:text-indigo-400">Interaction Target</span>
-              <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 tabular-nums">Backup 11 / 23</span>
+              <span class="text-xs font-semibold text-slate-600 dark:text-slate-300 tabular-nums">Backup 11 / 23</span>
             </div>
           </div>
           <!-- Interactive SVG Canvas + Dynamic Pathway Inspector -->
@@ -1415,13 +1461,13 @@
                     <path class="fill-slate-600 dark:fill-slate-300" d="M 0 1 L 10 5 L 0 9 z"></path>
                   </marker>
                   <marker id="backup-5-slide_10_arrSky" markerheight="6" markerwidth="6" orient="auto-start-reverse" refx="8" refy="5" viewbox="0 0 10 10">
-                    <path class="fill-sky-600 dark:fill-sky-400" d="M 0 1 L 10 5 L 0 9 z"></path>
+                    <path class="fill-sky-700 dark:fill-sky-400" d="M 0 1 L 10 5 L 0 9 z"></path>
                   </marker>
                   <marker id="backup-5-slide_10_arrPurple" markerheight="6" markerwidth="6" orient="auto-start-reverse" refx="8" refy="5" viewbox="0 0 10 10">
                     <path class="fill-purple-600 dark:fill-purple-400" d="M 0 1 L 10 5 L 0 9 z"></path>
                   </marker>
                   <marker id="backup-5-slide_10_arrEmerald" markerheight="6" markerwidth="6" orient="auto-start-reverse" refx="8" refy="5" viewbox="0 0 10 10">
-                    <path class="fill-emerald-600 dark:fill-emerald-400" d="M 0 1 L 10 5 L 0 9 z"></path>
+                    <path class="fill-emerald-700 dark:fill-emerald-400" d="M 0 1 L 10 5 L 0 9 z"></path>
                   </marker>
                 </defs>
                 <!-- Grey Zones matching Slide 5 of original deck -->
@@ -1445,27 +1491,27 @@
                 <!-- PATHWAY 3: Understanding dS/dt -->
                 <g id="backup-5-svgPath-understand" style="opacity: 1;">
                   <line class="stroke-emerald-600 dark:stroke-emerald-400 flow-animated" marker-end="url(#backup-5-slide_10_arrEmerald)" stroke-width="3" x1="768" x2="548" y1="172" y2="172"></line>
-                  <text class="fill-emerald-700 dark:fill-emerald-300 font-bold text-sm math-serif" text-anchor="middle" x="658" y="162">dS/dt (Explore S &amp; K)</text>
+                  <text class="fill-emerald-700 dark:fill-emerald-300 font-bold text-sm math-serif" text-anchor="middle" x="658" y="162">dS/dt · Explore</text>
                 </g>
                 <!-- PATHWAY 2: Model dM/dt -->
-                <g id="backup-5-svgPath-model" style="opacity: 0.12;">
+                <g id="backup-5-svgPath-model" style="opacity: 1;">
                   <path class="stroke-purple-600 dark:stroke-purple-400 flow-animated" d="M 785 202 L 785 245 L 215 245 L 215 210" fill="none" marker-end="url(#backup-5-slide_10_arrPurple)" stroke-width="3"></path>
-                  <text class="fill-purple-700 dark:fill-purple-300 font-bold text-sm math-serif" x="410" y="237">dM/dt -- IVML for changing model state M</text>
+                  <text class="fill-purple-700 dark:fill-purple-300 font-bold text-sm math-serif" x="410" y="237">dM/dt · Model feedback</text>
                 </g>
                 <!-- PATHWAY 1: Data dD/dt -->
-                <g id="backup-5-svgPath-data" style="opacity: 0.12;">
+                <g id="backup-5-svgPath-data" style="opacity: 1;">
                   <path class="stroke-sky-600 dark:stroke-sky-400 flow-animated" d="M 815 202 L 815 282 L 80 282 L 80 120" fill="none" marker-end="url(#backup-5-slide_10_arrSky)" stroke-width="3"></path>
-                  <text class="fill-sky-700 dark:fill-sky-300 font-bold text-sm math-serif" x="260" y="274">dD/dt -- IVML for improving training data D</text>
+                  <text class="fill-sky-700 dark:fill-sky-300 font-bold text-sm math-serif" x="260" y="274">dD/dt · Data feedback</text>
                 </g>
                 <!-- Interactive Clickable State & Process Nodes -->
                 <g>
-                  <rect 2"="" class="fill-white dark:fill-slate-800 stroke-slate-300 dark:stroke-slate-700 stroke-width=" height="62" rx="6" width="76" x="42" y="50"></rect>
+                  <rect 2"="" class="fill-white dark:fill-slate-800 stroke-slate-600 dark:stroke-slate-700 stroke-width=" height="62" rx="6" width="76" x="42" y="50"></rect>
                   <text class="fill-slate-900 dark:fill-slate-100 font-bold text-xl math-serif" text-anchor="middle" x="80" y="88">D</text>
                 </g>
                 <circle class="fill-white dark:fill-slate-800 stroke-slate-800 dark:stroke-slate-200" cx="215" cy="80" r="31" stroke-width="2.5"></circle>
                 <text class="fill-slate-900 dark:fill-slate-100 font-bold text-xl math-serif" text-anchor="middle" x="215" y="87">L</text>
                 <g>
-                  <rect 2"="" class="fill-white dark:fill-slate-800 stroke-slate-300 dark:stroke-slate-700 stroke-width=" height="62" rx="6" width="76" x="177" y="140"></rect>
+                  <rect 2"="" class="fill-white dark:fill-slate-800 stroke-slate-600 dark:stroke-slate-700 stroke-width=" height="62" rx="6" width="76" x="177" y="140"></rect>
                   <text class="fill-slate-900 dark:fill-slate-100 font-bold text-xl math-serif" text-anchor="middle" x="215" y="178">M</text>
                 </g>
                 <rect class="fill-white dark:fill-slate-800 stroke-slate-800 dark:stroke-slate-200" height="62" rx="6" stroke-width="2.5" width="77" x="318" y="50"></rect>
@@ -1496,7 +1542,7 @@
               <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Data D and model state M remain fixed. Users adjust the visualization S to inspect model behavior and build knowledge K.</p>
               <div class="pt-2 border-t border-slate-200/80 dark:border-slate-700 space-y-2">
                 <div class="p-3 rounded-xl bg-white dark:bg-slate-900/70 border border-slate-200/60 dark:border-slate-800">
-                  <span class="text-xs font-bold text-slate-500 dark:text-slate-400">Example Actions</span>
+                  <span class="text-xs font-bold text-slate-600 dark:text-slate-300">Example Actions</span>
                   <p class="text-sm font-semibold text-slate-800 dark:text-slate-200 mt-0.5">Inspect predictions, explore uncertainty and explanations, analyze failures</p>
                 </div>
               </div>
@@ -1514,14 +1560,14 @@
           </template>
         </section>
         <!-- BACKUP 12: Cost-Benefit Model: Expected Benefits Must Cover Costs -->
-        <section id="slide-23" class="slide-section hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
+        <section id="slide-23" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
           data-title="Backup 12. Cost-Benefit Model: Expected Benefits Must Cover Costs" data-backup="true">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex items-center justify-between">
             <div>
-              <span class="text-xs font-bold text-rose-600 dark:text-rose-400">03. Mathematical Cost-Benefit Model</span>
+              <span class="text-xs font-bold text-rose-700 dark:text-rose-400">03. Mathematical Cost-Benefit Model</span>
               <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-100 mt-0.5">An IVML workflow is justified when expected benefits cover its costs</h2>
             </div>
-            <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 tabular-nums">Backup 12 / 23</span>
+            <span class="text-xs font-semibold text-slate-600 dark:text-slate-300 tabular-nums">Backup 12 / 23</span>
           </div>
           <!-- Central Inequality Hero + Two-Column Ledger -->
           <div class="flex-1 my-3 flex flex-col justify-between space-y-4">
@@ -1606,20 +1652,20 @@
           </template>
         </section>
         <!-- BACKUP 13: Costs: Upfront Development and Ongoing Session Effort -->
-        <section id="slide-24" class="slide-section hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
+        <section id="slide-24" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
           data-title="Backup 13. Costs: Upfront Development and Ongoing Session Effort" data-backup="true">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex items-center justify-between">
             <div>
-              <span class="text-xs font-bold text-rose-600 dark:text-rose-400">03. Cost Decomposition (Part 1 of 2)</span>
+              <span class="text-xs font-bold text-rose-700 dark:text-rose-400">03. Cost Decomposition (Part 1 of 2)</span>
               <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-100 mt-0.5">Costs include upfront development and ongoing session effort</h2>
             </div>
-            <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 tabular-nums">Backup 13 / 23</span>
+            <span class="text-xs font-semibold text-slate-600 dark:text-slate-300 tabular-nums">Backup 13 / 23</span>
           </div>
           <!-- Mathematical Formula Banner + 5 Component Cards -->
           <div class="flex-1 my-3 flex flex-col justify-between space-y-4">
             <div class="p-5 rounded-2xl bg-white dark:bg-slate-800/90 border border-slate-200/90 dark:border-slate-700/80 shadow-xs flex flex-wrap items-center justify-between gap-4">
               <div class="math-serif text-xl sm:text-2xl font-bold text-slate-900 dark:text-slate-100">
-              C<sub>IVML</sub><sup>total</sup>(T) = <span class="text-amber-600 dark:text-amber-400">C<sub>IVML</sub><sup>dev</sup></span> + <span class="text-rose-600 dark:text-rose-400">Integral<sub>0</sub><sup>T</sup> (C<sub>P</sub>(t, omega) + C<sub>E</sub>(t) + C<sub>S</sub>(t) + C<sub>V</sub>(t)) dt</span> + <span class="text-slate-400 dark:text-slate-500">[C<sub>M,0</sub> + Sum<sub>j=1</sub><sup>N<sub>iter</sub></sup> (C<sub>M,j</sub> + C<sub>R,j</sub>)]</span>
+              C<sub>IVML</sub><sup>total</sup>(T) = <span class="text-amber-800 dark:text-amber-400">C<sub>IVML</sub><sup>dev</sup></span> + <span class="text-rose-700 dark:text-rose-400">Integral<sub>0</sub><sup>T</sup> (C<sub>P</sub>(t, omega) + C<sub>E</sub>(t) + C<sub>S</sub>(t) + C<sub>V</sub>(t)) dt</span> + <span class="text-slate-600 dark:text-slate-300">[C<sub>M,0</sub> + Sum<sub>j=1</sub><sup>N<sub>iter</sub></sup> (C<sub>M,j</sub> + C<sub>R,j</sub>)]</span>
               </div>
               <span class="px-3 py-1 rounded-lg text-xs font-bold bg-rose-100 dark:bg-rose-950/80 text-rose-800 dark:text-rose-200 shrink-0">Accumulated over session T</span>
             </div>
@@ -1631,13 +1677,13 @@
                 <p class="text-sm text-slate-600 dark:text-slate-300">Designing the workflow, building the interface, and integrating ML.</p>
               </div>
               <div class="p-5 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/70 flex flex-col justify-start space-y-2">
-                <span class="text-xs font-bold text-rose-600 dark:text-rose-400">Human Effort</span>
+                <span class="text-xs font-bold text-rose-700 dark:text-rose-400">Human Effort</span>
                 <h3 class="text-2xl font-bold math-serif text-slate-900 dark:text-slate-100">C<sub>P</sub>(t, omega)</h3>
                 <p class="text-sm font-bold text-slate-800 dark:text-slate-200">Perceptual &amp; cognitive</p>
                 <p class="text-sm text-slate-600 dark:text-slate-300">Effort to interpret visualizations, weighted by complexity <span class="math-serif">omega</span>.</p>
               </div>
               <div class="p-5 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/70 flex flex-col justify-start space-y-2">
-                <span class="text-xs font-bold text-rose-600 dark:text-rose-400">Human Effort</span>
+                <span class="text-xs font-bold text-rose-700 dark:text-rose-400">Human Effort</span>
                 <h3 class="text-2xl font-bold math-serif text-slate-900 dark:text-slate-100">C<sub>E</sub>(t)</h3>
                 <p class="text-sm font-bold text-slate-800 dark:text-slate-200">Active exploration</p>
                 <p class="text-sm text-slate-600 dark:text-slate-300">Inspecting examples, filtering data, and choosing the next action.</p>
@@ -1649,7 +1695,7 @@
                 <p class="text-sm text-slate-600 dark:text-slate-300">Configuring and updating visual mappings and view parameters.</p>
               </div>
               <div class="p-5 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/70 flex flex-col justify-start space-y-2">
-                <span class="text-xs font-bold text-sky-600 dark:text-sky-400">System Compute</span>
+                <span class="text-xs font-bold text-sky-700 dark:text-sky-400">System Compute</span>
                 <h3 class="text-2xl font-bold math-serif text-slate-900 dark:text-slate-100">C<sub>V</sub>(t)</h3>
                 <p class="text-sm font-bold text-slate-800 dark:text-slate-200">Visual rendering</p>
                 <p class="text-sm text-slate-600 dark:text-slate-300">Computing layouts and projections, rendering views, and updating displays.</p>
@@ -1670,20 +1716,20 @@
           </template>
         </section>
         <!-- BACKUP 14: Costs: Model Training and Cognitive Re-alignment -->
-        <section id="slide-25" class="slide-section hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
+        <section id="slide-25" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
           data-title="Backup 14. Costs: Model Training and Cognitive Re-alignment" data-backup="true">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex items-center justify-between">
             <div>
-              <span class="text-xs font-bold text-rose-600 dark:text-rose-400">03. Cost Decomposition (Part 2 of 2)</span>
+              <span class="text-xs font-bold text-rose-700 dark:text-rose-400">03. Cost Decomposition (Part 2 of 2)</span>
               <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-100 mt-0.5">Model updates add training (C<sub>M</sub>) and re-alignment (C<sub>R</sub>) costs</h2>
             </div>
-            <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 tabular-nums">Backup 14 / 23</span>
+            <span class="text-xs font-semibold text-slate-600 dark:text-slate-300 tabular-nums">Backup 14 / 23</span>
           </div>
           <!-- Mathematical Formula Banner + 2 Discrete Cost Decomposition Cards -->
           <div class="flex-1 my-3 flex flex-col justify-between space-y-4">
             <div class="p-5 rounded-2xl bg-white dark:bg-slate-800/90 border border-slate-200/90 dark:border-slate-700/80 shadow-xs flex flex-wrap items-center justify-between gap-4">
               <div class="math-serif text-xl sm:text-2xl font-bold text-slate-900 dark:text-slate-100">
-        C<sub>IVML</sub><sup>total</sup>(T) = <span class="text-slate-400 dark:text-slate-500">C<sub>IVML</sub><sup>dev</sup> + Integral<sub>0</sub><sup>T</sup> (C<sub>P</sub>(t, omega) + C<sub>E</sub>(t) + C<sub>S</sub>(t) + C<sub>V</sub>(t)) dt</span> + <span class="text-rose-600 dark:text-rose-400">[C<sub>M,0</sub> + Sum<sub>j=1</sub><sup>N<sub>iter</sub></sup> C<sub>M,j</sub></span> + <span class="text-purple-600 dark:text-purple-400">Sum<sub>j=1</sub><sup>N<sub>iter</sub></sup> C<sub>R,j</sub>]</span>
+        C<sub>IVML</sub><sup>total</sup>(T) = <span class="text-slate-600 dark:text-slate-300">C<sub>IVML</sub><sup>dev</sup> + Integral<sub>0</sub><sup>T</sup> (C<sub>P</sub>(t, omega) + C<sub>E</sub>(t) + C<sub>S</sub>(t) + C<sub>V</sub>(t)) dt</span> + <span class="text-rose-700 dark:text-rose-400">[C<sub>M,0</sub> + Sum<sub>j=1</sub><sup>N<sub>iter</sub></sup> C<sub>M,j</sub></span> + <span class="text-purple-700 dark:text-purple-400">Sum<sub>j=1</sub><sup>N<sub>iter</sub></sup> C<sub>R,j</sub>]</span>
               </div>
               <span class="px-3 py-1 rounded-lg text-xs font-bold bg-rose-100 dark:bg-rose-950/80 text-rose-800 dark:text-rose-200 shrink-0">Costs at Each Model Update</span>
             </div>
@@ -1692,8 +1738,8 @@
               <div class="p-6 rounded-2xl bg-rose-50/40 dark:bg-rose-950/20 border-t-4 border-rose-500 border-x border-b border-rose-200/80 dark:border-rose-800/60 flex flex-col justify-between space-y-4">
                 <div class="space-y-3">
                   <div class="flex items-center justify-between">
-                    <span class="text-xs font-bold text-rose-600 dark:text-rose-400">Computational Cost</span>
-                    <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">Initial training + model updates</span>
+                    <span class="text-xs font-bold text-rose-700 dark:text-rose-400">Computational Cost</span>
+                    <span class="text-xs font-semibold text-slate-600 dark:text-slate-300">Initial training + model updates</span>
                   </div>
                   <div class="flex items-baseline gap-3">
                     <h3 class="text-3xl font-bold math-serif leading-none text-slate-900 dark:text-slate-100" style="line-height: 1.35;">C<sub>M</sub></h3>
@@ -1705,13 +1751,13 @@
                 </div>
                 <div class="grid grid-cols-2 gap-4 flex-1 items-stretch">
                   <div class="p-5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/70 flex flex-col justify-start space-y-2">
-                    <span class="text-xs font-bold text-rose-600 dark:text-rose-400">Resource Use</span>
+                    <span class="text-xs font-bold text-rose-700 dark:text-rose-400">Resource Use</span>
                     <h4 class="text-xl font-bold math-serif text-slate-900 dark:text-slate-100">N<sub>iter</sub> , N<sub>GPU,j</sub></h4>
                     <p class="text-sm font-bold text-slate-800 dark:text-slate-200">Updates &amp; GPUs</p>
                     <p class="text-sm text-slate-600 dark:text-slate-300">Number of interaction-triggered updates and GPUs used for each operation.</p>
                   </div>
                   <div class="p-5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/70 flex flex-col justify-start space-y-2">
-                    <span class="text-xs font-bold text-rose-600 dark:text-rose-400">Unit Cost</span>
+                    <span class="text-xs font-bold text-rose-700 dark:text-rose-400">Unit Cost</span>
                     <h4 class="text-xl font-bold math-serif text-slate-900 dark:text-slate-100">t<sub>train,j</sub> , c<sub>GPU,j</sub></h4>
                     <p class="text-sm font-bold text-slate-800 dark:text-slate-200">Duration &amp; compute price</p>
                     <p class="text-sm text-slate-600 dark:text-slate-300">Duration and GPU price for each training operation.</p>
@@ -1722,8 +1768,8 @@
               <div class="p-6 rounded-2xl bg-purple-50/40 dark:bg-purple-950/20 border-t-4 border-purple-500 border-x border-b border-purple-200/80 dark:border-purple-800/60 flex flex-col justify-between space-y-4">
                 <div class="space-y-3">
                   <div class="flex items-center justify-between">
-                    <span class="text-xs font-bold text-purple-600 dark:text-purple-400">Human Effort</span>
-                    <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">Revising the analyst's understanding</span>
+                    <span class="text-xs font-bold text-purple-700 dark:text-purple-400">Human Effort</span>
+                    <span class="text-xs font-semibold text-slate-600 dark:text-slate-300">Revising the analyst's understanding</span>
                   </div>
                   <div class="flex items-baseline gap-3">
                     <h3 class="text-3xl font-bold math-serif leading-none text-slate-900 dark:text-slate-100" style="line-height: 1.35;">Sum C<sub>R</sub></h3>
@@ -1735,13 +1781,13 @@
                 </div>
                 <div class="grid grid-cols-2 gap-4 flex-1 items-stretch">
                   <div class="p-5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/70 flex flex-col justify-start space-y-2">
-                    <span class="text-xs font-bold text-purple-600 dark:text-purple-400">Reviewing Changes</span>
+                    <span class="text-xs font-bold text-purple-700 dark:text-purple-400">Reviewing Changes</span>
                     <h4 class="text-xl font-bold math-serif text-slate-900 dark:text-slate-100">C<sub>eval</sub>(M<sub>j</sub>, M<sub>j-1</sub>)</h4>
                     <p class="text-sm font-bold text-slate-800 dark:text-slate-200">Output re-evaluation</p>
                     <p class="text-sm text-slate-600 dark:text-slate-300">Effort to interpret changes in predictions and embeddings.</p>
                   </div>
                   <div class="p-5 rounded-xl bg-white dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/70 flex flex-col justify-start space-y-2">
-                    <span class="text-xs font-bold text-purple-600 dark:text-purple-400">Latency Penalty</span>
+                    <span class="text-xs font-bold text-purple-700 dark:text-purple-400">Latency Penalty</span>
                     <h4 class="text-xl font-bold math-serif text-slate-900 dark:text-slate-100">P<sub>resume</sub>(t<sub>train,j</sub>; tau)</h4>
                     <p class="text-sm font-bold text-slate-800 dark:text-slate-200">Context switching</p>
                     <p class="text-sm text-slate-600 dark:text-slate-300">Effort to resume analysis after waiting; this increases when latency exceeds <span class="math-serif">tau</span>.</p>
@@ -1764,20 +1810,20 @@
           </template>
         </section>
         <!-- BACKUP 15: Benefits: Savings, Predictions, Risk Reduction, and Knowledge -->
-        <section id="slide-26" class="slide-section hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
+        <section id="slide-26" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
           data-title="Backup 15. Benefits: Savings, Predictions, Risk Reduction, and Knowledge" data-backup="true">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex items-center justify-between">
             <div>
-              <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400">04. Benefit Quantification</span>
+              <span class="text-xs font-bold text-emerald-700 dark:text-emerald-400">04. Benefit Quantification</span>
               <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-100 mt-0.5">Benefits include savings, better predictions, lower risk, and knowledge</h2>
             </div>
-            <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 tabular-nums">Backup 15 / 23</span>
+            <span class="text-xs font-semibold text-slate-600 dark:text-slate-300 tabular-nums">Backup 15 / 23</span>
           </div>
           <!-- Mathematical Formula Banner + 2x2 Even Grid of Benefit Equations -->
           <div class="flex-1 my-3 flex flex-col justify-between space-y-4">
             <div class="p-4 rounded-2xl bg-white dark:bg-slate-800/90 border border-slate-200/90 dark:border-slate-700/80 shadow-xs flex flex-wrap items-center justify-between gap-4">
               <div class="math-serif text-xl sm:text-2xl font-bold text-slate-900 dark:text-slate-100">
-              B<sub>IVML</sub><sup>total</sup>(T) = <span class="text-emerald-600 dark:text-emerald-400">B<sub>ds</sub>(T)</span> + <span class="text-sky-600 dark:text-sky-400">B<sub>model</sub>(T)</span> + <span class="text-amber-600 dark:text-amber-400">B<sub>risk</sub>(T)</span> + <span class="text-indigo-600 dark:text-indigo-400">B<sub>K</sub>(T)</span>
+              B<sub>IVML</sub><sup>total</sup>(T) = <span class="text-emerald-700 dark:text-emerald-400">B<sub>ds</sub>(T)</span> + <span class="text-sky-700 dark:text-sky-400">B<sub>model</sub>(T)</span> + <span class="text-amber-800 dark:text-amber-400">B<sub>risk</sub>(T)</span> + <span class="text-indigo-600 dark:text-indigo-400">B<sub>K</sub>(T)</span>
               </div>
               <span class="px-3 py-1 rounded-lg text-xs font-bold bg-emerald-100 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-200 shrink-0">Accumulated over session T</span>
             </div>
@@ -1848,14 +1894,14 @@ Risk Reduction (B<sub>risk</sub>)
           </template>
         </section>
         <!-- BACKUP 16: Applying the Model (1/3): Training Data -->
-        <section id="slide-27" class="slide-section hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
+        <section id="slide-27" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
           data-title="Backup 16. Applying the Model (1/3): Training Data" data-backup="true">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex items-center justify-between">
             <div>
-              <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400">04. Applying the Model by Interaction Target (1 / 3)</span>
+              <span class="text-xs font-bold text-emerald-700 dark:text-emerald-400">04. Applying the Model by Interaction Target (1 / 3)</span>
               <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-100 mt-0.5">Data correction brings benefits and adds training and re-alignment costs</h2>
             </div>
-            <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 tabular-nums">Backup 16 / 23</span>
+            <span class="text-xs font-semibold text-slate-600 dark:text-slate-300 tabular-nums">Backup 16 / 23</span>
           </div>
           <div class="flex-1 my-2 flex flex-col justify-between gap-10 min-h-0">
             <div class="w-full max-w-6xl mx-auto px-6 py-4 rounded-2xl bg-slate-50/70 dark:bg-slate-900/50 border border-slate-200/80 dark:border-slate-700/70 flex-1 min-h-0 flex items-center justify-center">
@@ -1865,13 +1911,13 @@ Risk Reduction (B<sub>risk</sub>)
                     <path class="fill-slate-600 dark:fill-slate-300" d="M 0 1 L 10 5 L 0 9 z"></path>
                   </marker>
                   <marker id="backup-10-slide_15_s15ArrSky" markerheight="6" markerwidth="6" orient="auto-start-reverse" refx="8" refy="5" viewbox="0 0 10 10">
-                    <path class="fill-sky-600 dark:fill-sky-400" d="M 0 1 L 10 5 L 0 9 z"></path>
+                    <path class="fill-sky-700 dark:fill-sky-400" d="M 0 1 L 10 5 L 0 9 z"></path>
                   </marker>
                   <marker id="backup-10-slide_15_s15ArrPurple" markerheight="6" markerwidth="6" orient="auto-start-reverse" refx="8" refy="5" viewbox="0 0 10 10">
                     <path class="fill-purple-600 dark:fill-purple-400" d="M 0 1 L 10 5 L 0 9 z"></path>
                   </marker>
                   <marker id="backup-10-slide_15_s15ArrEmerald" markerheight="6" markerwidth="6" orient="auto-start-reverse" refx="8" refy="5" viewbox="0 0 10 10">
-                    <path class="fill-emerald-600 dark:fill-emerald-400" d="M 0 1 L 10 5 L 0 9 z"></path>
+                    <path class="fill-emerald-700 dark:fill-emerald-400" d="M 0 1 L 10 5 L 0 9 z"></path>
                   </marker>
                 </defs>
                 <!-- Grey Zones matching Slide 5 of original deck -->
@@ -1893,19 +1939,19 @@ Risk Reduction (B<sub>risk</sub>)
                 <text class="fill-slate-800 dark:fill-slate-200 font-bold text-sm math-serif" text-anchor="middle" x="717" y="70">dK/dt</text>
                 <line class="stroke-slate-700 dark:stroke-slate-200" marker-end="url(#backup-10-slide_15_s15ArrBase)" stroke-width="2.5" x1="800" x2="800" y1="112" y2="136"></line>
                 <!-- PATHWAY 3: Understanding dS/dt -->
-                <g style="opacity: 0.14;">
+                <g style="opacity: 1;">
                   <line class="stroke-emerald-600 dark:stroke-emerald-400" marker-end="url(#backup-10-slide_15_s15ArrEmerald)" stroke-width="3" x1="768" x2="548" y1="172" y2="172"></line>
-                  <text class="fill-emerald-700 dark:fill-emerald-300 font-bold text-sm math-serif" text-anchor="middle" x="658" y="162">dS/dt (Explore S &amp; K)</text>
+                  <text class="fill-emerald-700 dark:fill-emerald-300 font-bold text-sm math-serif" text-anchor="middle" x="658" y="162">dS/dt · Explore</text>
                 </g>
                 <!-- PATHWAY 2: Model dM/dt -->
-                <g style="opacity: 0.14;">
+                <g style="opacity: 1;">
                   <path class="stroke-purple-600 dark:stroke-purple-400" d="M 785 202 L 785 245 L 215 245 L 215 210" fill="none" marker-end="url(#backup-10-slide_15_s15ArrPurple)" stroke-width="3"></path>
-                  <text class="fill-purple-700 dark:fill-purple-300 font-bold text-sm math-serif" x="410" y="237">dM/dt -- IVML for changing model state M</text>
+                  <text class="fill-purple-700 dark:fill-purple-300 font-bold text-sm math-serif" x="410" y="237">dM/dt · Model feedback</text>
                 </g>
                 <!-- PATHWAY 1: Data dD/dt -->
                 <g style="opacity: 1;">
                   <path class="stroke-sky-600 dark:stroke-sky-400" d="M 815 202 L 815 282 L 80 282 L 80 120" fill="none" marker-end="url(#backup-10-slide_15_s15ArrSky)" stroke-width="3"></path>
-                  <text class="fill-sky-700 dark:fill-sky-300 font-bold text-sm math-serif" x="260" y="274">dD/dt -- IVML for improving training data D</text>
+                  <text class="fill-sky-700 dark:fill-sky-300 font-bold text-sm math-serif" x="260" y="274">dD/dt · Data feedback</text>
                 </g>
                 <!-- State & Process Nodes -->
                 <g>
@@ -1915,7 +1961,7 @@ Risk Reduction (B<sub>risk</sub>)
                 <circle class="fill-white dark:fill-slate-800 stroke-slate-800 dark:stroke-slate-200" cx="215" cy="80" r="31" stroke-width="2.5"></circle>
                 <text class="fill-slate-900 dark:fill-slate-100 font-bold text-xl math-serif" text-anchor="middle" x="215" y="87">L</text>
                 <g>
-                  <rect class="fill-white dark:fill-slate-800 stroke-slate-300 dark:stroke-slate-700" height="62" rx="6" stroke-width="2" width="76" x="177" y="140"></rect>
+                  <rect class="fill-white dark:fill-slate-800 stroke-slate-600 dark:stroke-slate-700" height="62" rx="6" stroke-width="2" width="76" x="177" y="140"></rect>
                   <text class="fill-slate-900 dark:fill-slate-100 font-bold text-xl math-serif" text-anchor="middle" x="215" y="178">M</text>
                 </g>
                 <rect class="fill-white dark:fill-slate-800 stroke-slate-800 dark:stroke-slate-200" height="62" rx="6" stroke-width="2.5" width="77" x="318" y="50"></rect>
@@ -1923,13 +1969,13 @@ Risk Reduction (B<sub>risk</sub>)
                 <circle class="fill-white dark:fill-slate-800 stroke-slate-800 dark:stroke-slate-200" cx="500" cy="80" r="31" stroke-width="2.5"></circle>
                 <text class="fill-slate-900 dark:fill-slate-100 font-bold text-xl math-serif" text-anchor="middle" x="500" y="87">V</text>
                 <g>
-                  <rect class="fill-white dark:fill-slate-800 stroke-slate-300 dark:stroke-slate-700" height="62" rx="6" stroke-width="2" width="76" x="462" y="140"></rect>
+                  <rect class="fill-white dark:fill-slate-800 stroke-slate-600 dark:stroke-slate-700" height="62" rx="6" stroke-width="2" width="76" x="462" y="140"></rect>
                   <text class="fill-slate-900 dark:fill-slate-100 font-bold text-xl math-serif" text-anchor="middle" x="500" y="178">S</text>
                 </g>
                 <circle class="fill-white dark:fill-slate-800 stroke-slate-800 dark:stroke-slate-200" cx="650" cy="80" r="31" stroke-width="2.5"></circle>
                 <text class="fill-slate-900 dark:fill-slate-100 font-bold text-xl math-serif" text-anchor="middle" x="650" y="87">P</text>
                 <g>
-                  <rect class="fill-white dark:fill-slate-800 stroke-slate-300 dark:stroke-slate-700" height="62" rx="6" stroke-width="2" width="76" x="762" y="50"></rect>
+                  <rect class="fill-white dark:fill-slate-800 stroke-slate-600 dark:stroke-slate-700" height="62" rx="6" stroke-width="2" width="76" x="762" y="50"></rect>
                   <text class="fill-slate-900 dark:fill-slate-100 font-bold text-xl math-serif" text-anchor="middle" x="800" y="88">K</text>
                 </g>
                 <circle class="fill-indigo-600 stroke-indigo-700 dark:stroke-indigo-300" cx="800" cy="172" r="30" stroke-width="2.5"></circle>
@@ -1950,55 +1996,19 @@ Risk Reduction (B<sub>risk</sub>)
                   <tr class="bg-sky-50/90 dark:bg-sky-950/40 ring-2 ring-inset ring-sky-500 border-l-4 border-l-sky-600 transition">
                     <td class="py-5 px-6 font-bold text-sky-700 dark:text-sky-300">
                     1. Data-targeted interaction<span class="ml-2 px-2 py-0.5 rounded-md text-[10px] font-bold bg-sky-600 text-white align-middle">Focus</span>
-                      <span class="block text-sm sm:text-base font-normal text-slate-500 dark:text-slate-400 mt-1">Feedback loop: <span class="math-serif">dD/dt</span></span>
+                      <span class="block text-sm sm:text-base font-normal text-slate-600 dark:text-slate-300 mt-1">Feedback loop: <span class="math-serif">dD/dt</span></span>
                     </td>
                     <td class="py-5 px-6 text-slate-700 dark:text-slate-200">
                     Training data <span class="math-serif font-bold">D</span>
-                      <span class="block text-xs sm:text-sm text-slate-500 dark:text-slate-400">Labels, features, weights, quality <span class="math-serif">Q</span></span>
+                      <span class="block text-xs sm:text-sm text-slate-600 dark:text-slate-300">Labels, features, weights, quality <span class="math-serif">Q</span></span>
                     </td>
                     <td class="py-5 px-6">
                       <span class="px-2.5 py-0.5 rounded-lg text-base sm:text-lg font-bold bg-rose-50 dark:bg-rose-950/60 text-rose-700 dark:text-rose-300 math-serif">C<sub>P</sub>, C<sub>E</sub> + C<sub>M</sub>, C<sub>R</sub></span>
-                      <span class="block text-sm sm:text-base text-slate-500 dark:text-slate-400 mt-1">Correction effort + ML training &amp; re-alignment</span>
+                      <span class="block text-sm sm:text-base text-slate-600 dark:text-slate-300 mt-1">Correction effort + ML training &amp; re-alignment</span>
                     </td>
                     <td class="py-5 px-6">
                       <span class="px-2.5 py-0.5 rounded-lg text-base sm:text-lg font-bold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 math-serif">Delta Q -> B<sub>ds</sub> , B<sub>model</sub></span>
-                      <span class="block text-sm sm:text-base text-slate-500 dark:text-slate-400 mt-1">Operational savings &amp; model improvement</span>
-                    </td>
-                  </tr>
-                  <tr class="opacity-45 bg-white/50 dark:bg-slate-800/30 transition">
-                    <td class="py-5 px-6 font-bold text-purple-700 dark:text-purple-300">
-                    2. Model-targeted interaction
-                      <span class="block text-sm sm:text-base font-normal text-slate-500 dark:text-slate-400 mt-1">Feedback loop: <span class="math-serif">dM/dt</span></span>
-                    </td>
-                    <td class="py-5 px-6 text-slate-700 dark:text-slate-200">
-                    Model state <span class="math-serif font-bold">M</span>
-                      <span class="block text-xs sm:text-sm text-slate-500 dark:text-slate-400">Hyperparameters, constraints, specifications</span>
-                    </td>
-                    <td class="py-5 px-6">
-                      <span class="px-2.5 py-0.5 rounded-lg text-base sm:text-lg font-bold bg-rose-50 dark:bg-rose-950/60 text-rose-700 dark:text-rose-300 math-serif">C<sub>P</sub>, C<sub>E</sub>, C<sub>S</sub> + C<sub>M</sub>, C<sub>R</sub></span>
-                      <span class="block text-sm sm:text-base text-slate-500 dark:text-slate-400 mt-1">Model steering + re-optimization &amp; re-alignment</span>
-                    </td>
-                    <td class="py-5 px-6">
-                      <span class="px-2.5 py-0.5 rounded-lg text-base sm:text-lg font-bold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 math-serif">Delta M -> B<sub>model</sub> , B<sub>ds</sub></span>
-                      <span class="block text-sm sm:text-base text-slate-500 dark:text-slate-400 mt-1">Better predictions &amp; operational savings</span>
-                    </td>
-                  </tr>
-                  <tr class="opacity-45 bg-white/50 dark:bg-slate-800/30 transition">
-                    <td class="py-5 px-6 font-bold text-emerald-700 dark:text-emerald-300">
-                    3. Understanding-oriented
-                      <span class="block text-sm sm:text-base font-normal text-slate-500 dark:text-slate-400 mt-1">Feedback loop: <span class="math-serif">dS/dt, dK/dt</span></span>
-                    </td>
-                    <td class="py-5 px-6 text-slate-700 dark:text-slate-200">
-                    Visual specification <span class="math-serif font-bold">S</span> &amp; knowledge <span class="math-serif font-bold">K</span>
-                      <span class="block text-xs sm:text-sm text-slate-500 dark:text-slate-400"><span class="math-serif">D</span> and <span class="math-serif">M</span> remain fixed</span>
-                    </td>
-                    <td class="py-5 px-6">
-                      <span class="px-2.5 py-0.5 rounded-lg text-base sm:text-lg font-bold bg-amber-50 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 math-serif">C<sub>P</sub>, C<sub>E</sub>, C<sub>S</sub>, C<sub>V</sub> (No C<sub>M</sub>, C<sub>R</sub>)</span>
-                      <span class="block text-sm sm:text-base text-slate-500 dark:text-slate-400 mt-1">Visual exploration and interpretation only</span>
-                    </td>
-                    <td class="py-5 px-6">
-                      <span class="px-2.5 py-0.5 rounded-lg text-base sm:text-lg font-bold bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 math-serif">Delta K -> B<sub>K</sub> , B<sub>risk</sub></span>
-                      <span class="block text-sm sm:text-base text-slate-500 dark:text-slate-400 mt-1">Failure detection, safety, and domain insight</span>
+                      <span class="block text-sm sm:text-base text-slate-600 dark:text-slate-300 mt-1">Operational savings &amp; model improvement</span>
                     </td>
                   </tr>
                 </tbody>
@@ -2017,14 +2027,14 @@ Risk Reduction (B<sub>risk</sub>)
           </template>
         </section>
         <!-- BACKUP 17: Applying the Model (2/3): Model State -->
-        <section id="slide-28" class="slide-section hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
+        <section id="slide-28" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
           data-title="Backup 17. Applying the Model (2/3): Model State" data-backup="true">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex items-center justify-between">
             <div>
-              <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400">04. Applying the Model by Interaction Target (2 / 3)</span>
+              <span class="text-xs font-bold text-emerald-700 dark:text-emerald-400">04. Applying the Model by Interaction Target (2 / 3)</span>
               <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-100 mt-0.5">Model steering weighs training and re-alignment costs against model gains</h2>
             </div>
-            <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 tabular-nums">Backup 17 / 23</span>
+            <span class="text-xs font-semibold text-slate-600 dark:text-slate-300 tabular-nums">Backup 17 / 23</span>
           </div>
           <div class="flex-1 my-2 flex flex-col justify-between gap-10 min-h-0">
             <div class="w-full max-w-6xl mx-auto px-6 py-4 rounded-2xl bg-slate-50/70 dark:bg-slate-900/50 border border-slate-200/80 dark:border-slate-700/70 flex-1 min-h-0 flex items-center justify-center">
@@ -2034,13 +2044,13 @@ Risk Reduction (B<sub>risk</sub>)
                     <path class="fill-slate-600 dark:fill-slate-300" d="M 0 1 L 10 5 L 0 9 z"></path>
                   </marker>
                   <marker id="backup-11-slide_16_s16ArrSky" markerheight="6" markerwidth="6" orient="auto-start-reverse" refx="8" refy="5" viewbox="0 0 10 10">
-                    <path class="fill-sky-600 dark:fill-sky-400" d="M 0 1 L 10 5 L 0 9 z"></path>
+                    <path class="fill-sky-700 dark:fill-sky-400" d="M 0 1 L 10 5 L 0 9 z"></path>
                   </marker>
                   <marker id="backup-11-slide_16_s16ArrPurple" markerheight="6" markerwidth="6" orient="auto-start-reverse" refx="8" refy="5" viewbox="0 0 10 10">
                     <path class="fill-purple-600 dark:fill-purple-400" d="M 0 1 L 10 5 L 0 9 z"></path>
                   </marker>
                   <marker id="backup-11-slide_16_s16ArrEmerald" markerheight="6" markerwidth="6" orient="auto-start-reverse" refx="8" refy="5" viewbox="0 0 10 10">
-                    <path class="fill-emerald-600 dark:fill-emerald-400" d="M 0 1 L 10 5 L 0 9 z"></path>
+                    <path class="fill-emerald-700 dark:fill-emerald-400" d="M 0 1 L 10 5 L 0 9 z"></path>
                   </marker>
                 </defs>
                 <!-- Grey Zones matching Slide 5 of original deck -->
@@ -2062,23 +2072,23 @@ Risk Reduction (B<sub>risk</sub>)
                 <text class="fill-slate-800 dark:fill-slate-200 font-bold text-sm math-serif" text-anchor="middle" x="717" y="70">dK/dt</text>
                 <line class="stroke-slate-700 dark:stroke-slate-200" marker-end="url(#backup-11-slide_16_s16ArrBase)" stroke-width="2.5" x1="800" x2="800" y1="112" y2="136"></line>
                 <!-- PATHWAY 3: Understanding dS/dt -->
-                <g style="opacity: 0.14;">
+                <g style="opacity: 1;">
                   <line class="stroke-emerald-600 dark:stroke-emerald-400" marker-end="url(#backup-11-slide_16_s16ArrEmerald)" stroke-width="3" x1="768" x2="548" y1="172" y2="172"></line>
-                  <text class="fill-emerald-700 dark:fill-emerald-300 font-bold text-sm math-serif" text-anchor="middle" x="658" y="162">dS/dt (Explore S &amp; K)</text>
+                  <text class="fill-emerald-700 dark:fill-emerald-300 font-bold text-sm math-serif" text-anchor="middle" x="658" y="162">dS/dt · Explore</text>
                 </g>
                 <!-- PATHWAY 2: Model dM/dt -->
                 <g style="opacity: 1;">
                   <path class="stroke-purple-600 dark:stroke-purple-400" d="M 785 202 L 785 245 L 215 245 L 215 210" fill="none" marker-end="url(#backup-11-slide_16_s16ArrPurple)" stroke-width="3"></path>
-                  <text class="fill-purple-700 dark:fill-purple-300 font-bold text-sm math-serif" x="410" y="237">dM/dt -- IVML for changing model state M</text>
+                  <text class="fill-purple-700 dark:fill-purple-300 font-bold text-sm math-serif" x="410" y="237">dM/dt · Model feedback</text>
                 </g>
                 <!-- PATHWAY 1: Data dD/dt -->
-                <g style="opacity: 0.14;">
+                <g style="opacity: 1;">
                   <path class="stroke-sky-600 dark:stroke-sky-400" d="M 815 202 L 815 282 L 80 282 L 80 120" fill="none" marker-end="url(#backup-11-slide_16_s16ArrSky)" stroke-width="3"></path>
-                  <text class="fill-sky-700 dark:fill-sky-300 font-bold text-sm math-serif" x="260" y="274">dD/dt -- IVML for improving training data D</text>
+                  <text class="fill-sky-700 dark:fill-sky-300 font-bold text-sm math-serif" x="260" y="274">dD/dt · Data feedback</text>
                 </g>
                 <!-- State & Process Nodes -->
                 <g>
-                  <rect class="fill-white dark:fill-slate-800 stroke-slate-300 dark:stroke-slate-700" height="62" rx="6" stroke-width="2" width="76" x="42" y="50"></rect>
+                  <rect class="fill-white dark:fill-slate-800 stroke-slate-600 dark:stroke-slate-700" height="62" rx="6" stroke-width="2" width="76" x="42" y="50"></rect>
                   <text class="fill-slate-900 dark:fill-slate-100 font-bold text-xl math-serif" text-anchor="middle" x="80" y="88">D</text>
                 </g>
                 <circle class="fill-white dark:fill-slate-800 stroke-slate-800 dark:stroke-slate-200" cx="215" cy="80" r="31" stroke-width="2.5"></circle>
@@ -2092,13 +2102,13 @@ Risk Reduction (B<sub>risk</sub>)
                 <circle class="fill-white dark:fill-slate-800 stroke-slate-800 dark:stroke-slate-200" cx="500" cy="80" r="31" stroke-width="2.5"></circle>
                 <text class="fill-slate-900 dark:fill-slate-100 font-bold text-xl math-serif" text-anchor="middle" x="500" y="87">V</text>
                 <g>
-                  <rect class="fill-white dark:fill-slate-800 stroke-slate-300 dark:stroke-slate-700" height="62" rx="6" stroke-width="2" width="76" x="462" y="140"></rect>
+                  <rect class="fill-white dark:fill-slate-800 stroke-slate-600 dark:stroke-slate-700" height="62" rx="6" stroke-width="2" width="76" x="462" y="140"></rect>
                   <text class="fill-slate-900 dark:fill-slate-100 font-bold text-xl math-serif" text-anchor="middle" x="500" y="178">S</text>
                 </g>
                 <circle class="fill-white dark:fill-slate-800 stroke-slate-800 dark:stroke-slate-200" cx="650" cy="80" r="31" stroke-width="2.5"></circle>
                 <text class="fill-slate-900 dark:fill-slate-100 font-bold text-xl math-serif" text-anchor="middle" x="650" y="87">P</text>
                 <g>
-                  <rect class="fill-white dark:fill-slate-800 stroke-slate-300 dark:stroke-slate-700" height="62" rx="6" stroke-width="2" width="76" x="762" y="50"></rect>
+                  <rect class="fill-white dark:fill-slate-800 stroke-slate-600 dark:stroke-slate-700" height="62" rx="6" stroke-width="2" width="76" x="762" y="50"></rect>
                   <text class="fill-slate-900 dark:fill-slate-100 font-bold text-xl math-serif" text-anchor="middle" x="800" y="88">K</text>
                 </g>
                 <circle class="fill-indigo-600 stroke-indigo-700 dark:stroke-indigo-300" cx="800" cy="172" r="30" stroke-width="2.5"></circle>
@@ -2116,58 +2126,22 @@ Risk Reduction (B<sub>risk</sub>)
                   </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-200/80 dark:divide-slate-700/70 text-lg sm:text-xl">
-                  <tr class="opacity-45 bg-white/50 dark:bg-slate-800/30 transition">
-                    <td class="py-5 px-6 font-bold text-sky-700 dark:text-sky-300">
-                    1. Data-targeted interaction
-                      <span class="block text-sm sm:text-base font-normal text-slate-500 dark:text-slate-400 mt-1">Feedback loop: <span class="math-serif">dD/dt</span></span>
-                    </td>
-                    <td class="py-5 px-6 text-slate-700 dark:text-slate-200">
-                    Training data <span class="math-serif font-bold">D</span>
-                      <span class="block text-xs sm:text-sm text-slate-500 dark:text-slate-400">Labels, features, weights, quality <span class="math-serif">Q</span></span>
-                    </td>
-                    <td class="py-5 px-6">
-                      <span class="px-2.5 py-0.5 rounded-lg text-base sm:text-lg font-bold bg-rose-50 dark:bg-rose-950/60 text-rose-700 dark:text-rose-300 math-serif">C<sub>P</sub>, C<sub>E</sub> + C<sub>M</sub>, C<sub>R</sub></span>
-                      <span class="block text-sm sm:text-base text-slate-500 dark:text-slate-400 mt-1">Correction effort + ML training &amp; re-alignment</span>
-                    </td>
-                    <td class="py-5 px-6">
-                      <span class="px-2.5 py-0.5 rounded-lg text-base sm:text-lg font-bold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 math-serif">Delta Q -> B<sub>ds</sub> , B<sub>model</sub></span>
-                      <span class="block text-sm sm:text-base text-slate-500 dark:text-slate-400 mt-1">Operational savings &amp; model improvement</span>
-                    </td>
-                  </tr>
                   <tr class="bg-purple-50/90 dark:bg-purple-950/40 ring-2 ring-inset ring-purple-500 border-l-4 border-l-purple-600 transition">
                     <td class="py-5 px-6 font-bold text-purple-700 dark:text-purple-300">
                     2. Model-targeted interaction<span class="ml-2 px-2 py-0.5 rounded-md text-[10px] font-bold bg-purple-600 text-white align-middle">Focus</span>
-                      <span class="block text-sm sm:text-base font-normal text-slate-500 dark:text-slate-400 mt-1">Feedback loop: <span class="math-serif">dM/dt</span></span>
+                      <span class="block text-sm sm:text-base font-normal text-slate-600 dark:text-slate-300 mt-1">Feedback loop: <span class="math-serif">dM/dt</span></span>
                     </td>
                     <td class="py-5 px-6 text-slate-700 dark:text-slate-200">
                     Model state <span class="math-serif font-bold">M</span>
-                      <span class="block text-xs sm:text-sm text-slate-500 dark:text-slate-400">Hyperparameters, constraints, specifications</span>
+                      <span class="block text-xs sm:text-sm text-slate-600 dark:text-slate-300">Hyperparameters, constraints, specifications</span>
                     </td>
                     <td class="py-5 px-6">
                       <span class="px-2.5 py-0.5 rounded-lg text-base sm:text-lg font-bold bg-rose-50 dark:bg-rose-950/60 text-rose-700 dark:text-rose-300 math-serif">C<sub>P</sub>, C<sub>E</sub>, C<sub>S</sub> + C<sub>M</sub>, C<sub>R</sub></span>
-                      <span class="block text-sm sm:text-base text-slate-500 dark:text-slate-400 mt-1">Model steering + re-optimization &amp; re-alignment</span>
+                      <span class="block text-sm sm:text-base text-slate-600 dark:text-slate-300 mt-1">Model steering + re-optimization &amp; re-alignment</span>
                     </td>
                     <td class="py-5 px-6">
                       <span class="px-2.5 py-0.5 rounded-lg text-base sm:text-lg font-bold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 math-serif">Delta M -> B<sub>model</sub> , B<sub>ds</sub></span>
-                      <span class="block text-sm sm:text-base text-slate-500 dark:text-slate-400 mt-1">Better predictions &amp; operational savings</span>
-                    </td>
-                  </tr>
-                  <tr class="opacity-45 bg-white/50 dark:bg-slate-800/30 transition">
-                    <td class="py-5 px-6 font-bold text-emerald-700 dark:text-emerald-300">
-                    3. Understanding-oriented
-                      <span class="block text-sm sm:text-base font-normal text-slate-500 dark:text-slate-400 mt-1">Feedback loop: <span class="math-serif">dS/dt, dK/dt</span></span>
-                    </td>
-                    <td class="py-5 px-6 text-slate-700 dark:text-slate-200">
-                    Visual specification <span class="math-serif font-bold">S</span> &amp; knowledge <span class="math-serif font-bold">K</span>
-                      <span class="block text-xs sm:text-sm text-slate-500 dark:text-slate-400"><span class="math-serif">D</span> and <span class="math-serif">M</span> remain fixed</span>
-                    </td>
-                    <td class="py-5 px-6">
-                      <span class="px-2.5 py-0.5 rounded-lg text-base sm:text-lg font-bold bg-amber-50 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 math-serif">C<sub>P</sub>, C<sub>E</sub>, C<sub>S</sub>, C<sub>V</sub> (No C<sub>M</sub>, C<sub>R</sub>)</span>
-                      <span class="block text-sm sm:text-base text-slate-500 dark:text-slate-400 mt-1">Visual exploration and interpretation only</span>
-                    </td>
-                    <td class="py-5 px-6">
-                      <span class="px-2.5 py-0.5 rounded-lg text-base sm:text-lg font-bold bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 math-serif">Delta K -> B<sub>K</sub> , B<sub>risk</sub></span>
-                      <span class="block text-sm sm:text-base text-slate-500 dark:text-slate-400 mt-1">Failure detection, safety, and domain insight</span>
+                      <span class="block text-sm sm:text-base text-slate-600 dark:text-slate-300 mt-1">Better predictions &amp; operational savings</span>
                     </td>
                   </tr>
                 </tbody>
@@ -2185,14 +2159,14 @@ Risk Reduction (B<sub>risk</sub>)
           </template>
         </section>
         <!-- BACKUP 18: Applying the Model (3/3): Model Understanding -->
-        <section id="slide-29" class="slide-section hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
+        <section id="slide-29" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
           data-title="Backup 18. Applying the Model (3/3): Model Understanding" data-backup="true">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex items-center justify-between">
             <div>
-              <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400">04. Applying the Model by Interaction Target (3 / 3)</span>
+              <span class="text-xs font-bold text-emerald-700 dark:text-emerald-400">04. Applying the Model by Interaction Target (3 / 3)</span>
               <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-100 mt-0.5">Exploring a fixed model builds understanding without retraining costs</h2>
             </div>
-            <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 tabular-nums">Backup 18 / 23</span>
+            <span class="text-xs font-semibold text-slate-600 dark:text-slate-300 tabular-nums">Backup 18 / 23</span>
           </div>
           <div class="flex-1 my-2 flex flex-col justify-between gap-10 min-h-0">
             <div class="w-full max-w-6xl mx-auto px-6 py-4 rounded-2xl bg-slate-50/70 dark:bg-slate-900/50 border border-slate-200/80 dark:border-slate-700/70 flex-1 min-h-0 flex items-center justify-center">
@@ -2202,13 +2176,13 @@ Risk Reduction (B<sub>risk</sub>)
                     <path class="fill-slate-600 dark:fill-slate-300" d="M 0 1 L 10 5 L 0 9 z"></path>
                   </marker>
                   <marker id="backup-12-slide_17_s17ArrSky" markerheight="6" markerwidth="6" orient="auto-start-reverse" refx="8" refy="5" viewbox="0 0 10 10">
-                    <path class="fill-sky-600 dark:fill-sky-400" d="M 0 1 L 10 5 L 0 9 z"></path>
+                    <path class="fill-sky-700 dark:fill-sky-400" d="M 0 1 L 10 5 L 0 9 z"></path>
                   </marker>
                   <marker id="backup-12-slide_17_s17ArrPurple" markerheight="6" markerwidth="6" orient="auto-start-reverse" refx="8" refy="5" viewbox="0 0 10 10">
                     <path class="fill-purple-600 dark:fill-purple-400" d="M 0 1 L 10 5 L 0 9 z"></path>
                   </marker>
                   <marker id="backup-12-slide_17_s17ArrEmerald" markerheight="6" markerwidth="6" orient="auto-start-reverse" refx="8" refy="5" viewbox="0 0 10 10">
-                    <path class="fill-emerald-600 dark:fill-emerald-400" d="M 0 1 L 10 5 L 0 9 z"></path>
+                    <path class="fill-emerald-700 dark:fill-emerald-400" d="M 0 1 L 10 5 L 0 9 z"></path>
                   </marker>
                 </defs>
                 <!-- Grey Zones matching Slide 5 of original deck -->
@@ -2232,27 +2206,27 @@ Risk Reduction (B<sub>risk</sub>)
                 <!-- PATHWAY 3: Understanding dS/dt -->
                 <g style="opacity: 1;">
                   <line class="stroke-emerald-600 dark:stroke-emerald-400" marker-end="url(#backup-12-slide_17_s17ArrEmerald)" stroke-width="3" x1="768" x2="548" y1="172" y2="172"></line>
-                  <text class="fill-emerald-700 dark:fill-emerald-300 font-bold text-sm math-serif" text-anchor="middle" x="658" y="162">dS/dt (Explore S &amp; K)</text>
+                  <text class="fill-emerald-700 dark:fill-emerald-300 font-bold text-sm math-serif" text-anchor="middle" x="658" y="162">dS/dt · Explore</text>
                 </g>
                 <!-- PATHWAY 2: Model dM/dt -->
-                <g style="opacity: 0.14;">
+                <g style="opacity: 1;">
                   <path class="stroke-purple-600 dark:stroke-purple-400" d="M 785 202 L 785 245 L 215 245 L 215 210" fill="none" marker-end="url(#backup-12-slide_17_s17ArrPurple)" stroke-width="3"></path>
-                  <text class="fill-purple-700 dark:fill-purple-300 font-bold text-sm math-serif" x="410" y="237">dM/dt -- IVML for changing model state M</text>
+                  <text class="fill-purple-700 dark:fill-purple-300 font-bold text-sm math-serif" x="410" y="237">dM/dt · Model feedback</text>
                 </g>
                 <!-- PATHWAY 1: Data dD/dt -->
-                <g style="opacity: 0.14;">
+                <g style="opacity: 1;">
                   <path class="stroke-sky-600 dark:stroke-sky-400" d="M 815 202 L 815 282 L 80 282 L 80 120" fill="none" marker-end="url(#backup-12-slide_17_s17ArrSky)" stroke-width="3"></path>
-                  <text class="fill-sky-700 dark:fill-sky-300 font-bold text-sm math-serif" x="260" y="274">dD/dt -- IVML for improving training data D</text>
+                  <text class="fill-sky-700 dark:fill-sky-300 font-bold text-sm math-serif" x="260" y="274">dD/dt · Data feedback</text>
                 </g>
                 <!-- State & Process Nodes -->
                 <g>
-                  <rect class="fill-white dark:fill-slate-800 stroke-slate-300 dark:stroke-slate-700" height="62" rx="6" stroke-width="2" width="76" x="42" y="50"></rect>
+                  <rect class="fill-white dark:fill-slate-800 stroke-slate-600 dark:stroke-slate-700" height="62" rx="6" stroke-width="2" width="76" x="42" y="50"></rect>
                   <text class="fill-slate-900 dark:fill-slate-100 font-bold text-xl math-serif" text-anchor="middle" x="80" y="88">D</text>
                 </g>
                 <circle class="fill-white dark:fill-slate-800 stroke-slate-800 dark:stroke-slate-200" cx="215" cy="80" r="31" stroke-width="2.5"></circle>
                 <text class="fill-slate-900 dark:fill-slate-100 font-bold text-xl math-serif" text-anchor="middle" x="215" y="87">L</text>
                 <g>
-                  <rect class="fill-white dark:fill-slate-800 stroke-slate-300 dark:stroke-slate-700" height="62" rx="6" stroke-width="2" width="76" x="177" y="140"></rect>
+                  <rect class="fill-white dark:fill-slate-800 stroke-slate-600 dark:stroke-slate-700" height="62" rx="6" stroke-width="2" width="76" x="177" y="140"></rect>
                   <text class="fill-slate-900 dark:fill-slate-100 font-bold text-xl math-serif" text-anchor="middle" x="215" y="178">M</text>
                 </g>
                 <rect class="fill-white dark:fill-slate-800 stroke-slate-800 dark:stroke-slate-200" height="62" rx="6" stroke-width="2.5" width="77" x="318" y="50"></rect>
@@ -2284,58 +2258,22 @@ Risk Reduction (B<sub>risk</sub>)
                   </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-200/80 dark:divide-slate-700/70 text-lg sm:text-xl">
-                  <tr class="opacity-45 bg-white/50 dark:bg-slate-800/30 transition">
-                    <td class="py-5 px-6 font-bold text-sky-700 dark:text-sky-300">
-                    1. Data-targeted interaction
-                      <span class="block text-sm sm:text-base font-normal text-slate-500 dark:text-slate-400 mt-1">Feedback loop: <span class="math-serif">dD/dt</span></span>
-                    </td>
-                    <td class="py-5 px-6 text-slate-700 dark:text-slate-200">
-                    Training data <span class="math-serif font-bold">D</span>
-                      <span class="block text-xs sm:text-sm text-slate-500 dark:text-slate-400">Labels, features, weights, quality <span class="math-serif">Q</span></span>
-                    </td>
-                    <td class="py-5 px-6">
-                      <span class="px-2.5 py-0.5 rounded-lg text-base sm:text-lg font-bold bg-rose-50 dark:bg-rose-950/60 text-rose-700 dark:text-rose-300 math-serif">C<sub>P</sub>, C<sub>E</sub> + C<sub>M</sub>, C<sub>R</sub></span>
-                      <span class="block text-sm sm:text-base text-slate-500 dark:text-slate-400 mt-1">Correction effort + ML training &amp; re-alignment</span>
-                    </td>
-                    <td class="py-5 px-6">
-                      <span class="px-2.5 py-0.5 rounded-lg text-base sm:text-lg font-bold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 math-serif">Delta Q -> B<sub>ds</sub> , B<sub>model</sub></span>
-                      <span class="block text-sm sm:text-base text-slate-500 dark:text-slate-400 mt-1">Operational savings &amp; model improvement</span>
-                    </td>
-                  </tr>
-                  <tr class="opacity-45 bg-white/50 dark:bg-slate-800/30 transition">
-                    <td class="py-5 px-6 font-bold text-purple-700 dark:text-purple-300">
-                    2. Model-targeted interaction
-                      <span class="block text-sm sm:text-base font-normal text-slate-500 dark:text-slate-400 mt-1">Feedback loop: <span class="math-serif">dM/dt</span></span>
-                    </td>
-                    <td class="py-5 px-6 text-slate-700 dark:text-slate-200">
-                    Model state <span class="math-serif font-bold">M</span>
-                      <span class="block text-xs sm:text-sm text-slate-500 dark:text-slate-400">Hyperparameters, constraints, specifications</span>
-                    </td>
-                    <td class="py-5 px-6">
-                      <span class="px-2.5 py-0.5 rounded-lg text-base sm:text-lg font-bold bg-rose-50 dark:bg-rose-950/60 text-rose-700 dark:text-rose-300 math-serif">C<sub>P</sub>, C<sub>E</sub>, C<sub>S</sub> + C<sub>M</sub>, C<sub>R</sub></span>
-                      <span class="block text-sm sm:text-base text-slate-500 dark:text-slate-400 mt-1">Model steering + re-optimization &amp; re-alignment</span>
-                    </td>
-                    <td class="py-5 px-6">
-                      <span class="px-2.5 py-0.5 rounded-lg text-base sm:text-lg font-bold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 math-serif">Delta M -> B<sub>model</sub> , B<sub>ds</sub></span>
-                      <span class="block text-sm sm:text-base text-slate-500 dark:text-slate-400 mt-1">Better predictions &amp; operational savings</span>
-                    </td>
-                  </tr>
                   <tr class="bg-emerald-50/90 dark:bg-emerald-950/40 ring-2 ring-inset ring-emerald-500 border-l-4 border-l-emerald-600 transition">
                     <td class="py-5 px-6 font-bold text-emerald-700 dark:text-emerald-300">
                     3. Understanding-oriented<span class="ml-2 px-2 py-0.5 rounded-md text-[10px] font-bold bg-emerald-600 text-white align-middle">Focus</span>
-                      <span class="block text-sm sm:text-base font-normal text-slate-500 dark:text-slate-400 mt-1">Feedback loop: <span class="math-serif">dS/dt, dK/dt</span></span>
+                      <span class="block text-sm sm:text-base font-normal text-slate-600 dark:text-slate-300 mt-1">Feedback loop: <span class="math-serif">dS/dt, dK/dt</span></span>
                     </td>
                     <td class="py-5 px-6 text-slate-700 dark:text-slate-200">
                     Visual specification <span class="math-serif font-bold">S</span> &amp; knowledge <span class="math-serif font-bold">K</span>
-                      <span class="block text-xs sm:text-sm text-slate-500 dark:text-slate-400"><span class="math-serif">D</span> and <span class="math-serif">M</span> remain fixed</span>
+                      <span class="block text-xs sm:text-sm text-slate-600 dark:text-slate-300"><span class="math-serif">D</span> and <span class="math-serif">M</span> remain fixed</span>
                     </td>
                     <td class="py-5 px-6">
                       <span class="px-2.5 py-0.5 rounded-lg text-base sm:text-lg font-bold bg-amber-50 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 math-serif">C<sub>P</sub>, C<sub>E</sub>, C<sub>S</sub>, C<sub>V</sub> (No C<sub>M</sub>, C<sub>R</sub>)</span>
-                      <span class="block text-sm sm:text-base text-slate-500 dark:text-slate-400 mt-1">Visual exploration and interpretation only</span>
+                      <span class="block text-sm sm:text-base text-slate-600 dark:text-slate-300 mt-1">Visual exploration and interpretation only</span>
                     </td>
                     <td class="py-5 px-6">
                       <span class="px-2.5 py-0.5 rounded-lg text-base sm:text-lg font-bold bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 math-serif">Delta K -> B<sub>K</sub> , B<sub>risk</sub></span>
-                      <span class="block text-sm sm:text-base text-slate-500 dark:text-slate-400 mt-1">Failure detection, safety, and domain insight</span>
+                      <span class="block text-sm sm:text-base text-slate-600 dark:text-slate-300 mt-1">Failure detection, safety, and domain insight</span>
                     </td>
                   </tr>
                 </tbody>
@@ -2356,14 +2294,14 @@ Risk Reduction (B<sub>risk</sub>)
           </template>
         </section>
         <!-- BACKUP 19: Applying the Framework: Map the Variables -->
-        <section id="slide-30" class="slide-section hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
+        <section id="slide-30" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
           data-title="Backup 19. Applying the Framework: Map the Variables" data-backup="true">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex items-center justify-between gap-4">
             <div class="min-w-0">
-              <span class="text-xs font-bold text-amber-600 dark:text-amber-400">05. Applying the Framework (Step 1 of 3: Variable Mapping)</span>
+              <span class="text-xs font-bold text-amber-800 dark:text-amber-400">05. Applying the Framework (Step 1 of 3: Variable Mapping)</span>
               <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-100 mt-0.5">Applying the framework: Map the variables</h2>
             </div>
-            <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 tabular-nums">Backup 19 / 23</span>
+            <span class="text-xs font-semibold text-slate-600 dark:text-slate-300 tabular-nums">Backup 19 / 23</span>
           </div>
           <!-- Interactive Trajectory SVG + Case Selection Criteria & 3-Step Protocol -->
           <div class="flex-1 my-3 grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
@@ -2371,8 +2309,8 @@ Risk Reduction (B<sub>risk</sub>)
               <div class="flex items-center justify-between text-xs font-semibold shrink-0">
                 <span class="text-slate-700 dark:text-slate-200 font-bold">Illustrative cost C(T) and benefit B(T) over time</span>
                 <div class="flex items-center gap-3">
-                  <span class="inline-flex items-center gap-1 text-emerald-600 dark:text-emerald-400"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> B<sub>total</sub>(T)</span>
-                  <span class="inline-flex items-center gap-1 text-rose-600 dark:text-rose-400"><span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span> C<sub>total</sub>(T)</span>
+                  <span class="inline-flex items-center gap-1 text-emerald-700 dark:text-emerald-400"><span class="w-8 h-[3px] bg-emerald-700 dark:bg-emerald-400"></span> B<sub>total</sub>(T)</span>
+                  <span class="inline-flex items-center gap-1 text-rose-700 dark:text-rose-400"><span class="w-8 border-t-[3px] border-dashed border-rose-700 dark:border-rose-400"></span> C<sub>total</sub>(T)</span>
                 </div>
               </div>
               <svg class="w-full max-h-[340px] flex-[3] min-h-0 h-full my-auto" viewbox="0 0 560 220">
@@ -2380,14 +2318,14 @@ Risk Reduction (B<sub>risk</sub>)
                 <line class="stroke-slate-200 dark:stroke-slate-700" stroke-dasharray="3 3" x1="50" x2="530" y1="25" y2="25"></line>
                 <line class="stroke-slate-200 dark:stroke-slate-700" stroke-dasharray="3 3" x1="50" x2="530" y1="80" y2="80"></line>
                 <line class="stroke-slate-200 dark:stroke-slate-700" stroke-dasharray="3 3" x1="50" x2="530" y1="135" y2="135"></line>
-                <line class="stroke-slate-400 dark:stroke-slate-500" stroke-width="1.5" x1="50" x2="530" y1="190" y2="190"></line>
-                <line class="stroke-slate-400 dark:stroke-slate-500" stroke-width="1.5" x1="50" x2="50" y1="20" y2="190"></line>
+                <line class="stroke-slate-600 dark:stroke-slate-400" stroke-width="1.5" x1="50" x2="530" y1="190" y2="190"></line>
+                <line class="stroke-slate-600 dark:stroke-slate-400" stroke-width="1.5" x1="50" x2="50" y1="20" y2="190"></line>
                 <text class="fill-slate-500 dark:fill-slate-400 text-xs" text-anchor="end" x="42" y="193">0</text>
                 <text class="fill-slate-500 dark:fill-slate-400 text-[10px] font-semibold math-serif" text-anchor="end" x="45" y="138">C<tspan dy="2" font-size="7.5">IVML</tspan><tspan dy="-5" font-size="7.5">dev</tspan></text>
                 <text class="fill-slate-600 dark:fill-slate-300 text-xs font-semibold" text-anchor="middle" x="290" y="212">Session duration T -></text>
                 <!-- Dynamic Cost & Benefit Paths -->
-                <path class="stroke-rose-500 dark:stroke-rose-400" d="M 50 140 L 146 125 L 242 108 L 338 90 L 434 70 L 530 48" fill="none" stroke-width="3"></path>
-                <path class="stroke-emerald-500 dark:stroke-emerald-400" d="M 50 190 Q 190 95 338 58 T 530 38" fill="none" stroke-width="3.5"></path>
+                <path stroke-dasharray="10 6" class="stroke-rose-700 dark:stroke-rose-400" d="M 50 140 L 146 125 L 242 108 L 338 90 L 434 70 L 530 48" fill="none" stroke-width="3"></path>
+                <path class="stroke-emerald-700 dark:stroke-emerald-400" d="M 50 190 Q 190 95 338 58 T 530 38" fill="none" stroke-width="3.5"></path>
                 <!-- Break-even & Optimal Stop Markers -->
                 <circle class="fill-indigo-600/50 stroke-white" cx="172" cy="120" r="6" stroke-width="2.5"></circle>
                 <text class="fill-indigo-700 dark:fill-indigo-300 font-bold text-xs" text-anchor="middle" x="172" y="106">Break-even T*</text>
@@ -2400,11 +2338,11 @@ Risk Reduction (B<sub>risk</sub>)
                   <span class="text-sm font-bold text-indigo-950 dark:text-indigo-100">Map <span class="math-serif">C<sub>IVML</sub><sup>total</sup></span> and <span class="math-serif">B<sub>IVML</sub><sup>total</sup></span></span>
                 </div>
                 <div class="rounded-xl bg-slate-50 dark:bg-slate-900/60 border-2 border-slate-200/80 dark:border-slate-700/80 flex flex-col justify-center p-3">
-                  <span class="text-xs text-slate-500 dark:text-slate-400 block font-semibold">Step 2: Break-Even</span>
+                  <span class="text-xs text-slate-600 dark:text-slate-300 block font-semibold">Step 2: Break-Even</span>
                   <span class="text-base sm:text-lg font-bold text-slate-800 dark:text-slate-200">B_total >= C_total</span>
                 </div>
                 <div class="rounded-xl bg-slate-50 dark:bg-slate-900/60 border-2 border-slate-200/80 dark:border-slate-700/80 flex flex-col justify-center p-3">
-                  <span class="text-xs text-slate-500 dark:text-slate-400 block font-semibold">Step 3: When to Stop</span>
+                  <span class="text-xs text-slate-600 dark:text-slate-300 block font-semibold">Step 3: When to Stop</span>
                   <span class="text-base sm:text-lg font-bold text-slate-800 dark:text-slate-200">dB/dT = dC/dT</span>
                 </div>
               </div>
@@ -2415,32 +2353,30 @@ Risk Reduction (B<sub>risk</sub>)
               <div class="p-4 rounded-xl bg-white/95 dark:bg-slate-900/80 border border-slate-200/80 dark:border-slate-700/80 space-y-2.5 shrink-0">
                 <div class="flex items-center justify-between">
                   <span class="px-3 py-1 rounded-lg text-sm font-bold bg-amber-100 dark:bg-amber-900/80 text-amber-800 dark:text-amber-200">Case Selection Criteria</span>
-                  <span class="text-xs font-medium text-slate-400">Why these two systems?</span>
                 </div>
                 <ul class="text-sm sm:text-base text-slate-700 dark:text-slate-200 space-y-2 pt-0.5">
-                  <li class="flex items-start gap-2"><span class="text-amber-600 font-bold">-</span><span><strong>Different interaction targets</strong> (data and model refinement vs. model understanding)</span></li>
-                  <li class="flex items-start gap-2"><span class="text-amber-600 font-bold">-</span><span><strong>Published measurements</strong> from prior studies</span></li>
-                  <li class="flex items-start gap-2"><span class="text-amber-600 font-bold">-</span><span><strong>Contrasting trade-offs</strong> between costs and benefits</span></li>
+                  <li class="flex items-start gap-2"><span class="text-amber-800 dark:text-amber-300 font-bold">-</span><span><strong>Different interaction targets</strong> (data and model refinement vs. model understanding)</span></li>
+                  <li class="flex items-start gap-2"><span class="text-amber-800 dark:text-amber-300 font-bold">-</span><span><strong>Published measurements</strong> from prior studies</span></li>
+                  <li class="flex items-start gap-2"><span class="text-amber-800 dark:text-amber-300 font-bold">-</span><span><strong>Contrasting trade-offs</strong> between costs and benefits</span></li>
                 </ul>
               </div>
               <!-- 2. Analysis Steps Second -->
               <div class="flex-1 flex flex-col justify-between gap-3 min-h-0">
                 <div class="flex items-center justify-between">
                   <span class="px-3 py-1 rounded-lg text-sm font-bold bg-indigo-100 dark:bg-indigo-900/80 text-indigo-800 dark:text-indigo-200">Analysis Steps</span>
-                  <span class="text-xs font-semibold text-slate-600 dark:text-slate-300">Apply the framework to existing systems</span>
                 </div>
                 <div class="flex-1 flex flex-col justify-between gap-3 min-h-0">
                   <div class="rounded-xl bg-indigo-50/90 dark:bg-indigo-950/50 border-l-4 border-indigo-600 shadow-2xs p-4 flex-1 flex flex-col justify-center">
                     <span class="font-bold text-indigo-950 dark:text-indigo-200 text-base sm:text-lg">1. Variable Mapping:</span>
-                    <p class="text-slate-700 dark:text-slate-200 leading-snug text-sm sm:text-base mt-1">Identify what interaction changes, then map the workflow to the relevant cost and benefit terms.</p>
+                    <p class="text-slate-700 dark:text-slate-200 leading-snug text-sm sm:text-base mt-1">Map interaction targets to the workflow’s cost and benefit terms.</p>
                   </div>
                   <div class="rounded-xl bg-white dark:bg-slate-900/70 border-l-4 border-slate-300 dark:border-slate-700 p-4 flex-1 flex flex-col justify-center">
                     <span class="font-bold text-slate-900 dark:text-slate-100 text-base sm:text-lg">2. Break-even Analysis:</span>
-                    <p class="text-slate-600 dark:text-slate-300 leading-snug text-sm sm:text-base mt-1">Estimate the value needed to cover costs (B<sub>total</sub> >= C<sub>total</sub>), using application-specific assumptions.</p>
+                    <p class="text-slate-600 dark:text-slate-300 leading-snug text-sm sm:text-base mt-1">Estimate what outcomes must be worth for benefits to cover costs.</p>
                   </div>
                   <div class="rounded-xl bg-white dark:bg-slate-900/70 border-l-4 border-slate-300 dark:border-slate-700 p-4 flex-1 flex flex-col justify-center">
                     <span class="font-bold text-slate-900 dark:text-slate-100 text-base sm:text-lg">3. Marginal Efficiency Analysis:</span>
-                    <p class="text-slate-600 dark:text-slate-300 leading-snug text-sm sm:text-base mt-1">Compare the cost and benefit of further interaction to identify when to stop.</p>
+                    <p class="text-slate-600 dark:text-slate-300 leading-snug text-sm sm:text-base mt-1">Compare the next interaction’s benefit and cost to identify when to stop.</p>
                   </div>
                 </div>
               </div>
@@ -2465,14 +2401,14 @@ Risk Reduction (B<sub>risk</sub>)
           </template>
         </section>
         <!-- BACKUP 20: Motivation: The Value of Feedback Loops -->
-        <section id="slide-31" class="slide-section hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
+        <section id="slide-31" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
           data-title="Backup 20. Motivation: The Value of Feedback Loops" data-backup="true">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex items-center justify-between">
             <div>
               <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400">01. Motivation: Value Creation</span>
               <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-100 mt-0.5">Human-AI feedback loops create three forms of value</h2>
             </div>
-            <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 tabular-nums">Backup 20 / 23</span>
+            <span class="text-xs font-semibold text-slate-600 dark:text-slate-300 tabular-nums">Backup 20 / 23</span>
           </div>
           <div class="flex-1 my-3 flex flex-col gap-4 min-h-0">
             <!-- Top Row: Compact Reference Figures -->
@@ -2484,7 +2420,7 @@ Risk Reduction (B<sub>risk</sub>)
                 </div>
                 <p class="text-xs text-slate-600 dark:text-slate-300 leading-snug pt-2 border-t border-slate-100 dark:border-slate-700/60 shrink-0">
                   <span class="font-bold text-slate-800 dark:text-slate-100">Dudley, J. J., &amp; Kristensson, P. O. (2018).</span> A review of user interface design for interactive machine learning. <em>ACM Transactions on Interactive Intelligent Systems (TiiS)</em>, <strong>8</strong>(2), 1-37.
-                </p>
+                 <button type="button" class="figure-expand" onclick="openFigure('iml-workflow')">Enlarge figure</button></p>
               </div>
               <!-- Figure 2: Wang et al. (2016) -->
               <div class="h-full min-h-0 p-4 rounded-2xl bg-white dark:bg-slate-800/90 border border-slate-200/90 dark:border-slate-700/80 shadow-xs flex flex-col justify-between gap-2">
@@ -2493,7 +2429,7 @@ Risk Reduction (B<sub>risk</sub>)
                 </div>
                 <p class="text-xs text-slate-600 dark:text-slate-300 leading-snug pt-2 border-t border-slate-100 dark:border-slate-700/60 shrink-0">
                   <span class="font-bold text-slate-800 dark:text-slate-100">Wang, X. M., Zhang, T. Y., Ma, Y. X., Xia, J., &amp; Chen, W. (2016).</span> A survey of visual analytic pipelines. <em>Journal of Computer Science and Technology</em>, <strong>31</strong>(4), 787-804.
-                </p>
+                 <button type="button" class="figure-expand" onclick="openFigure('visual-analytics-loop')">Enlarge figure</button></p>
               </div>
             </div>
             <!-- Bottom Row: Expanded 3 Value Outcomes Cards -->
@@ -2504,12 +2440,12 @@ Risk Reduction (B<sub>risk</sub>)
                 <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Correct mislabeled data, refine features, and adjust model parameters.</p>
               </div>
               <div class="h-full px-6 py-4 rounded-2xl bg-white dark:bg-slate-800/90 border-l-4 border-sky-500 border border-slate-200/80 dark:border-slate-700/70 shadow-xs flex flex-col justify-center gap-1.5">
-                <span class="font-bold text-sky-600 dark:text-sky-400 text-xs">Benefit 02</span>
+                <span class="font-bold text-sky-700 dark:text-sky-400 text-xs">Benefit 02</span>
                 <h3 class="text-base font-bold text-slate-900 dark:text-slate-100 leading-snug">Explore and understand models</h3>
                 <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Inspect predictions, uncertainty, and decision boundaries.</p>
               </div>
               <div class="h-full px-6 py-4 rounded-2xl bg-white dark:bg-slate-800/90 border-l-4 border-emerald-500 border border-slate-200/80 dark:border-slate-700/70 shadow-xs flex flex-col justify-center gap-1.5">
-                <span class="font-bold text-emerald-600 dark:text-emerald-400 text-xs">Benefit 03</span>
+                <span class="font-bold text-emerald-700 dark:text-emerald-400 text-xs">Benefit 03</span>
                 <h3 class="text-base font-bold text-slate-900 dark:text-slate-100 leading-snug">Generate actionable knowledge</h3>
                 <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Use visual evidence to guide decisions and identify risks.</p>
               </div>
@@ -2627,6 +2563,22 @@ Risk Reduction (B<sub>risk</sub>)
       </div>
     </div>
 
+
+    <!-- Paper figures can be enlarged without altering their source pixels. -->
+    <dialog id="figureDialog" aria-labelledby="figureDialogTitle">
+      <div class="figure-dialog-toolbar">
+        <h2 id="figureDialogTitle"></h2>
+        <div class="figure-dialog-actions">
+          <button type="button" onclick="zoomFigure(-0.25)" aria-label="Zoom figure out">−</button>
+          <span id="figureZoomLabel" aria-live="polite">100%</span>
+          <button type="button" onclick="zoomFigure(0.25)" aria-label="Zoom figure in">+</button>
+          <button type="button" onclick="byId('figureDialog').close()">Close</button>
+        </div>
+      </div>
+      <div class="figure-dialog-content" tabindex="0" aria-label="Enlarged figure; scroll to view at higher zoom">
+        <img id="figureDialogImage" alt=""/>
+      </div>
+    </dialog>
 
     <!-- 3. PRESENTER VIEW -- editable HTML for the separate notes window. -->
     <template id="presenterTemplate">
@@ -2886,6 +2838,25 @@ Risk Reduction (B<sub>risk</sub>)
         }
       }
 
+      let figureZoom = 1;
+      function openFigure(asset) {
+        const source = Array.from(document.querySelectorAll('#slideCanvas img[data-image]')).find(img => img.dataset.image === asset);
+        if (!source) return;
+        const image = byId('figureDialogImage');
+        image.src = source.src;
+        image.alt = source.alt;
+        byId('figureDialogTitle').textContent = source.alt;
+        figureZoom = 1;
+        zoomFigure(0);
+        byId('figureDialog').showModal();
+      }
+
+      function zoomFigure(delta) {
+        figureZoom = Math.max(0.5, Math.min(3, figureZoom + delta));
+        byId('figureDialogImage').style.width = Math.round(Math.min(1500, window.innerWidth * 0.86) * figureZoom) + 'px';
+        byId('figureZoomLabel').textContent = Math.round(figureZoom * 100) + '%';
+      }
+
       // Glossary dialog.
       function triggerCustomPopover(termKey) {
         const entry = GLOSSARY_DATA[termKey];
@@ -3048,6 +3019,7 @@ Risk Reduction (B<sub>risk</sub>)
 
       document.addEventListener('keydown', (e) => {
         if (e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey) return;
+        if (byId('figureDialog')?.open) return;
         if (e.target?.closest('input, textarea, select, [contenteditable="true"]')) return;
         // Let focused controls handle Space/Enter without also advancing the deck.
         if ((e.key === ' ' || e.key === 'Enter') && e.target?.closest('button, a')) return;
