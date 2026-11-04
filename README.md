@@ -5,7 +5,7 @@ Open [ivml-cost-benefit.html](ivml-cost-benefit.html) directly in a browser. The
 
 The revised talk responds to Ross’s [round-one feedback](round1-feedback.txt) by following a skeptical stakeholder choosing between workflows for neuronal mitochondria analysis. Its central question is: **What additional value does a proposed visualization create over credible alternatives, and when is that value worth its additional cost?**
 
-There are 14 main slides, 23 backups, and 1,057 words of main-talk speaker notes. The pacing target is 9:55 inside a ten-minute slot. At 120 words per minute, the notes take about 8:48, leaving roughly 67 seconds for pointing and pauses. Rehearse against the per-slide targets, particularly the comparison and threshold slides. The overview and its two returns are brief spoken transitions.
+There are 14 main slides, 23 backups, and 1,101 words of main-talk speaker notes. The current draft targets 10:20 for a ten-minute slot; it includes the added transition explanations and still needs trimming. At 120 words per minute, the notes take about 9:10, leaving roughly 70 seconds for pointing and pauses. Rehearse against the per-slide targets, particularly the comparison and threshold slides. The opening overview allows 25 seconds; each return allows 20 seconds to explain the transition.
 
 - Left/Right or Space navigates the talk and stops at slide 14.
 - **G** opens the overview: the main talk comes first, followed by backups.
@@ -17,18 +17,18 @@ There are 14 main slides, 23 backups, and 1,057 words of main-talk speaker notes
 | --- | --- | --- | --- |
 | 1 | Cost-Benefit Modeling of IVML Systems | 25s | 0:25 |
 | 2 | Useful compared with what? | 35s | 1:00 |
-| 3 | Overview · Compare workflows | 20s | 1:20 |
-| 4 | Which workflow should the lab invest in? | 55s | 2:15 |
-| 5 | Compare workflows on the same task. | 45s | 3:00 |
-| 6 | Return to overview · Model value | 10s | 3:10 |
-| 7 | Every workflow needs the same cost–benefit ledger. | 60s | 4:10 |
-| 8 | Model updates also consume expert attention. | 45s | 4:55 |
-| 9 | Covering its costs does not make it the best choice. | 70s | 6:05 |
-| 10 | How much must the extra improvement be worth? | 85s | 7:30 |
-| 11 | Repeated use can change the decision. | 50s | 8:20 |
-| 12 | Return to overview · Test the contribution | 10s | 8:30 |
-| 13 | What evidence would make the contribution convincing? | 50s | 9:20 |
-| 14 | Make the value of a new workflow explicit. | 35s | 9:55 |
+| 3 | Overview · Compare workflows | 25s | 1:25 |
+| 4 | Which workflow should the lab invest in? | 55s | 2:20 |
+| 5 | Compare workflows on the same task. | 45s | 3:05 |
+| 6 | Return to overview · Model value | 20s | 3:25 |
+| 7 | Every workflow needs the same cost–benefit ledger. | 60s | 4:25 |
+| 8 | Model updates also consume expert attention. | 45s | 5:10 |
+| 9 | Covering its costs does not make it the best choice. | 70s | 6:20 |
+| 10 | How much must the extra improvement be worth? | 85s | 7:45 |
+| 11 | Repeated use can change the decision. | 50s | 8:35 |
+| 12 | Return to overview · Test the contribution | 20s | 8:55 |
+| 13 | What evidence would make the contribution convincing? | 50s | 9:45 |
+| 14 | Make the value of a new workflow explicit. | 35s | 10:20 |
 
 Slide 1 foregrounds the full paper title, with the stakeholder question as a subtitle. After the evaluation problem, slide 3 asks **“When is a new visualization worth using?”** It follows one lab’s choice of tools through three questions: what the tool adds over alternatives, whether the improvement is worth the time and money, and what still needs measuring. The same questions return on slides 6 and 12, marking completed sections and highlighting the next one. Where space allows, content-slide footers track these sections and underline the current one. Slide 4 omits the progress footer to give the example more room. The closing recap follows the same sequence.
 

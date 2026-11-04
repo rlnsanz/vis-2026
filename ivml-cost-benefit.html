@@ -6,7 +6,7 @@
      The main story follows one stakeholder choosing between workflows.
      The overview returns at section changes; footers track the current section.
      Arrow navigation stops at the closing slide; choose backup slides from Grid.
-     Each main slide's data-budget is its target duration in seconds (9:55 total).
+     Each main slide's data-budget is its target duration in seconds (10:20 draft total).
      Each section's data-title labels the grid/presenter; its speaker-notes template
      supplies the notes drawer and presenter. Use <p> for separate note paragraphs.
      data-reveal="1", "2", ... groups content into click-driven builds. Matching
@@ -704,7 +704,7 @@
           </template>
         </section>
         <!-- SLIDE 03: When is a new visualization worth using? -->
-        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col" id="slide-3" data-title="3. Compare workflows · Overview" data-budget="20" data-overview-step="1">
+        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col" id="slide-3" data-title="3. Compare workflows · Overview" data-budget="25" data-overview-step="1">
           <header class="talk-top"><div><p class="talk-kicker">Talk overview</p><h2 class="talk-heading">When is a new visualization worth using?</h2></div><span class="talk-counter">03 / 14</span></header>
           <div class="talk-body">
             <div class="talk-route-layout">
@@ -716,7 +716,10 @@
               </ol>
             </div>
           </div>
-          <template class="speaker-notes"><p>Using an illustrative example of a lab choosing tools, we’ll ask what a new visualization adds over alternatives, whether the improvement is worth its cost, and what evidence we still need.</p></template>
+          <template class="speaker-notes">
+            <p>The lab has limited expert time, so an improvement has to be useful enough to justify the work it takes.</p>
+            <p>We’ll use an illustrative choice between tools to connect what each one adds, what that is worth, and what we still need to measure.</p>
+          </template>
         </section>
         <!-- SLIDE 04: Which workflow should the lab invest in? -->
         <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-4" data-title="4. Which workflow should the lab invest in?" data-budget="55" data-talk-section="compare">
@@ -769,7 +772,7 @@
           </template>
         </section>
         <!-- SLIDE 06: When is a new visualization worth using? -->
-        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col" id="slide-6" data-title="6. Model value · Overview" data-budget="10" data-overview-step="2">
+        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col" id="slide-6" data-title="6. Model value · Overview" data-budget="20" data-overview-step="2">
           <header class="talk-top"><div><p class="talk-kicker">Back to the overview · Step 2 of 3</p><h2 class="talk-heading">When is a new visualization worth using?</h2></div><span class="talk-counter">06 / 14</span></header>
           <div class="talk-body">
             <div class="talk-route-layout">
@@ -781,7 +784,10 @@
               </ol>
             </div>
           </div>
-          <template class="speaker-notes"><p>We’ve set up the comparison. Now let’s count the benefits and costs and ask when the improvement is worth it.</p></template>
+          <template class="speaker-notes">
+            <p>The comparison is set up. Now we need to ask what the differences are worth to the lab.</p>
+            <p>We’ll count both the benefits and the work involved, including the expert’s time after a model update.</p>
+          </template>
         </section>
         <!-- SLIDE 07: Every workflow needs the same cost–benefit ledger. -->
         <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-7" data-title="7. Every workflow needs the same cost–benefit ledger." data-budget="60" data-talk-section="model">
@@ -920,7 +926,7 @@
           </template>
         </section>
         <!-- SLIDE 12: When is a new visualization worth using? -->
-        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col" id="slide-12" data-title="12. Test the contribution · Overview" data-budget="10" data-overview-step="3">
+        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col" id="slide-12" data-title="12. Test the contribution · Overview" data-budget="20" data-overview-step="3">
           <header class="talk-top"><div><p class="talk-kicker">Back to the overview · Step 3 of 3</p><h2 class="talk-heading">When is a new visualization worth using?</h2></div><span class="talk-counter">12 / 14</span></header>
           <div class="talk-body">
             <div class="talk-route-layout">
@@ -932,7 +938,10 @@
               </ol>
             </div>
           </div>
-          <template class="speaker-notes"><p>The example shows how the choice depends on value and use. Now, what would we need to measure in practice?</p></template>
+          <template class="speaker-notes">
+            <p>The example shows how the preferred tool changes with our assumptions about value and repeated use.</p>
+            <p>Those assumptions tell us what to measure next: the gains, the effort required, and whether the advantage lasts in practice.</p>
+          </template>
         </section>
         <!-- SLIDE 13: What evidence would make the contribution convincing? -->
         <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-13" data-title="13. What evidence would make the contribution convincing?" data-budget="50" data-talk-section="test">
@@ -2722,7 +2731,7 @@ Risk Reduction (B<sub>risk</sub>)
 
       <footer class="pt-4 border-t border-slate-800 flex items-center justify-between">
         <button id="pPrevBtn" class="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-sm font-bold text-white transition cursor-pointer">Previous Slide</button>
-        <button id="pReturnToTalk" class="hidden px-3 py-1 rounded-lg bg-slate-800 text-sm font-semibold text-indigo-300 cursor-pointer">Return to talk</button><span class="text-xs text-slate-400">10-minute talk | Target 9:55</span>
+        <button id="pReturnToTalk" class="hidden px-3 py-1 rounded-lg bg-slate-800 text-sm font-semibold text-indigo-300 cursor-pointer">Return to talk</button><span class="text-xs text-slate-400">Talk draft | Target 10:20</span>
         <button id="pNextBtn" class="px-6 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-sm font-bold text-white transition cursor-pointer shadow-sm">Next Slide</button>
       </footer>
     </template>
