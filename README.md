@@ -5,9 +5,9 @@ Open [ivml-cost-benefit.html](ivml-cost-benefit.html) directly in a browser. The
 
 The revised talk responds to Ross’s [round-one feedback](round1-feedback.txt) by following a skeptical stakeholder choosing between workflows for neuronal mitochondria analysis. Its central question is: **What additional value does a proposed visualization create over credible alternatives, and when is that value worth its additional cost?**
 
-There are 11 main slides, 23 backups, and 994 words of main-talk speaker notes. The pacing target is 9:30 inside a ten-minute slot. At 120 words per minute, the notes take about 8:17, leaving roughly 73 seconds for pointing and pauses. Rehearse against the per-slide targets, particularly the comparison and threshold slides.
+There are 14 main slides, 23 backups, and 1,057 words of main-talk speaker notes. The pacing target is 9:55 inside a ten-minute slot. At 120 words per minute, the notes take about 8:48, leaving roughly 67 seconds for pointing and pauses. Rehearse against the per-slide targets, particularly the comparison and threshold slides. The overview and its two returns are brief spoken transitions.
 
-- Left/Right or Space navigates the talk and stops at slide 11.
+- Left/Right or Space navigates the talk and stops at slide 14.
 - **G** opens the overview: the main talk comes first, followed by backups.
 - Choose backups for questions; **Return to the talk** restores the last main slide.
 - **P** opens synchronized presenter notes with slide targets and cumulative finish times.
@@ -16,18 +16,23 @@ There are 11 main slides, 23 backups, and 994 words of main-talk speaker notes. 
 | Slide | Message | Target | Finish by |
 | --- | --- | --- | --- |
 | 1 | Cost-Benefit Modeling of IVML Systems | 25s | 0:25 |
-| 2 | Useful compared with what? | 40s | 1:05 |
-| 3 | Which workflow should the lab invest in? | 55s | 2:00 |
-| 4 | Compare workflows on the same task. | 45s | 2:45 |
-| 5 | Every workflow needs the same cost–benefit ledger. | 60s | 3:45 |
-| 6 | Model updates also consume expert attention. | 45s | 4:30 |
-| 7 | Covering its costs does not make it the best choice. | 70s | 5:40 |
-| 8 | How much must the extra improvement be worth? | 85s | 7:05 |
-| 9 | Repeated use can change the decision. | 50s | 7:55 |
-| 10 | What evidence would make the contribution convincing? | 60s | 8:55 |
-| 11 | Make the value of a new workflow explicit. | 35s | 9:30 |
+| 2 | Useful compared with what? | 35s | 1:00 |
+| 3 | Overview · Compare workflows | 20s | 1:20 |
+| 4 | Which workflow should the lab invest in? | 55s | 2:15 |
+| 5 | Compare workflows on the same task. | 45s | 3:00 |
+| 6 | Return to overview · Model value | 10s | 3:10 |
+| 7 | Every workflow needs the same cost–benefit ledger. | 60s | 4:10 |
+| 8 | Model updates also consume expert attention. | 45s | 4:55 |
+| 9 | Covering its costs does not make it the best choice. | 70s | 6:05 |
+| 10 | How much must the extra improvement be worth? | 85s | 7:30 |
+| 11 | Repeated use can change the decision. | 50s | 8:20 |
+| 12 | Return to overview · Test the contribution | 10s | 8:30 |
+| 13 | What evidence would make the contribution convincing? | 50s | 9:20 |
+| 14 | Make the value of a new workflow explicit. | 35s | 9:55 |
 
-Slide 1 foregrounds the full paper title, with the stakeholder question as a subtitle. Slide 3 introduces the lab director’s decision and three workflows: manual work, a proposed image editor with a separate training script (A), and the MitoVis workflow (V). Slide 4 defines a fair comparison. Slides 5–6 build the ledger from that decision, including expert reorientation after model updates. Slides 7–9 work through explicitly hypothetical costs and outcomes for A, a value threshold, and reuse. Slide 10 states the evidence needed to evaluate the contribution. The closing thank-you slide includes Rolando’s faculty-job-market line. The title-slide definition is in the spoken introduction; visible footers are reserved for sources and assumptions.
+Slide 1 foregrounds the full paper title, with the stakeholder question as a subtitle. After the evaluation problem, slide 3 asks **“When is a new visualization worth using?”** It follows one lab’s choice of tools through three questions: what the tool adds over alternatives, whether the improvement is worth the time and money, and what still needs measuring. The same questions return on slides 6 and 12, marking completed sections and highlighting the next one. Where space allows, content-slide footers track these sections and underline the current one. Slide 4 omits the progress footer to give the example more room. The closing recap follows the same sequence.
+
+Slide 4 introduces the lab director’s decision and three workflows: manual work, a proposed image editor with a separate training script (A), and the MitoVis workflow (V). Slide 5 (originally slide 4) defines a fair comparison with shared conditions on the left and stacked A/V workflow lanes on the right, replacing the three equal cards. Slides 7–8 build the ledger from that decision, including expert reorientation after model updates. Slides 9–11 work through explicitly hypothetical costs and outcomes for A, a value threshold, and reuse. Slide 13 states the evidence needed to evaluate the contribution. The closing thank-you slide includes Rolando’s faculty-job-market line. The title-slide definition is in the spoken introduction; source footers identify sources and assumptions.
 
 The evidence boundary is explicit throughout. Source: [IVML_Cost_Benefit_2026_VIS.pdf](IVML_Cost_Benefit_2026_VIS.pdf), especially Sections 4 and 5.1. The following inputs have different evidential status:
 
@@ -49,16 +54,16 @@ A is a proposed workflow using a scientific image editor and a separate training
 
 A is introduced for this talk; our cost-benefit paper does not evaluate it. The [2021 MitoVis preprint](https://arxiv.org/pdf/2109.01351), Secs. 3.2 and 5, describes a manual ImageJ-and-Excel reference. The [published journal abstract](https://pure.korea.ac.kr/en/publications/mitovis-a-unified-visual-analytics-system-for-end-to-end-neuronal/) reports up to 13.3 times faster analysis against a conventional manual workflow. The full journal text was inaccessible during this check, so additional algorithm comparisons or ablations remain unverified. The preprint and journal article are different versions; keep their reported results separate.
 
-Slide 7 rounds dollars for readability and adds a V − A column so the extra cost and improvement are visible. Exact values remain in backup 01 and below. Both A and V receive the same $1,148.40 avoided-manual-work credit and use the same value U per percentage point of downstream classifier improvement. Count model utility beyond the corrected outputs so the same outcome is not credited twice. With all other incremental costs assumed zero:
+Slide 9 rounds dollars for readability and adds a V − A column so the extra cost and improvement are visible. Exact values remain in backup 01 and below. Both A and V receive the same $1,148.40 avoided-manual-work credit and use the same value U per percentage point of downstream classifier improvement. Count model utility beyond the corrected outputs so the same outcome is not credited twice. With all other incremental costs assumed zero:
 
 - Net V = $1,148.40 + 10.1U − $10,123.08.
 - Net A = $1,148.40 + 8.1U − $8,083.08.
 - At U = $1,000/point, V returns $1,125.32 and A returns $1,165.32: V pays off against manual work but trails A by $40.
 - V’s additional net value is 2U − $2,040. The choice reverses at U = $1,020/point. At U = $1,500/point, V leads by $960.
 
-Slide 8 uses an editable SVG with linear axes to show this crossing. Its “A ahead” and “V ahead” regions rank those two workflows; manual work remains another option, especially when both modeled net values are negative. It asks the stakeholder for a defensible range, rather than requiring an exact valuation. A range crossing the threshold leaves the choice unresolved. For insight without a defensible monetary value, connect knowledge to a decision or avoided loss, retain uncertainty, or compare effort to a defined knowledge outcome.
+Slide 10 uses an editable SVG with linear axes to show this crossing. Its “A ahead” and “V ahead” regions rank those two workflows; manual work remains another option, especially when both modeled net values are negative. It asks the stakeholder for a defensible range, rather than requiring an exact valuation. A range crossing the threshold leaves the choice unresolved. For insight without a defensible monetary value, connect knowledge to a decision or avoided loss, retain uncertainty, or compare effort to a defined knowledge outcome.
 
-Slide 9 spreads the hypothetical additional $2,000 development cost across N independent workloads. Assuming the extra $40 runtime cost and 2-point gain recur on each workload, the threshold becomes ($2,000/N + $40) / 2: $1,020 at N=1, $120 at N=10, and $30 at N=100. The formula is retained in backup 01; the main slide emphasizes the thresholds and assumptions. These projections assume no additional learning or maintenance cost. Each workload must separately realize its benefit; repeatedly using one improved model does not automatically generate a new accuracy gain. Reuse projections do not establish lasting impact.
+Slide 11 spreads the hypothetical additional $2,000 development cost across N independent workloads. Assuming the extra $40 runtime cost and 2-point gain recur on each workload, the threshold becomes ($2,000/N + $40) / 2: $1,020 at N=1, $120 at N=10, and $30 at N=100. The formula is retained in backup 01; the main slide emphasizes the thresholds and assumptions. These projections assume no additional learning or maintenance cost. Each workload must separately realize its benefit; repeatedly using one improved model does not automatically generate a new accuracy gain. Reuse projections do not establish lasting impact.
 
 The 23 backups contain:
 

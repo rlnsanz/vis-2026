@@ -2,10 +2,11 @@
 <!--
   EDITING GUIDE -- everything stays in this file; no build step or network is needed.
   1. STYLES: global typography, animation settings, and slide overview layout.
-  2. SLIDES: "SLIDE 01"-"SLIDE 11" form the 10-minute talk. "BACKUP 01"-"BACKUP 23" hold detail.
+  2. SLIDES: "SLIDE 01"-"SLIDE 14" form the 10-minute talk. "BACKUP 01"-"BACKUP 23" hold detail.
      The main story follows one stakeholder choosing between workflows.
+     The overview returns at section changes; footers track the current section.
      Arrow navigation stops at the closing slide; choose backup slides from Grid.
-     Each main slide's data-budget is its target duration in seconds (9:30 total).
+     Each main slide's data-budget is its target duration in seconds (9:55 total).
      Each section's data-title labels the grid/presenter; its speaker-notes template
      supplies the notes drawer and presenter. Use <p> for separate note paragraphs.
      data-reveal="1", "2", ... groups content into click-driven builds. Matching
@@ -174,18 +175,33 @@
       .dark .chart-cost { fill: #fb7185; }
       .dark .talk-backup-calculation .talk-formula { color: #a5b4fc; }
 
-      /* Repeat the overview's three sections; underline the current section. */
-      .talk-roadmap { display: flex; align-items: center; justify-content: space-between; gap: 28px; margin-bottom: 20px; flex-shrink: 0; }
-      .talk-roadmap ol { display: flex; align-items: center; gap: 30px; list-style: none; margin: 0; padding: 0; }
-      .talk-roadmap li { color: #475569; font-size: 28px; line-height: 1.3; padding-bottom: 9px; border-bottom: 3px solid transparent; white-space: nowrap; }
+      /* Repeat the overview at section changes and keep its labels in the footer. */
+      .talk-roadmap { margin: 0; padding-top: 12px; border-top: 1px solid #cbd5e1; flex-shrink: 0; }
+      .talk-roadmap ol { display: flex; align-items: center; gap: 32px; list-style: none; margin: 0; padding: 0; }
+      .talk-roadmap li { color: #475569; font-size: 22px; line-height: 1.3; padding-bottom: 6px; border-bottom: 3px solid transparent; white-space: nowrap; }
       .talk-roadmap li[aria-current="step"] { color: #4338ca; border-color: #4f46e5; font-weight: 750; }
-      .talk-roadmap-next { color: #4338ca; font-size: 28px; line-height: 1.3; font-weight: 650; padding-bottom: 12px; white-space: nowrap; }
+      .talk-roadmap + .talk-source { margin-top: 8px; }
       .talk-slide[data-talk-section] .talk-body { gap: 24px; padding: 20px 0; }
-      .talk-slide[data-talk-section] .ledger-side { padding-top: 24px; padding-bottom: 24px; }
-      .talk-slide[data-talk-section] .ledger-side h3 { padding-bottom: 20px; }
-      .talk-slide[data-talk-section] .ledger-side ul { gap: 18px; }
+      .dark .talk-roadmap { border-color: #475569; }
       .dark .talk-roadmap li { color: #cbd5e1; }
-      .dark .talk-roadmap li[aria-current="step"], .dark .talk-roadmap-next { color: #a5b4fc; border-color: #a5b4fc; }
+      .dark .talk-roadmap li[aria-current="step"] { color: #a5b4fc; border-color: #a5b4fc; }
+
+      .talk-route-layout { display: flex; flex-direction: column; gap: 30px; max-width: 1380px; }
+      .route-intro { color: #475569; font-size: 32px; line-height: 1.4; }
+      .talk-route { list-style: none; padding: 0; margin: 0; }
+      .talk-route li { display: grid; grid-template-columns: 64px 1fr; gap: 24px; align-items: center; padding: 32px 0; border-bottom: 1px solid #cbd5e1; }
+      .talk-route li:last-child { border-bottom: 0; }
+      .route-marker { display: flex; align-items: center; justify-content: center; width: 58px; height: 58px; border: 2px solid #94a3b8; border-radius: 50%; color: #475569; font-size: 25px; font-weight: 700; }
+      .talk-route li h3 { font-size: 42px; line-height: 1.3; font-weight: 650; margin: 0; color: #475569; }
+      .talk-route li[aria-current="step"] .route-marker { color: #fff; background: #4338ca; border-color: #4338ca; }
+      .talk-route li[aria-current="step"] h3 { color: #4338ca; font-weight: 750; }
+      .talk-route li[data-route-state="complete"] .route-marker { color: #047857; border-color: #047857; }
+      .dark .talk-route li { border-color: #475569; }
+      .dark .route-marker { color: #cbd5e1; border-color: #64748b; }
+      .dark .talk-route li h3, .dark .route-intro { color: #cbd5e1; }
+      .dark .talk-route li[aria-current="step"] .route-marker { color: #0f172a; background: #a5b4fc; border-color: #a5b4fc; }
+      .dark .talk-route li[aria-current="step"] h3 { color: #a5b4fc; }
+      .dark .talk-route li[data-route-state="complete"] .route-marker { color: #6ee7b7; border-color: #6ee7b7; }
 
       /* Original paper figures, with only the panel discussed in the main talk. */
       .paper-figure-layout { display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; gap: 48px; }
@@ -486,6 +502,22 @@
       .decision-options > div:last-child { border-color: #4f46e5; }
       .decision-options strong, .decision-options span { display: block; font-size: 28px; line-height: 1.35; }
       .decision-options span { color: #475569; margin-top: 12px; }
+      .comparison-layout { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 56px; align-items: start; }
+      .comparison-conditions { padding: 26px 30px; background: #f1f5f9; border-left: 4px solid #94a3b8; }
+      .comparison-conditions > p:not(.decision-label) { font-size: 28px; line-height: 1.4; color: #475569; margin-top: 18px; }
+      .comparison-workflows { padding-top: 26px; }
+      .comparison-lane { display: grid; grid-template-columns: 52px 1fr; gap: 18px; padding: 20px 0; border-top: 1px solid #cbd5e1; }
+      .comparison-lane h3 { margin-bottom: 10px; }
+      .comparison-lane > span { color: #475569; font-size: 38px; line-height: 1.2; font-weight: 750; }
+      .comparison-lane p { font-size: 28px; line-height: 1.4; color: #475569; }
+      .comparison-lane--proposed > span { color: #4338ca; }
+      .comparison-period { font-size: 28px; line-height: 1.4; border-top: 1px solid #cbd5e1; padding-top: 20px; }
+      .comparison-period span { color: #475569; }
+      .dark .comparison-conditions { background: #1e293b; border-color: #64748b; }
+      .dark .comparison-conditions > p:not(.decision-label), .dark .comparison-lane > span,
+      .dark .comparison-lane p, .dark .comparison-period span { color: #cbd5e1; }
+      .dark .comparison-lane--proposed > span { color: #a5b4fc; }
+      .dark .comparison-lane, .dark .comparison-period { border-color: #475569; }
       .decision-ledger { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
       .decision-ledger > div { border-top: 4px solid #059669; padding-top: 20px; }
       .decision-ledger > div:last-child { border-color: #e11d48; }
@@ -606,7 +638,7 @@
           <!-- Slide Stepper -->
           <div class="inline-flex items-center rounded-xl bg-slate-100 dark:bg-slate-900/80 p-1 border border-slate-200/70 dark:border-slate-700/70">
             <button class="px-2.5 py-1 rounded-lg text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-800 transition cursor-pointer" id="prevSlideButton" onclick="prevSlide()" title="Previous slide (Left Arrow)">Prev</button>
-            <span class="px-3 py-1 text-xs font-bold tabular-nums text-indigo-700 dark:text-indigo-300" id="slideCounterBadge">1 / 11</span>
+            <span class="px-3 py-1 text-xs font-bold tabular-nums text-indigo-700 dark:text-indigo-300" id="slideCounterBadge">1 / 14</span>
             <button class="px-2.5 py-1 rounded-lg text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-white dark:hover:bg-slate-800 transition cursor-pointer" id="nextSlideButton" onclick="nextSlide()" title="Next slide (Right Arrow / Space)">Next</button>
           </div>
           <!-- Grid Overview & Speaker Notes -->
@@ -638,7 +670,7 @@
       <main class="w-full h-full flex-1 rounded-3xl shadow-2xl border border-slate-200/90 dark:border-slate-700/80 bg-[#f8fafc] dark:bg-[#131b2e] overflow-hidden flex flex-col justify-between relative" id="slideCanvas">
         <!-- SLIDE 01: Cost-Benefit Modeling of Interactive Visual Machine Learning Systems -->
         <section class="slide-section talk-slide decision-slide slide-animate flex-1 flex flex-col decision-title" id="slide-1" data-title="1. Cost-Benefit Modeling of IVML Systems" data-budget="25">
-          <header class="talk-top"><div><p class="talk-kicker">IEEE VIS 2026</p><h1 class="talk-heading"><span class="block">Cost-Benefit Modeling of</span> <span class="block">Interactive Visual Machine</span> <span class="block">Learning Systems</span></h1></div><span class="talk-counter">01 / 11</span></header>
+          <header class="talk-top"><div><p class="talk-kicker">IEEE VIS 2026</p><h1 class="talk-heading"><span class="block">Cost-Benefit Modeling of</span> <span class="block">Interactive Visual Machine</span> <span class="block">Learning Systems</span></h1></div><span class="talk-counter">01 / 14</span></header>
           <div class="talk-body">
             <div class="decision-opening" data-reveal="1">
               <p class="decision-big">When does a new visualization earn its place?</p>
@@ -655,8 +687,8 @@
           </template>
         </section>
         <!-- SLIDE 02: Useful compared with what? -->
-        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-2" data-title="2. Useful compared with what?" data-budget="40">
-          <header class="talk-top"><div><p class="talk-kicker">The evaluation problem</p><h2 class="talk-heading">Useful compared with what?</h2></div><span class="talk-counter">02 / 11</span></header>
+        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-2" data-title="2. Useful compared with what?" data-budget="35">
+          <header class="talk-top"><div><p class="talk-kicker">The evaluation problem</p><h2 class="talk-heading">Useful compared with what?</h2></div><span class="talk-counter">02 / 14</span></header>
           <div class="talk-body">
             <div class="decision-two">
               <article class="decision-panel"><p class="decision-label">The current workflow</p><h3>Does it help?</h3><p>Compare with manual work<br>or the previous workflow.</p></article>
@@ -671,9 +703,24 @@
             <p>The challenge is to take that comparison seriously. Put yourself in the position of someone choosing a tool: what does this proposal add over the strongest practical alternatives? That&#x27;s the decision we want the cost model to support.</p>
           </template>
         </section>
-        <!-- SLIDE 03: Which workflow should the lab invest in? -->
-        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-3" data-title="3. Which workflow should the lab invest in?" data-budget="55">
-          <header class="talk-top"><div><p class="talk-kicker">Running example · MitoVis</p><h2 class="talk-heading">Which workflow should the lab invest in?</h2></div><span class="talk-counter">03 / 11</span></header>
+        <!-- SLIDE 03: When is a new visualization worth using? -->
+        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col" id="slide-3" data-title="3. Compare workflows · Overview" data-budget="20" data-overview-step="1">
+          <header class="talk-top"><div><p class="talk-kicker">Talk overview</p><h2 class="talk-heading">When is a new visualization worth using?</h2></div><span class="talk-counter">03 / 14</span></header>
+          <div class="talk-body">
+            <div class="talk-route-layout">
+              <p class="route-intro">We’ll work through one lab’s choice of tools.</p>
+              <ol class="talk-route" aria-label="Talk overview">
+                <li data-route-state="current" aria-current="step"><span class="route-marker" aria-hidden="true">01</span><h3>What does the new tool add over the alternatives?</h3></li>
+                <li data-route-state="upcoming"><span class="route-marker" aria-hidden="true">02</span><h3>Is the improvement worth the time and money?</h3></li>
+                <li data-route-state="upcoming"><span class="route-marker" aria-hidden="true">03</span><h3>What do we still need to measure?</h3></li>
+              </ol>
+            </div>
+          </div>
+          <template class="speaker-notes"><p>Using an illustrative example of a lab choosing tools, we’ll ask what a new visualization adds over alternatives, whether the improvement is worth its cost, and what evidence we still need.</p></template>
+        </section>
+        <!-- SLIDE 04: Which workflow should the lab invest in? -->
+        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-4" data-title="4. Which workflow should the lab invest in?" data-budget="55" data-talk-section="compare">
+          <header class="talk-top"><div><p class="talk-kicker">Running example · MitoVis</p><h2 class="talk-heading">Which workflow should the lab invest in?</h2></div><span class="talk-counter">04 / 14</span></header>
           <div class="talk-body">
             <div class="decision-case">
               <figure><div class="decision-interface-frame"><img class="decision-interface" data-image="mitovis-interface" alt="Detail of the MitoVis image viewer showing neuronal predictions, correction tools, and the fine-tuning control."/></div><figcaption>MitoVis: image viewer and correction controls (detail).</figcaption></figure>
@@ -697,29 +744,48 @@
             <p>So which is better for this lab, A or V? A cost model is a good start for making each workflow’s costs and benefits explicit.</p>
           </template>
         </section>
-        <!-- SLIDE 04: Compare workflows on the same task. -->
-        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-4" data-title="4. Compare workflows on the same task." data-budget="45">
-          <header class="talk-top"><div><p class="talk-kicker">What would count as an improvement?</p><h2 class="talk-heading">Compare workflows on the same task.</h2></div><span class="talk-counter">04 / 11</span></header>
+        <!-- SLIDE 05: Compare workflows on the same task. -->
+        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-5" data-title="5. Compare workflows on the same task." data-budget="45" data-talk-section="compare">
+          <header class="talk-top"><div><p class="talk-kicker">What would count as an improvement?</p><h2 class="talk-heading">Compare workflows on the same task.</h2></div><span class="talk-counter">05 / 14</span></header>
           <div class="talk-body">
-            <div class="decision-three">
-              <article class="decision-panel"><h3>Same task</h3><p>Common dataset, corrected-mask target, and held-out classification test.</p></article>
-              <article class="decision-panel" data-reveal="1"><h3>Same learner</h3><p>Match the starting model, training recipe, expert access, and budget ceiling.</p></article>
-              <article class="decision-panel" data-reveal="2"><h3>Same period of use</h3><p>Include learning, integration, maintenance, and the number of future workloads.</p></article>
+            <div class="comparison-layout">
+              <div class="comparison-conditions"><p class="decision-label">Hold fixed</p><h3>One common starting point</h3><p>Same dataset, corrected-mask target, and held-out classification test.</p><p>Same starting model, training recipe, expert access, and budget ceiling.</p></div>
+              <div class="comparison-workflows"><p class="decision-label">Compare what the workflow adds</p>
+                <div class="comparison-lane"><span>A</span><div><h3>Image editor + script</h3><p>Correct → save labels → train separately → reload.</p></div></div>
+                <div class="comparison-lane comparison-lane--proposed" data-reveal="1"><span>V</span><div><h3>MitoVis workflow</h3><p>Suggest similar branches → correct labels → retrain → review.</p></div></div>
+              </div>
             </div>
+            <p class="comparison-period" data-reveal="2"><strong>Compare over the same period.</strong> <span>Count learning, integration, and maintenance across the same future workloads.</span></p>
             <p class="decision-takeaway" data-reveal="3">Hold the learner fixed to test what the workflow adds.</p></div>
+          <nav class="talk-roadmap" aria-label="Talk progress"><ol><li aria-current="step">Compare workflows</li><li>Model value</li><li>Test the contribution</li></ol></nav>
           <template class="speaker-notes">
             <p>Agree on the task before comparing tools. Require a common quality target for corrected masks, and evaluate the resulting classifier on the same held-out data. Mask quality and classifier accuracy are separate outcomes.</p>
-            <p class="reveal-cue" data-click="1">[CLICK 1] Reveal the matched learner and resources.</p>
-            <p>To study the workflow&#x27;s contribution, match the starting model, training recipe, access to experts, and budget ceiling.</p>
+            <p class="reveal-cue" data-click="1">[CLICK 1] Reveal V alongside A under the same shared conditions.</p>
+            <p>The left side stays fixed. On the right, compare the editor and separate script with MitoVis’s integrated workflow. Match the learner and resources to study what the workflow adds.</p>
             <p class="reveal-cue" data-click="2">[CLICK 2] Reveal the common period of use.</p>
-            <p>Compare costs over the same period of use.</p>
+            <p>Count learning, integration, and maintenance over the same future workloads.</p>
             <p class="reveal-cue" data-click="3">[CLICK 3] Reveal what holding the learner fixed lets us test.</p>
-            <p>This helps distinguish a workflow improvement from simply adding a better learner. Isolating a particular visual design choice would require a more controlled comparison.</p>
+            <p>Isolating a particular visual design choice would require a more controlled comparison.</p>
           </template>
         </section>
-        <!-- SLIDE 05: Every workflow needs the same cost–benefit ledger. -->
-        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-5" data-title="5. Every workflow needs the same cost–benefit ledger." data-budget="60">
-          <header class="talk-top"><div><p class="talk-kicker">A shared cost–benefit model</p><h2 class="talk-heading">Every workflow needs the same cost–benefit ledger.</h2></div><span class="talk-counter">05 / 11</span></header>
+        <!-- SLIDE 06: When is a new visualization worth using? -->
+        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col" id="slide-6" data-title="6. Model value · Overview" data-budget="10" data-overview-step="2">
+          <header class="talk-top"><div><p class="talk-kicker">Back to the overview · Step 2 of 3</p><h2 class="talk-heading">When is a new visualization worth using?</h2></div><span class="talk-counter">06 / 14</span></header>
+          <div class="talk-body">
+            <div class="talk-route-layout">
+              <p class="route-intro">We’ve set up the comparison. Now let’s weigh the benefits and costs.</p>
+              <ol class="talk-route" aria-label="Talk overview">
+                <li data-route-state="complete"><span class="route-marker" aria-hidden="true">✓</span><h3><span class="sr-only">Completed: </span>What does the new tool add over the alternatives?</h3></li>
+                <li data-route-state="current" aria-current="step"><span class="route-marker" aria-hidden="true">02</span><h3>Is the improvement worth the time and money?</h3></li>
+                <li data-route-state="upcoming"><span class="route-marker" aria-hidden="true">03</span><h3>What do we still need to measure?</h3></li>
+              </ol>
+            </div>
+          </div>
+          <template class="speaker-notes"><p>We’ve set up the comparison. Now let’s count the benefits and costs and ask when the improvement is worth it.</p></template>
+        </section>
+        <!-- SLIDE 07: Every workflow needs the same cost–benefit ledger. -->
+        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-7" data-title="7. Every workflow needs the same cost–benefit ledger." data-budget="60" data-talk-section="model">
+          <header class="talk-top"><div><p class="talk-kicker">A shared cost–benefit model</p><h2 class="talk-heading">Every workflow needs the same cost–benefit ledger.</h2></div><span class="talk-counter">07 / 14</span></header>
           <div class="talk-body">
             <div class="decision-ledger">
               <div><p class="decision-label">Expected benefits</p><h3>What changes for the lab?</h3><ul><li>Less manual work</li><li>Better downstream predictions</li><li>Fewer failures; useful knowledge</li></ul></div>
@@ -727,6 +793,7 @@
             </div>
             <div class="decision-facts"><div data-reveal="2"><strong>Reported MitoVis outcomes</strong><span>19.0 min vs. 191.4 min manual work;<br>classifier accuracy: 77.0% → 87.1%.</span></div><div data-reveal="3"><strong>Our valuation scenario</strong><span>Three 19-minute sessions, with assumed labor prices and development cost.</span></div></div>
             <p class="decision-takeaway" data-reveal="4">Net value = benefits − costs.</p></div>
+          <nav class="talk-roadmap" aria-label="Talk progress"><ol><li>Compare workflows</li><li aria-current="step">Model value</li><li>Test the contribution</li></ol></nav>
           <footer class="talk-source">Paper Secs. 4–5.1. Reported outcomes combined into an illustrative economic scenario.</footer>
           <template class="speaker-notes">
             <p>Use the same ledger for every workflow. Benefits include avoided manual work, better predictions, reduced risk, and useful knowledge.</p>
@@ -740,9 +807,9 @@
             <p>Subtract costs from benefits to get net value. The next step is to compare that net value across workflows.</p>
           </template>
         </section>
-        <!-- SLIDE 06: Model updates also consume expert attention. -->
-        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-6" data-title="6. Model updates also consume expert attention." data-budget="45">
-          <header class="talk-top"><div><p class="talk-kicker">Count the expert’s time, too</p><h2 class="talk-heading">Model updates also consume expert attention.</h2></div><span class="talk-counter">06 / 11</span></header>
+        <!-- SLIDE 08: Model updates also consume expert attention. -->
+        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-8" data-title="8. Model updates also consume expert attention." data-budget="45" data-talk-section="model">
+          <header class="talk-top"><div><p class="talk-kicker">Count the expert’s time, too</p><h2 class="talk-heading">Model updates also consume expert attention.</h2></div><span class="talk-counter">08 / 14</span></header>
           <div class="talk-body">
             <div class="decision-three decision-update">
               <article><p class="decision-label">01 · Steer</p><h3>Correct outputs</h3><p>Choose what the model should learn from.</p></article>
@@ -751,6 +818,7 @@
             </div>
             <div class="decision-two decision-metrics"><div data-reveal="1"><p class="decision-label">GPU cost per update</p><strong>~$0.02</strong><p>23 seconds at an assumed $3/hour.</p></div><div data-reveal="2"><p class="decision-label">Assumed reorientation cost</p><strong>$3.00</strong><p>1.5 minutes at $2/minute.</p></div></div>
             <p class="decision-muted" data-reveal="3">Measure review time separately from direct interaction; count each minute once.</p></div>
+          <nav class="talk-roadmap" aria-label="Talk progress"><ol><li>Compare workflows</li><li aria-current="step">Model value</li><li>Test the contribution</li></ol></nav>
           <footer class="talk-source">Paper Sec. 5.1. Update latency is reported; prices and reorientation time are assumed.</footer>
           <template class="speaker-notes">
             <p>One cost is easy to overlook.</p>
@@ -762,9 +830,9 @@
             <p>Separate direct interaction from post-update review so each minute is counted once.</p>
           </template>
         </section>
-        <!-- SLIDE 07: Covering its costs does not make it the best choice. -->
-        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-7" data-title="7. Covering its costs does not make it the best choice." data-budget="70">
-          <header class="talk-top"><div><p class="talk-kicker">Worked example · A is hypothetical</p><h2 class="talk-heading">Covering its costs does not make it the best choice.</h2></div><span class="talk-counter">07 / 11</span></header>
+        <!-- SLIDE 09: Covering its costs does not make it the best choice. -->
+        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-9" data-title="9. Covering its costs does not make it the best choice." data-budget="70" data-talk-section="model">
+          <header class="talk-top"><div><p class="talk-kicker">Worked example · A is hypothetical</p><h2 class="talk-heading">Covering its costs does not make it the best choice.</h2></div><span class="talk-counter">09 / 14</span></header>
           <div class="talk-body">
             <table class="decision-table"><caption>Illustrative three-session workload · Value one accuracy point at $1,000.</caption>
               <thead><tr><th scope="col">Input</th><th scope="col">A · Alternative<br><span>Hypothetical inputs</span></th><th scope="col">V · MitoVis<br><span>Paper scenario</span></th><th scope="col" data-reveal="2">V − A<br><span>What V adds</span></th></tr></thead>
@@ -775,6 +843,7 @@
             </table>
             <p class="decision-muted">Both receive the same $1,148 credit for avoided manual work; other added costs are assumed zero.</p>
             <p class="decision-takeaway" data-reveal="2">V costs $2,040 more for 2 extra accuracy points.</p></div>
+          <nav class="talk-roadmap" aria-label="Talk progress"><ol><li>Compare workflows</li><li aria-current="step">Model value</li><li>Test the contribution</li></ol></nav>
           <footer class="talk-source">Rounded dollars; one point = one percentage point. V: paper Sec. 5.1. Full arithmetic: backup 01.</footer>
           <template class="speaker-notes">
             <p>Give alternative A hypothetical costs and outcomes. V uses the paper&#x27;s MitoVis scenario. We assume comparable corrected outputs and credit both with the same avoided manual work. Dollar values are rounded on this slide; the full arithmetic is in backup.</p>
@@ -784,9 +853,9 @@
             <p>The last column shows why: V costs two thousand and forty dollars more for two extra points. Are those points worth enough? For a real adoption decision, use costs still to be incurred and measured outcomes. Here, the comparison is illustrative.</p>
           </template>
         </section>
-        <!-- SLIDE 08: How much must the extra improvement be worth? -->
-        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-8" data-title="8. How much must the extra improvement be worth?" data-budget="85">
-          <header class="talk-top"><div><p class="talk-kicker">Ask the stakeholder what improvement is worth</p><h2 class="talk-heading">How much must the extra improvement be worth?</h2></div><span class="talk-counter">08 / 11</span></header>
+        <!-- SLIDE 10: How much must the extra improvement be worth? -->
+        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-10" data-title="10. How much must the extra improvement be worth?" data-budget="85" data-talk-section="model">
+          <header class="talk-top"><div><p class="talk-kicker">Ask the stakeholder what improvement is worth</p><h2 class="talk-heading">How much must the extra improvement be worth?</h2></div><span class="talk-counter">10 / 14</span></header>
           <div class="talk-body">
             <div class="decision-chart-layout">
               <figure><svg class="story-figure decision-chart" viewBox="0 0 980 520" role="img" aria-label="Illustrative additional net value of V over hypothetical A equals two times U minus 2040 dollars. It crosses zero at U equals 1020 dollars per additional percentage point. Below the threshold A has higher net value; above it V has higher net value. This is a pairwise comparison; manual work remains another option.">
@@ -810,6 +879,7 @@
               <div class="decision-chart-notes"><div data-reveal="3"><p class="decision-label">At $1,000 / point</p><h3>V trails by $40.</h3></div><div data-reveal="4"><p class="decision-label">At $1,500 / point</p><h3>V leads by $960.</h3></div><p data-reveal="5">What range of values can the lab defend?</p><p class="decision-muted" data-reveal="5">If that range crosses $1,020, the choice remains unresolved.</p></div>
             </div>
             <p class="decision-muted" data-reveal="5">For insight, start with the decision it changes or the loss it helps avoid.</p></div>
+          <nav class="talk-roadmap" aria-label="Talk progress"><ol><li>Compare workflows</li><li aria-current="step">Model value</li><li>Test the contribution</li></ol></nav>
           <footer class="talk-source">Illustrative A–V comparison with linear utility. Manual work remains another option.</footer>
           <template class="speaker-notes">
             <p>Let the value per accuracy point vary. The horizontal axis is that value, U. The vertical axis is V&#x27;s net value minus A&#x27;s.</p>
@@ -825,9 +895,9 @@
             <p>Ask the lab director for a plausible range. If it crosses the threshold, we need more information to choose. For insight, ask which decision changes or which loss might be avoided. If no price is defensible, compare effort to a defined knowledge outcome. The model makes the uncertainty explicit.</p>
           </template>
         </section>
-        <!-- SLIDE 09: Repeated use can change the decision. -->
-        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-9" data-title="9. Repeated use can change the decision." data-budget="50">
-          <header class="talk-top"><div><p class="talk-kicker">Follow the economics into repeated use</p><h2 class="talk-heading">Repeated use can change the decision.</h2></div><span class="talk-counter">09 / 11</span></header>
+        <!-- SLIDE 11: Repeated use can change the decision. -->
+        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-11" data-title="11. Repeated use can change the decision." data-budget="50" data-talk-section="model">
+          <header class="talk-top"><div><p class="talk-kicker">Follow the economics into repeated use</p><h2 class="talk-heading">Repeated use can change the decision.</h2></div><span class="talk-counter">11 / 14</span></header>
           <div class="talk-body">
             <p class="decision-lead">Spread the extra $2,000 development cost across independent workloads.</p>
             <div class="decision-three decision-reuse">
@@ -837,6 +907,7 @@
             </div>
             <p class="decision-muted" data-reveal="3">Assume the same 2-point advantage and $40 extra running cost on every workload.</p>
             <p class="decision-takeaway" data-reveal="3">Follow actual use to test whether this advantage lasts.</p></div>
+          <nav class="talk-roadmap" aria-label="Talk progress"><ol><li>Compare workflows</li><li aria-current="step">Model value</li><li>Test the contribution</li></ol></nav>
           <footer class="talk-source">Illustrative reuse: development shared across independent workloads; no added learning or maintenance cost.</footer>
           <template class="speaker-notes">
             <p>The one-workload comparison charges all development up front.</p>
@@ -848,9 +919,24 @@
             <p>That assumes the two-point advantage and forty-dollar extra running cost recur on each workload, with no extra learning or maintenance cost. Each workload must separately realize its benefit. Reusing one improved model does not create another accuracy gain. Follow actual use to see whether the projected advantage lasts.</p>
           </template>
         </section>
-        <!-- SLIDE 10: What evidence would make the contribution convincing? -->
-        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-10" data-title="10. What evidence would make the contribution convincing?" data-budget="60">
-          <header class="talk-top"><div><p class="talk-kicker">Turn the framework into an evaluation</p><h2 class="talk-heading">What evidence would make the contribution convincing?</h2></div><span class="talk-counter">10 / 11</span></header>
+        <!-- SLIDE 12: When is a new visualization worth using? -->
+        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col" id="slide-12" data-title="12. Test the contribution · Overview" data-budget="10" data-overview-step="3">
+          <header class="talk-top"><div><p class="talk-kicker">Back to the overview · Step 3 of 3</p><h2 class="talk-heading">When is a new visualization worth using?</h2></div><span class="talk-counter">12 / 14</span></header>
+          <div class="talk-body">
+            <div class="talk-route-layout">
+              <p class="route-intro">The example shows when the choice changes. Now let’s look at the missing evidence.</p>
+              <ol class="talk-route" aria-label="Talk overview">
+                <li data-route-state="complete"><span class="route-marker" aria-hidden="true">✓</span><h3><span class="sr-only">Completed: </span>What does the new tool add over the alternatives?</h3></li>
+                <li data-route-state="complete"><span class="route-marker" aria-hidden="true">✓</span><h3><span class="sr-only">Completed: </span>Is the improvement worth the time and money?</h3></li>
+                <li data-route-state="current" aria-current="step"><span class="route-marker" aria-hidden="true">03</span><h3>What do we still need to measure?</h3></li>
+              </ol>
+            </div>
+          </div>
+          <template class="speaker-notes"><p>The example shows how the choice depends on value and use. Now, what would we need to measure in practice?</p></template>
+        </section>
+        <!-- SLIDE 13: What evidence would make the contribution convincing? -->
+        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-13" data-title="13. What evidence would make the contribution convincing?" data-budget="50" data-talk-section="test">
+          <header class="talk-top"><div><p class="talk-kicker">Turn the framework into an evaluation</p><h2 class="talk-heading">What evidence would make the contribution convincing?</h2></div><span class="talk-counter">13 / 14</span></header>
           <div class="talk-body">
             <div class="decision-evidence">
               <div><p class="decision-label">01 · Compare</p><h3>Strong alternatives</h3><p>Use the same task and the strongest practical comparison workflows.</p></div>
@@ -859,6 +945,7 @@
             </div>
             <p class="decision-takeaway" data-reveal="3">Use a common task and ledger to compare many systems.</p>
             <p class="decision-muted" data-reveal="3">This paper supplies the framework and worked scenarios. Comparative measurements are the next step.</p></div>
+          <nav class="talk-roadmap" aria-label="Talk progress"><ol><li>Compare workflows</li><li>Model value</li><li aria-current="step">Test the contribution</li></ol></nav>
           <template class="speaker-notes">
             <p>This gives us an evaluation agenda. Compare strong alternatives on the same task.</p>
             <p class="reveal-cue" data-click="1">[CLICK 1] Reveal the outcomes and effort to measure.</p>
@@ -869,23 +956,24 @@
             <p>For ten or twenty systems, use a common task and ledger so the comparisons mean something. The paper supplies the framework and worked scenarios. Comparative measurements are the next step. They would let us say where a proposed workflow adds value, and where an existing approach is the better investment.</p>
           </template>
         </section>
-        <!-- SLIDE 11: Make the value of a new workflow explicit. -->
-        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-11" data-title="11. Make the value of a new workflow explicit." data-budget="35">
-          <header class="talk-top"><div><p class="talk-kicker">Cost–benefit modeling</p><h2 class="talk-heading">Make the value of a new workflow explicit.</h2></div><span class="talk-counter">11 / 11</span></header>
+        <!-- SLIDE 14: Make the value of a new workflow explicit. -->
+        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-14" data-title="14. Make the value of a new workflow explicit." data-budget="35" data-talk-section="test">
+          <header class="talk-top"><div><p class="talk-kicker">Cost–benefit modeling</p><h2 class="talk-heading">Make the value of a new workflow explicit.</h2></div><span class="talk-counter">14 / 14</span></header>
           <div class="talk-body">
             <div class="decision-opening"><p class="decision-big">What does it add?<br>When is that worth its cost?</p></div>
-            <div class="decision-closing-points" data-reveal="1"><span>Compare strong alternatives.</span><span>Show when the choice changes.</span><span>Measure value in use.</span></div>
+            <div class="decision-closing-points" data-reveal="1"><span><strong>Compare workflows</strong><br>Same task, learner, and period of use.</span><span><strong>Model value</strong><br>Find where the choice changes.</span><span><strong>Test the contribution</strong><br>Measure the advantage in use.</span></div>
             <div class="closing-footer" data-reveal="2"><div><p class="closing-authors">Yixuan Wang, <strong>Rolando Garcia</strong>, Alex Endert, Ross Maciejewski</p><p class="decision-job">Rolando Garcia · On the faculty job market</p><p class="closing-contact"><span>Email: <a href="mailto:rolando.garcia@asu.edu">rolando.garcia@asu.edu</a></span><span>Homepage: <a href="https://rlnsanz.github.io" target="_blank" rel="noopener noreferrer">rlnsanz.github.io</a></span></p></div><p class="closing-thanks">Thank you.</p></div></div>
+          <nav class="talk-roadmap" aria-label="Talk progress"><ol><li>Compare workflows</li><li>Model value</li><li aria-current="step">Test the contribution</li></ol></nav>
           <template class="speaker-notes">
             <p>We want to judge a new workflow by what it adds over credible alternatives and whether that addition earns its cost.</p>
-            <p class="reveal-cue" data-click="1">[CLICK 1] Reveal the three closing actions.</p>
-            <p>Cost–benefit modeling makes those comparisons explicit: where the choice changes, which assumptions matter, and what evidence is missing. Testing those claims in continued use is how we learn whether the contribution lasts.</p>
+            <p class="reveal-cue" data-click="1">[CLICK 1] Return to the overview’s three stages as a recap.</p>
+            <p>We compared workflows on equal terms, modeled where the choice changes, and identified the evidence needed to test the contribution in practice.</p>
             <p class="reveal-cue" data-click="2">[CLICK 2] Reveal contact details, job-market note, and thanks. This is the final build.</p>
             <p>I&#x27;m on the faculty job market and would welcome a conversation. Thank you.</p>
           </template>
         </section>
         <!-- BACKUP 01: Assumptions behind the illustrative comparison -->
-        <section data-backup="true" id="slide-12" class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 01. Assumptions behind the illustrative comparison">
+        <section data-backup="true" id="slide-15" class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 01. Assumptions behind the illustrative comparison">
           <header class="talk-top"><div><p class="talk-kicker">Backup · Assumptions and evidence</p><h2 class="talk-heading">Assumptions behind the illustrative comparison</h2></div><span class="talk-counter">Backup 01 / 23</span></header>
           <div class="talk-body">
             <div class="decision-two"><div class="decision-panel"><h3>V: paper scenario</h3><p>Development $10,000; runtime $123.08.<br>Classifier gain 10.1 points.<br>Avoided manual work $1,148.40.</p></div><div class="decision-panel"><h3>A: hypothetical alternative</h3><p>Development $8,000; runtime $83.08.<br>Classifier gain 8.1 points.<br>Same avoided manual work.</p></div></div>
@@ -893,7 +981,7 @@
             <p class="decision-muted">Shared manual reference; same corrected-output target and downstream valuation. Learning, integration, maintenance, and other incremental costs assumed zero. No observed head-to-head ranking.</p></div><footer class="talk-source">Teaching inputs, not empirical results. Replace A inputs and unmeasured adoption costs with evidence before making a real recommendation.</footer>
           <template class="speaker-notes"><p>A uses an image editor and a separate training script; its cost and outcome inputs are invented to teach the comparison. V uses the paper scenario, which itself combines reported measurements and assumed prices. Both receive the same manual-effort credit, so that term cancels in the incremental comparison. U values downstream classifier improvement beyond the corrected outputs. Avoid counting those same benefits twice. For reuse, N means separate workloads, each realizing the assumed gain and runtime cost. Reusing one improved model does not automatically generate another independent accuracy gain.</p></template></section>
         <!-- BACKUP 02: What if we cannot put a price on insight? -->
-        <section data-backup="true" id="slide-13" class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 02. What if we cannot put a price on insight?">
+        <section data-backup="true" id="slide-16" class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 02. What if we cannot put a price on insight?">
           <header class="talk-top"><div><p class="talk-kicker">Backup · Assumptions and evidence</p><h2 class="talk-heading">What if we cannot put a price on insight?</h2></div><span class="talk-counter">Backup 02 / 23</span></header>
           <div class="talk-body">
             <div class="decision-three"><article class="decision-panel"><p class="decision-label">Connect to an outcome</p><h3>What changes?</h3><p>Identify a decision, prevented failure, or recurring task affected by the knowledge.</p></article><article class="decision-panel"><p class="decision-label">Keep uncertainty visible</p><h3>What is plausible?</h3><p>Use ranges for outcome value and prevention probability. Find where the ranking changes.</p></article><article class="decision-panel"><p class="decision-label">When value stays unpriced</p><h3>What can we compare?</h3><p>Compare effort to a defined knowledge outcome; report remaining trade-offs explicitly.</p></article></div>
@@ -901,7 +989,7 @@
             <p class="decision-muted">Knowledge already credited through predictions or avoided failures receives no second benefit credit.</p></div><footer class="talk-source">Paper Sec. 4.2: knowledge and risk-reduction pathways. Ranges and task-based comparisons are proposed evaluation choices.</footer>
           <template class="speaker-notes"><p>Insight is not a universal unit with a universal price. Ask the stakeholder what decision the knowledge enables and how likely it is to change the outcome. The fixed-model audit in backup illustrates avoided-loss valuation, conditional on prevention probability. If knowledge has value of its own but no defensible monetary estimate, keep it unpriced or compare resources needed to achieve a specified knowledge outcome. That supports a partial comparison without manufacturing an economic ranking.</p></template></section>
         <!-- BACKUP 03: MitoVis: When do data and model improvements pay off? -->
-        <section data-backup="true" id="slide-14" class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 03. MitoVis: When do data and model improvements pay off?">
+        <section data-backup="true" id="slide-17" class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 03. MitoVis: When do data and model improvements pay off?">
           <header class="talk-top"><div><p class="talk-kicker">Case 1: Data correction + model refinement</p><h2 class="talk-heading">MitoVis: When do data and model improvements pay off?</h2></div><span class="talk-counter">Backup 03 / 23</span></header>
           <div class="talk-body">
             <div class="paper-figure-layout">
@@ -920,7 +1008,7 @@
           <template class="speaker-notes"><p>This is the paper’s original MitoVis break-even panel. It uses an illustrative aggregation of three nineteen-minute sessions and a ten-thousand-dollar development proxy. The reported 77.0 to 87.1 percent gain is neurite-wise classification accuracy. At about 889 dollars per point, benefits cover the modeled costs against the manual reference. That threshold does not establish superiority over another ML-assisted workflow. The comparison slides in the main talk introduce a separate, hypothetical alternative.</p></template>
         </section>
         <!-- BACKUP 04: A fixed model can create value through failure prevention -->
-        <section data-backup="true" id="slide-15" class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 04. A fixed model can create value through failure prevention">
+        <section data-backup="true" id="slide-18" class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 04. A fixed model can create value through failure prevention">
           <header class="talk-top"><div><p class="talk-kicker">Case 2: Model evaluation and understanding</p><h2 class="talk-heading">A fixed model can create value through failure prevention</h2></div><span class="talk-counter">Backup 04 / 23</span></header>
           <div class="talk-body">
             <div class="paper-figure-layout">
@@ -939,7 +1027,7 @@
           <template class="speaker-notes"><p>This separate case inspects a fixed model for data poisoning vulnerabilities. The paper assumes a nineteen-minute audit, ten thousand dollars of development, and full failure identification and prevention. Under that optimistic scenario, the avoided loss must be at least 10,038 dollars to cover cost. A lower prevention probability raises the required loss. This is a worked example of a different benefit pathway, not a competing solution to the MitoVis task.</p></template>
         </section>
         <!-- BACKUP 05: Stop when the next interaction costs more than it adds -->
-        <section data-backup="true" id="slide-16" class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 05. Stop when the next interaction costs more than it adds">
+        <section data-backup="true" id="slide-19" class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 05. Stop when the next interaction costs more than it adds">
           <header class="talk-top"><div><p class="talk-kicker">From break-even to stopping</p><h2 class="talk-heading">Stop when the next interaction costs more than it adds</h2></div><span class="talk-counter">Backup 05 / 23</span></header>
           <div class="talk-body">
             <div class="paper-figure-layout">
@@ -958,7 +1046,7 @@
           <template class="speaker-notes"><p>This is the paper’s fixed-model stopping panel. Time is horizontal; marginal value and cost are vertical. The blue curves assume different information-discovery rates, and the crossing with red gives the modeled stopping time. The times are sensitivity results, not observed audit durations or recommendations. This within-session stopping question is separate from choosing between tools.</p></template>
         </section>
         <!-- BACKUP 06: What interaction changes determines the trade-off -->
-        <section data-backup="true" id="slide-17" class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 06. What interaction changes determines the trade-off">
+        <section data-backup="true" id="slide-20" class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 06. What interaction changes determines the trade-off">
           <header class="talk-top"><div><p class="talk-kicker">From our example to three interaction targets</p><h2 class="talk-heading">What interaction changes determines the trade-off</h2></div><span class="talk-counter">Backup 06 / 23</span></header>
           <div class="talk-body">
             <div class="paper-figure-layout paper-figure-layout--workflow">
@@ -977,7 +1065,7 @@
           <template class="speaker-notes"><p>The workflow has three interaction targets. Changing data can trigger training and review. Steering model state can also require re-optimization and review. Changing only the view leaves the model fixed and builds understanding. This taxonomy maps each workflow to the cost and benefit terms in the ledger. It is available here for technical questions.</p></template>
         </section>
         <!-- BACKUP 07: Theoretical Foundation: Van Wijk's Visualization Model -->
-        <section id="slide-18" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
+        <section id="slide-21" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
           data-title="Backup 07. Theoretical Foundation: Van Wijk's Visualization Model" data-backup="true">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex items-center justify-between">
             <div>
@@ -1084,7 +1172,7 @@
           </template>
         </section>
         <!-- BACKUP 08: Extending Van Wijk: Learning and Model State -->
-        <section id="slide-19" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
+        <section id="slide-22" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
           data-title="Backup 08. Extending Van Wijk: Learning and Model State" data-backup="true">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex items-center justify-between">
             <div>
@@ -1205,7 +1293,7 @@
           </template>
         </section>
         <!-- BACKUP 09: Interaction Target 1: Modify Training Data -->
-        <section id="slide-20" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
+        <section id="slide-23" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
           data-title="Backup 09. Interaction Target 1: Modify Training Data" data-backup="true">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex flex-wrap items-center justify-between gap-2">
             <div>
@@ -1324,7 +1412,7 @@
           </template>
         </section>
         <!-- BACKUP 10: Interaction Target 2: Modify Model State -->
-        <section id="slide-21" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
+        <section id="slide-24" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
           data-title="Backup 10. Interaction Target 2: Modify Model State" data-backup="true">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex flex-wrap items-center justify-between gap-2">
             <div>
@@ -1444,7 +1532,7 @@
           </template>
         </section>
         <!-- BACKUP 11: Interaction Target 3: Build Model Understanding -->
-        <section id="slide-22" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
+        <section id="slide-25" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
           data-title="Backup 11. Interaction Target 3: Build Model Understanding" data-backup="true">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex flex-wrap items-center justify-between gap-2">
             <div>
@@ -1564,7 +1652,7 @@
           </template>
         </section>
         <!-- BACKUP 12: Cost-Benefit Model: Expected Benefits Must Cover Costs -->
-        <section id="slide-23" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
+        <section id="slide-26" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
           data-title="Backup 12. Cost-Benefit Model: Expected Benefits Must Cover Costs" data-backup="true">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex items-center justify-between">
             <div>
@@ -1656,7 +1744,7 @@
           </template>
         </section>
         <!-- BACKUP 13: Costs: Upfront Development and Ongoing Session Effort -->
-        <section id="slide-24" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
+        <section id="slide-27" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
           data-title="Backup 13. Costs: Upfront Development and Ongoing Session Effort" data-backup="true">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex items-center justify-between">
             <div>
@@ -1720,7 +1808,7 @@
           </template>
         </section>
         <!-- BACKUP 14: Costs: Model Training and Cognitive Re-alignment -->
-        <section id="slide-25" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
+        <section id="slide-28" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
           data-title="Backup 14. Costs: Model Training and Cognitive Re-alignment" data-backup="true">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex items-center justify-between">
             <div>
@@ -1814,7 +1902,7 @@
           </template>
         </section>
         <!-- BACKUP 15: Benefits: Savings, Predictions, Risk Reduction, and Knowledge -->
-        <section id="slide-26" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
+        <section id="slide-29" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
           data-title="Backup 15. Benefits: Savings, Predictions, Risk Reduction, and Knowledge" data-backup="true">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex items-center justify-between">
             <div>
@@ -1898,7 +1986,7 @@ Risk Reduction (B<sub>risk</sub>)
           </template>
         </section>
         <!-- BACKUP 16: Applying the Model (1/3): Training Data -->
-        <section id="slide-27" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
+        <section id="slide-30" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
           data-title="Backup 16. Applying the Model (1/3): Training Data" data-backup="true">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex items-center justify-between">
             <div>
@@ -2031,7 +2119,7 @@ Risk Reduction (B<sub>risk</sub>)
           </template>
         </section>
         <!-- BACKUP 17: Applying the Model (2/3): Model State -->
-        <section id="slide-28" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
+        <section id="slide-31" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
           data-title="Backup 17. Applying the Model (2/3): Model State" data-backup="true">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex items-center justify-between">
             <div>
@@ -2163,7 +2251,7 @@ Risk Reduction (B<sub>risk</sub>)
           </template>
         </section>
         <!-- BACKUP 18: Applying the Model (3/3): Model Understanding -->
-        <section id="slide-29" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
+        <section id="slide-32" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
           data-title="Backup 18. Applying the Model (3/3): Model Understanding" data-backup="true">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex items-center justify-between">
             <div>
@@ -2298,7 +2386,7 @@ Risk Reduction (B<sub>risk</sub>)
           </template>
         </section>
         <!-- BACKUP 19: Applying the Framework: Map the Variables -->
-        <section id="slide-30" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
+        <section id="slide-33" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
           data-title="Backup 19. Applying the Framework: Map the Variables" data-backup="true">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex items-center justify-between gap-4">
             <div class="min-w-0">
@@ -2405,7 +2493,7 @@ Risk Reduction (B<sub>risk</sub>)
           </template>
         </section>
         <!-- BACKUP 20: Motivation: The Value of Feedback Loops -->
-        <section id="slide-31" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
+        <section id="slide-34" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
           data-title="Backup 20. Motivation: The Value of Feedback Loops" data-backup="true">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex items-center justify-between">
             <div>
@@ -2468,7 +2556,7 @@ Risk Reduction (B<sub>risk</sub>)
           </template>
         </section>
         <!-- BACKUP 21: MitoVis: Assumptions behind the $889 threshold -->
-        <section id="slide-32" class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 21. MitoVis: Assumptions behind the $889 threshold" data-backup="true">
+        <section id="slide-35" class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 21. MitoVis: Assumptions behind the $889 threshold" data-backup="true">
           <header class="talk-top"><div><p class="talk-kicker">Backup: Supporting calculations</p><h2 class="talk-heading">MitoVis: Assumptions behind the $889 threshold</h2></div><span class="talk-counter">Backup 21 / 23</span></header>
           <div class="talk-body"><div class="talk-backup-calculation"><div><img class="backup-interface" data-image="mitovis-interface" alt="MitoVis interface for neuronal segmentation correction and model fine-tuning"/><h3>Illustrative inputs</h3><p>3 x 19-minute sessions; $2/min labor</p><p>32 s initial processing + 3 x 23 s fine-tuning; $3/hr GPU</p><p>3 x 1.5-minute re-alignment periods; $10,000 development</p></div><div><h3>Calculation</h3><p>Runtime: $114.00 + $0.08 + $9.00 = $123.08</p><p>Total cost: $10,123.08</p><p>Benefit: $1,148.40 + 10.1 * U<sub>M</sub></p><p class="talk-formula">U<sub>M</sub> ~ ($10,123.08 - $1,148.40) / 10.1 ~$889</p></div></div></div>
           <footer class="talk-source">Calculation source: paper Sec. 5.1, pp. 6-7. U_M is dollars per percentage point of accuracy improvement.</footer>
@@ -2486,7 +2574,7 @@ Risk Reduction (B<sub>risk</sub>)
           </template>
         </section>
         <!-- BACKUP 22: Fixed-model audit: Assumptions behind the $10,038 threshold -->
-        <section id="slide-33" class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 22. Fixed-model audit: Assumptions behind the $10,038 threshold" data-backup="true">
+        <section id="slide-36" class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 22. Fixed-model audit: Assumptions behind the $10,038 threshold" data-backup="true">
           <header class="talk-top"><div><p class="talk-kicker">Backup: Supporting calculations</p><h2 class="talk-heading">Fixed-model audit: Assumptions behind the $10,038 threshold</h2></div><span class="talk-counter">Backup 22 / 23</span></header>
           <div class="talk-body"><div class="talk-backup-calculation"><div><img class="backup-interface" data-image="stingray-interface" alt="Ma and colleagues' visual analytics interface for inspecting data poisoning vulnerabilities"/><h3>Illustrative inputs</h3><p>19-minute normalized audit; $2/min labor</p><p>$10,000 development cost</p><p>Initial training outside the accounting boundary; no model updates</p></div><div><h3>Upper-bound calculation</h3><p>Total cost: $10,000 + $38 = $10,038</p><p>Risk benefit: Delta K * P<sub>fp</sub> * C<sub>f</sub></p><p class="talk-formula">C<sub>f</sub> >= $10,038 / (Delta K * P<sub>fp</sub>)</p><p>At Delta K = P<sub>fp</sub> = 1, the threshold is $10,038.</p></div></div></div>
           <footer class="talk-source">Calculation source: paper Sec. 5.2, p. 8. This is a conditional estimate, not measured financial return.</footer>
@@ -2504,7 +2592,7 @@ Risk Reduction (B<sub>risk</sub>)
           </template>
         </section>
         <!-- BACKUP 23: Stopping times depend on information discovery and cost assumptions -->
-        <section id="slide-34" class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 23. Stopping times depend on information discovery and cost assumptions" data-backup="true">
+        <section id="slide-37" class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 23. Stopping times depend on information discovery and cost assumptions" data-backup="true">
           <header class="talk-top"><div><p class="talk-kicker">Backup: Supporting calculations</p><h2 class="talk-heading">Stopping times depend on information discovery and cost assumptions</h2></div><span class="talk-counter">Backup 23 / 23</span></header>
           <div class="talk-body"><div class="talk-backup-calculation"><div><h3>Illustrative marginal model</h3><p class="talk-formula">MC(t) = 2e<sup>0.00348t</sup> + s<sub>C</sub>(t)</p><p class="talk-formula">MB(t) = 10,123.08 lambda e<sup>-lambda t</sup></p><p>Retraining at minutes 19, 38, and 57 adds ~$1.01/min for three minutes after each update.</p></div><div><h3>MitoVis sensitivity results</h3><p>lambda = 0.01 -> ~291 minutes</p><p>lambda = 0.03 -> ~150 minutes</p><p>lambda = 0.05 -> ~103 minutes</p><p>lambda describes how quickly useful information is found.</p></div></div></div>
           <footer class="talk-source">Calculation source: paper Sec. 5.1-5.2, pp. 7-9. Time t is in minutes; all values depend on the assumed model.</footer>
@@ -2588,7 +2676,7 @@ Risk Reduction (B<sub>risk</sub>)
     <template id="presenterTemplate">
       <header class="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-slate-800">
         <div class="flex items-center gap-3">
-          <span class="px-3 py-1.5 rounded-xl bg-indigo-600 text-white font-extrabold text-sm tabular-nums" id="pSlideBadge">Slide 01 / 11</span>
+          <span class="px-3 py-1.5 rounded-xl bg-indigo-600 text-white font-extrabold text-sm tabular-nums" id="pSlideBadge">Slide 01 / 14</span>
           <h1 class="text-lg sm:text-xl font-bold text-slate-100 truncate max-w-2xl" id="pSlideTitle"></h1>
         </div>
         <div class="flex items-center gap-3 flex-wrap">
@@ -2634,7 +2722,7 @@ Risk Reduction (B<sub>risk</sub>)
 
       <footer class="pt-4 border-t border-slate-800 flex items-center justify-between">
         <button id="pPrevBtn" class="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-sm font-bold text-white transition cursor-pointer">Previous Slide</button>
-        <button id="pReturnToTalk" class="hidden px-3 py-1 rounded-lg bg-slate-800 text-sm font-semibold text-indigo-300 cursor-pointer">Return to talk</button><span class="text-xs text-slate-400">10-minute talk | Target 9:30</span>
+        <button id="pReturnToTalk" class="hidden px-3 py-1 rounded-lg bg-slate-800 text-sm font-semibold text-indigo-300 cursor-pointer">Return to talk</button><span class="text-xs text-slate-400">10-minute talk | Target 9:55</span>
         <button id="pNextBtn" class="px-6 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-sm font-bold text-white transition cursor-pointer shadow-sm">Next Slide</button>
       </footer>
     </template>
