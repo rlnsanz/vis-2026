@@ -477,7 +477,9 @@
       .decision-case > div { display: flex; flex-direction: column; gap: 24px; }
       .decision-case .decision-lead { font-size: 34px; color: #0f172a; font-weight: 650; }
       .decision-case .decision-question { font-size: 34px; font-weight: 700; color: #4338ca; }
-      .decision-interface { display: block; width: 100%; height: 265px; object-fit: contain; background: #fff; border-radius: 10px; }
+      .decision-interface-frame { position: relative; width: 100%; max-width: 704px; aspect-ratio: 994 / 558; margin: 0 auto; overflow: hidden; background: #fff; border-radius: 10px; }
+      /* Frame the viewer and correction controls: source crop x=220, y=88, w=994, h=558 in the 1726 × 922 image. */
+      .decision-interface { position: absolute; display: block; width: 173.6419%; max-width: none; height: auto; left: -22.1328%; top: -15.7706%; }
       .decision-slide figcaption { font-size: 26px; line-height: 1.35; color: #475569; margin-top: 12px; }
       .decision-options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
       .decision-options > div { padding-top: 20px; border-top: 3px solid #94a3b8; }
@@ -649,7 +651,7 @@
           <template class="speaker-notes">
             <p>I&#x27;m Rolando Garcia, presenting joint work with Yixuan Wang, Alex Endert, and Ross Maciejewski. In interactive visual machine learning, people inspect results and give feedback through a visual interface.</p>
             <p class="reveal-cue" data-click="1">[CLICK 1] Reveal the opening question.</p>
-            <p>Our question is whether a new workflow creates enough additional value to justify choosing it over the alternatives.</p>
+            <p>Our question is whether a new visualization workflow creates enough additional value to justify choosing it over the alternatives.</p>
           </template>
         </section>
         <!-- SLIDE 02: Useful compared with what? -->
@@ -666,7 +668,7 @@
             <p class="reveal-cue" data-click="1">[CLICK 1] Reveal credible alternatives: “What does it add?”</p>
             <p>But would another available approach help just as much, at lower cost?</p>
             <p class="reveal-cue" data-click="2">[CLICK 2] Reveal the weak-baseline takeaway.</p>
-            <p>The challenge is to take that comparison seriously. Put yourself in the position of someone choosing a tool: what does this proposal add over the strongest practical alternatives? That&#x27;s the decision we want the model to support.</p>
+            <p>The challenge is to take that comparison seriously. Put yourself in the position of someone choosing a tool: what does this proposal add over the strongest practical alternatives? That&#x27;s the decision we want the cost model to support.</p>
           </template>
         </section>
         <!-- SLIDE 03: Which workflow should the lab invest in? -->
@@ -674,23 +676,25 @@
           <header class="talk-top"><div><p class="talk-kicker">Running example · MitoVis</p><h2 class="talk-heading">Which workflow should the lab invest in?</h2></div><span class="talk-counter">03 / 11</span></header>
           <div class="talk-body">
             <div class="decision-case">
-              <figure><img class="decision-interface" data-image="mitovis-interface" alt="MitoVis interface for neuronal mitochondria analysis, including model outputs and interactive proofreading views."/><figcaption>MitoVis: neuronal mitochondria analysis.</figcaption></figure>
-              <div><p class="decision-lead">You run a lab with limited expert time.</p><p>Proofread segmentation masks and improve the model used in later analysis.</p><p class="decision-question">Compare expert effort, output quality, and the cost of adoption.</p></div>
+              <figure><div class="decision-interface-frame"><img class="decision-interface" data-image="mitovis-interface" alt="Detail of the MitoVis image viewer showing neuronal predictions, correction tools, and the fine-tuning control."/></div><figcaption>MitoVis: image viewer and correction controls (detail).</figcaption></figure>
+              <div><p class="decision-lead">You run a lab with limited expert time.</p><p>Proofread segmentation masks and improve the model used in later analysis.</p><p class="decision-question" data-reveal="3">Which is better for this lab: A or V?</p></div>
             </div>
             <div class="decision-options">
-              <div data-reveal="1"><strong>Manual workflow</strong><span>A reference for current effort.</span></div>
-              <div data-reveal="2"><strong>A · ML-assisted alternative</strong><span>Hypothetical: conventional editing + fine-tuning.</span></div>
-              <div data-reveal="3"><strong>V · MitoVis workflow</strong><span>Interactive proofreading + fine-tuning.</span></div>
+              <div data-reveal="1"><strong>Manual workflow</strong><span>Annotate masks and neurite labels by hand.</span></div>
+              <div data-reveal="2"><strong>A · Image editor + script</strong><span>Correct predictions → save labels → train separately → reload.</span></div>
+              <div data-reveal="3"><strong>V · MitoVis workflow</strong><span>Suggest similar branches; correct labels and retrain.</span></div>
             </div></div>
-          <footer class="talk-source">MitoVis case: paper Sec. 5.1. A is a hypothetical comparison workflow.</footer>
+          <footer class="talk-source">Sources: paper Sec. 5.1; <a href="https://ieeevis.b-cdn.net/vis_2022/posters/v-vis-posters-1021-summary.pdf">MitoVis visual guides</a>.</footer>
           <template class="speaker-notes">
-            <p>You run a lab studying neuronal mitochondria. Experts correct segmentation masks, and their feedback can improve predictions for later work. You need useful results within a limited budget.</p>
+            <p>You run a lab studying neuronal mitochondria, with limited expert time.</p>
             <p class="reveal-cue" data-click="1">[CLICK 1] Reveal the manual reference.</p>
-            <p>Manual work is the reference.</p>
-            <p class="reveal-cue" data-click="2">[CLICK 2] Reveal hypothetical alternative A.</p>
-            <p>Alternative A uses predictions, conventional editing, and fine-tuning.</p>
+            <p>Manual work means drawing and labeling structures by hand.</p>
+            <p class="reveal-cue" data-click="2">[CLICK 2] Reveal proposed alternative A: an image editor and a separate training script.</p>
+            <p>For A, think of napari: a scientific image viewer with editable label layers over microscopy images. Experts fix boundaries or relabel whole regions.</p>
+            <p>The model supplies the initial annotations. Corrected neurite labels feed a separate script to fine-tune the same classifier; experts then reload predictions. The editor can also be used manually. A is ML-assisted because predictions and corrections form a learning loop.</p>
             <p class="reveal-cue" data-click="3">[CLICK 3] Reveal workflow V: MitoVis.</p>
-            <p>V is the MitoVis workflow. Both assisted workflows use ML and visual interfaces; we want to know what the proposed workflow adds. The paper does not evaluate A. We&#x27;ll give it hypothetical inputs to show how the comparison would work, then identify the measurements needed for a real decision.</p>
+            <p>After you correct a label, MitoVis suggests similar neuron branches to inspect. You can correct their labels, retrain the classifier, and review new predictions in one interface.</p>
+            <p>So which is better for this lab, A or V? A cost model is a good start for making each workflow’s costs and benefits explicit.</p>
           </template>
         </section>
         <!-- SLIDE 04: Compare workflows on the same task. -->
@@ -887,7 +891,7 @@
             <div class="decision-two"><div class="decision-panel"><h3>V: paper scenario</h3><p>Development $10,000; runtime $123.08.<br>Classifier gain 10.1 points.<br>Avoided manual work $1,148.40.</p></div><div class="decision-panel"><h3>A: hypothetical alternative</h3><p>Development $8,000; runtime $83.08.<br>Classifier gain 8.1 points.<br>Same avoided manual work.</p></div></div>
             <div class="decision-arithmetic"><p>Net V = $1,148.40 + 10.1U − $10,123.08.</p><p>Net A = $1,148.40 + 8.1U − $8,083.08.</p><p>Net V − Net A = 2U − $2,040; tie at U = $1,020 / point.</p><p>With N independent workloads: tie at U = ($2,000/N + $40) / 2.</p></div>
             <p class="decision-muted">Shared manual reference; same corrected-output target and downstream valuation. Learning, integration, maintenance, and other incremental costs assumed zero. No observed head-to-head ranking.</p></div><footer class="talk-source">Teaching inputs, not empirical results. Replace A inputs and unmeasured adoption costs with evidence before making a real recommendation.</footer>
-          <template class="speaker-notes"><p>The A inputs are invented to teach the comparison. V uses the paper scenario, which itself combines reported measurements and assumed prices. Both receive the same manual-effort credit, so that term cancels in the incremental comparison. U values downstream classifier improvement beyond the corrected outputs. Avoid counting those same benefits twice. For reuse, N means separate workloads, each realizing the assumed gain and runtime cost. Reusing one improved model does not automatically generate another independent accuracy gain.</p></template></section>
+          <template class="speaker-notes"><p>A uses an image editor and a separate training script; its cost and outcome inputs are invented to teach the comparison. V uses the paper scenario, which itself combines reported measurements and assumed prices. Both receive the same manual-effort credit, so that term cancels in the incremental comparison. U values downstream classifier improvement beyond the corrected outputs. Avoid counting those same benefits twice. For reuse, N means separate workloads, each realizing the assumed gain and runtime cost. Reusing one improved model does not automatically generate another independent accuracy gain.</p></template></section>
         <!-- BACKUP 02: What if we cannot put a price on insight? -->
         <section data-backup="true" id="slide-13" class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 02. What if we cannot put a price on insight?">
           <header class="talk-top"><div><p class="talk-kicker">Backup · Assumptions and evidence</p><h2 class="talk-heading">What if we cannot put a price on insight?</h2></div><span class="talk-counter">Backup 02 / 23</span></header>
