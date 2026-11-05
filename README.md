@@ -8,7 +8,7 @@ The revised talk responds to Ross's [round-one feedback](round1-feedback.txt) by
 There are 14 main slides, 23 backups, and 1,334 words of main-talk speaker notes. The current draft targets 12:00 for a ten-minute slot; it includes expanded transition explanations and still needs trimming. At 120 words per minute, the notes take about 11:07, leaving roughly 53 seconds for pointing and pauses within the draft target. Rehearse against the per-slide targets, particularly the comparison and threshold slides. The opening overview allows 60 seconds; the returns allow 50 and 55 seconds to explain how the preceding section leads to the next.
 
 - Left/Right or Space navigates the talk and stops at slide 14.
-- **G** opens the overview: the main talk comes first, followed by backups.
+- **G** opens the overview: use the section links above the previews to jump to a backup topic. Section headers show the backup ranges, and each backup slide repeats its topic in the header.
 - Choose backups for questions; **Return to the talk** restores the last main slide.
 - **P** opens synchronized presenter notes with slide targets and cumulative finish times.
 - **N** toggles notes, **F** toggles fullscreen, and the theme control switches light/dark mode.
@@ -67,11 +67,18 @@ Slide 10 uses an editable SVG with linear axes to show this crossing. It repeats
 
 Slide 11 spreads the hypothetical additional $2,000 development cost across N independent workloads. Assuming the extra $40 runtime cost and 2-point gain recur on each workload, the threshold becomes ($2,000/N + $40) / 2: $1,020 at N=1, $120 at N=10, and $30 at N=100. The formula is retained in backup 01; the main slide emphasizes the thresholds and assumptions. These projections assume no additional learning or maintenance cost. Each workload must separately realize its benefit; repeatedly using one improved model does not automatically generate a new accuracy gain. Reuse projections do not establish lasting impact.
 
-The 23 backups contain:
+The 23 backups are grouped under six section headers in Grid. The section links stay above the scrolling previews so topics are easy to reach during questions. Slide numbers and arrow-navigation order are preserved.
 
-- 01-02: comparison assumptions/arithmetic and the challenge of valuing insight.
-- 03-06: the paper's MitoVis break-even curve, fixed-model failure-prevention case, stopping-time analysis, and unified workflow figure.
-- 07-23: the original 17 technical backups, including taxonomy, equations, benefit pathways, application tables, and supporting calculations.
+| Backups | Section | Detail |
+| --- | --- | --- |
+| 01-02 | Comparison and valuation | Comparison assumptions, arithmetic, reuse, and the value of insight. |
+| 03-05 | Worked examples and stopping | MitoVis break-even, fixed-model failure prevention, and stopping-time figures. |
+| 06-11 | Workflow and interaction targets | Unified workflow, Van Wijk's foundation, and data, model, and understanding targets. |
+| 12-15 | Cost-benefit equations | Total model, cost decomposition, training, re-alignment, and benefit pathways. |
+| 16-20 | Applying the framework | Application by interaction target, variable mapping, and feedback-loop value. |
+| 21-23 | Assumptions and calculations | Inputs and calculations behind the paper's thresholds and stopping times. |
+
+Each backup's `data-backup-section` supplies its Grid grouping and presenter label; keep the matching slide header aligned when editing. No section-divider slides are added, so existing slide links and backup references keep their numbers.
 
 The original MitoVis threshold of about $889 per point remains in backup 03 with its manual reference. It answers a different question from the main talk's $1,020 comparative threshold. The fixed-model audit's $10,038 threshold and the stopping-time curves also remain conditional worked examples. Neither ranks alternative solutions to the MitoVis task.
 

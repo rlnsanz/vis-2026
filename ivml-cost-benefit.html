@@ -6,6 +6,7 @@
      The main story follows one stakeholder choosing between workflows.
      The overview returns at section changes; footers track the current section.
      Arrow navigation stops at the closing slide; choose backup slides from Grid.
+     data-backup-section groups backups under topic headers and quick links in Grid.
      Each main slide's data-budget is its target duration in seconds (12:00 draft total).
      Each section's data-title labels the grid/presenter; its speaker-notes template
      supplies the notes drawer and presenter. Use <p> for separate note paragraphs.
@@ -432,6 +433,19 @@
       #gridThumbnailContainer[data-preview-size="large"] {
         grid-template-columns: repeat(auto-fit, minmax(min(100%, 540px), 1fr));
       }
+      #slideGridSections { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px 20px; border-bottom: 1px solid #cbd5e1; flex-shrink: 0; }
+      .slide-grid-section-link { padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 14px; line-height: 1.35; font-weight: 650; color: #1e293b; background: #f8fafc; cursor: pointer; }
+      .slide-grid-section-link:hover { border-color: #818cf8; }
+      .slide-grid-section-link[aria-current="location"] { color: #3730a3; background: #eef2ff; border-color: #818cf8; }
+      .slide-grid-heading { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 20px; padding: 16px 0 10px; border-bottom: 2px solid #cbd5e1; color: #0f172a; font-size: 20px; line-height: 1.35; font-weight: 750; scroll-margin-top: 12px; }
+      .slide-grid-heading:first-child { padding-top: 0; }
+      .slide-grid-heading span { font-size: 14px; font-weight: 600; color: #334155; }
+      .slide-grid-section-link:focus-visible, .slide-grid-heading:focus-visible { outline: 3px solid #6366f1; outline-offset: 3px; }
+      .dark #slideGridSections, .dark .slide-grid-heading { border-color: #475569; }
+      .dark .slide-grid-section-link { border-color: #64748b; color: #f1f5f9; background: #0f172a; }
+      .dark .slide-grid-section-link[aria-current="location"] { color: #e0e7ff; background: #312e81; border-color: #a5b4fc; }
+      .dark .slide-grid-heading { color: #f1f5f9; }
+      .dark .slide-grid-heading span { color: #e2e8f0; }
       .slide-grid-card {
         position: relative;
         min-width: 0;
@@ -475,6 +489,8 @@
       .dark [data-grid-size][aria-pressed="true"] { background: #475569; color: #e0e7ff; }
       @media (max-width: 640px) {
         #gridThumbnailContainer { gap: 14px; padding: 16px; }
+        #slideGridSections { flex-wrap: nowrap; overflow-x: auto; padding: 10px 16px; }
+        .slide-grid-section-link { flex-shrink: 0; }
       }
 
       /* Stakeholder comparison: one task, shared ledger, explicit uncertainty. */
@@ -1007,8 +1023,8 @@
           </template>
         </section>
         <!-- BACKUP 01: Assumptions behind the illustrative comparison -->
-        <section data-backup="true" id="slide-15" class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 01. Assumptions behind the illustrative comparison">
-          <header class="talk-top"><div><p class="talk-kicker">Backup - Assumptions and evidence</p><h2 class="talk-heading">Assumptions behind the illustrative comparison</h2></div><span class="talk-counter">Backup 01 / 23</span></header>
+        <section data-backup="true" id="slide-15" class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 01. Assumptions behind the illustrative comparison" data-backup-section="Comparison and valuation">
+          <header class="talk-top"><div><p class="talk-kicker">Backup | Comparison and valuation</p><h2 class="talk-heading">Assumptions behind the illustrative comparison</h2></div><span class="talk-counter">Backup 01 / 23</span></header>
           <div class="talk-body">
             <div class="decision-two"><div class="decision-panel"><h3>V: paper scenario</h3><p>Development $10,000; runtime $123.08.<br>Classifier gain 10.1 points.<br>Avoided manual work $1,148.40.</p></div><div class="decision-panel"><h3>A: hypothetical alternative</h3><p>Development $8,000; runtime $83.08.<br>Classifier gain 8.1 points.<br>Same avoided manual work.</p></div></div>
             <div class="decision-arithmetic"><p>Net V = $1,148.40 + 10.1U - $10,123.08.</p><p>Net A = $1,148.40 + 8.1U - $8,083.08.</p><p>Net V - Net A = 2U - $2,040; tie at U = $1,020 / point.</p><p>With N independent workloads: tie at U = ($2,000/N + $40) / 2.</p></div>
@@ -1017,8 +1033,8 @@
             <p class="notes-reference"><strong>Reference only:</strong> Teaching inputs, not empirical results. Replace A inputs and unmeasured adoption costs with evidence before making a real recommendation.</p>
           </template></section>
         <!-- BACKUP 02: What if we cannot put a price on insight? -->
-        <section data-backup="true" id="slide-16" class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 02. What if we cannot put a price on insight?">
-          <header class="talk-top"><div><p class="talk-kicker">Backup - Assumptions and evidence</p><h2 class="talk-heading">What if we cannot put a price on insight?</h2></div><span class="talk-counter">Backup 02 / 23</span></header>
+        <section data-backup="true" id="slide-16" class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 02. What if we cannot put a price on insight?" data-backup-section="Comparison and valuation">
+          <header class="talk-top"><div><p class="talk-kicker">Backup | Comparison and valuation</p><h2 class="talk-heading">What if we cannot put a price on insight?</h2></div><span class="talk-counter">Backup 02 / 23</span></header>
           <div class="talk-body">
             <div class="decision-three"><article class="decision-panel"><p class="decision-label">Connect to an outcome</p><h3>What changes?</h3><p>Identify a decision, prevented failure, or recurring task affected by the knowledge.</p></article><article class="decision-panel"><p class="decision-label">Keep uncertainty visible</p><h3>What is plausible?</h3><p>Use ranges for outcome value and prevention probability. Find where the ranking changes.</p></article><article class="decision-panel"><p class="decision-label">When value stays unpriced</p><h3>What can we compare?</h3><p>Compare effort to a defined knowledge outcome; report remaining trade-offs explicitly.</p></article></div>
             <p class="decision-takeaway">A useful threshold can expose missing evidence without supplying a winner.</p>
@@ -1027,8 +1043,8 @@
             <p class="notes-reference"><strong>Reference only:</strong> Paper Sec. 4.2: knowledge and risk-reduction pathways. Ranges and task-based comparisons are proposed evaluation choices.</p>
           </template></section>
         <!-- BACKUP 03: MitoVis: When do data and model improvements pay off? -->
-        <section data-backup="true" id="slide-17" class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 03. MitoVis: When do data and model improvements pay off?">
-          <header class="talk-top"><div><p class="talk-kicker">Case 1: Data correction + model refinement</p><h2 class="talk-heading">MitoVis: When do data and model improvements pay off?</h2></div><span class="talk-counter">Backup 03 / 23</span></header>
+        <section data-backup="true" id="slide-17" class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 03. MitoVis: When do data and model improvements pay off?" data-backup-section="Worked examples and stopping">
+          <header class="talk-top"><div><p class="talk-kicker">Backup | Worked examples and stopping</p><h2 class="talk-heading">MitoVis: When do data and model improvements pay off?</h2></div><span class="talk-counter">Backup 03 / 23</span></header>
           <div class="talk-body">
             <div class="paper-figure-layout">
               <figure class="paper-figure">
@@ -1047,8 +1063,8 @@
           </template>
         </section>
         <!-- BACKUP 04: A fixed model can create value through failure prevention -->
-        <section data-backup="true" id="slide-18" class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 04. A fixed model can create value through failure prevention">
-          <header class="talk-top"><div><p class="talk-kicker">Case 2: Model evaluation and understanding</p><h2 class="talk-heading">A fixed model can create value through failure prevention</h2></div><span class="talk-counter">Backup 04 / 23</span></header>
+        <section data-backup="true" id="slide-18" class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 04. A fixed model can create value through failure prevention" data-backup-section="Worked examples and stopping">
+          <header class="talk-top"><div><p class="talk-kicker">Backup | Worked examples and stopping</p><h2 class="talk-heading">A fixed model can create value through failure prevention</h2></div><span class="talk-counter">Backup 04 / 23</span></header>
           <div class="talk-body">
             <div class="paper-figure-layout">
               <figure class="paper-figure">
@@ -1067,8 +1083,8 @@
           </template>
         </section>
         <!-- BACKUP 05: Stop when the next interaction costs more than it adds -->
-        <section data-backup="true" id="slide-19" class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 05. Stop when the next interaction costs more than it adds">
-          <header class="talk-top"><div><p class="talk-kicker">From break-even to stopping</p><h2 class="talk-heading">Stop when the next interaction costs more than it adds</h2></div><span class="talk-counter">Backup 05 / 23</span></header>
+        <section data-backup="true" id="slide-19" class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 05. Stop when the next interaction costs more than it adds" data-backup-section="Worked examples and stopping">
+          <header class="talk-top"><div><p class="talk-kicker">Backup | Worked examples and stopping</p><h2 class="talk-heading">Stop when the next interaction costs more than it adds</h2></div><span class="talk-counter">Backup 05 / 23</span></header>
           <div class="talk-body">
             <div class="paper-figure-layout">
               <figure class="paper-figure">
@@ -1087,8 +1103,8 @@
           </template>
         </section>
         <!-- BACKUP 06: What interaction changes determines the trade-off -->
-        <section data-backup="true" id="slide-20" class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 06. What interaction changes determines the trade-off">
-          <header class="talk-top"><div><p class="talk-kicker">From our example to three interaction targets</p><h2 class="talk-heading">What interaction changes determines the trade-off</h2></div><span class="talk-counter">Backup 06 / 23</span></header>
+        <section data-backup="true" id="slide-20" class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 06. What interaction changes determines the trade-off" data-backup-section="Workflow and interaction targets">
+          <header class="talk-top"><div><p class="talk-kicker">Backup | Workflow and interaction targets</p><h2 class="talk-heading">What interaction changes determines the trade-off</h2></div><span class="talk-counter">Backup 06 / 23</span></header>
           <div class="talk-body">
             <div class="paper-figure-layout paper-figure-layout--workflow">
               <figure class="paper-figure">
@@ -1108,10 +1124,10 @@
         </section>
         <!-- BACKUP 07: Theoretical Foundation: Van Wijk's Visualization Model -->
         <section id="slide-21" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
-          data-title="Backup 07. Theoretical Foundation: Van Wijk's Visualization Model" data-backup="true">
+          data-title="Backup 07. Theoretical Foundation: Van Wijk's Visualization Model" data-backup="true" data-backup-section="Workflow and interaction targets">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex items-center justify-between">
             <div>
-              <span class="text-xs font-bold text-sky-700 dark:text-sky-400">02. Theoretical Foundation (Part 1 of 2)</span>
+              <span class="text-xs font-bold text-sky-700 dark:text-sky-400">Backup | Workflow and interaction targets</span>
               <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-100 mt-0.5">Starting point: Van Wijk's (2005) economic model of visualization</h2>
             </div>
             <span class="text-xs font-semibold text-slate-600 dark:text-slate-300 tabular-nums">Backup 07 / 23</span>
@@ -1215,10 +1231,10 @@
         </section>
         <!-- BACKUP 08: Extending Van Wijk: Learning and Model State -->
         <section id="slide-22" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
-          data-title="Backup 08. Extending Van Wijk: Learning and Model State" data-backup="true">
+          data-title="Backup 08. Extending Van Wijk: Learning and Model State" data-backup="true" data-backup-section="Workflow and interaction targets">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex items-center justify-between">
             <div>
-              <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400">02. Theoretical Foundation (Part 2 of 2)</span>
+              <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400">Backup | Workflow and interaction targets</span>
               <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-100 mt-0.5">Extending Van Wijk: Adding learning (L) and model state (M)</h2>
             </div>
             <span class="text-xs font-semibold text-slate-600 dark:text-slate-300 tabular-nums">Backup 08 / 23</span>
@@ -1336,10 +1352,10 @@
         </section>
         <!-- BACKUP 09: Interaction Target 1: Modify Training Data -->
         <section id="slide-23" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
-          data-title="Backup 09. Interaction Target 1: Modify Training Data" data-backup="true">
+          data-title="Backup 09. Interaction Target 1: Modify Training Data" data-backup="true" data-backup-section="Workflow and interaction targets">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex flex-wrap items-center justify-between gap-2">
             <div>
-              <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400">02. Interaction Target 1 of 3: Training Data</span>
+              <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400">Backup | Workflow and interaction targets</span>
               <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-100 mt-0.5">The interaction target determines the feedback pathway</h2>
             </div>
             <div class="flex items-center gap-3 shrink-0">
@@ -1455,10 +1471,10 @@
         </section>
         <!-- BACKUP 10: Interaction Target 2: Modify Model State -->
         <section id="slide-24" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
-          data-title="Backup 10. Interaction Target 2: Modify Model State" data-backup="true">
+          data-title="Backup 10. Interaction Target 2: Modify Model State" data-backup="true" data-backup-section="Workflow and interaction targets">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex flex-wrap items-center justify-between gap-2">
             <div>
-              <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400">02. Interaction Target 2 of 3: Model State</span>
+              <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400">Backup | Workflow and interaction targets</span>
               <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-100 mt-0.5">The interaction target determines the feedback pathway</h2>
             </div>
             <div class="flex items-center gap-3 shrink-0">
@@ -1575,10 +1591,10 @@
         </section>
         <!-- BACKUP 11: Interaction Target 3: Build Model Understanding -->
         <section id="slide-25" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
-          data-title="Backup 11. Interaction Target 3: Build Model Understanding" data-backup="true">
+          data-title="Backup 11. Interaction Target 3: Build Model Understanding" data-backup="true" data-backup-section="Workflow and interaction targets">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex flex-wrap items-center justify-between gap-2">
             <div>
-              <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400">02. Interaction Target 3 of 3: Model Understanding</span>
+              <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400">Backup | Workflow and interaction targets</span>
               <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-100 mt-0.5">The interaction target determines the feedback pathway</h2>
             </div>
             <div class="flex items-center gap-3 shrink-0">
@@ -1695,10 +1711,10 @@
         </section>
         <!-- BACKUP 12: Cost-Benefit Model: Expected Benefits Must Cover Costs -->
         <section id="slide-26" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
-          data-title="Backup 12. Cost-Benefit Model: Expected Benefits Must Cover Costs" data-backup="true">
+          data-title="Backup 12. Cost-Benefit Model: Expected Benefits Must Cover Costs" data-backup="true" data-backup-section="Cost-benefit equations">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex items-center justify-between">
             <div>
-              <span class="text-xs font-bold text-rose-700 dark:text-rose-400">03. Mathematical Cost-Benefit Model</span>
+              <span class="text-xs font-bold text-rose-700 dark:text-rose-400">Backup | Cost-benefit equations</span>
               <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-100 mt-0.5">An IVML workflow is justified when expected benefits cover its costs</h2>
             </div>
             <span class="text-xs font-semibold text-slate-600 dark:text-slate-300 tabular-nums">Backup 12 / 23</span>
@@ -1787,10 +1803,10 @@
         </section>
         <!-- BACKUP 13: Costs: Upfront Development and Ongoing Session Effort -->
         <section id="slide-27" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
-          data-title="Backup 13. Costs: Upfront Development and Ongoing Session Effort" data-backup="true">
+          data-title="Backup 13. Costs: Upfront Development and Ongoing Session Effort" data-backup="true" data-backup-section="Cost-benefit equations">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex items-center justify-between">
             <div>
-              <span class="text-xs font-bold text-rose-700 dark:text-rose-400">03. Cost Decomposition (Part 1 of 2)</span>
+              <span class="text-xs font-bold text-rose-700 dark:text-rose-400">Backup | Cost-benefit equations</span>
               <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-100 mt-0.5">Costs include upfront development and ongoing session effort</h2>
             </div>
             <span class="text-xs font-semibold text-slate-600 dark:text-slate-300 tabular-nums">Backup 13 / 23</span>
@@ -1851,10 +1867,10 @@
         </section>
         <!-- BACKUP 14: Costs: Model Training and Cognitive Re-alignment -->
         <section id="slide-28" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
-          data-title="Backup 14. Costs: Model Training and Cognitive Re-alignment" data-backup="true">
+          data-title="Backup 14. Costs: Model Training and Cognitive Re-alignment" data-backup="true" data-backup-section="Cost-benefit equations">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex items-center justify-between">
             <div>
-              <span class="text-xs font-bold text-rose-700 dark:text-rose-400">03. Cost Decomposition (Part 2 of 2)</span>
+              <span class="text-xs font-bold text-rose-700 dark:text-rose-400">Backup | Cost-benefit equations</span>
               <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-100 mt-0.5">Model updates add training (C<sub>M</sub>) and re-alignment (C<sub>R</sub>) costs</h2>
             </div>
             <span class="text-xs font-semibold text-slate-600 dark:text-slate-300 tabular-nums">Backup 14 / 23</span>
@@ -1945,10 +1961,10 @@
         </section>
         <!-- BACKUP 15: Benefits: Savings, Predictions, Risk Reduction, and Knowledge -->
         <section id="slide-29" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
-          data-title="Backup 15. Benefits: Savings, Predictions, Risk Reduction, and Knowledge" data-backup="true">
+          data-title="Backup 15. Benefits: Savings, Predictions, Risk Reduction, and Knowledge" data-backup="true" data-backup-section="Cost-benefit equations">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex items-center justify-between">
             <div>
-              <span class="text-xs font-bold text-emerald-700 dark:text-emerald-400">04. Benefit Quantification</span>
+              <span class="text-xs font-bold text-emerald-700 dark:text-emerald-400">Backup | Cost-benefit equations</span>
               <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-100 mt-0.5">Benefits include savings, better predictions, lower risk, and knowledge</h2>
             </div>
             <span class="text-xs font-semibold text-slate-600 dark:text-slate-300 tabular-nums">Backup 15 / 23</span>
@@ -2029,10 +2045,10 @@ Risk Reduction (B<sub>risk</sub>)
         </section>
         <!-- BACKUP 16: Applying the Model (1/3): Training Data -->
         <section id="slide-30" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
-          data-title="Backup 16. Applying the Model (1/3): Training Data" data-backup="true">
+          data-title="Backup 16. Applying the Model (1/3): Training Data" data-backup="true" data-backup-section="Applying the framework">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex items-center justify-between">
             <div>
-              <span class="text-xs font-bold text-emerald-700 dark:text-emerald-400">04. Applying the Model by Interaction Target (1 / 3)</span>
+              <span class="text-xs font-bold text-emerald-700 dark:text-emerald-400">Backup | Applying the framework</span>
               <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-100 mt-0.5">Data correction brings benefits and adds training and re-alignment costs</h2>
             </div>
             <span class="text-xs font-semibold text-slate-600 dark:text-slate-300 tabular-nums">Backup 16 / 23</span>
@@ -2162,10 +2178,10 @@ Risk Reduction (B<sub>risk</sub>)
         </section>
         <!-- BACKUP 17: Applying the Model (2/3): Model State -->
         <section id="slide-31" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
-          data-title="Backup 17. Applying the Model (2/3): Model State" data-backup="true">
+          data-title="Backup 17. Applying the Model (2/3): Model State" data-backup="true" data-backup-section="Applying the framework">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex items-center justify-between">
             <div>
-              <span class="text-xs font-bold text-emerald-700 dark:text-emerald-400">04. Applying the Model by Interaction Target (2 / 3)</span>
+              <span class="text-xs font-bold text-emerald-700 dark:text-emerald-400">Backup | Applying the framework</span>
               <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-100 mt-0.5">Model steering weighs training and re-alignment costs against model gains</h2>
             </div>
             <span class="text-xs font-semibold text-slate-600 dark:text-slate-300 tabular-nums">Backup 17 / 23</span>
@@ -2294,10 +2310,10 @@ Risk Reduction (B<sub>risk</sub>)
         </section>
         <!-- BACKUP 18: Applying the Model (3/3): Model Understanding -->
         <section id="slide-32" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
-          data-title="Backup 18. Applying the Model (3/3): Model Understanding" data-backup="true">
+          data-title="Backup 18. Applying the Model (3/3): Model Understanding" data-backup="true" data-backup-section="Applying the framework">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex items-center justify-between">
             <div>
-              <span class="text-xs font-bold text-emerald-700 dark:text-emerald-400">04. Applying the Model by Interaction Target (3 / 3)</span>
+              <span class="text-xs font-bold text-emerald-700 dark:text-emerald-400">Backup | Applying the framework</span>
               <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-100 mt-0.5">Exploring a fixed model builds understanding without retraining costs</h2>
             </div>
             <span class="text-xs font-semibold text-slate-600 dark:text-slate-300 tabular-nums">Backup 18 / 23</span>
@@ -2429,10 +2445,10 @@ Risk Reduction (B<sub>risk</sub>)
         </section>
         <!-- BACKUP 19: Applying the Framework: Map the Variables -->
         <section id="slide-33" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
-          data-title="Backup 19. Applying the Framework: Map the Variables" data-backup="true">
+          data-title="Backup 19. Applying the Framework: Map the Variables" data-backup="true" data-backup-section="Applying the framework">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex items-center justify-between gap-4">
             <div class="min-w-0">
-              <span class="text-xs font-bold text-amber-800 dark:text-amber-400">05. Applying the Framework (Step 1 of 3: Variable Mapping)</span>
+              <span class="text-xs font-bold text-amber-800 dark:text-amber-400">Backup | Applying the framework</span>
               <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-100 mt-0.5">Applying the framework: Map the variables</h2>
             </div>
             <span class="text-xs font-semibold text-slate-600 dark:text-slate-300 tabular-nums">Backup 19 / 23</span>
@@ -2536,10 +2552,10 @@ Risk Reduction (B<sub>risk</sub>)
         </section>
         <!-- BACKUP 20: Motivation: The Value of Feedback Loops -->
         <section id="slide-34" class="slide-section legacy-backup hidden slide-animate flex-1 flex flex-col justify-between p-8 md:p-10"
-          data-title="Backup 20. Motivation: The Value of Feedback Loops" data-backup="true">
+          data-title="Backup 20. Motivation: The Value of Feedback Loops" data-backup="true" data-backup-section="Applying the framework">
           <div class="pb-3 border-b border-slate-200/80 dark:border-slate-700/70 flex items-center justify-between">
             <div>
-              <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400">01. Motivation: Value Creation</span>
+              <span class="text-xs font-bold text-indigo-600 dark:text-indigo-400">Backup | Applying the framework</span>
               <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-100 mt-0.5">Human-AI feedback loops create three forms of value</h2>
             </div>
             <span class="text-xs font-semibold text-slate-600 dark:text-slate-300 tabular-nums">Backup 20 / 23</span>
@@ -2598,8 +2614,8 @@ Risk Reduction (B<sub>risk</sub>)
           </template>
         </section>
         <!-- BACKUP 21: MitoVis: Assumptions behind the $889 threshold -->
-        <section id="slide-35" class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 21. MitoVis: Assumptions behind the $889 threshold" data-backup="true">
-          <header class="talk-top"><div><p class="talk-kicker">Backup: Supporting calculations</p><h2 class="talk-heading">MitoVis: Assumptions behind the $889 threshold</h2></div><span class="talk-counter">Backup 21 / 23</span></header>
+        <section id="slide-35" class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 21. MitoVis: Assumptions behind the $889 threshold" data-backup="true" data-backup-section="Assumptions and calculations">
+          <header class="talk-top"><div><p class="talk-kicker">Backup | Assumptions and calculations</p><h2 class="talk-heading">MitoVis: Assumptions behind the $889 threshold</h2></div><span class="talk-counter">Backup 21 / 23</span></header>
           <div class="talk-body"><div class="talk-backup-calculation"><div><img class="backup-interface" data-image="mitovis-interface" alt="MitoVis interface for neuronal segmentation correction and model fine-tuning"/><h3>Illustrative inputs</h3><p>3 x 19-minute sessions; $2/min labor</p><p>32 s initial processing + 3 x 23 s fine-tuning; $3/hr GPU</p><p>3 x 1.5-minute re-alignment periods; $10,000 development</p></div><div><h3>Calculation</h3><p>Runtime: $114.00 + $0.08 + $9.00 = $123.08</p><p>Total cost: $10,123.08</p><p>Benefit: $1,148.40 + 10.1 * U<sub>M</sub></p><p>U<sub>M</sub>: dollars per percentage point of accuracy.</p><p class="talk-formula">U<sub>M</sub> ~ ($10,123.08 - $1,148.40) / 10.1 ~$889</p></div></div></div>
           <template class="speaker-notes">
             <p>
@@ -2616,8 +2632,8 @@ Risk Reduction (B<sub>risk</sub>)
           </template>
         </section>
         <!-- BACKUP 22: Fixed-model audit: Assumptions behind the $10,038 threshold -->
-        <section id="slide-36" class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 22. Fixed-model audit: Assumptions behind the $10,038 threshold" data-backup="true">
-          <header class="talk-top"><div><p class="talk-kicker">Backup: Supporting calculations</p><h2 class="talk-heading">Fixed-model audit: Assumptions behind the $10,038 threshold</h2></div><span class="talk-counter">Backup 22 / 23</span></header>
+        <section id="slide-36" class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 22. Fixed-model audit: Assumptions behind the $10,038 threshold" data-backup="true" data-backup-section="Assumptions and calculations">
+          <header class="talk-top"><div><p class="talk-kicker">Backup | Assumptions and calculations</p><h2 class="talk-heading">Fixed-model audit: Assumptions behind the $10,038 threshold</h2></div><span class="talk-counter">Backup 22 / 23</span></header>
           <div class="talk-body"><div class="talk-backup-calculation"><div><img class="backup-interface" data-image="stingray-interface" alt="Ma and colleagues' visual analytics interface for inspecting data poisoning vulnerabilities"/><h3>Illustrative inputs</h3><p>19-minute normalized audit; $2/min labor</p><p>$10,000 development cost</p><p>Initial training outside the accounting boundary; no model updates</p></div><div><h3>Conditional upper-bound calculation</h3><p>Total cost: $10,000 + $38 = $10,038</p><p>Risk benefit: Delta K * P<sub>fp</sub> * C<sub>f</sub></p><p class="talk-formula">C<sub>f</sub> >= $10,038 / (Delta K * P<sub>fp</sub>)</p><p>At Delta K = P<sub>fp</sub> = 1, the threshold is $10,038.</p></div></div></div>
           <template class="speaker-notes">
             <p>
@@ -2634,8 +2650,8 @@ Risk Reduction (B<sub>risk</sub>)
           </template>
         </section>
         <!-- BACKUP 23: Stopping times depend on information discovery and cost assumptions -->
-        <section id="slide-37" class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 23. Stopping times depend on information discovery and cost assumptions" data-backup="true">
-          <header class="talk-top"><div><p class="talk-kicker">Backup: Supporting calculations</p><h2 class="talk-heading">Stopping times depend on information discovery and cost assumptions</h2></div><span class="talk-counter">Backup 23 / 23</span></header>
+        <section id="slide-37" class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 23. Stopping times depend on information discovery and cost assumptions" data-backup="true" data-backup-section="Assumptions and calculations">
+          <header class="talk-top"><div><p class="talk-kicker">Backup | Assumptions and calculations</p><h2 class="talk-heading">Stopping times depend on information discovery and cost assumptions</h2></div><span class="talk-counter">Backup 23 / 23</span></header>
           <div class="talk-body"><div class="talk-backup-calculation"><div><h3>Illustrative marginal model</h3><p>Time t is in minutes.</p><p class="talk-formula">MC(t) = 2e<sup>0.00348t</sup> + s<sub>C</sub>(t)</p><p class="talk-formula">MB(t) = 10,123.08 lambda e<sup>-lambda t</sup></p><p>Retraining at minutes 19, 38, and 57 adds ~$1.01/min for three minutes after each update.</p></div><div><h3>MitoVis sensitivity results</h3><p>lambda = 0.01 -> ~291 minutes</p><p>lambda = 0.03 -> ~150 minutes</p><p>lambda = 0.05 -> ~103 minutes</p><p>lambda describes how quickly useful information is found.</p></div></div></div>
           <template class="speaker-notes">
             <p>
@@ -2668,7 +2684,7 @@ Risk Reduction (B<sub>risk</sub>)
         <div class="flex flex-wrap items-center justify-between gap-4 p-5 border-b border-slate-200 dark:border-slate-700 shrink-0">
           <div>
             <h2 class="text-xl font-bold text-slate-900 dark:text-slate-100" id="slideGridTitle">Slide overview <span class="text-sm font-medium text-slate-500 dark:text-slate-400" id="gridSlideCount"></span></h2>
-            <p class="text-sm text-slate-600 dark:text-slate-300 mt-1" id="slideGridHint">The 11-slide talk comes first; backup details follow. Normal navigation stops at the closing slide. Select any preview to jump.</p>
+            <p class="text-sm text-slate-600 dark:text-slate-300 mt-1" id="slideGridHint">Use the section links to find backup material for questions, then select a preview. Normal navigation stops at the closing slide.</p>
           </div>
           <div class="flex items-center gap-3">
             <div class="inline-flex rounded-xl bg-slate-100 dark:bg-slate-900 p-1 text-xs font-semibold text-slate-600 dark:text-slate-300" role="group" aria-label="Preview size">
@@ -2678,7 +2694,8 @@ Risk Reduction (B<sub>risk</sub>)
             <button type="button" class="px-3 py-1.5 rounded-lg text-sm font-semibold bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-indigo-500" onclick="closeSlideGridModal()">Close</button>
           </div>
         </div>
-        <div class="px-5 py-2 border-b border-slate-200 dark:border-slate-700 text-sm"><button type="button" class="font-semibold text-indigo-700 dark:text-indigo-300 underline underline-offset-4 cursor-pointer" onclick="goToSlide(lastMainIndex)">Return to the talk</button><span class="ml-4 text-slate-500 dark:text-slate-400">Pacing target: 9:30, leaving 30 seconds within a 10-minute slot.</span></div>
+        <div class="px-5 py-2 border-b border-slate-200 dark:border-slate-700 text-sm"><button type="button" class="font-semibold text-indigo-700 dark:text-indigo-300 underline underline-offset-4 cursor-pointer" onclick="goToSlide(lastMainIndex)">Return to the talk</button><span class="ml-4 text-slate-700 dark:text-slate-200">Backup slides are grouped by topic below.</span></div>
+        <nav id="slideGridSections" aria-label="Slide overview sections"></nav>
         <div id="gridThumbnailContainer" data-preview-size="compact"></div>
       </div>
     </div>
@@ -2775,6 +2792,7 @@ Risk Reduction (B<sub>risk</sub>)
       const byId = id => document.getElementById(id);
       const getSlides = () => document.querySelectorAll('#slideCanvas > .slide-section');
       const SLIDE_TITLES = Array.from(getSlides(), slide => slide.dataset.title);
+      const SLIDE_SECTIONS = Array.from(getSlides(), slide => slide.dataset.backupSection || 'Main talk');
       const MAIN_SLIDE_COUNT = Array.from(getSlides()).filter(slide => !slide.hasAttribute('data-backup')).length;
       const BACKUP_SLIDE_COUNT = SLIDE_TITLES.length - MAIN_SLIDE_COUNT;
       const SLIDE_BUDGETS = Array.from(getSlides(), slide => Number(slide.dataset.budget) || 0);
@@ -3077,15 +3095,36 @@ Risk Reduction (B<sub>risk</sub>)
         if (!container) return;
         if (slideGridResizeObserver) slideGridResizeObserver.disconnect();
         container.innerHTML = '';
+        const sectionLinks = byId('slideGridSections');
+        sectionLinks.replaceChildren();
         const slides = getSlides();
         byId('gridSlideCount').textContent = '| ' + MAIN_SLIDE_COUNT + ' talk + ' + BACKUP_SLIDE_COUNT + ' backup';
         slides.forEach((slide, idx) => {
-          if (idx === 0 || idx === MAIN_SLIDE_COUNT) {
+          if (idx === 0 || SLIDE_SECTIONS[idx] !== SLIDE_SECTIONS[idx - 1]) {
+            let sectionEnd = idx;
+            while (sectionEnd + 1 < slides.length && SLIDE_SECTIONS[sectionEnd + 1] === SLIDE_SECTIONS[idx]) sectionEnd++;
+            const backupRange = idx < MAIN_SLIDE_COUNT ? '' : String(idx - MAIN_SLIDE_COUNT + 1).padStart(2, '0') + '-' + String(sectionEnd - MAIN_SLIDE_COUNT + 1).padStart(2, '0');
             const heading = document.createElement('h3');
-            heading.className = 'text-lg font-bold text-slate-700 dark:text-slate-200';
-            heading.style.gridColumn = '1 / -1';
-            heading.textContent = idx === 0 ? 'Main talk | ' + formatDuration(SLIDE_BUDGETS.slice(0, MAIN_SLIDE_COUNT).reduce((sum, seconds) => sum + seconds, 0)) + ' target' : 'Backup | For questions and technical detail';
+            heading.id = 'grid-section-' + idx;
+            heading.className = 'slide-grid-heading';
+            heading.tabIndex = -1;
+            heading.textContent = SLIDE_SECTIONS[idx];
+            const range = document.createElement('span');
+            range.textContent = idx === 0 ? formatDuration(SLIDE_BUDGETS.slice(0, MAIN_SLIDE_COUNT).reduce((sum, seconds) => sum + seconds, 0)) + ' target' : 'Backups ' + backupRange;
+            heading.append(' ', range);
             container.appendChild(heading);
+
+            const link = document.createElement('button');
+            link.type = 'button';
+            link.className = 'slide-grid-section-link';
+            link.textContent = (backupRange ? backupRange + ' ' : '') + SLIDE_SECTIONS[idx];
+            link.setAttribute('aria-controls', heading.id);
+            if (SLIDE_SECTIONS[idx] === SLIDE_SECTIONS[activeIndex]) link.setAttribute('aria-current', 'location');
+            link.onclick = () => {
+              heading.scrollIntoView({ block: 'start', behavior: 'auto' });
+              heading.focus({ preventScroll: true });
+            };
+            sectionLinks.appendChild(link);
           }
           const title = (SLIDE_TITLES[idx] || slide.querySelector('h1, h2').textContent).replace(/^(?:Backup )?\d+\.\s*/, '');
           const isCurrent = idx === activeIndex;
@@ -3367,7 +3406,7 @@ Risk Reduction (B<sub>risk</sub>)
           const finishBy = SLIDE_BUDGETS.slice(0, activeIndex + 1).reduce((sum, seconds) => sum + seconds, 0);
           byId('pPacing').textContent = activeIndex < MAIN_SLIDE_COUNT
             ? 'Aim ' + formatDuration(SLIDE_BUDGETS[activeIndex]) + ' | Finish by ' + formatDuration(finishBy)
-            : 'Backup material | Outside the 10-minute talk';
+            : SLIDE_SECTIONS[activeIndex] + ' | Backup material';
           byId('pPrevBtn').disabled = revealStep === 0 && stepSlideIndex(activeIndex, -1) === activeIndex;
           byId('pNextBtn').disabled = !hasReveal && stepSlideIndex(activeIndex, 1) === activeIndex;
           byId('pPrevBtn').textContent = revealStep ? 'Undo Reveal' : 'Previous Slide';
