@@ -95,6 +95,17 @@
       }
 
 
+      /* Supporting text stays readable on both plain and tinted slide panels.
+         Use size and weight for hierarchy instead of reducing text contrast. */
+      .slide-section { --slide-copy: #1e293b; }
+      .dark .slide-section { --slide-copy: #f1f5f9; }
+      .slide-section :is([class~="text-slate-500"], [class~="text-slate-600"], [class~="text-slate-700"]) {
+        color: var(--slide-copy) !important;
+      }
+      .slide-section text:is([class~="fill-slate-500"], [class~="fill-slate-600"], [class~="fill-slate-700"]) {
+        fill: var(--slide-copy) !important;
+      }
+
       /* Slide typography */
       .slide-section .text-\[11px\] { font-size: 0.82rem !important; line-height: 1.35 !important; }
       .slide-section .text-xs { font-size: 0.88rem !important; line-height: 1.38 !important; }
@@ -113,69 +124,69 @@
       .talk-top { display: flex; align-items: start; justify-content: space-between; gap: 28px; }
       .talk-kicker { color: #4338ca; font-size: 32px; line-height: 1.3; font-weight: 700; margin-bottom: 14px; }
       .talk-heading { font-size: 42px; line-height: 1.15; letter-spacing: -0.025em; font-weight: 750; max-width: 1320px; }
-      .talk-counter { font-size: 24px; line-height: 1.4; color: #475569; white-space: nowrap; padding-top: 7px; }
+      .talk-counter { font-size: 24px; line-height: 1.4; color: var(--slide-copy); white-space: nowrap; padding-top: 7px; }
       .talk-body { flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: center; gap: 36px; padding: 28px 0; }
       .talk-columns { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 50px; align-items: start; }
       .talk-number { font-size: 28px; font-weight: 700; color: var(--accent); margin-bottom: 24px; }
       .talk-column h3, .talk-ledger h3, .talk-case h3, .talk-stopping h3, .talk-decisions h3, .talk-backup-calculation h3 { font-size: 34px; line-height: 1.2; font-weight: 750; margin-bottom: 18px; }
-      .talk-column > p:last-child, .talk-case-results > div > p:last-child { font-size: 28px; line-height: 1.5; color: #475569; }
-      .talk-statement > p:first-child { font-size: 40px; color: #64748b; margin-bottom: 30px; }
+      .talk-column > p:last-child, .talk-case-results > div > p:last-child { font-size: 28px; line-height: 1.5; color: var(--slide-copy); }
+      .talk-statement > p:first-child { font-size: 40px; color: var(--slide-copy); margin-bottom: 30px; }
       .talk-emphasis { font-size: 64px; line-height: 1.14; font-weight: 750; letter-spacing: -0.03em; max-width: 1250px; }
-      .talk-statement .talk-lead { font-size: 32px; line-height: 1.5; margin-top: 35px; color: #475569; }
+      .talk-statement .talk-lead { font-size: 32px; line-height: 1.5; margin-top: 35px; color: var(--slide-copy); }
       .talk-pipeline { display: flex; justify-content: space-between; align-items: center; font-size: 32px; font-weight: 650; padding: 22px 0 44px; border-bottom: 1px solid #cbd5e1; margin-bottom: 2px; }
-      .talk-pipeline span:nth-child(even) { color: #94a3b8; font-weight: 400; }
+      .talk-pipeline span:nth-child(even) { color: var(--slide-copy); font-weight: 400; }
       .talk-inequality { display: flex; align-items: center; gap: 36px; font-size: 52px; font-weight: 750; line-height: 1.2; margin-bottom: 8px; }
       .talk-inequality span:first-child { color: #059669; }
       .talk-inequality span:last-child { color: #e11d48; }
       .talk-ledger { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; }
-      .talk-ledger h3 { font-size: 28px; color: #64748b; }
+      .talk-ledger h3 { font-size: 28px; color: var(--slide-copy); }
       .talk-ledger ul { list-style: none; padding: 0; margin: 0; font-size: 30px; line-height: 1.7; }
       .talk-steps { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 35px; align-items: start; }
       .talk-steps > div > span { font-size: 28px; font-weight: 700; color: #9333ea; }
       .talk-steps h3 { font-size: 48px; font-weight: 750; margin: 20px 0 14px; }
-      .talk-steps p { font-size: 28px; line-height: 1.4; color: #475569; }
-      .talk-step-arrow { font-size: 48px; color: #94a3b8; margin-top: 48px; }
+      .talk-steps p { font-size: 28px; line-height: 1.4; color: var(--slide-copy); }
+      .talk-step-arrow { font-size: 48px; color: var(--slide-copy); margin-top: 48px; }
       .talk-takeaway { font-size: 34px; line-height: 1.45; margin-top: 22px; font-weight: 600; }
       .talk-case { display: grid; grid-template-columns: 1fr 1fr; gap: 54px; align-items: center; }
       .talk-case figure { min-width: 0; }
       .talk-case img { width: 100%; height: 340px; object-fit: contain; background: white; border-radius: 8px; }
-      .talk-case figcaption { font-size: 28px; line-height: 1.4; color: #475569; margin-top: 16px; }
+      .talk-case figcaption { font-size: 28px; line-height: 1.4; color: var(--slide-copy); margin-top: 16px; }
       .talk-case-results { display: flex; flex-direction: column; gap: 32px; }
       .talk-case-results .talk-metric { font-size: 52px; line-height: 1.12; font-weight: 750; letter-spacing: -0.03em; margin-bottom: 12px; }
       .talk-result { border-left: 4px solid #4f46e5; padding-left: 25px; }
-      .talk-assumption { font-size: 28px; line-height: 1.4; color: #475569; }
+      .talk-assumption { font-size: 28px; line-height: 1.4; color: var(--slide-copy); }
       .talk-stopping { display: grid; grid-template-columns: 1.6fr 1fr; gap: 32px; align-items: center; }
       .talk-chart { width: 100%; max-height: 470px; }
       .chart-axis { stroke: #94a3b8; stroke-width: 2; }
       .talk-chart text { font-size: 28px; font-family: inherit; font-weight: 600; }
-      .chart-label { fill: #475569; }
+      .chart-label { fill: var(--slide-copy); }
       .chart-benefit { fill: #047857; }
       .chart-cost { fill: #e11d48; }
       .chart-stop { fill: #4f46e5; }
       .talk-stopping h3 { margin-bottom: 12px; }
       .talk-stopping h3:not(:first-child) { margin-top: 48px; }
-      .talk-stopping p { font-size: 28px; line-height: 1.4; color: #475569; }
+      .talk-stopping p { font-size: 28px; line-height: 1.4; color: var(--slide-copy); }
       .talk-decisions { display: flex; flex-direction: column; gap: 34px; }
       .talk-decisions > div { display: grid; grid-template-columns: 350px 1fr; gap: 34px; }
       .talk-decisions h3 { margin: 0; }
-      .talk-decisions p { font-size: 28px; line-height: 1.4; color: #475569; }
+      .talk-decisions p { font-size: 28px; line-height: 1.4; color: var(--slide-copy); }
       .talk-closing { display: flex; flex-direction: column; gap: 65px; }
       .talk-closing > p { font-size: 50px; font-weight: 650; line-height: 1.45; }
       .talk-closing h3 { font-size: 32px; font-weight: 700; margin-bottom: 12px; }
-      .talk-closing > div > p { font-size: 28px; line-height: 1.6; color: #475569; }
+      .talk-closing > div > p { font-size: 28px; line-height: 1.6; color: var(--slide-copy); }
       .talk-closing a { text-decoration: underline; text-underline-offset: 4px; }
       .talk-backup-calculation { display: grid; grid-template-columns: 1fr 1fr; gap: 55px; }
-      .talk-backup-calculation p { font-size: 26px; line-height: 1.5; margin-bottom: 16px; color: #475569; }
+      .talk-backup-calculation p { font-size: 26px; line-height: 1.5; margin-bottom: 16px; color: var(--slide-copy); }
       .talk-backup-calculation .talk-formula { font-family: "Cambria Math", Georgia, serif; color: #4f46e5; font-weight: 650; }
       .dark .talk-kicker, .dark .chart-stop { color: #a5b4fc; fill: #a5b4fc; }
       .dark .talk-column > p:last-child, .dark .talk-case-results > div > p:last-child,
       .dark .talk-statement .talk-lead, .dark .talk-steps p, .dark .talk-case figcaption,
       .dark .talk-stopping p, .dark .talk-decisions p, .dark .talk-closing > div > p,
-      .dark .talk-backup-calculation p { color: #cbd5e1; }
+      .dark .talk-backup-calculation p { color: var(--slide-copy); }
       .dark .talk-counter, .dark .talk-assumption,
-      .dark .talk-ledger h3, .dark .talk-statement > p:first-child { color: #94a3b8; }
+      .dark .talk-ledger h3, .dark .talk-statement > p:first-child { color: var(--slide-copy); }
       .dark .talk-number { color: color-mix(in srgb, var(--accent), white 35%); }
-      .dark .chart-label { fill: #cbd5e1; }
+      .dark .chart-label { fill: var(--slide-copy); }
       .dark .chart-benefit { fill: #34d399; }
       .dark .chart-cost { fill: #fb7185; }
       .dark .talk-backup-calculation .talk-formula { color: #a5b4fc; }
@@ -183,26 +194,26 @@
       /* Repeat the overview at section changes and keep its labels in the footer. */
       .talk-roadmap { margin: 0; padding-top: 12px; border-top: 1px solid #cbd5e1; flex-shrink: 0; }
       .talk-roadmap ol { display: flex; align-items: center; gap: 32px; list-style: none; margin: 0; padding: 0; }
-      .talk-roadmap li { color: #475569; font-size: 22px; line-height: 1.3; padding-bottom: 6px; border-bottom: 3px solid transparent; white-space: nowrap; }
+      .talk-roadmap li { color: var(--slide-copy); font-size: 22px; line-height: 1.3; padding-bottom: 6px; border-bottom: 3px solid transparent; white-space: nowrap; }
       .talk-roadmap li[aria-current="step"] { color: #4338ca; border-color: #4f46e5; font-weight: 750; }
       .talk-slide[data-talk-section] .talk-body { gap: 24px; padding: 20px 0; }
       .dark .talk-roadmap { border-color: #475569; }
-      .dark .talk-roadmap li { color: #cbd5e1; }
+      .dark .talk-roadmap li { color: var(--slide-copy); }
       .dark .talk-roadmap li[aria-current="step"] { color: #a5b4fc; border-color: #a5b4fc; }
 
       .talk-route-layout { display: flex; flex-direction: column; gap: 30px; max-width: 1380px; }
-      .route-intro { color: #475569; font-size: 32px; line-height: 1.4; }
+      .route-intro { color: var(--slide-copy); font-size: 32px; line-height: 1.4; }
       .talk-route { list-style: none; padding: 0; margin: 0; }
       .talk-route li { display: grid; grid-template-columns: 64px 1fr; gap: 24px; align-items: center; padding: 32px 0; border-bottom: 1px solid #cbd5e1; }
       .talk-route li:last-child { border-bottom: 0; }
-      .route-marker { display: flex; align-items: center; justify-content: center; width: 58px; height: 58px; border: 2px solid #94a3b8; border-radius: 50%; color: #475569; font-size: 25px; font-weight: 700; }
-      .talk-route li h3 { font-size: 42px; line-height: 1.3; font-weight: 650; margin: 0; color: #475569; }
+      .route-marker { display: flex; align-items: center; justify-content: center; width: 58px; height: 58px; border: 2px solid #94a3b8; border-radius: 50%; color: var(--slide-copy); font-size: 25px; font-weight: 700; }
+      .talk-route li h3 { font-size: 42px; line-height: 1.3; font-weight: 650; margin: 0; color: var(--slide-copy); }
       .talk-route li[aria-current="step"] .route-marker { color: #fff; background: #4338ca; border-color: #4338ca; }
       .talk-route li[aria-current="step"] h3 { color: #4338ca; font-weight: 750; }
       .talk-route li[data-route-state="complete"] .route-marker { color: #047857; border-color: #047857; }
       .dark .talk-route li { border-color: #475569; }
-      .dark .route-marker { color: #cbd5e1; border-color: #64748b; }
-      .dark .talk-route li h3, .dark .route-intro { color: #cbd5e1; }
+      .dark .route-marker { color: var(--slide-copy); border-color: #64748b; }
+      .dark .talk-route li h3, .dark .route-intro { color: var(--slide-copy); }
       .dark .talk-route li[aria-current="step"] .route-marker { color: #0f172a; background: #a5b4fc; border-color: #a5b4fc; }
       .dark .talk-route li[aria-current="step"] h3 { color: #a5b4fc; }
       .dark .talk-route li[data-route-state="complete"] .route-marker { color: #6ee7b7; border-color: #6ee7b7; }
@@ -213,13 +224,13 @@
       .paper-figure { min-width: 0; }
       .paper-figure img { display: block; width: 100%; height: 500px; object-fit: contain; background: white; border-radius: 10px; padding: 12px; }
       .paper-figure-layout--workflow img { height: auto; }
-      .paper-figure figcaption { display: flex; flex-wrap: wrap; gap: 12px 28px; font-size: 28px; line-height: 1.35; color: #475569; margin-top: 14px; }
+      .paper-figure figcaption { display: flex; flex-wrap: wrap; gap: 12px 28px; font-size: 28px; line-height: 1.35; color: var(--slide-copy); margin-top: 14px; }
       .paper-legend { display: inline-flex; align-items: center; gap: 12px; }
       .paper-legend::before { content: ""; width: 34px; height: 5px; background: #1f77b4; flex-shrink: 0; }
       .paper-legend--cost::before { background: #e11d48; }
       .paper-explanation { display: flex; flex-direction: column; gap: 24px; }
       .paper-explanation h3 { font-size: 34px; line-height: 1.2; font-weight: 750; margin-bottom: 10px; }
-      .paper-explanation p { font-size: 28px; line-height: 1.4; color: #475569; }
+      .paper-explanation p { font-size: 28px; line-height: 1.4; color: var(--slide-copy); }
       .paper-explanation .paper-metric { font-size: 52px; line-height: 1.1; font-weight: 750; color: #4338ca; margin-bottom: 10px; }
       .paper-explanation .paper-context { font-size: 30px; color: #0f172a; font-weight: 650; }
       .paper-explanation .paper-caution { border-top: 1px solid #cbd5e1; padding-top: 18px; }
@@ -227,7 +238,7 @@
       .paper-target--data { border-color: #2b70b7; }
       .paper-target--model { border-color: #7043a0; }
       .backup-interface { width: 100%; height: 210px; object-fit: contain; background: white; border-radius: 8px; margin-bottom: 20px; }
-      .dark .paper-figure figcaption, .dark .paper-explanation p { color: #cbd5e1; }
+      .dark .paper-figure figcaption, .dark .paper-explanation p { color: var(--slide-copy); }
       .dark .paper-explanation .paper-metric { color: #a5b4fc; }
       .dark .paper-explanation .paper-context { color: #f1f5f9; }
       .dark .paper-explanation .paper-caution { border-color: #475569; }
@@ -236,12 +247,12 @@
       .opening-title { margin: auto 0; max-width: 1450px; }
       .opening-title h1 { font-size: 72px; line-height: 1.14; letter-spacing: -0.035em; font-weight: 800; }
       .opening-title h1 span:last-child { color: #4338ca; }
-      .opening-title .opening-question { font-size: 34px; line-height: 1.4; color: #475569; margin-top: 36px; max-width: 1320px; }
+      .opening-title .opening-question { font-size: 34px; line-height: 1.4; color: var(--slide-copy); margin-top: 36px; max-width: 1320px; }
       .title-authors { font-size: 28px; line-height: 1.4; font-weight: 650; }
-      .title-affiliations { font-size: 24px; line-height: 1.4; color: #475569; }
+      .title-affiliations { font-size: 24px; line-height: 1.4; color: var(--slide-copy); }
       .story-figure { width: 100%; overflow: visible; }
       .story-figure text { font-family: inherit; fill: #0f172a; }
-      .story-figure .story-muted { fill: #64748b; }
+      .story-figure .story-muted { fill: var(--slide-copy); }
       .story-figure .story-accent { fill: #4f46e5; }
       .story-figure .story-green { fill: #047857; }
       .story-figure .story-rose { fill: #be123c; }
@@ -252,8 +263,8 @@
       .story-figure .story-line { fill: none; stroke: #64748b; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
       .story-figure .story-indigo-line { fill: none; stroke: #6366f1; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
       .opening-diagram { max-height: 480px; }
-      .opening-scenario { font-size: 30px; line-height: 1.4; color: #475569; text-align: center; }
-      .dark .opening-scenario { color: #cbd5e1; }
+      .opening-scenario { font-size: 30px; line-height: 1.4; color: var(--slide-copy); text-align: center; }
+      .dark .opening-scenario { color: var(--slide-copy); }
       .opening-caption { font-size: 36px; line-height: 1.3; font-weight: 700; text-align: center; letter-spacing: -0.02em; }
       .overview-route { display: grid; grid-template-columns: 1fr 48px 1fr 48px 1fr; gap: 18px; align-items: center; }
       .overview-step { align-self: stretch; border-top: 3px solid #c7d2fe; padding: 24px 8px 0; }
@@ -263,12 +274,12 @@
       .overview-step .story-figure { height: 185px; margin: 15px 0 26px; }
       .overview-step .route-number { font-size: 28px; line-height: 1.3; font-weight: 700; color: #4338ca; }
       .overview-step h3 { font-size: 34px; line-height: 1.2; font-weight: 750; margin-bottom: 16px; }
-      .overview-step > p:last-child { font-size: 28px; line-height: 1.4; color: #475569; }
-      .overview-arrow { color: #94a3b8; font-size: 40px; }
-      .overview-promise { font-size: 29px; line-height: 1.4; color: #475569; border-top: 1px solid #cbd5e1; padding-top: 25px; }
-      .dark .opening-title .opening-question, .dark .overview-step > p:last-child, .dark .overview-promise { color: #cbd5e1; }
+      .overview-step > p:last-child { font-size: 28px; line-height: 1.4; color: var(--slide-copy); }
+      .overview-arrow { color: var(--slide-copy); font-size: 40px; }
+      .overview-promise { font-size: 29px; line-height: 1.4; color: var(--slide-copy); border-top: 1px solid #cbd5e1; padding-top: 25px; }
+      .dark .opening-title .opening-question, .dark .overview-step > p:last-child, .dark .overview-promise { color: var(--slide-copy); }
       .dark .opening-title h1 span:last-child { color: #a5b4fc; }
-      .dark .title-affiliations { color: #cbd5e1; }
+      .dark .title-affiliations { color: var(--slide-copy); }
       @supports ((background-clip: text) or (-webkit-background-clip: text)) {
         .opening-title h1 span:last-child {
           background-image: linear-gradient(to right, #4338ca, #0369a1, #047857);
@@ -288,7 +299,7 @@
         }
       }
       .dark .story-figure text { fill: #f1f5f9; }
-      .dark .story-figure .story-muted { fill: #94a3b8; }
+      .dark .story-figure .story-muted { fill: var(--slide-copy); }
       .dark .story-figure .story-accent { fill: #a5b4fc; }
       .dark .story-figure .story-green { fill: #6ee7b7; }
       .dark .story-figure .story-rose { fill: #fda4af; }
@@ -321,10 +332,10 @@
       .ledger-side li svg { width: 38px; height: 38px; flex-shrink: 0; fill: none; stroke: #059669; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
       .ledger-side--cost li svg { stroke: #e11d48; }
       .ledger-side li span { display: block; }
-      .ledger-side li .ledger-detail { font-size: 28px; line-height: 1.4; font-weight: 400; color: #475569; margin-top: 4px; }
+      .ledger-side li .ledger-detail { font-size: 28px; line-height: 1.4; font-weight: 400; color: var(--slide-copy); margin-top: 4px; }
       .ledger-side--cost ul { gap: 24px; }
-      .ledger-operator { align-self: start; text-align: center; padding-top: 75px; font-size: 60px; line-height: 1.2; color: #64748b; font-weight: 600; }
-      .framework-note { border-top: 1px solid #cbd5e1; padding-top: 24px; font-size: 28px; line-height: 1.4; color: #475569; }
+      .ledger-operator { align-self: start; text-align: center; padding-top: 75px; font-size: 60px; line-height: 1.2; color: var(--slide-copy); font-weight: 600; }
+      .framework-note { border-top: 1px solid #cbd5e1; padding-top: 24px; font-size: 28px; line-height: 1.4; color: var(--slide-copy); }
       .dark .story-figure .story-sky { fill: #7dd3fc; }
       .dark .story-figure .story-violet { fill: #d8b4fe; }
       .dark .story-figure .story-data-panel { fill: #122c43; stroke: #0369a1; }
@@ -335,37 +346,37 @@
       .dark .ledger-side--cost .ledger-eyebrow, .dark .ledger-side--cost h3 { color: #fda4af; border-color: #9f1239; }
       .dark .ledger-side li svg { stroke: #6ee7b7; }
       .dark .ledger-side--cost li svg { stroke: #fda4af; }
-      .dark .ledger-side li .ledger-detail, .dark .framework-note { color: #cbd5e1; }
+      .dark .ledger-side li .ledger-detail, .dark .framework-note { color: var(--slide-copy); }
       .dark .framework-note { border-color: #475569; }
-      .dark .ledger-operator { color: #94a3b8; }
+      .dark .ledger-operator { color: var(--slide-copy); }
 
       /* Worked example: translate a quality gain into value, then account for its cost. */
       .worked-value { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
       .worked-value figure { min-width: 0; }
-      .worked-value figcaption { font-size: 28px; line-height: 1.4; color: #475569; margin-bottom: 22px; }
+      .worked-value figcaption { font-size: 28px; line-height: 1.4; color: var(--slide-copy); margin-bottom: 22px; }
       .worked-value svg { display: block; width: 100%; }
       .worked-calculation { border-left: 2px solid #cbd5e1; padding-left: 48px; }
-      .worked-label { font-size: 28px; line-height: 1.4; color: #475569; }
+      .worked-label { font-size: 28px; line-height: 1.4; color: var(--slide-copy); }
       .worked-formula { font-size: 46px; line-height: 1.3; font-weight: 650; margin: 12px 0 24px; }
       .worked-rate { font-size: 32px; line-height: 1.4; margin-bottom: 28px; }
       .worked-result { font-size: 64px; line-height: 1.15; letter-spacing: -0.03em; font-weight: 750; color: #047857; margin-bottom: 10px; }
       .worked-takeaway { border-top: 1px solid #cbd5e1; padding-top: 24px; font-size: 32px; line-height: 1.4; font-weight: 650; }
       .worked-costs { width: 100%; border-collapse: collapse; font-size: 30px; line-height: 1.35; }
       .worked-costs th, .worked-costs td { padding: 20px 0; border-bottom: 1px solid #cbd5e1; text-align: left; }
-      .worked-costs thead th { padding-top: 0; font-size: 28px; font-weight: 600; color: #475569; }
+      .worked-costs thead th { padding-top: 0; font-size: 28px; font-weight: 600; color: var(--slide-copy); }
       .worked-costs tbody th { width: 38%; font-weight: 650; }
       .worked-costs td { font-variant-numeric: tabular-nums; }
-      .worked-costs td:nth-child(2) { color: #475569; }
+      .worked-costs td:nth-child(2) { color: var(--slide-copy); }
       .worked-costs th:last-child, .worked-costs td:last-child { text-align: right; }
       .worked-costs td:last-child { font-size: 36px; font-weight: 700; color: #be123c; }
       .worked-total { padding-top: 8px; }
       .worked-total > p:first-child { font-size: 42px; line-height: 1.3; font-weight: 700; letter-spacing: -0.02em; }
       .worked-total strong { color: #be123c; }
-      .worked-total > p:last-child { font-size: 30px; line-height: 1.4; margin-top: 16px; color: #475569; }
-      .worked-assumption { font-size: 28px; line-height: 1.4; color: #475569; }
+      .worked-total > p:last-child { font-size: 30px; line-height: 1.4; margin-top: 16px; color: var(--slide-copy); }
+      .worked-assumption { font-size: 28px; line-height: 1.4; color: var(--slide-copy); }
       .dark .worked-value figcaption, .dark .worked-label, .dark .worked-costs thead th,
       .dark .worked-costs td:nth-child(2), .dark .worked-total > p:last-child,
-      .dark .worked-assumption { color: #cbd5e1; }
+      .dark .worked-assumption { color: var(--slide-copy); }
       .dark .worked-calculation, .dark .worked-takeaway,
       .dark .worked-costs th, .dark .worked-costs td { border-color: #475569; }
       .dark .worked-result { color: #6ee7b7; }
@@ -377,7 +388,7 @@
       .design-implication:last-child { border-bottom: 0; }
       .design-number { font-size: 28px; line-height: 1.3; font-weight: 700; color: #4338ca; }
       .design-implication h3 { font-size: 36px; line-height: 1.2; letter-spacing: -0.02em; font-weight: 750; }
-      .design-implication > p:last-child { font-size: 30px; line-height: 1.4; color: #475569; }
+      .design-implication > p:last-child { font-size: 30px; line-height: 1.4; color: var(--slide-copy); }
       .closing-body { gap: 52px; }
       .closing-message { font-size: 76px; line-height: 1.12; letter-spacing: -0.035em; font-weight: 800; }
       .closing-message span { display: block; }
@@ -391,7 +402,7 @@
       .closing-decision:nth-child(3) svg { stroke: #047857; }
       .closing-decision p { font-size: 32px; line-height: 1.3; font-weight: 650; }
       .closing-footer { display: flex; justify-content: space-between; align-items: end; gap: 32px; border-top: 1px solid #cbd5e1; padding-top: 26px; }
-      .closing-authors, .closing-contact { font-size: 28px; line-height: 1.5; color: #475569; }
+      .closing-authors, .closing-contact { font-size: 28px; line-height: 1.5; color: var(--slide-copy); }
       .closing-contact { margin-top: 10px; }
       .closing-contact a { text-decoration: underline; text-underline-offset: 5px; }
       .closing-contact a:focus-visible { outline: 3px solid #6366f1; outline-offset: 5px; border-radius: 2px; }
@@ -401,7 +412,7 @@
       .dark .closing-decision:nth-child(2) { border-color: #6366f1; }
       .dark .closing-decision:nth-child(3) { border-color: #047857; }
       .dark .design-number, .dark .closing-message span:last-child { color: #a5b4fc; }
-      .dark .design-implication > p:last-child, .dark .closing-authors, .dark .closing-contact { color: #cbd5e1; }
+      .dark .design-implication > p:last-child, .dark .closing-authors, .dark .closing-contact { color: var(--slide-copy); }
       .dark .closing-decision svg { stroke: #7dd3fc; }
       .dark .closing-decision:nth-child(2) svg { stroke: #a5b4fc; }
       .dark .closing-decision:nth-child(3) svg { stroke: #6ee7b7; }
@@ -474,14 +485,14 @@
       .decision-slide h3 { font-size: 34px; line-height: 1.2; font-weight: 750; margin-bottom: 16px; }
       .decision-slide .decision-label { font-size: 26px; line-height: 1.35; font-weight: 700; color: #4338ca; margin-bottom: 16px; }
       .decision-slide .decision-lead { font-size: 34px; line-height: 1.4; }
-      .decision-slide .decision-muted { font-size: 28px; line-height: 1.35; color: #475569; }
+      .decision-slide .decision-muted { font-size: 28px; line-height: 1.35; color: var(--slide-copy); }
       .decision-slide .decision-takeaway { font-size: 34px; line-height: 1.3; font-weight: 700; }
       .decision-slide .decision-big { font-size: 64px; line-height: 1.13; letter-spacing: -0.035em; font-weight: 780; color: #4338ca; }
       .decision-opening { display: flex; flex-direction: column; gap: 28px; }
       .decision-two, .decision-three { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; align-items: stretch; }
       .decision-three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .decision-panel { border: 1px solid #cbd5e1; border-top: 4px solid #94a3b8; border-radius: 12px; padding: 26px; background: #fff; }
-      .decision-panel p, .decision-case p, .decision-chart-notes > p { font-size: 30px; line-height: 1.4; color: #475569; }
+      .decision-panel p, .decision-case p, .decision-chart-notes > p { font-size: 30px; line-height: 1.4; color: var(--slide-copy); }
       .decision-panel .decision-label { color: #4338ca; }
       .decision-highlight { border-color: #a5b4fc; border-top-color: #4f46e5; background: #eef2ff; }
       .decision-title { justify-content: center; }
@@ -503,47 +514,43 @@
       .decision-interface-frame { position: relative; width: 100%; max-width: 704px; aspect-ratio: 994 / 558; margin: 0 auto; overflow: hidden; background: #fff; border-radius: 10px; }
       /* Frame the viewer and correction controls: source crop x=220, y=88, w=994, h=558 in the 1726 x 922 image. */
       .decision-interface { position: absolute; display: block; width: 173.6419%; max-width: none; height: auto; left: -22.1328%; top: -15.7706%; }
-      .decision-slide figcaption { font-size: 26px; line-height: 1.35; color: #475569; margin-top: 12px; }
+      .decision-slide figcaption { font-size: 26px; line-height: 1.35; color: var(--slide-copy); margin-top: 12px; }
       .decision-options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
       .decision-options > div { padding-top: 20px; border-top: 3px solid #94a3b8; }
       .decision-options > div:last-child { border-color: #4f46e5; }
       .decision-options strong, .decision-options span { display: block; font-size: 28px; line-height: 1.35; }
-      .decision-options span { color: #475569; margin-top: 12px; }
-      .comparison-layout { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 56px; align-items: start; }
-      .comparison-conditions { padding: 26px 30px; background: #f1f5f9; border-left: 4px solid #94a3b8; }
-      .comparison-conditions > p:not(.decision-label) { font-size: 28px; line-height: 1.4; color: #475569; margin-top: 18px; }
-      .comparison-workflows { padding-top: 26px; }
-      .comparison-lane { display: grid; grid-template-columns: 52px 1fr; gap: 18px; padding: 20px 0; border-top: 1px solid #cbd5e1; }
-      .comparison-lane h3 { margin-bottom: 10px; }
-      .comparison-lane > span { color: #475569; font-size: 38px; line-height: 1.2; font-weight: 750; }
-      .comparison-lane p { font-size: 28px; line-height: 1.4; color: #475569; }
-      .comparison-lane--proposed > span { color: #4338ca; }
-      .comparison-period { font-size: 28px; line-height: 1.4; border-top: 1px solid #cbd5e1; padding-top: 20px; }
-      .comparison-period span { color: #475569; }
-      .dark .comparison-conditions { background: #1e293b; border-color: #64748b; }
-      .dark .comparison-conditions > p:not(.decision-label), .dark .comparison-lane > span,
-      .dark .comparison-lane p, .dark .comparison-period span { color: #cbd5e1; }
-      .dark .comparison-lane--proposed > span { color: #a5b4fc; }
-      .dark .comparison-lane, .dark .comparison-period { border-color: #475569; }
+      .decision-options span { color: var(--slide-copy); margin-top: 12px; }
+      .comparison-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+      .comparison-inputs > div { border-top: 3px solid #cbd5e1; padding-top: 22px; }
+      .comparison-inputs > div:last-child { border-color: #818cf8; }
+      .comparison-inputs .decision-label { font-size: 28px; margin-bottom: 20px; }
+      .comparison-inputs p:last-child { font-size: 32px; line-height: 1.5; font-weight: 500; color: var(--slide-copy); }
+      .comparison-question { border-top: 1px solid #cbd5e1; padding-top: 32px; margin-top: 22px; }
+      .comparison-question .decision-label { font-size: 26px; margin-bottom: 18px; }
+      .decision-slide .comparison-question h3 { font-size: 60px; line-height: 1.16; letter-spacing: -0.03em; margin-bottom: 22px; }
+      .comparison-question > p:last-child { font-size: 30px; line-height: 1.4; font-weight: 500; color: var(--slide-copy); }
+      .dark .comparison-inputs > div, .dark .comparison-question { border-color: #475569; }
+      .dark .comparison-inputs > div:last-child { border-color: #818cf8; }
+      .dark .comparison-inputs p:last-child, .dark .comparison-question > p:last-child { color: var(--slide-copy); }
       .decision-ledger { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
       .decision-ledger > div { border-top: 4px solid #059669; padding-top: 20px; }
       .decision-ledger > div:last-child { border-color: #e11d48; }
       .decision-ledger ul { margin: 0; padding-left: 30px; font-size: 30px; line-height: 1.6; }
       .decision-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; border-top: 1px solid #cbd5e1; padding-top: 20px; }
       .decision-facts strong, .decision-facts span { display: block; font-size: 28px; line-height: 1.4; }
-      .decision-facts span { margin-top: 10px; color: #475569; }
+      .decision-facts span { margin-top: 10px; color: var(--slide-copy); }
       .decision-update { gap: 50px; }
       .decision-update article { padding-top: 18px; border-top: 3px solid #c7d2fe; }
-      .decision-update p { font-size: 30px; line-height: 1.4; color: #475569; }
+      .decision-update p { font-size: 30px; line-height: 1.4; color: var(--slide-copy); }
       .decision-metrics { border-top: 1px solid #cbd5e1; padding-top: 22px; }
       .decision-metrics strong { display: block; font-size: 58px; line-height: 1.1; color: #4338ca; margin-bottom: 12px; }
-      .decision-metrics p:last-child { font-size: 28px; color: #475569; }
+      .decision-metrics p:last-child { font-size: 28px; color: var(--slide-copy); }
       .decision-table { width: 100%; table-layout: fixed; border-collapse: collapse; font-size: 28px; line-height: 1.25; }
-      .decision-table caption { text-align: left; font-size: 26px; color: #475569; margin-bottom: 16px; }
+      .decision-table caption { text-align: left; font-size: 26px; color: var(--slide-copy); margin-bottom: 16px; }
       .decision-table th, .decision-table td { text-align: left; border-bottom: 1px solid #cbd5e1; padding: 10px 16px; }
       .decision-table th:first-child { width: 30%; padding-left: 0; }
       .decision-table thead th { color: #4338ca; padding-top: 0; }
-      .decision-table thead span { color: #475569; font-size: 25px; font-weight: 500; }
+      .decision-table thead span { color: var(--slide-copy); font-size: 25px; font-weight: 500; }
       .decision-table td { font-variant-numeric: tabular-nums; }
       .decision-result-row { background: #eef2ff; font-weight: 750; }
       .decision-result-row td { color: #047857; }
@@ -554,13 +561,14 @@
       .decision-chart-notes h3 { margin-bottom: 0; }
       .decision-chart-notes .decision-label { margin-bottom: 8px; }
       .decision-chart-notes .decision-muted { margin-top: 12px; }
+      .decision-chart-notes .decision-unit-example { margin-top: 0; }
       .decision-reuse-setup { display: flex; flex-direction: column; gap: 16px; }
       .decision-reuse strong { font-size: 58px; line-height: 1.2; color: #4338ca; display: block; margin-bottom: 14px; }
       .decision-formula { font-family: "Cambria Math", Georgia, serif; font-size: 32px; line-height: 1.35; }
       .decision-evidence { display: flex; flex-direction: column; gap: 26px; }
       .decision-evidence > div { display: grid; grid-template-columns: 210px 330px 1fr; gap: 22px; align-items: start; padding-bottom: 24px; border-bottom: 1px solid #cbd5e1; }
       .decision-evidence h3, .decision-evidence .decision-label { margin-bottom: 0; }
-      .decision-evidence > div > p:last-child { font-size: 28px; line-height: 1.4; color: #475569; }
+      .decision-evidence > div > p:last-child { font-size: 28px; line-height: 1.4; color: var(--slide-copy); }
       .decision-closing-points { display: flex; justify-content: space-between; gap: 24px; font-size: 28px; line-height: 1.35; font-weight: 650; }
       .decision-closing-points span { border-top: 3px solid #a5b4fc; padding-top: 16px; }
       .decision-slide .closing-footer { padding-top: 18px; }
@@ -578,7 +586,7 @@
       .dark .decision-chart-notes > p, .dark .decision-slide figcaption, .dark .decision-options span,
       .dark .decision-facts span, .dark .decision-update p, .dark .decision-metrics p:last-child,
       .dark .decision-table caption, .dark .decision-table thead span,
-      .dark .decision-evidence > div > p:last-child { color: #cbd5e1; }
+      .dark .decision-evidence > div > p:last-child { color: var(--slide-copy); }
       .dark .decision-case .decision-lead { color: #f1f5f9; }
       .dark .decision-result-row td { color: #6ee7b7; }
       .dark .decision-result-row td.decision-negative { color: #fda4af; }
@@ -757,28 +765,27 @@
             <p class="notes-reference"><strong>Reference only:</strong> Sources: paper Sec. 5.1; <a href="https://ieeevis.b-cdn.net/vis_2022/posters/v-vis-posters-1021-summary.pdf">MitoVis visual guides</a>.</p>
           </template>
         </section>
-        <!-- SLIDE 05: Compare workflows on the same task. -->
-        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-5" data-title="5. Compare workflows on the same task." data-budget="45" data-talk-section="compare">
-          <header class="talk-top"><div><p class="talk-kicker">What would count as an improvement?</p><h2 class="talk-heading">Compare workflows on the same task.</h2></div><span class="talk-counter">05 / 14</span></header>
+        <!-- SLIDE 05: We can reason with incomplete evidence. -->
+        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-5" data-title="5. We can reason with incomplete evidence." data-budget="45" data-talk-section="compare">
+          <header class="talk-top"><div><p class="talk-kicker">Why a cost model?</p><h2 class="talk-heading">We can reason with incomplete evidence.</h2></div><span class="talk-counter">05 / 14</span></header>
           <div class="talk-body">
-            <div class="comparison-layout">
-              <div class="comparison-conditions"><p class="decision-label">Hold fixed</p><h3>One common starting point</h3><p>Same dataset, corrected-mask target, and held-out classification test.</p><p>Same starting model, training recipe, expert access, and budget ceiling.</p></div>
-              <div class="comparison-workflows"><p class="decision-label">Compare what the workflow adds</p>
-                <div class="comparison-lane"><span>A</span><div><h3>Image editor + script</h3><p>Correct -> save labels -> train separately -> reload.</p></div></div>
-                <div class="comparison-lane comparison-lane--proposed" data-reveal="1"><span>V</span><div><h3>MitoVis workflow</h3><p>Suggest similar branches -> correct labels -> retrain -> review.</p></div></div>
-              </div>
+            <div class="comparison-inputs">
+              <div><p class="decision-label">Available evidence</p><p>Task time and model outcomes.</p></div>
+              <div data-reveal="1"><p class="decision-label">Explicit assumptions</p><p>Unmeasured costs and plausible values.</p></div>
             </div>
-            <p class="comparison-period" data-reveal="2"><strong>Compare over the same period.</strong> <span>Count learning, integration, and maintenance across the same future workloads.</span></p>
-            <p class="decision-takeaway" data-reveal="3">Hold the learner fixed to test what the workflow adds.</p></div>
+            <div class="comparison-question" data-reveal="2">
+              <p class="decision-label">A: proposed editor + script / V: MitoVis</p>
+              <h3>When would V be worth more than A?</h3>
+              <p>Test the assumptions that change the choice.</p>
+            </div></div>
           <nav class="talk-roadmap" aria-label="Talk progress"><ol><li aria-current="step">Compare workflows</li><li>Model value</li><li>Test the contribution</li></ol></nav>
           <template class="speaker-notes">
-            <p>Agree on the task before comparing tools. Require a common quality target for corrected masks, and evaluate the resulting classifier on the same held-out data. Mask quality and classifier accuracy are separate outcomes.</p>
-            <p class="reveal-cue" data-click="1">[CLICK 1] Reveal V alongside A under the same shared conditions.</p>
-            <p>The left side stays fixed. On the right, compare the editor and separate script with MitoVis's integrated workflow. Match the learner and resources to study what the workflow adds.</p>
-            <p class="reveal-cue" data-click="2">[CLICK 2] Reveal the common period of use.</p>
-            <p>Count learning, integration, and maintenance over the same future workloads.</p>
-            <p class="reveal-cue" data-click="3">[CLICK 3] Reveal what holding the learner fixed lets us test.</p>
-            <p>Isolating a particular visual design choice would require a more controlled comparison.</p>
+            <p>A complete comparison takes engineering and expert time. We can begin with available evidence: measured task times and model outcomes, logs, or prior studies.</p>
+            <p class="reveal-cue" data-click="1">[CLICK 1] Reveal explicit assumptions alongside available evidence.</p>
+            <p>Where evidence is missing, state estimates and plausible ranges. The paper lets us use the model terms that matter for the decision.</p>
+            <p class="reveal-cue" data-click="2">[CLICK 2] Reveal the conditional comparison and the measurement priority.</p>
+            <p>When would MitoVis be preferrable to the alternatives? If plausible assumptions reverse the choice, that points to evidence worth gathering. These are conditional answers; an empirical comparison is still needed to establish an advantage.</p>
+            <p class="notes-reference"><strong>Reference only:</strong> Paper Sec. 5, pp. 5-6, instantiates selected terms using reported quantities and proxies. Sec. 6, p. 9, supports modular use of measurements, literature baselines, system logs, and sensitivity ranges under realistic project constraints. It explicitly complements empirical evaluation and does not establish that end-to-end comparisons are prohibitive. Prioritizing evidence that could change the choice is this talk's inference from that framework. A is a proposed comparator with invented teaching inputs, not a measured head-to-head result. The model's predictive accuracy remains future work.</p>
           </template>
         </section>
         <!-- SLIDE 06: When is a new visualization worth using? -->
@@ -786,7 +793,7 @@
           <header class="talk-top"><div><p class="talk-kicker">Back to the overview - Step 2 of 3</p><h2 class="talk-heading">When is a new visualization worth using?</h2></div><span class="talk-counter">06 / 14</span></header>
           <div class="talk-body">
             <div class="talk-route-layout">
-              <p class="route-intro">We've set up the comparison. Now let's weigh the benefits and costs.</p>
+              <p class="route-intro">We've framed the choice. Now let's weigh the benefits and costs.</p>
               <ol class="talk-route" aria-label="Talk overview">
                 <li data-route-state="complete"><span class="route-marker" aria-hidden="true">OK</span><h3><span class="sr-only">Completed: </span>What does the new tool add over the alternatives?</h3></li>
                 <li data-route-state="current" aria-current="step"><span class="route-marker" aria-hidden="true">02</span><h3>Is the improvement worth the time and money?</h3></li>
@@ -795,7 +802,7 @@
             </div>
           </div>
           <template class="speaker-notes">
-            <p>We've set up the comparison in the first question: what does the new tool add over the alternatives? That tells us what an improvement would mean.</p>
+            <p>We've framed the first question: what does the new tool add over the alternatives? We can start with available measurements and explicit assumptions, then identify which unknowns could change the choice.</p>
             <p>Now we're at the highlighted second question: is the improvement worth the time and money? A tool can improve the outcome and still demand more time or money than that improvement is worth to the lab.</p>
             <p>That's why we now need to weigh benefits and costs together. We'll ask how much improvement would justify the cost, and when the lab would be better off choosing an alternative.</p>
           </template>
@@ -873,10 +880,11 @@
         </section>
         <!-- SLIDE 10: How much must the extra improvement be worth? -->
         <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-10" data-title="10. How much must the extra improvement be worth?" data-budget="85" data-talk-section="model">
-          <header class="talk-top"><div><p class="talk-kicker">Illustrative A-V comparison - Manual work is also an option</p><h2 class="talk-heading">How much must the extra improvement be worth?</h2></div><span class="talk-counter">10 / 14</span></header>
+          <header class="talk-top"><div><p class="talk-kicker">MitoVis (V) vs. hypothetical A</p><h2 class="talk-heading">How much must the extra improvement be worth?</h2></div><span class="talk-counter">10 / 14</span></header>
           <div class="talk-body">
+            <p class="decision-lead">V costs <strong>$2,040 more</strong> for <strong>+2 percentage points of classifier accuracy.</strong></p>
             <div class="decision-chart-layout">
-              <figure><svg class="story-figure decision-chart" viewBox="0 0 980 520" role="img" aria-label="Illustrative additional net value of V over hypothetical A equals two times U minus 2040 dollars. It crosses zero at U equals 1020 dollars per additional percentage point. Below the threshold A has higher net value; above it V has higher net value. This is a pairwise comparison; manual work remains another option.">
+              <figure><svg class="story-figure decision-chart" viewBox="0 0 980 520" role="img" aria-label="Illustrative comparison: MitoVis (V) costs 2040 dollars more than hypothetical A for two additional percentage points of classifier accuracy. One percentage point means, for example, 80 to 81 percent accuracy. U is the dollar value of one percentage point of accuracy for this workload. V minus A net value equals two times U minus 2040 dollars, with a tie at 1020 dollars per percentage point of accuracy. Below that value A has higher net value; above it V has higher net value. Manual work remains another option.">
                 <text x="130" y="40" font-size="29" font-weight="700">V - A net value ($)</text>
                 <rect data-reveal="2" class="story-cost-panel" x="130" y="80" width="377.4" height="350" rx="10"/>
                 <rect data-reveal="2" class="story-benefit-panel" x="507.4" y="80" width="362.6" height="350" rx="10"/>
@@ -892,24 +900,29 @@
                 <text x="130" y="463" font-size="28" text-anchor="middle">0</text>
                 <text data-reveal="2" class="story-accent" x="507.4" y="463" font-size="30" font-weight="700" text-anchor="middle">1,020</text>
                 <text x="870" y="463" font-size="28" text-anchor="middle">2,000</text>
-                <text x="500" y="510" font-size="29" text-anchor="middle">U: value per percentage point ($)</text>
-              </svg><figcaption data-reveal="1">Added net value = 2U - $2,040.</figcaption></figure>
-              <div class="decision-chart-notes"><div data-reveal="3"><p class="decision-label">At $1,000 / point</p><h3>V trails by $40.</h3></div><div data-reveal="4"><p class="decision-label">At $1,500 / point</p><h3>V leads by $960.</h3></div><div data-reveal="5"><h3>What range can the lab defend?</h3><p class="decision-muted">A range crossing $1,020 leaves the choice unresolved.</p></div></div>
+                <text x="500" y="510" font-size="29" text-anchor="middle">U: value per percentage point of accuracy ($)</text>
+              </svg><figcaption data-reveal="1">V - A net value = (2 x U) - $2,040.</figcaption></figure>
+              <div class="decision-chart-notes">
+                <div><p class="decision-label">1 percentage point of accuracy</p><p class="decision-muted decision-unit-example">Example: 80% -> 81% accuracy.</p></div>
+                <div data-reveal="3"><p class="decision-label">At $1,000 per percentage point</p><h3>V trails A by $40.</h3></div>
+                <div data-reveal="4"><p class="decision-label">At $1,500 per percentage point</p><h3>V leads A by $960.</h3></div>
+                <div data-reveal="5"><h3>Defensible value range?</h3><p class="decision-muted">A range spanning $1,020 per percentage point leaves A vs. V unresolved.</p></div>
+              </div>
             </div>
           </div>
           <nav class="talk-roadmap" aria-label="Talk progress"><ol><li>Compare workflows</li><li aria-current="step">Model value</li><li>Test the contribution</li></ol></nav>
           <template class="speaker-notes">
-            <p>Let the value per accuracy point vary. The horizontal axis is that value, U. The vertical axis is V&#x27;s net value minus A&#x27;s.</p>
+            <p>V buys two extra percentage points of classifier accuracy for two thousand and forty dollars more. One percentage point means, for example, eighty to eighty-one percent accuracy. U is its dollar value for this workload. The vertical axis compares V's net value with A's.</p>
             <p class="reveal-cue" data-click="1">[CLICK 1] Reveal the net-value line and its equation.</p>
-            <p>The line crosses zero where their net values tie.</p>
+            <p>Value the extra accuracy at two times U, then subtract the extra cost.</p>
             <p class="reveal-cue" data-click="2">[CLICK 2] Reveal the $1,020 threshold and the A-ahead / V-ahead regions.</p>
-            <p>Two extra points must cover two thousand and forty dollars, so the threshold is one thousand and twenty dollars per point. Below it, A is ahead. Above it, V is ahead.</p>
+            <p>They tie at one thousand and twenty dollars per percentage point of accuracy. Below it, A has higher net value; above it, V does.</p>
             <p class="reveal-cue" data-click="3">[CLICK 3] Reveal the $1,000 example: V trails by $40.</p>
-            <p>At one thousand dollars per point, V trails by forty dollars.</p>
+            <p>At one thousand dollars per percentage point, the extra accuracy is worth two thousand dollars: V trails A by forty.</p>
             <p class="reveal-cue" data-click="4">[CLICK 4] Reveal the $1,500 example: V leads by $960.</p>
-            <p>At fifteen hundred dollars per point, V leads by nine hundred and sixty dollars. Manual work remains another option, especially at low values.</p>
+            <p>At fifteen hundred dollars per percentage point, it is worth three thousand dollars: V leads by nine hundred and sixty. Manual work remains an option.</p>
             <p class="reveal-cue" data-click="5">[CLICK 5] Reveal the stakeholder question and the unresolved range.</p>
-            <p>Ask the lab director for a plausible range. A range entirely above the threshold favors V over A; one entirely below favors A. If it crosses the threshold, we need more information to choose. The model makes that uncertainty explicit.</p>
+            <p>Ask the lab for a defensible range. Above the threshold favors V; below favors A. A range crossing it leaves the choice unresolved.</p>
             <p class="notes-reference"><strong>Reference only:</strong> Illustrative A-V comparison with linear utility. Manual work remains another option. Backup 02 covers valuing insight through changed decisions, avoided losses, or effort for a defined knowledge outcome.</p>
           </template>
         </section>
