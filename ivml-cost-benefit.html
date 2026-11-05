@@ -6,9 +6,11 @@
      The main story follows one stakeholder choosing between workflows.
      The overview returns at section changes; footers track the current section.
      Arrow navigation stops at the closing slide; choose backup slides from Grid.
-     Each main slide's data-budget is its target duration in seconds (10:20 draft total).
+     Each main slide's data-budget is its target duration in seconds (12:00 draft total).
      Each section's data-title labels the grid/presenter; its speaker-notes template
      supplies the notes drawer and presenter. Use <p> for separate note paragraphs.
+     Overview notes follow the visible questions. Explain workflow details and
+     numerical examples on the slides that show them.
      data-reveal="1", "2", ... groups content into click-driven builds. Matching
      <p class="reveal-cue" data-click="1">[CLICK 1] ...</p> notes mark each reveal.
      Click the slide, Right Arrow, or Space to reveal; Left Arrow undoes a reveal.
@@ -70,7 +72,7 @@
         white-space: normal;
       }
       .reveal-cue[data-cue-state="done"] { border-left-color: #64748b; }
-      .reveal-cue[data-cue-state="done"]::before { content: "✓ "; }
+      .reveal-cue[data-cue-state="done"]::before { content: "OK "; }
       .reveal-cue[data-cue-state="next"] { outline: 2px solid #818cf8; }
       .dark .reveal-cue, #pNotesText .reveal-cue {
         color: #c7d2fe;
@@ -494,7 +496,7 @@
       .decision-case .decision-lead { font-size: 34px; color: #0f172a; font-weight: 650; }
       .decision-case .decision-question { font-size: 34px; font-weight: 700; color: #4338ca; }
       .decision-interface-frame { position: relative; width: 100%; max-width: 704px; aspect-ratio: 994 / 558; margin: 0 auto; overflow: hidden; background: #fff; border-radius: 10px; }
-      /* Frame the viewer and correction controls: source crop x=220, y=88, w=994, h=558 in the 1726 × 922 image. */
+      /* Frame the viewer and correction controls: source crop x=220, y=88, w=994, h=558 in the 1726 x 922 image. */
       .decision-interface { position: absolute; display: block; width: 173.6419%; max-width: none; height: auto; left: -22.1328%; top: -15.7706%; }
       .decision-slide figcaption { font-size: 26px; line-height: 1.35; color: #475569; margin-top: 12px; }
       .decision-options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
@@ -577,7 +579,7 @@
       .dark .decision-table th, .dark .decision-table td, .dark .decision-evidence > div { border-color: #475569; }
 
       /* Projection legibility for the technical backup slides. Slide units are
-         measured on the 1600 × 900 canvas, before fitting it to the display. */
+         measured on the 1600 x 900 canvas, before fitting it to the display. */
       .legacy-backup { font-size: 24px; line-height: 1.3; }
       .legacy-backup .text-\[10px\], .legacy-backup .text-\[11px\],
       .legacy-backup .text-xs, .legacy-backup .text-sm {
@@ -677,7 +679,7 @@
             </div>
             <div class="decision-title-footer">
               <div><p class="title-authors">Yixuan Wang, <strong>Rolando Garcia</strong>, Alex Endert, Ross Maciejewski</p>
-              <p class="title-affiliations">Arizona State University · Georgia Institute of Technology</p></div>
+              <p class="title-affiliations">Arizona State University - Georgia Institute of Technology</p></div>
               <div class="decision-logos"><img data-image="asu-logo" alt="Arizona State University"/><img data-image="vis-logo" alt="IEEE VIS 2026"/></div>
             </div></div>
           <template class="speaker-notes">
@@ -697,18 +699,18 @@
             <p class="decision-takeaway" data-reveal="2">Beating a weak baseline leaves the real contribution uncertain.</p></div>
           <template class="speaker-notes">
             <p>A new system can look impressive when the previous workflow had no suitable tool. That tells us it helps.</p>
-            <p class="reveal-cue" data-click="1">[CLICK 1] Reveal credible alternatives: “What does it add?”</p>
+            <p class="reveal-cue" data-click="1">[CLICK 1] Reveal credible alternatives: "What does it add?"</p>
             <p>But would another available approach help just as much, at lower cost?</p>
             <p class="reveal-cue" data-click="2">[CLICK 2] Reveal the weak-baseline takeaway.</p>
             <p>The challenge is to take that comparison seriously. Put yourself in the position of someone choosing a tool: what does this proposal add over the strongest practical alternatives? That&#x27;s the decision we want the cost model to support.</p>
           </template>
         </section>
         <!-- SLIDE 03: When is a new visualization worth using? -->
-        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col" id="slide-3" data-title="3. Compare workflows · Overview" data-budget="25" data-overview-step="1">
+        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col" id="slide-3" data-title="3. Compare workflows - Overview" data-budget="60" data-overview-step="1">
           <header class="talk-top"><div><p class="talk-kicker">Talk overview</p><h2 class="talk-heading">When is a new visualization worth using?</h2></div><span class="talk-counter">03 / 14</span></header>
           <div class="talk-body">
             <div class="talk-route-layout">
-              <p class="route-intro">We’ll work through one lab’s choice of tools.</p>
+              <p class="route-intro">We'll work through one lab's choice of tools.</p>
               <ol class="talk-route" aria-label="Talk overview">
                 <li data-route-state="current" aria-current="step"><span class="route-marker" aria-hidden="true">01</span><h3>What does the new tool add over the alternatives?</h3></li>
                 <li data-route-state="upcoming"><span class="route-marker" aria-hidden="true">02</span><h3>Is the improvement worth the time and money?</h3></li>
@@ -717,13 +719,15 @@
             </div>
           </div>
           <template class="speaker-notes">
-            <p>The lab has limited expert time, so an improvement has to be useful enough to justify the work it takes.</p>
-            <p>We’ll use an illustrative choice between tools to connect what each one adds, what that is worth, and what we still need to measure.</p>
+            <p>We'll work through one lab's choice of tools using these three questions.</p>
+            <p>First, what does the new tool add over the alternatives? We need a comparison, because showing that a tool helps does not tell us whether the lab should choose it over another tool.</p>
+            <p>Second, is the improvement worth the time and money? Does it offset the time spent learning and using a new tool, the effort of making sense of changing results, and the cost of building and running it?</p>
+            <p>Third, what do we still need to measure? We'll ask which parts of that decision are supported by evidence and which still depend on assumptions. That tells us what measurements would help the lab choose. We'll begin with the first question: what does the new tool add?</p>
           </template>
         </section>
         <!-- SLIDE 04: Which workflow should the lab invest in? -->
         <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-4" data-title="4. Which workflow should the lab invest in?" data-budget="55" data-talk-section="compare">
-          <header class="talk-top"><div><p class="talk-kicker">Running example · MitoVis</p><h2 class="talk-heading">Which workflow should the lab invest in?</h2></div><span class="talk-counter">04 / 14</span></header>
+          <header class="talk-top"><div><p class="talk-kicker">Running example - MitoVis</p><h2 class="talk-heading">Which workflow should the lab invest in?</h2></div><span class="talk-counter">04 / 14</span></header>
           <div class="talk-body">
             <div class="decision-case">
               <figure><div class="decision-interface-frame"><img class="decision-interface" data-image="mitovis-interface" alt="Detail of the MitoVis image viewer showing neuronal predictions, correction tools, and the fine-tuning control."/></div><figcaption>MitoVis: image viewer and correction controls (detail).</figcaption></figure>
@@ -731,8 +735,8 @@
             </div>
             <div class="decision-options">
               <div data-reveal="1"><strong>Manual workflow</strong><span>Annotate masks and neurite labels by hand.</span></div>
-              <div data-reveal="2"><strong>A · Image editor + script</strong><span>Correct predictions → save labels → train separately → reload.</span></div>
-              <div data-reveal="3"><strong>V · MitoVis workflow</strong><span>Suggest similar branches; correct labels and retrain.</span></div>
+              <div data-reveal="2"><strong>A - Image editor + script</strong><span>Correct predictions -> save labels -> train separately -> reload.</span></div>
+              <div data-reveal="3"><strong>V - MitoVis workflow</strong><span>Suggest similar branches; correct labels and retrain.</span></div>
             </div></div>
           <footer class="talk-source">Sources: paper Sec. 5.1; <a href="https://ieeevis.b-cdn.net/vis_2022/posters/v-vis-posters-1021-summary.pdf">MitoVis visual guides</a>.</footer>
           <template class="speaker-notes">
@@ -744,7 +748,7 @@
             <p>The model supplies the initial annotations. Corrected neurite labels feed a separate script to fine-tune the same classifier; experts then reload predictions. The editor can also be used manually. A is ML-assisted because predictions and corrections form a learning loop.</p>
             <p class="reveal-cue" data-click="3">[CLICK 3] Reveal workflow V: MitoVis.</p>
             <p>After you correct a label, MitoVis suggests similar neuron branches to inspect. You can correct their labels, retrain the classifier, and review new predictions in one interface.</p>
-            <p>So which is better for this lab, A or V? A cost model is a good start for making each workflow’s costs and benefits explicit.</p>
+            <p>So which is better for this lab, A or V? A cost model is a good start for making each workflow's costs and benefits explicit.</p>
           </template>
         </section>
         <!-- SLIDE 05: Compare workflows on the same task. -->
@@ -754,8 +758,8 @@
             <div class="comparison-layout">
               <div class="comparison-conditions"><p class="decision-label">Hold fixed</p><h3>One common starting point</h3><p>Same dataset, corrected-mask target, and held-out classification test.</p><p>Same starting model, training recipe, expert access, and budget ceiling.</p></div>
               <div class="comparison-workflows"><p class="decision-label">Compare what the workflow adds</p>
-                <div class="comparison-lane"><span>A</span><div><h3>Image editor + script</h3><p>Correct → save labels → train separately → reload.</p></div></div>
-                <div class="comparison-lane comparison-lane--proposed" data-reveal="1"><span>V</span><div><h3>MitoVis workflow</h3><p>Suggest similar branches → correct labels → retrain → review.</p></div></div>
+                <div class="comparison-lane"><span>A</span><div><h3>Image editor + script</h3><p>Correct -> save labels -> train separately -> reload.</p></div></div>
+                <div class="comparison-lane comparison-lane--proposed" data-reveal="1"><span>V</span><div><h3>MitoVis workflow</h3><p>Suggest similar branches -> correct labels -> retrain -> review.</p></div></div>
               </div>
             </div>
             <p class="comparison-period" data-reveal="2"><strong>Compare over the same period.</strong> <span>Count learning, integration, and maintenance across the same future workloads.</span></p>
@@ -764,7 +768,7 @@
           <template class="speaker-notes">
             <p>Agree on the task before comparing tools. Require a common quality target for corrected masks, and evaluate the resulting classifier on the same held-out data. Mask quality and classifier accuracy are separate outcomes.</p>
             <p class="reveal-cue" data-click="1">[CLICK 1] Reveal V alongside A under the same shared conditions.</p>
-            <p>The left side stays fixed. On the right, compare the editor and separate script with MitoVis’s integrated workflow. Match the learner and resources to study what the workflow adds.</p>
+            <p>The left side stays fixed. On the right, compare the editor and separate script with MitoVis's integrated workflow. Match the learner and resources to study what the workflow adds.</p>
             <p class="reveal-cue" data-click="2">[CLICK 2] Reveal the common period of use.</p>
             <p>Count learning, integration, and maintenance over the same future workloads.</p>
             <p class="reveal-cue" data-click="3">[CLICK 3] Reveal what holding the learner fixed lets us test.</p>
@@ -772,35 +776,36 @@
           </template>
         </section>
         <!-- SLIDE 06: When is a new visualization worth using? -->
-        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col" id="slide-6" data-title="6. Model value · Overview" data-budget="20" data-overview-step="2">
-          <header class="talk-top"><div><p class="talk-kicker">Back to the overview · Step 2 of 3</p><h2 class="talk-heading">When is a new visualization worth using?</h2></div><span class="talk-counter">06 / 14</span></header>
+        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col" id="slide-6" data-title="6. Model value - Overview" data-budget="50" data-overview-step="2">
+          <header class="talk-top"><div><p class="talk-kicker">Back to the overview - Step 2 of 3</p><h2 class="talk-heading">When is a new visualization worth using?</h2></div><span class="talk-counter">06 / 14</span></header>
           <div class="talk-body">
             <div class="talk-route-layout">
-              <p class="route-intro">We’ve set up the comparison. Now let’s weigh the benefits and costs.</p>
+              <p class="route-intro">We've set up the comparison. Now let's weigh the benefits and costs.</p>
               <ol class="talk-route" aria-label="Talk overview">
-                <li data-route-state="complete"><span class="route-marker" aria-hidden="true">✓</span><h3><span class="sr-only">Completed: </span>What does the new tool add over the alternatives?</h3></li>
+                <li data-route-state="complete"><span class="route-marker" aria-hidden="true">OK</span><h3><span class="sr-only">Completed: </span>What does the new tool add over the alternatives?</h3></li>
                 <li data-route-state="current" aria-current="step"><span class="route-marker" aria-hidden="true">02</span><h3>Is the improvement worth the time and money?</h3></li>
                 <li data-route-state="upcoming"><span class="route-marker" aria-hidden="true">03</span><h3>What do we still need to measure?</h3></li>
               </ol>
             </div>
           </div>
           <template class="speaker-notes">
-            <p>The comparison is set up. Now we need to ask what the differences are worth to the lab.</p>
-            <p>We’ll count both the benefits and the work involved, including the expert’s time after a model update.</p>
+            <p>We've set up the comparison in the first question: what does the new tool add over the alternatives? That tells us what an improvement would mean.</p>
+            <p>Now we're at the highlighted second question: is the improvement worth the time and money? A tool can improve the outcome and still demand more time or money than that improvement is worth to the lab.</p>
+            <p>That's why we now need to weigh benefits and costs together. We'll ask how much improvement would justify the cost, and when the lab would be better off choosing an alternative.</p>
           </template>
         </section>
-        <!-- SLIDE 07: Every workflow needs the same cost–benefit ledger. -->
-        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-7" data-title="7. Every workflow needs the same cost–benefit ledger." data-budget="60" data-talk-section="model">
-          <header class="talk-top"><div><p class="talk-kicker">A shared cost–benefit model</p><h2 class="talk-heading">Every workflow needs the same cost–benefit ledger.</h2></div><span class="talk-counter">07 / 14</span></header>
+        <!-- SLIDE 07: Every workflow needs the same cost-benefit ledger. -->
+        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-7" data-title="7. Every workflow needs the same cost-benefit ledger." data-budget="60" data-talk-section="model">
+          <header class="talk-top"><div><p class="talk-kicker">A shared cost-benefit model</p><h2 class="talk-heading">Every workflow needs the same cost-benefit ledger.</h2></div><span class="talk-counter">07 / 14</span></header>
           <div class="talk-body">
             <div class="decision-ledger">
               <div><p class="decision-label">Expected benefits</p><h3>What changes for the lab?</h3><ul><li>Less manual work</li><li>Better downstream predictions</li><li>Fewer failures; useful knowledge</li></ul></div>
               <div data-reveal="1"><p class="decision-label">Expected costs</p><h3>What does it take?</h3><ul><li>Development and integration</li><li>Learning, interaction, and review</li><li>Compute and maintenance</li></ul></div>
             </div>
-            <div class="decision-facts"><div data-reveal="2"><strong>Reported MitoVis outcomes</strong><span>19.0 min vs. 191.4 min manual work;<br>classifier accuracy: 77.0% → 87.1%.</span></div><div data-reveal="3"><strong>Our valuation scenario</strong><span>Three 19-minute sessions, with assumed labor prices and development cost.</span></div></div>
-            <p class="decision-takeaway" data-reveal="4">Net value = benefits − costs.</p></div>
+            <div class="decision-facts"><div data-reveal="2"><strong>Reported MitoVis outcomes</strong><span>19.0 min vs. 191.4 min manual work;<br>classifier accuracy: 77.0% -> 87.1%.</span></div><div data-reveal="3"><strong>Our valuation scenario</strong><span>Three 19-minute sessions, with assumed labor prices and development cost.</span></div></div>
+            <p class="decision-takeaway" data-reveal="4">Net value = benefits - costs.</p></div>
           <nav class="talk-roadmap" aria-label="Talk progress"><ol><li>Compare workflows</li><li aria-current="step">Model value</li><li>Test the contribution</li></ol></nav>
-          <footer class="talk-source">Paper Secs. 4–5.1. Reported outcomes combined into an illustrative economic scenario.</footer>
+          <footer class="talk-source">Paper Secs. 4-5.1. Reported outcomes combined into an illustrative economic scenario.</footer>
           <template class="speaker-notes">
             <p>Use the same ledger for every workflow. Benefits include avoided manual work, better predictions, reduced risk, and useful knowledge.</p>
             <p class="reveal-cue" data-click="1">[CLICK 1] Reveal the cost side of the ledger.</p>
@@ -809,18 +814,18 @@
             <p>MitoVis reports nineteen minutes versus 191.4 minutes of manual work, and a neurite-wise classification gain from seventy-seven to 87.1 percent.</p>
             <p class="reveal-cue" data-click="3">[CLICK 3] Reveal the illustrative valuation assumptions.</p>
             <p>The paper combines these measurements into an illustrative three-session scenario with assumed prices.</p>
-            <p class="reveal-cue" data-click="4">[CLICK 4] Reveal “Net value = benefits − costs.”</p>
+            <p class="reveal-cue" data-click="4">[CLICK 4] Reveal "Net value = benefits - costs."</p>
             <p>Subtract costs from benefits to get net value. The next step is to compare that net value across workflows.</p>
           </template>
         </section>
         <!-- SLIDE 08: Model updates also consume expert attention. -->
         <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-8" data-title="8. Model updates also consume expert attention." data-budget="45" data-talk-section="model">
-          <header class="talk-top"><div><p class="talk-kicker">Count the expert’s time, too</p><h2 class="talk-heading">Model updates also consume expert attention.</h2></div><span class="talk-counter">08 / 14</span></header>
+          <header class="talk-top"><div><p class="talk-kicker">Count the expert's time, too</p><h2 class="talk-heading">Model updates also consume expert attention.</h2></div><span class="talk-counter">08 / 14</span></header>
           <div class="talk-body">
             <div class="decision-three decision-update">
-              <article><p class="decision-label">01 · Steer</p><h3>Correct outputs</h3><p>Choose what the model should learn from.</p></article>
-              <article data-reveal="1"><p class="decision-label">02 · Wait</p><h3>Fine-tune</h3><p>Reported update latency:<br><strong>23 seconds.</strong></p></article>
-              <article data-reveal="2"><p class="decision-label">03 · Review</p><h3>Regain context</h3><p>Interpret changed outputs and resume analysis.</p></article>
+              <article><p class="decision-label">01 - Steer</p><h3>Correct outputs</h3><p>Choose what the model should learn from.</p></article>
+              <article data-reveal="1"><p class="decision-label">02 - Wait</p><h3>Fine-tune</h3><p>Reported update latency:<br><strong>23 seconds.</strong></p></article>
+              <article data-reveal="2"><p class="decision-label">03 - Review</p><h3>Regain context</h3><p>Interpret changed outputs and resume analysis.</p></article>
             </div>
             <div class="decision-two decision-metrics"><div data-reveal="1"><p class="decision-label">GPU cost per update</p><strong>~$0.02</strong><p>23 seconds at an assumed $3/hour.</p></div><div data-reveal="2"><p class="decision-label">Assumed reorientation cost</p><strong>$3.00</strong><p>1.5 minutes at $2/minute.</p></div></div>
             <p class="decision-muted" data-reveal="3">Measure review time separately from direct interaction; count each minute once.</p></div>
@@ -838,14 +843,14 @@
         </section>
         <!-- SLIDE 09: Covering its costs does not make it the best choice. -->
         <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-9" data-title="9. Covering its costs does not make it the best choice." data-budget="70" data-talk-section="model">
-          <header class="talk-top"><div><p class="talk-kicker">Worked example · A is hypothetical</p><h2 class="talk-heading">Covering its costs does not make it the best choice.</h2></div><span class="talk-counter">09 / 14</span></header>
+          <header class="talk-top"><div><p class="talk-kicker">Worked example - A is hypothetical</p><h2 class="talk-heading">Covering its costs does not make it the best choice.</h2></div><span class="talk-counter">09 / 14</span></header>
           <div class="talk-body">
-            <table class="decision-table"><caption>Illustrative three-session workload · Value one accuracy point at $1,000.</caption>
-              <thead><tr><th scope="col">Input</th><th scope="col">A · Alternative<br><span>Hypothetical inputs</span></th><th scope="col">V · MitoVis<br><span>Paper scenario</span></th><th scope="col" data-reveal="2">V − A<br><span>What V adds</span></th></tr></thead>
+            <table class="decision-table"><caption>Illustrative three-session workload - Value one accuracy point at $1,000.</caption>
+              <thead><tr><th scope="col">Input</th><th scope="col">A - Alternative<br><span>Hypothetical inputs</span></th><th scope="col">V - MitoVis<br><span>Paper scenario</span></th><th scope="col" data-reveal="2">V - A<br><span>What V adds</span></th></tr></thead>
               <tbody><tr><th scope="row">Development</th><td>$8,000</td><td>$10,000</td><td data-reveal="2">+$2,000</td></tr>
               <tr><th scope="row">Human + compute</th><td>$83</td><td>$123</td><td data-reveal="2">+$40</td></tr>
               <tr><th scope="row">Classifier gain</th><td>8.1 points</td><td>10.1 points</td><td data-reveal="2">+2 points</td></tr>
-              <tr class="decision-result-row" data-reveal="1"><th scope="row">Net value</th><td>+$1,165</td><td>+$1,125</td><td class="decision-negative" data-reveal="2">−$40</td></tr></tbody>
+              <tr class="decision-result-row" data-reveal="1"><th scope="row">Net value</th><td>+$1,165</td><td>+$1,125</td><td class="decision-negative" data-reveal="2">-$40</td></tr></tbody>
             </table>
             <p class="decision-muted">Both receive the same $1,148 credit for avoided manual work; other added costs are assumed zero.</p>
             <p class="decision-takeaway" data-reveal="2">V costs $2,040 more for 2 extra accuracy points.</p></div>
@@ -855,7 +860,7 @@
             <p>Give alternative A hypothetical costs and outcomes. V uses the paper&#x27;s MitoVis scenario. We assume comparable corrected outputs and credit both with the same avoided manual work. Dollar values are rounded on this slide; the full arithmetic is in backup.</p>
             <p class="reveal-cue" data-click="1">[CLICK 1] Reveal net values. Pause: both are positive, but A is $40 ahead.</p>
             <p>At one thousand dollars per accuracy point, both have positive net value against manual work. Yet A delivers forty dollars more.</p>
-            <p class="reveal-cue" data-click="2">[CLICK 2] Reveal the V − A column and the $2,040-for-2-points takeaway.</p>
+            <p class="reveal-cue" data-click="2">[CLICK 2] Reveal the V - A column and the $2,040-for-2-points takeaway.</p>
             <p>The last column shows why: V costs two thousand and forty dollars more for two extra points. Are those points worth enough? For a real adoption decision, use costs still to be incurred and measured outcomes. Here, the comparison is illustrative.</p>
           </template>
         </section>
@@ -865,7 +870,7 @@
           <div class="talk-body">
             <div class="decision-chart-layout">
               <figure><svg class="story-figure decision-chart" viewBox="0 0 980 520" role="img" aria-label="Illustrative additional net value of V over hypothetical A equals two times U minus 2040 dollars. It crosses zero at U equals 1020 dollars per additional percentage point. Below the threshold A has higher net value; above it V has higher net value. This is a pairwise comparison; manual work remains another option.">
-                <text x="130" y="40" font-size="29" font-weight="700">V − A net value ($)</text>
+                <text x="130" y="40" font-size="29" font-weight="700">V - A net value ($)</text>
                 <rect data-reveal="2" class="story-cost-panel" x="130" y="80" width="377.4" height="350" rx="10"/>
                 <rect data-reveal="2" class="story-benefit-panel" x="507.4" y="80" width="362.6" height="350" rx="10"/>
                 <path class="story-line" d="M 130 80 V 430 M 130 260 H 870"/>
@@ -874,19 +879,19 @@
                 <circle data-reveal="2" cx="507.4" cy="260" r="9" fill="#4f46e5"/>
                 <text class="story-muted" x="113" y="118" font-size="27" text-anchor="end">+2,000</text>
                 <text class="story-muted" x="113" y="269" font-size="27" text-anchor="end">0</text>
-                <text class="story-muted" x="113" y="418" font-size="27" text-anchor="end">−2,000</text>
+                <text class="story-muted" x="113" y="418" font-size="27" text-anchor="end">-2,000</text>
                 <text data-reveal="2" class="story-rose" x="180" y="188" font-size="34" font-weight="700">A ahead</text>
                 <text data-reveal="2" class="story-green" x="635" y="345" font-size="34" font-weight="700">V ahead</text>
                 <text x="130" y="463" font-size="28" text-anchor="middle">0</text>
                 <text data-reveal="2" class="story-accent" x="507.4" y="463" font-size="30" font-weight="700" text-anchor="middle">1,020</text>
                 <text x="870" y="463" font-size="28" text-anchor="middle">2,000</text>
                 <text x="500" y="510" font-size="29" text-anchor="middle">U: value per percentage point ($)</text>
-              </svg><figcaption data-reveal="1">Added net value = 2U − $2,040.</figcaption></figure>
+              </svg><figcaption data-reveal="1">Added net value = 2U - $2,040.</figcaption></figure>
               <div class="decision-chart-notes"><div data-reveal="3"><p class="decision-label">At $1,000 / point</p><h3>V trails by $40.</h3></div><div data-reveal="4"><p class="decision-label">At $1,500 / point</p><h3>V leads by $960.</h3></div><p data-reveal="5">What range of values can the lab defend?</p><p class="decision-muted" data-reveal="5">If that range crosses $1,020, the choice remains unresolved.</p></div>
             </div>
             <p class="decision-muted" data-reveal="5">For insight, start with the decision it changes or the loss it helps avoid.</p></div>
           <nav class="talk-roadmap" aria-label="Talk progress"><ol><li>Compare workflows</li><li aria-current="step">Model value</li><li>Test the contribution</li></ol></nav>
-          <footer class="talk-source">Illustrative A–V comparison with linear utility. Manual work remains another option.</footer>
+          <footer class="talk-source">Illustrative A-V comparison with linear utility. Manual work remains another option.</footer>
           <template class="speaker-notes">
             <p>Let the value per accuracy point vary. The horizontal axis is that value, U. The vertical axis is V&#x27;s net value minus A&#x27;s.</p>
             <p class="reveal-cue" data-click="1">[CLICK 1] Reveal the net-value line and its equation.</p>
@@ -926,21 +931,22 @@
           </template>
         </section>
         <!-- SLIDE 12: When is a new visualization worth using? -->
-        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col" id="slide-12" data-title="12. Test the contribution · Overview" data-budget="20" data-overview-step="3">
-          <header class="talk-top"><div><p class="talk-kicker">Back to the overview · Step 3 of 3</p><h2 class="talk-heading">When is a new visualization worth using?</h2></div><span class="talk-counter">12 / 14</span></header>
+        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col" id="slide-12" data-title="12. Test the contribution - Overview" data-budget="55" data-overview-step="3">
+          <header class="talk-top"><div><p class="talk-kicker">Back to the overview - Step 3 of 3</p><h2 class="talk-heading">When is a new visualization worth using?</h2></div><span class="talk-counter">12 / 14</span></header>
           <div class="talk-body">
             <div class="talk-route-layout">
-              <p class="route-intro">The example shows when the choice changes. Now let’s look at the missing evidence.</p>
+              <p class="route-intro">The example shows when the choice changes. Now let's look at the missing evidence.</p>
               <ol class="talk-route" aria-label="Talk overview">
-                <li data-route-state="complete"><span class="route-marker" aria-hidden="true">✓</span><h3><span class="sr-only">Completed: </span>What does the new tool add over the alternatives?</h3></li>
-                <li data-route-state="complete"><span class="route-marker" aria-hidden="true">✓</span><h3><span class="sr-only">Completed: </span>Is the improvement worth the time and money?</h3></li>
+                <li data-route-state="complete"><span class="route-marker" aria-hidden="true">OK</span><h3><span class="sr-only">Completed: </span>What does the new tool add over the alternatives?</h3></li>
+                <li data-route-state="complete"><span class="route-marker" aria-hidden="true">OK</span><h3><span class="sr-only">Completed: </span>Is the improvement worth the time and money?</h3></li>
                 <li data-route-state="current" aria-current="step"><span class="route-marker" aria-hidden="true">03</span><h3>What do we still need to measure?</h3></li>
               </ol>
             </div>
           </div>
           <template class="speaker-notes">
-            <p>The example shows how the preferred tool changes with our assumptions about value and repeated use.</p>
-            <p>Those assumptions tell us what to measure next: the gains, the effort required, and whether the advantage lasts in practice.</p>
+            <p>The first two questions brought us from what the new tool adds over the alternatives to whether that improvement is worth the time and money. The example showed how those answers can change the choice.</p>
+            <p>Now we're at the highlighted third question: what do we still need to measure? To answer the first question, we need evidence of the improvement over alternatives. To answer the second, we need evidence of the time and money required.</p>
+            <p>So this last section turns those questions into measurements. We'll identify the missing evidence needed to decide whether the tool is worth using.</p>
           </template>
         </section>
         <!-- SLIDE 13: What evidence would make the contribution convincing? -->
@@ -948,9 +954,9 @@
           <header class="talk-top"><div><p class="talk-kicker">Turn the framework into an evaluation</p><h2 class="talk-heading">What evidence would make the contribution convincing?</h2></div><span class="talk-counter">13 / 14</span></header>
           <div class="talk-body">
             <div class="decision-evidence">
-              <div><p class="decision-label">01 · Compare</p><h3>Strong alternatives</h3><p>Use the same task and the strongest practical comparison workflows.</p></div>
-              <div data-reveal="1"><p class="decision-label">02 · Measure</p><h3>Outcomes and effort</h3><p>Measure output quality, expert effort, update recovery, and adoption costs.</p></div>
-              <div data-reveal="2"><p class="decision-label">03 · Follow up</p><h3>Value in practice</h3><p>Test whether the advantage survives uncertain values, real costs, and continued use.</p></div>
+              <div><p class="decision-label">01 - Compare</p><h3>Strong alternatives</h3><p>Use the same task and the strongest practical comparison workflows.</p></div>
+              <div data-reveal="1"><p class="decision-label">02 - Measure</p><h3>Outcomes and effort</h3><p>Measure output quality, expert effort, update recovery, and adoption costs.</p></div>
+              <div data-reveal="2"><p class="decision-label">03 - Follow up</p><h3>Value in practice</h3><p>Test whether the advantage survives uncertain values, real costs, and continued use.</p></div>
             </div>
             <p class="decision-takeaway" data-reveal="3">Use a common task and ledger to compare many systems.</p>
             <p class="decision-muted" data-reveal="3">This paper supplies the framework and worked scenarios. Comparative measurements are the next step.</p></div>
@@ -967,15 +973,15 @@
         </section>
         <!-- SLIDE 14: Make the value of a new workflow explicit. -->
         <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-14" data-title="14. Make the value of a new workflow explicit." data-budget="35" data-talk-section="test">
-          <header class="talk-top"><div><p class="talk-kicker">Cost–benefit modeling</p><h2 class="talk-heading">Make the value of a new workflow explicit.</h2></div><span class="talk-counter">14 / 14</span></header>
+          <header class="talk-top"><div><p class="talk-kicker">Cost-benefit modeling</p><h2 class="talk-heading">Make the value of a new workflow explicit.</h2></div><span class="talk-counter">14 / 14</span></header>
           <div class="talk-body">
             <div class="decision-opening"><p class="decision-big">What does it add?<br>When is that worth its cost?</p></div>
             <div class="decision-closing-points" data-reveal="1"><span><strong>Compare workflows</strong><br>Same task, learner, and period of use.</span><span><strong>Model value</strong><br>Find where the choice changes.</span><span><strong>Test the contribution</strong><br>Measure the advantage in use.</span></div>
-            <div class="closing-footer" data-reveal="2"><div><p class="closing-authors">Yixuan Wang, <strong>Rolando Garcia</strong>, Alex Endert, Ross Maciejewski</p><p class="decision-job">Rolando Garcia · On the faculty job market</p><p class="closing-contact"><span>Email: <a href="mailto:rolando.garcia@asu.edu">rolando.garcia@asu.edu</a></span><span>Homepage: <a href="https://rlnsanz.github.io" target="_blank" rel="noopener noreferrer">rlnsanz.github.io</a></span></p></div><p class="closing-thanks">Thank you.</p></div></div>
+            <div class="closing-footer" data-reveal="2"><div><p class="closing-authors">Yixuan Wang, <strong>Rolando Garcia</strong>, Alex Endert, Ross Maciejewski</p><p class="decision-job">Rolando Garcia - On the faculty job market</p><p class="closing-contact"><span>Email: <a href="mailto:rolando.garcia@asu.edu">rolando.garcia@asu.edu</a></span><span>Homepage: <a href="https://rlnsanz.github.io" target="_blank" rel="noopener noreferrer">rlnsanz.github.io</a></span></p></div><p class="closing-thanks">Thank you.</p></div></div>
           <nav class="talk-roadmap" aria-label="Talk progress"><ol><li>Compare workflows</li><li>Model value</li><li aria-current="step">Test the contribution</li></ol></nav>
           <template class="speaker-notes">
             <p>We want to judge a new workflow by what it adds over credible alternatives and whether that addition earns its cost.</p>
-            <p class="reveal-cue" data-click="1">[CLICK 1] Return to the overview’s three stages as a recap.</p>
+            <p class="reveal-cue" data-click="1">[CLICK 1] Return to the overview's three stages as a recap.</p>
             <p>We compared workflows on equal terms, modeled where the choice changes, and identified the evidence needed to test the contribution in practice.</p>
             <p class="reveal-cue" data-click="2">[CLICK 2] Reveal contact details, job-market note, and thanks. This is the final build.</p>
             <p>I&#x27;m on the faculty job market and would welcome a conversation. Thank you.</p>
@@ -983,15 +989,15 @@
         </section>
         <!-- BACKUP 01: Assumptions behind the illustrative comparison -->
         <section data-backup="true" id="slide-15" class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 01. Assumptions behind the illustrative comparison">
-          <header class="talk-top"><div><p class="talk-kicker">Backup · Assumptions and evidence</p><h2 class="talk-heading">Assumptions behind the illustrative comparison</h2></div><span class="talk-counter">Backup 01 / 23</span></header>
+          <header class="talk-top"><div><p class="talk-kicker">Backup - Assumptions and evidence</p><h2 class="talk-heading">Assumptions behind the illustrative comparison</h2></div><span class="talk-counter">Backup 01 / 23</span></header>
           <div class="talk-body">
             <div class="decision-two"><div class="decision-panel"><h3>V: paper scenario</h3><p>Development $10,000; runtime $123.08.<br>Classifier gain 10.1 points.<br>Avoided manual work $1,148.40.</p></div><div class="decision-panel"><h3>A: hypothetical alternative</h3><p>Development $8,000; runtime $83.08.<br>Classifier gain 8.1 points.<br>Same avoided manual work.</p></div></div>
-            <div class="decision-arithmetic"><p>Net V = $1,148.40 + 10.1U − $10,123.08.</p><p>Net A = $1,148.40 + 8.1U − $8,083.08.</p><p>Net V − Net A = 2U − $2,040; tie at U = $1,020 / point.</p><p>With N independent workloads: tie at U = ($2,000/N + $40) / 2.</p></div>
+            <div class="decision-arithmetic"><p>Net V = $1,148.40 + 10.1U - $10,123.08.</p><p>Net A = $1,148.40 + 8.1U - $8,083.08.</p><p>Net V - Net A = 2U - $2,040; tie at U = $1,020 / point.</p><p>With N independent workloads: tie at U = ($2,000/N + $40) / 2.</p></div>
             <p class="decision-muted">Shared manual reference; same corrected-output target and downstream valuation. Learning, integration, maintenance, and other incremental costs assumed zero. No observed head-to-head ranking.</p></div><footer class="talk-source">Teaching inputs, not empirical results. Replace A inputs and unmeasured adoption costs with evidence before making a real recommendation.</footer>
           <template class="speaker-notes"><p>A uses an image editor and a separate training script; its cost and outcome inputs are invented to teach the comparison. V uses the paper scenario, which itself combines reported measurements and assumed prices. Both receive the same manual-effort credit, so that term cancels in the incremental comparison. U values downstream classifier improvement beyond the corrected outputs. Avoid counting those same benefits twice. For reuse, N means separate workloads, each realizing the assumed gain and runtime cost. Reusing one improved model does not automatically generate another independent accuracy gain.</p></template></section>
         <!-- BACKUP 02: What if we cannot put a price on insight? -->
         <section data-backup="true" id="slide-16" class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 02. What if we cannot put a price on insight?">
-          <header class="talk-top"><div><p class="talk-kicker">Backup · Assumptions and evidence</p><h2 class="talk-heading">What if we cannot put a price on insight?</h2></div><span class="talk-counter">Backup 02 / 23</span></header>
+          <header class="talk-top"><div><p class="talk-kicker">Backup - Assumptions and evidence</p><h2 class="talk-heading">What if we cannot put a price on insight?</h2></div><span class="talk-counter">Backup 02 / 23</span></header>
           <div class="talk-body">
             <div class="decision-three"><article class="decision-panel"><p class="decision-label">Connect to an outcome</p><h3>What changes?</h3><p>Identify a decision, prevented failure, or recurring task affected by the knowledge.</p></article><article class="decision-panel"><p class="decision-label">Keep uncertainty visible</p><h3>What is plausible?</h3><p>Use ranges for outcome value and prevention probability. Find where the ranking changes.</p></article><article class="decision-panel"><p class="decision-label">When value stays unpriced</p><h3>What can we compare?</h3><p>Compare effort to a defined knowledge outcome; report remaining trade-offs explicitly.</p></article></div>
             <p class="decision-takeaway">A useful threshold can expose missing evidence without supplying a winner.</p>
@@ -1014,7 +1020,7 @@
             </div>
           </div>
           <footer class="talk-source">Paper Fig. 2, left panel (cropped), pp. 6-7. Both axes use log scales. One point = one percentage point of accuracy.</footer>
-          <template class="speaker-notes"><p>This is the paper’s original MitoVis break-even panel. It uses an illustrative aggregation of three nineteen-minute sessions and a ten-thousand-dollar development proxy. The reported 77.0 to 87.1 percent gain is neurite-wise classification accuracy. At about 889 dollars per point, benefits cover the modeled costs against the manual reference. That threshold does not establish superiority over another ML-assisted workflow. The comparison slides in the main talk introduce a separate, hypothetical alternative.</p></template>
+          <template class="speaker-notes"><p>This is the paper's original MitoVis break-even panel. It uses an illustrative aggregation of three nineteen-minute sessions and a ten-thousand-dollar development proxy. The reported 77.0 to 87.1 percent gain is neurite-wise classification accuracy. At about 889 dollars per point, benefits cover the modeled costs against the manual reference. That threshold does not establish superiority over another ML-assisted workflow. The comparison slides in the main talk introduce a separate, hypothetical alternative.</p></template>
         </section>
         <!-- BACKUP 04: A fixed model can create value through failure prevention -->
         <section data-backup="true" id="slide-18" class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 04. A fixed model can create value through failure prevention">
@@ -1052,7 +1058,7 @@
             </div>
           </div>
           <footer class="talk-source">Paper Fig. 3, right panel (cropped), pp. 8-9. Fixed model. Values depend on assumed discovery and cost curves.</footer>
-          <template class="speaker-notes"><p>This is the paper’s fixed-model stopping panel. Time is horizontal; marginal value and cost are vertical. The blue curves assume different information-discovery rates, and the crossing with red gives the modeled stopping time. The times are sensitivity results, not observed audit durations or recommendations. This within-session stopping question is separate from choosing between tools.</p></template>
+          <template class="speaker-notes"><p>This is the paper's fixed-model stopping panel. Time is horizontal; marginal value and cost are vertical. The blue curves assume different information-discovery rates, and the crossing with red gives the modeled stopping time. The times are sensitivity results, not observed audit durations or recommendations. This within-session stopping question is separate from choosing between tools.</p></template>
         </section>
         <!-- BACKUP 06: What interaction changes determines the trade-off -->
         <section data-backup="true" id="slide-20" class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 06. What interaction changes determines the trade-off">
@@ -1142,7 +1148,7 @@
                 <!-- K -> E -> S exploration loop -->
                 <line class="stroke-sky-600 dark:stroke-sky-400" marker-end="url(#backup-1-slide_6_vwArrowSky)" stroke-width="2.5" x1="745" x2="745" y1="125" y2="145"></line>
                 <line class="stroke-sky-600 dark:stroke-sky-400 flow-animated" marker-end="url(#backup-1-slide_6_vwArrowSky)" stroke-width="2.5" x1="711" x2="383" y1="187" y2="187"></line>
-                <text class="fill-sky-700 dark:fill-sky-300 font-bold text-base math-serif" text-anchor="middle" x="545" y="176">dS/dt · Explore</text>
+                <text class="fill-sky-700 dark:fill-sky-300 font-bold text-base math-serif" text-anchor="middle" x="545" y="176">dS/dt - Explore</text>
               </svg>
               <p class="text-xs leading-snug text-slate-600 dark:text-slate-300 bg-slate-50/90 dark:bg-slate-900/60 px-3.5 py-2 rounded-xl border border-slate-200/80 dark:border-slate-700/70">
                 <span class="font-bold text-slate-800 dark:text-slate-100">Workflow Notation:</span> Rectangles represent data <span class="math-serif">D</span>, visualization specification <span class="math-serif">S</span>, and knowledge <span class="math-serif">K</span>. Circles represent visualization <span class="math-serif">V</span>, perception <span class="math-serif">P</span>, and interaction <span class="math-serif">E</span>. <span class="math-serif">I</span> is the rendered image.
@@ -1353,17 +1359,17 @@
                 <!-- PATHWAY 3: Understanding dS/dt -->
                 <g id="backup-3-svgPath-understand" style="opacity: 1;">
                   <line class="stroke-emerald-600 dark:stroke-emerald-400 flow-animated" marker-end="url(#backup-3-slide_8_arrEmerald)" stroke-width="3" x1="768" x2="548" y1="172" y2="172"></line>
-                  <text class="fill-emerald-700 dark:fill-emerald-300 font-bold text-sm math-serif" text-anchor="middle" x="658" y="162">dS/dt · Explore</text>
+                  <text class="fill-emerald-700 dark:fill-emerald-300 font-bold text-sm math-serif" text-anchor="middle" x="658" y="162">dS/dt - Explore</text>
                 </g>
                 <!-- PATHWAY 2: Model dM/dt -->
                 <g id="backup-3-svgPath-model" style="opacity: 1;">
                   <path class="stroke-purple-600 dark:stroke-purple-400 flow-animated" d="M 785 202 L 785 245 L 215 245 L 215 210" fill="none" marker-end="url(#backup-3-slide_8_arrPurple)" stroke-width="3"></path>
-                  <text class="fill-purple-700 dark:fill-purple-300 font-bold text-sm math-serif" x="410" y="237">dM/dt · Model feedback</text>
+                  <text class="fill-purple-700 dark:fill-purple-300 font-bold text-sm math-serif" x="410" y="237">dM/dt - Model feedback</text>
                 </g>
                 <!-- PATHWAY 1: Data dD/dt -->
                 <g id="backup-3-svgPath-data" style="opacity: 1;">
                   <path class="stroke-sky-600 dark:stroke-sky-400 flow-animated" d="M 815 202 L 815 282 L 80 282 L 80 120" fill="none" marker-end="url(#backup-3-slide_8_arrSky)" stroke-width="3"></path>
-                  <text class="fill-sky-700 dark:fill-sky-300 font-bold text-sm math-serif" x="260" y="274">dD/dt · Data feedback</text>
+                  <text class="fill-sky-700 dark:fill-sky-300 font-bold text-sm math-serif" x="260" y="274">dD/dt - Data feedback</text>
                 </g>
                 <!-- Interactive Clickable State & Process Nodes -->
                 <g>
@@ -1472,17 +1478,17 @@
                 <!-- PATHWAY 3: Understanding dS/dt -->
                 <g id="backup-4-svgPath-understand" style="opacity: 1;">
                   <line class="stroke-emerald-600 dark:stroke-emerald-400 flow-animated" marker-end="url(#backup-4-slide_9_arrEmerald)" stroke-width="3" x1="768" x2="548" y1="172" y2="172"></line>
-                  <text class="fill-emerald-700 dark:fill-emerald-300 font-bold text-sm math-serif" text-anchor="middle" x="658" y="162">dS/dt · Explore</text>
+                  <text class="fill-emerald-700 dark:fill-emerald-300 font-bold text-sm math-serif" text-anchor="middle" x="658" y="162">dS/dt - Explore</text>
                 </g>
                 <!-- PATHWAY 2: Model dM/dt -->
                 <g id="backup-4-svgPath-model" style="opacity: 1;">
                   <path class="stroke-purple-600 dark:stroke-purple-400 flow-animated" d="M 785 202 L 785 245 L 215 245 L 215 210" fill="none" marker-end="url(#backup-4-slide_9_arrPurple)" stroke-width="3"></path>
-                  <text class="fill-purple-700 dark:fill-purple-300 font-bold text-sm math-serif" x="410" y="237">dM/dt · Model feedback</text>
+                  <text class="fill-purple-700 dark:fill-purple-300 font-bold text-sm math-serif" x="410" y="237">dM/dt - Model feedback</text>
                 </g>
                 <!-- PATHWAY 1: Data dD/dt -->
                 <g id="backup-4-svgPath-data" style="opacity: 1;">
                   <path class="stroke-sky-600 dark:stroke-sky-400 flow-animated" d="M 815 202 L 815 282 L 80 282 L 80 120" fill="none" marker-end="url(#backup-4-slide_9_arrSky)" stroke-width="3"></path>
-                  <text class="fill-sky-700 dark:fill-sky-300 font-bold text-sm math-serif" x="260" y="274">dD/dt · Data feedback</text>
+                  <text class="fill-sky-700 dark:fill-sky-300 font-bold text-sm math-serif" x="260" y="274">dD/dt - Data feedback</text>
                 </g>
                 <!-- Interactive Clickable State & Process Nodes -->
                 <g>
@@ -1592,17 +1598,17 @@
                 <!-- PATHWAY 3: Understanding dS/dt -->
                 <g id="backup-5-svgPath-understand" style="opacity: 1;">
                   <line class="stroke-emerald-600 dark:stroke-emerald-400 flow-animated" marker-end="url(#backup-5-slide_10_arrEmerald)" stroke-width="3" x1="768" x2="548" y1="172" y2="172"></line>
-                  <text class="fill-emerald-700 dark:fill-emerald-300 font-bold text-sm math-serif" text-anchor="middle" x="658" y="162">dS/dt · Explore</text>
+                  <text class="fill-emerald-700 dark:fill-emerald-300 font-bold text-sm math-serif" text-anchor="middle" x="658" y="162">dS/dt - Explore</text>
                 </g>
                 <!-- PATHWAY 2: Model dM/dt -->
                 <g id="backup-5-svgPath-model" style="opacity: 1;">
                   <path class="stroke-purple-600 dark:stroke-purple-400 flow-animated" d="M 785 202 L 785 245 L 215 245 L 215 210" fill="none" marker-end="url(#backup-5-slide_10_arrPurple)" stroke-width="3"></path>
-                  <text class="fill-purple-700 dark:fill-purple-300 font-bold text-sm math-serif" x="410" y="237">dM/dt · Model feedback</text>
+                  <text class="fill-purple-700 dark:fill-purple-300 font-bold text-sm math-serif" x="410" y="237">dM/dt - Model feedback</text>
                 </g>
                 <!-- PATHWAY 1: Data dD/dt -->
                 <g id="backup-5-svgPath-data" style="opacity: 1;">
                   <path class="stroke-sky-600 dark:stroke-sky-400 flow-animated" d="M 815 202 L 815 282 L 80 282 L 80 120" fill="none" marker-end="url(#backup-5-slide_10_arrSky)" stroke-width="3"></path>
-                  <text class="fill-sky-700 dark:fill-sky-300 font-bold text-sm math-serif" x="260" y="274">dD/dt · Data feedback</text>
+                  <text class="fill-sky-700 dark:fill-sky-300 font-bold text-sm math-serif" x="260" y="274">dD/dt - Data feedback</text>
                 </g>
                 <!-- Interactive Clickable State & Process Nodes -->
                 <g>
@@ -2042,17 +2048,17 @@ Risk Reduction (B<sub>risk</sub>)
                 <!-- PATHWAY 3: Understanding dS/dt -->
                 <g style="opacity: 1;">
                   <line class="stroke-emerald-600 dark:stroke-emerald-400" marker-end="url(#backup-10-slide_15_s15ArrEmerald)" stroke-width="3" x1="768" x2="548" y1="172" y2="172"></line>
-                  <text class="fill-emerald-700 dark:fill-emerald-300 font-bold text-sm math-serif" text-anchor="middle" x="658" y="162">dS/dt · Explore</text>
+                  <text class="fill-emerald-700 dark:fill-emerald-300 font-bold text-sm math-serif" text-anchor="middle" x="658" y="162">dS/dt - Explore</text>
                 </g>
                 <!-- PATHWAY 2: Model dM/dt -->
                 <g style="opacity: 1;">
                   <path class="stroke-purple-600 dark:stroke-purple-400" d="M 785 202 L 785 245 L 215 245 L 215 210" fill="none" marker-end="url(#backup-10-slide_15_s15ArrPurple)" stroke-width="3"></path>
-                  <text class="fill-purple-700 dark:fill-purple-300 font-bold text-sm math-serif" x="410" y="237">dM/dt · Model feedback</text>
+                  <text class="fill-purple-700 dark:fill-purple-300 font-bold text-sm math-serif" x="410" y="237">dM/dt - Model feedback</text>
                 </g>
                 <!-- PATHWAY 1: Data dD/dt -->
                 <g style="opacity: 1;">
                   <path class="stroke-sky-600 dark:stroke-sky-400" d="M 815 202 L 815 282 L 80 282 L 80 120" fill="none" marker-end="url(#backup-10-slide_15_s15ArrSky)" stroke-width="3"></path>
-                  <text class="fill-sky-700 dark:fill-sky-300 font-bold text-sm math-serif" x="260" y="274">dD/dt · Data feedback</text>
+                  <text class="fill-sky-700 dark:fill-sky-300 font-bold text-sm math-serif" x="260" y="274">dD/dt - Data feedback</text>
                 </g>
                 <!-- State & Process Nodes -->
                 <g>
@@ -2175,17 +2181,17 @@ Risk Reduction (B<sub>risk</sub>)
                 <!-- PATHWAY 3: Understanding dS/dt -->
                 <g style="opacity: 1;">
                   <line class="stroke-emerald-600 dark:stroke-emerald-400" marker-end="url(#backup-11-slide_16_s16ArrEmerald)" stroke-width="3" x1="768" x2="548" y1="172" y2="172"></line>
-                  <text class="fill-emerald-700 dark:fill-emerald-300 font-bold text-sm math-serif" text-anchor="middle" x="658" y="162">dS/dt · Explore</text>
+                  <text class="fill-emerald-700 dark:fill-emerald-300 font-bold text-sm math-serif" text-anchor="middle" x="658" y="162">dS/dt - Explore</text>
                 </g>
                 <!-- PATHWAY 2: Model dM/dt -->
                 <g style="opacity: 1;">
                   <path class="stroke-purple-600 dark:stroke-purple-400" d="M 785 202 L 785 245 L 215 245 L 215 210" fill="none" marker-end="url(#backup-11-slide_16_s16ArrPurple)" stroke-width="3"></path>
-                  <text class="fill-purple-700 dark:fill-purple-300 font-bold text-sm math-serif" x="410" y="237">dM/dt · Model feedback</text>
+                  <text class="fill-purple-700 dark:fill-purple-300 font-bold text-sm math-serif" x="410" y="237">dM/dt - Model feedback</text>
                 </g>
                 <!-- PATHWAY 1: Data dD/dt -->
                 <g style="opacity: 1;">
                   <path class="stroke-sky-600 dark:stroke-sky-400" d="M 815 202 L 815 282 L 80 282 L 80 120" fill="none" marker-end="url(#backup-11-slide_16_s16ArrSky)" stroke-width="3"></path>
-                  <text class="fill-sky-700 dark:fill-sky-300 font-bold text-sm math-serif" x="260" y="274">dD/dt · Data feedback</text>
+                  <text class="fill-sky-700 dark:fill-sky-300 font-bold text-sm math-serif" x="260" y="274">dD/dt - Data feedback</text>
                 </g>
                 <!-- State & Process Nodes -->
                 <g>
@@ -2307,17 +2313,17 @@ Risk Reduction (B<sub>risk</sub>)
                 <!-- PATHWAY 3: Understanding dS/dt -->
                 <g style="opacity: 1;">
                   <line class="stroke-emerald-600 dark:stroke-emerald-400" marker-end="url(#backup-12-slide_17_s17ArrEmerald)" stroke-width="3" x1="768" x2="548" y1="172" y2="172"></line>
-                  <text class="fill-emerald-700 dark:fill-emerald-300 font-bold text-sm math-serif" text-anchor="middle" x="658" y="162">dS/dt · Explore</text>
+                  <text class="fill-emerald-700 dark:fill-emerald-300 font-bold text-sm math-serif" text-anchor="middle" x="658" y="162">dS/dt - Explore</text>
                 </g>
                 <!-- PATHWAY 2: Model dM/dt -->
                 <g style="opacity: 1;">
                   <path class="stroke-purple-600 dark:stroke-purple-400" d="M 785 202 L 785 245 L 215 245 L 215 210" fill="none" marker-end="url(#backup-12-slide_17_s17ArrPurple)" stroke-width="3"></path>
-                  <text class="fill-purple-700 dark:fill-purple-300 font-bold text-sm math-serif" x="410" y="237">dM/dt · Model feedback</text>
+                  <text class="fill-purple-700 dark:fill-purple-300 font-bold text-sm math-serif" x="410" y="237">dM/dt - Model feedback</text>
                 </g>
                 <!-- PATHWAY 1: Data dD/dt -->
                 <g style="opacity: 1;">
                   <path class="stroke-sky-600 dark:stroke-sky-400" d="M 815 202 L 815 282 L 80 282 L 80 120" fill="none" marker-end="url(#backup-12-slide_17_s17ArrSky)" stroke-width="3"></path>
-                  <text class="fill-sky-700 dark:fill-sky-300 font-bold text-sm math-serif" x="260" y="274">dD/dt · Data feedback</text>
+                  <text class="fill-sky-700 dark:fill-sky-300 font-bold text-sm math-serif" x="260" y="274">dD/dt - Data feedback</text>
                 </g>
                 <!-- State & Process Nodes -->
                 <g>
@@ -2469,7 +2475,7 @@ Risk Reduction (B<sub>risk</sub>)
                 <div class="flex-1 flex flex-col justify-between gap-3 min-h-0">
                   <div class="rounded-xl bg-indigo-50/90 dark:bg-indigo-950/50 border-l-4 border-indigo-600 shadow-2xs p-4 flex-1 flex flex-col justify-center">
                     <span class="font-bold text-indigo-950 dark:text-indigo-200 text-base sm:text-lg">1. Variable Mapping:</span>
-                    <p class="text-slate-700 dark:text-slate-200 leading-snug text-sm sm:text-base mt-1">Map interaction targets to the workflow’s cost and benefit terms.</p>
+                    <p class="text-slate-700 dark:text-slate-200 leading-snug text-sm sm:text-base mt-1">Map interaction targets to the workflow's cost and benefit terms.</p>
                   </div>
                   <div class="rounded-xl bg-white dark:bg-slate-900/70 border-l-4 border-slate-300 dark:border-slate-700 p-4 flex-1 flex flex-col justify-center">
                     <span class="font-bold text-slate-900 dark:text-slate-100 text-base sm:text-lg">2. Break-even Analysis:</span>
@@ -2477,7 +2483,7 @@ Risk Reduction (B<sub>risk</sub>)
                   </div>
                   <div class="rounded-xl bg-white dark:bg-slate-900/70 border-l-4 border-slate-300 dark:border-slate-700 p-4 flex-1 flex flex-col justify-center">
                     <span class="font-bold text-slate-900 dark:text-slate-100 text-base sm:text-lg">3. Marginal Efficiency Analysis:</span>
-                    <p class="text-slate-600 dark:text-slate-300 leading-snug text-sm sm:text-base mt-1">Compare the next interaction’s benefit and cost to identify when to stop.</p>
+                    <p class="text-slate-600 dark:text-slate-300 leading-snug text-sm sm:text-base mt-1">Compare the next interaction's benefit and cost to identify when to stop.</p>
                   </div>
                 </div>
               </div>
@@ -2670,7 +2676,7 @@ Risk Reduction (B<sub>risk</sub>)
       <div class="figure-dialog-toolbar">
         <h2 id="figureDialogTitle"></h2>
         <div class="figure-dialog-actions">
-          <button type="button" onclick="zoomFigure(-0.25)" aria-label="Zoom figure out">−</button>
+          <button type="button" onclick="zoomFigure(-0.25)" aria-label="Zoom figure out">-</button>
           <span id="figureZoomLabel" aria-live="polite">100%</span>
           <button type="button" onclick="zoomFigure(0.25)" aria-label="Zoom figure in">+</button>
           <button type="button" onclick="byId('figureDialog').close()">Close</button>
@@ -2708,7 +2714,7 @@ Risk Reduction (B<sub>risk</sub>)
         <section class="lg:col-span-8 p-7 rounded-2xl bg-slate-900/90 border border-slate-800 flex flex-col justify-between overflow-y-auto">
           <div>
             <div class="flex items-center justify-between mb-4">
-              <span class="text-xs font-bold uppercase tracking-wider text-indigo-400">Speaker Notes · Boxed cues are click prompts</span>
+              <span class="text-xs font-bold uppercase tracking-wider text-indigo-400">Speaker Notes - Boxed cues are click prompts</span>
               <div class="text-right"><p class="text-sm font-semibold text-emerald-400 tabular-nums" id="pPacing"></p><p class="text-xs font-semibold text-slate-400 tabular-nums mt-1" id="pWordCount"></p></div>
             </div>
             <div id="pNotesText" class="text-slate-100 leading-relaxed whitespace-pre-line font-normal" style="font-size: 26px;"></div>
@@ -2869,7 +2875,7 @@ Risk Reduction (B<sub>risk</sub>)
         const hasReveal = revealStep < REVEAL_COUNTS[activeIndex];
         const counter = byId('slideCounterBadge');
         if (counter) counter.textContent = activeIndex < MAIN_SLIDE_COUNT
-          ? (activeIndex + 1) + ' / ' + MAIN_SLIDE_COUNT + ' · Reveal ' + revealStep + '/' + REVEAL_COUNTS[activeIndex]
+          ? (activeIndex + 1) + ' / ' + MAIN_SLIDE_COUNT + ' - Reveal ' + revealStep + '/' + REVEAL_COUNTS[activeIndex]
           : 'B' + (activeIndex - MAIN_SLIDE_COUNT + 1) + ' / ' + BACKUP_SLIDE_COUNT;
         byId('prevSlideButton').disabled = revealStep === 0 && stepSlideIndex(activeIndex, -1) === activeIndex;
         byId('prevSlideButton').title = revealStep ? 'Undo reveal (Left Arrow)' : 'Previous slide (Left Arrow)';
@@ -3326,7 +3332,7 @@ Risk Reduction (B<sub>risk</sub>)
           const hasReveal = revealStep < count;
           const words = note.trim() ? note.trim().split(/\s+/).length : 0;
 
-          byId('pSlideBadge').textContent = slideLabel(activeIndex) + (count ? ' · Reveal ' + revealStep + '/' + count : '');
+          byId('pSlideBadge').textContent = slideLabel(activeIndex) + (count ? ' - Reveal ' + revealStep + '/' + count : '');
           if (activeIndex < MAIN_SLIDE_COUNT) lastMainIndex = activeIndex;
           byId('pReturnToTalk').classList.toggle('hidden', activeIndex < MAIN_SLIDE_COUNT);
           const finishBy = SLIDE_BUDGETS.slice(0, activeIndex + 1).reduce((sum, seconds) => sum + seconds, 0);
@@ -3348,7 +3354,7 @@ Risk Reduction (B<sub>risk</sub>)
           notesPane.scrollTop = sameSlide ? scrollTop : 0;
           byId('pWordCount').textContent = words + ' words (~' + Math.max(10, Math.round((words / 120) * 60)) + 's speaking at 120 wpm)';
 
-          byId('pUpNextLabel').textContent = hasReveal ? 'Next reveal · Click ' + (revealStep + 1) : 'Up Next';
+          byId('pUpNextLabel').textContent = hasReveal ? 'Next reveal - Click ' + (revealStep + 1) : 'Up Next';
           if (hasReveal) {
             const cue = NOTE_PARAGRAPHS[activeIndex].find(p => Number(p.dataset.click) === revealStep + 1);
             byId('pNextTitle').textContent = cue?.textContent.replace(/^\[CLICK \d+\]\s*/, '') || 'Reveal next group';
