@@ -41,6 +41,7 @@
          Text uses darker shades; dark mode uses pale warm tints. */
       :root {
         --vis-orange: #df6824;
+        --vis-orange-panel: #b45a1e;
         --vis-raspberry: #bb4a72;
         --vis-brown: #693a19;
         --vis-cream: #f3dfcf;
@@ -812,7 +813,7 @@
 
       /* Saturated VIS colors carry the targets and the main takeaways. */
       .main-slide { --band-color: var(--vis-raspberry); --band-ink: #fff; }
-      .main-slide[data-talk-section="intervention"] { --band-color: var(--vis-orange); --band-ink: #241b16; }
+      .main-slide[data-talk-section="intervention"] { --band-color: var(--vis-orange-panel); }
       .main-slide[data-talk-section="decide"] { --band-color: var(--vis-brown); }
       .main-slide .anchor-band { background: var(--band-color); color: var(--band-ink); border-left-color: var(--vis-orange); }
       .main-slide .anchor-band .anchor-note { color: var(--band-ink); }
@@ -820,13 +821,13 @@
       .main-slide .decision-job { color: var(--anchor-accent); }
 
       .main-slide :is(.route-anchor, .target-anchor, .closing-recap > div, .talk-roadmap li):nth-child(1) {
-        --target-color: var(--vis-orange); --target-ink: #241b16; --target-text: var(--vis-orange-text);
+        --target-color: var(--vis-orange); --target-fill: var(--vis-orange-panel); --target-text: var(--vis-orange-text);
       }
       .main-slide :is(.route-anchor, .target-anchor, .closing-recap > div, .talk-roadmap li):nth-child(2) {
-        --target-color: var(--vis-raspberry); --target-ink: #fff; --target-text: var(--vis-raspberry-text);
+        --target-color: var(--vis-raspberry); --target-text: var(--vis-raspberry-text);
       }
       .main-slide :is(.route-anchor, .target-anchor, .closing-recap > div, .talk-roadmap li):nth-child(3) {
-        --target-color: var(--vis-brown); --target-ink: #fff; --target-text: var(--vis-brown);
+        --target-color: var(--vis-brown); --target-text: var(--vis-brown);
       }
       .main-slide .route-anchor, .main-slide .closing-recap > div { border-top-color: var(--target-color); }
       .main-slide .route-anchor .anchor-number { color: var(--target-text); }
@@ -834,7 +835,7 @@
       .main-slide .talk-roadmap li[aria-current="step"] { color: var(--target-text); border-color: var(--target-color); }
       .main-slide .talk-roadmap li[aria-current="step"] svg { color: var(--target-color); }
       .main-slide .target-anchor { border-top: 5px solid var(--target-color); padding-top: 24px; }
-      .main-slide .target-anchor .anchor-label { padding: 4px 12px; border-radius: 6px; background: var(--target-color); color: var(--target-ink); }
+      .main-slide .target-anchor .anchor-label { padding: 4px 12px; border-radius: 6px; background: var(--target-fill, var(--target-color)); color: #fff; }
       .main-slide .target-anchor .anchor-icon { margin-top: 14px; margin-bottom: 14px; }
       .main-slide .ledger-anchor { border-top: 5px solid; padding-top: 22px; }
       .main-slide .ledger-anchor.anchor-cost { border-top-color: var(--vis-raspberry); }

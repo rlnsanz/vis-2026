@@ -122,3 +122,8 @@ Title-slide simplification on 2026-11-09:
 - Removed the title diagram and its unused styles. Expanded the title to two 84-pixel lines, retaining the visible decision question, authors, affiliations, and logos.
 - Aligned the opening note with the title and decision question instead of the removed intervention-target figure. The title slide has 35 spoken words within its unchanged 20-second target; the full main-talk script now has 1,031 words.
 - Checked the title slide in both themes at 1600 x 900 and 1280 x 720, with no detected contrast failures, canvas overflow, missing images, or JavaScript exceptions. Inspected both themes and refreshed the main-slide preview. All other slide content, notes, reveal metadata, and timing targets are unchanged.
+
+White text on filled panels on 2026-11-09:
+
+- Changed the orange question band and Data card header to white text on a darker orange fill, `#b45a1e`. Bright VIS orange remains on their icons and borders. All solid card headers now use white text consistently.
+- Checked all 24 affected reveal/theme/viewport combinations. Native text passed the 4.5:1 contrast check, with no detected canvas overflow, missing slide images, or JavaScript exceptions. Inspected the completed question slide and refreshed the main-slide preview. Visible wording, speaker notes, and presentation behavior are unchanged.
