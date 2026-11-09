@@ -7,7 +7,7 @@ The [slide readability review](accessibility-review.md) records text reductions,
 
 The main talk follows the contribution in the [highlighted abstract](HighlightedAbstract.pdf): extend Van Wijk's economic model with machine learning, distinguish three interaction targets, and use measurable costs and benefits to decide where interaction is worthwhile. MitoVis supplies the detailed example. A fixed-model audit shows how understanding can create value through failure prevention. The comparison with credible alternatives retains the central concern in Ross's [round-one feedback](round1-feedback.txt).
 
-There are 14 main slides, 23 backups, and 942 words of spoken main-talk notes, excluding references and reveal cues. Per-slide budgets total **10:00**. At 120 words per minute, the notes take about 7:51, leaving about 129 seconds for reveals, pointing, and pauses. This is a pacing estimate; rehearse the diagrams and numerical examples against the slide targets.
+There are 14 main slides, 23 backups, and 951 words of spoken main-talk notes, excluding references and reveal cues. Per-slide budgets total **10:00**. At 120 words per minute, the notes take about 7:56, leaving about 125 seconds for reveals, pointing, and pauses. This is a pacing estimate; rehearse the diagrams and numerical examples against the slide targets.
 
 - Left/Right or Space advances reveals and slides, stopping at slide 14.
 - **G** opens the overview. Section links above the previews jump to backup topics; each backup repeats its topic in the header.
@@ -33,6 +33,8 @@ There are 14 main slides, 23 backups, and 942 words of spoken main-talk notes, e
 | 14 | Thank you - paper and contact links | 20s | 10:00 |
 
 Main slides use a recurring visual shorthand: **Change / Count / Decide**, with matching icons in the contribution overview, section footer, and closing recap. Large result and threshold numbers anchor the worked examples; explanatory detail stays in the notes.
+
+Slide 2 makes the human learning and adaptation burden explicit: **Build. Learn. Use. Adapt.** Its opening notes distinguish learning the interface from interpreting changed model outputs and recovering context after update delays. Paper Sec. 4.1 explicitly models re-alignment; it does not separately parameterize an initial interface-learning curve.
 
 Slide 3 introduces the framework before the worked example: identify the intervention, account for value and effort, and decide whether and when to interact. Slides 4-5 explain the extension to Van Wijk and the three targets: improve data, revise the model or training specification, and understand a fixed model. The main workflow diagram simplifies the paper's notation for progressive explanation; the full workflow and equations remain in backup.
 
