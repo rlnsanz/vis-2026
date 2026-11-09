@@ -763,6 +763,10 @@
       .main-slide .framework-assumption { font-size: 30px; line-height: 1.35; padding-top: 14px; }
       .main-slide .mitovis-metrics { display: flex; flex-direction: column; gap: 34px; }
       .main-slide .mitovis-accuracy { font-size: 56px; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; }
+      #slide-6 .talk-body { justify-content: flex-start; padding: 40px 0 16px; gap: 20px; }
+      #slide-6 .decision-interface-frame { max-width: 600px; }
+      #slide-6 .mitovis-loop { margin-top: 20px; }
+      #slide-6 .talk-body > .anchor-copy { text-align: right; }
       .main-slide .mitovis-loop { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
       .main-slide .mitovis-loop .anchor-icon { width: 44px; height: 44px; }
       .main-slide .mitovis-loop .anchor-step strong { font-size: 30px; }
@@ -874,7 +878,6 @@
       .dark #slide-7 .ledger-anchor { background: var(--anchor-panel); }
       .dark #slide-7 .ledger-anchor-row svg { color: var(--vis-orange); }
       #slide-7 .ledger-anchor-row p { font-size: 36px; line-height: 1.25; }
-      #slide-7 .ledger-accounting-note { padding-left: 2px; }
       #slide-7 .anchor-band { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; }
       #slide-7 .anchor-band .anchor-copy { font-size: 36px; line-height: 1.25; }
 
@@ -1012,15 +1015,15 @@
 <article class="target-anchor" data-reveal="1"><span class="anchor-label anchor-accent">Model / training</span><div class="anchor-accent"><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M12 16h40M12 32h40M12 48h40M24 9v14m18 2v14M28 41v14"/><circle cx="24" cy="16" r="4"/><circle cx="42" cy="32" r="4"/><circle cx="28" cy="48" r="4"/></svg></div><h3>Steer</h3><p class="anchor-copy">Model, objectives, constraints</p><div class="anchor-divider"><p class="anchor-note"><strong>Effort:</strong> fit and tune models; diagnose errors; validate</p><p class="anchor-note"><strong>Value:</strong> meet accuracy, latency, and resource targets</p></div></article>
 <article class="target-anchor" data-reveal="2"><span class="anchor-label anchor-accent">Human knowledge</span><div class="anchor-accent"><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M5 32s10-17 27-17 27 17 27 17-10 17-27 17S5 32 5 32Z"/><circle cx="32" cy="32" r="8"/></svg></div><h3>Understand</h3><p class="anchor-copy">Learn or relearn model behavior</p><div class="anchor-divider"><p class="anchor-note"><strong>Effort:</strong> understand what changed and why</p><p class="anchor-note"><strong>Value:</strong> deeper mastery; faster iteration</p></div></article></div>
 </div><footer class="photo-footer" aria-label="Paper reference"><nav class="talk-roadmap" aria-label="Talk progress"><ol><li aria-current="step"><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><circle cx="30" cy="32" r="22"/><circle cx="30" cy="32" r="11"/><path d="M30 32 52 10m-12 0h12v12"/></svg><span>Change</span></li><li><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M12 12h40v42H12zM22 24h20M22 34h8m8 0h4M22 44h8m8 0h4"/></svg><span>Count</span></li><li><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M10 12v42h46M16 45l36-26M16 22l36 20"/><path d="M34 16v38" stroke-width="1.25" stroke-dasharray="3 3"/><circle cx="34" cy="32" r="4" fill="currentColor"/></svg><span>Decide</span></li></ol></nav><span class="photo-footer-title">Cost-Benefit Modeling of Interactive Visual Machine Learning Systems</span><a href="https://vader.lab.asu.edu/docs/publications/pdf/2026/IVML_paper.pdf" target="_blank" rel="noopener noreferrer" aria-label="Read the paper PDF"><img data-image="paper-qr" width="72" height="72" alt="QR code for the paper PDF"/></a></footer><template class="speaker-notes"><p>First, cleaner labels and features may reveal relationships that simple regression can capture, reducing computing and maintenance costs.</p><p class="reveal-cue" data-click="1">[CLICK 1] Reveal model and training choices.</p><p>Second, we choose a model, objectives, and constraints, then fit, tune, diagnose errors, and validate on held-out data. Each run takes computing resources and analyst time to interpret its results.</p><p class="reveal-cue" data-click="2">[CLICK 2] Reveal the understanding target.</p><p>Third, we understand what changed and why. Comparing two versions can build mastery and speed up iteration. These targets can overlap, so we include any training and review they require. Let's see correction and retraining in practice.</p><p class="notes-reference"><strong>Reference only:</strong> Paper Secs. 3.2 and 4.3; Sec. 4.1 for re-alignment after model updates. Simple regression, version comparison, and A/B testing are explanatory examples. Mastery and iteration speed describe potential learning and workflow benefits. Include training and review costs when the chosen approach requires them. If prediction improvement is valued through correction time saved, count that saving once.</p><p class="notes-reference"><strong>Reference only:</strong> Studying a fixed model adds no retraining. This case is discussed with its visible example on slide 11.</p></template></section>
-        <!-- SLIDE 06: From correction to better predictions -->
-        <section class="slide-section main-slide talk-slide decision-slide framework-slide hidden slide-animate flex-1 flex flex-col" id="slide-6" data-title="6. From correction to better predictions" data-budget="50" data-talk-section="intervention">
-          <header class="talk-top"><div><p class="talk-kicker">Learning from corrections with MitoVis</p><h2 class="talk-heading">From correction to better predictions</h2></div><span class="talk-counter">06 / 14</span></header>
+        <!-- SLIDE 06: Correct what you see. Retrain the model. -->
+        <section class="slide-section main-slide talk-slide decision-slide framework-slide hidden slide-animate flex-1 flex flex-col" id="slide-6" data-title="6. Correct what you see. Retrain the model." data-budget="50" data-talk-section="intervention">
+          <header class="talk-top"><div><p class="talk-kicker">Case study: MitoVis</p><h2 class="talk-heading">Correct what you see. Retrain the model.</h2></div><span class="talk-counter">06 / 14</span></header>
           <div class="talk-body">
             <div class="anchor-layout mitovis-anchor">
               <figure>
                 <div class="decision-interface-frame"><img class="decision-interface" data-image="mitovis-interface" alt="MitoVis viewer showing neuronal mitochondria, predictions, and correction controls."/></div>
-                <figcaption>Neuronal mitochondria: proofread masks and labels.</figcaption>
-                <div class="anchor-flow mitovis-loop anchor-divider" data-reveal="1" aria-label="Correct labels, retrain the classifier, then review its predictions.">
+                <figcaption>Neuronal mitochondria: proofread predicted masks and labels.</figcaption>
+                <div class="anchor-flow mitovis-loop" data-reveal="1" aria-label="Correct labels, retrain the classifier, then review its predictions.">
                   <div class="anchor-step"><svg class="anchor-icon anchor-accent" viewBox="0 0 64 64" aria-hidden="true"><path d="M13 45l-3 10 10-3 31-31-7-7-31 31zM38 20l7 7M10 55h43"/></svg><strong>Correct</strong></div>
                   <div class="anchor-step"><svg class="anchor-icon anchor-accent" viewBox="0 0 64 64" aria-hidden="true"><path d="M49 22A20 20 0 1 0 50 41M49 9v14H35"/></svg><strong>Retrain</strong></div>
                   <div class="anchor-step"><svg class="anchor-icon anchor-accent" viewBox="0 0 64 64" aria-hidden="true"><path d="M6 32s10-17 26-17 26 17 26 17-10 17-26 17S6 32 6 32z"/><circle cx="32" cy="32" r="8"/></svg><strong>Review</strong></div>
@@ -1031,21 +1034,21 @@
                 <div><p class="anchor-label">Reported classifier accuracy</p><p class="mitovis-accuracy"><span class="anchor-copy">77.0% to</span> <span class="anchor-good">87.1%</span></p><p class="anchor-note">Across three iterations</p></div>
               </div>
             </div>
-            <p class="anchor-copy" data-reveal="2">What are these gains worth to the lab?</p>
+            <p class="anchor-copy" data-reveal="2">10x faster. 10 points more accurate. <em>Does it pay for itself?</em></p>
           </div>
 
           <footer class="photo-footer" aria-label="Paper reference"><nav class="talk-roadmap" aria-label="Talk progress"><ol><li aria-current="step"><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><circle cx="30" cy="32" r="22"/><circle cx="30" cy="32" r="11"/><path d="M30 32 52 10m-12 0h12v12"/></svg><span>Change</span></li><li><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M12 12h40v42H12zM22 24h20M22 34h8m8 0h4M22 44h8m8 0h4"/></svg><span>Count</span></li><li><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M10 12v42h46M16 45l36-26M16 22l36 20"/><path d="M34 16v38" stroke-width="1.25" stroke-dasharray="3 3"/><circle cx="34" cy="32" r="4" fill="currentColor"/></svg><span>Decide</span></li></ol></nav><span class="photo-footer-title">Cost-Benefit Modeling of Interactive Visual Machine Learning Systems</span><a href="https://vader.lab.asu.edu/docs/publications/pdf/2026/IVML_paper.pdf" target="_blank" rel="noopener noreferrer" aria-label="Read the paper PDF"><img data-image="paper-qr" width="72" height="72" alt="QR code for the paper PDF"/></a></footer><template class="speaker-notes">
-            <p>Consider a lab analyzing neuronal mitochondria. In MitoVis, experts proofread the masks and correct neurite labels.</p>
+            <p>Consider a lab analyzing neuronal mitochondria. In MitoVis, experts proofread the predicted masks and correct neurite labels.</p>
             <p class="reveal-cue" data-click="1">[CLICK 1] Reveal correct, retrain, and review.</p>
             <p>The loop is correction, retraining, and reviewing new predictions. After a correction, MitoVis suggests similar branches to inspect. Retraining can improve predictions beyond the case the expert edited.</p>
             <p class="reveal-cue" data-click="2">[CLICK 2] Reveal the reported time and accuracy results.</p>
-            <p>The reported workflow takes nineteen minutes, compared with one hundred ninety-one point four minutes manually. Classifier accuracy rises from seventy-seven to eighty-seven point one percent across three iterations. What are those gains worth to the lab, and what effort produced them?</p>
+            <p>The reported workflow takes nineteen minutes, compared with one hundred ninety-one point four minutes manually. Classifier accuracy rises from seventy-seven to eighty-seven point one percent across three iterations. That's about ten times faster and ten points more accurate. It looks like an easy win. But does it pay for itself? To answer that, we count the effort that produced these gains and put a value on what they deliver.</p>
             <p class="notes-reference"><strong>Reference only:</strong> Paper Sec. 5.1. Classification accuracy is distinct from segmentation-mask quality. <a href="https://ieeevis.b-cdn.net/vis_2022/posters/v-vis-posters-1021-summary.pdf">MitoVis visual guides</a>.</p>
           </template>
         </section>
-        <!-- SLIDE 07: Count effort. Value outcomes. -->
-        <section class="slide-section main-slide talk-slide decision-slide framework-slide hidden slide-animate flex-1 flex flex-col" id="slide-7" data-title="7. Count effort. Value outcomes." data-budget="50" data-talk-section="account">
-          <header class="talk-top"><div><p class="talk-kicker">Accounting for effort and value</p><h2 class="talk-heading">Count effort. Value outcomes.</h2></div><span class="talk-counter">07 / 14</span></header>
+        <!-- SLIDE 07: Count all the effort. Put a number on the value. -->
+        <section class="slide-section main-slide talk-slide decision-slide framework-slide hidden slide-animate flex-1 flex flex-col" id="slide-7" data-title="7. Count all the effort. Put a number on the value." data-budget="50" data-talk-section="account">
+          <header class="talk-top"><div><p class="talk-kicker">The cost-benefit ledger</p><h2 class="talk-heading">Count all the effort. Put a number on the value.</h2></div><span class="talk-counter">07 / 14</span></header>
           <div class="talk-body">
             <div class="anchor-two">
               <div class="anchor-panel ledger-anchor anchor-cost">
@@ -1067,17 +1070,16 @@
                 </div>
               </div>
             </div>
-            <p class="anchor-note ledger-accounting-note" data-reveal="1">Count each outcome's value once.</p>
             <div class="anchor-band" data-reveal="2"><p class="anchor-copy"><strong>Net value = benefits - costs</strong></p><p class="anchor-note">Over a stated period. Measure inputs; expose assumptions.</p></div>
           </div>
 
           <footer class="photo-footer" aria-label="Paper reference"><nav class="talk-roadmap" aria-label="Talk progress"><ol><li><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><circle cx="30" cy="32" r="22"/><circle cx="30" cy="32" r="11"/><path d="M30 32 52 10m-12 0h12v12"/></svg><span>Change</span></li><li aria-current="step"><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M12 12h40v42H12zM22 24h20M22 34h8m8 0h4M22 44h8m8 0h4"/></svg><span>Count</span></li><li><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M10 12v42h46M16 45l36-26M16 22l36 20"/><path d="M34 16v38" stroke-width="1.25" stroke-dasharray="3 3"/><circle cx="34" cy="32" r="4" fill="currentColor"/></svg><span>Decide</span></li></ol></nav><span class="photo-footer-title">Cost-Benefit Modeling of Interactive Visual Machine Learning Systems</span><a href="https://vader.lab.asu.edu/docs/publications/pdf/2026/IVML_paper.pdf" target="_blank" rel="noopener noreferrer" aria-label="Read the paper PDF"><img data-image="paper-qr" width="72" height="72" alt="QR code for the paper PDF"/></a></footer><template class="speaker-notes">
-            <p>On the effort side, we start with correction and exploration. Updates can add training costs, time to review changed results, and time to resume work. We also include building, adopting, and maintaining the tool.</p>
+            <p>All the effort means more than session time. On the effort side, we start with correction and exploration. Updates can add training costs, time to review changed results, and time to resume work. We also include building, adopting, and maintaining the tool.</p>
             <p class="reveal-cue" data-click="1">[CLICK 1] Reveal the value side.</p>
-            <p>On the value side, better predictions can improve the task, and less recurring work can save labor. Knowledge can help us make decisions and prevent costly failures. We count each outcome's value once.</p>
+            <p>On the value side, better predictions can improve the task, and less recurring work can save labor. Knowledge can help us make decisions and prevent costly failures. These outcomes are rarely measured, so we have to estimate their value, even roughly.</p>
             <p class="reveal-cue" data-click="2">[CLICK 2] Reveal net value and the accounting period.</p>
             <p>We subtract those costs from the benefits over a stated period. We measure the inputs we can and make the remaining assumptions explicit.</p>
-            <p class="notes-reference"><strong>Reference only:</strong> Paper Sec. 4, Eqs. 7-16. Knowledge may also have intrinsic value; do not add a second credit for knowledge already valued through another pathway.</p>
+            <p class="notes-reference"><strong>Reference only:</strong> Paper Sec. 4, Eqs. 7-16. Count each outcome's value once. Knowledge may also have intrinsic value; do not add a second credit for knowledge already valued through another pathway.</p>
           </template>
         </section>
         <!-- SLIDE 08: Every update has a human cost -->

@@ -24,8 +24,8 @@ There are 14 main slides, 23 backups, and 1,031 words of spoken main-talk script
 | 3 | Three questions guide the decision | 35s | 1:25 |
 | 4 | Learning changes the loop | 50s | 2:15 |
 | 5 | Correct. Steer. Understand. | 50s | 3:05 |
-| 6 | From correction to better predictions | 50s | 3:55 |
-| 7 | Count effort. Value outcomes. | 50s | 4:45 |
+| 6 | Correct what you see. Retrain the model. | 50s | 3:55 |
+| 7 | Count all the effort. Put a number on the value. | 50s | 4:45 |
 | 8 | Every update has a human cost | 50s | 5:35 |
 | 9 | What must one accuracy point be worth? | 70s | 6:45 |
 | 10 | Covering costs is only the first test | 50s | 7:35 |
