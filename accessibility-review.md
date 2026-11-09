@@ -64,3 +64,9 @@ Projection typography pass on 2026-11-09:
 - Inspected the completed deck overview and full-size title, chart, equation, table, and workflow layouts. An independent visual check confirmed the workflow-label fixes in both themes.
 - Speaker notes, reveal metadata, timing targets, presentation scripts, and embedded images remain byte-for-byte unchanged. Main navigation still stops at slide 14, reveal reversal works, and all 37 Grid previews remain available. No JavaScript exceptions were detected. Edited text uses ASCII, and `git diff --check` passes.
 - Refreshed `main-slides-preview.png`. Fine text embedded in original paper figures and interface screenshots is outside the native-text size checks; the paper figures retain their enlargement controls and large accompanying explanations.
+
+Title-figure balance adjustment on 2026-11-09:
+
+- Gave Data, Model, and Understanding equal 320 x 76 target boxes. Centered Data above the human-effort hub and mirrored the lower pair and their connectors around its centerline.
+- Expanded the SVG viewBox and used uniform 40-unit labels, preserving the figure's displayed height. Labels render at about 30.5 pixels at 1600 x 900 and 24.4 at 1280 x 720, with space around the longest label.
+- Inspected both themes at both resolutions: no clipping, label collisions, or slide overflow. Speaker notes still match the figure's human-effort and intervention-target content. Refreshed `main-slides-preview.png`; slide content outside this figure and its text-size rule is unchanged.
