@@ -36,7 +36,7 @@ The later main-slide design pass focuses on helping distracted listeners recover
 
 - Repeated Change / Count / Decide icons connect the overview, active section footer, and closing recap.
 - A single workflow spine makes the learning insertion and feedback paths visible without comparing two separate diagrams.
-- Correct / Steer / Inspect glyphs identify the three intervention targets. The MitoVis image, large results, update costs, and break-even amounts provide local anchors.
+- Correct / Steer / Understand glyphs identify the three intervention targets. The MitoVis image, large results, update costs, and break-even amounts provide local anchors.
 - Consistent headline sizes, spacing, restrained color, and editable SVG drawings replace dense prose panels. Numerical assumptions remain beside the examples that depend on them.
 - Main-slide visible text fell from 1,235 to 830 whitespace-separated tokens (about 33 percent), including headings, footers, labels, and equations. Spoken notes total 942 words, leaving about 129 seconds within the 10-minute budget at 120 words per minute for reveals, pointing, and pauses.
 - Reviewed the notes at each reveal. All 40 main slide/reveal states were rendered in both themes at both resolutions: 160 states checked with no detected text outside the canvas or viewport, or talk-body/footer overflow. Final native HTML/SVG contrast checks found no values below 4.5:1 and no ordinary text below 20 rendered pixels at 1600 x 900.
@@ -70,3 +70,10 @@ Title-figure balance adjustment on 2026-11-09:
 - Gave Data, Model, and Understanding equal 320 x 76 target boxes. Centered Data above the human-effort hub and mirrored the lower pair and their connectors around its centerline.
 - Expanded the SVG viewBox and used uniform 40-unit labels, preserving the figure's displayed height. Labels render at about 30.5 pixels at 1600 x 900 and 24.4 at 1280 x 720, with space around the longest label.
 - Inspected both themes at both resolutions: no clipping, label collisions, or slide overflow. Speaker notes still match the figure's human-effort and intervention-target content. Refreshed `main-slides-preview.png`; slide content outside this figure and its text-size rule is unchanged.
+
+Understanding-target refinement on 2026-11-09:
+
+- Renamed slide 5 to "Correct. Steer. Understand." The understanding card now covers learning or relearning model behavior and names comparison as part of the effort.
+- Aligned the notes with each reveal. The final reveal explains version comparison, including A/B testing, and how data or model changes can require revised expectations. Studying a fixed model still adds no retraining.
+- Checked slide 5's three reveal states in both themes at 1600 x 900 and 1280 x 720: 12 states, with no detected text outside the slide or viewport, body overflow, footer overlap, or JavaScript exceptions. Inspected the completed slide in both themes.
+- Refreshed `main-slides-preview.png` from all 14 current completed slides and synchronized README labels and pacing. Slide 5 has 83 spoken words within its 50-second target; main-talk notes total 968 words, about 8:04 at 120 words per minute, leaving about 116 seconds for reveals and pauses. The total target remains 600 seconds. Edited text uses ASCII; `git diff --check` passes.
