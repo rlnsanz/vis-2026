@@ -127,3 +127,10 @@ White text on filled panels on 2026-11-09:
 
 - Changed the orange question band and Data card header to white text on a darker orange fill, `#b45a1e`. Bright VIS orange remains on their icons and borders. All solid card headers now use white text consistently.
 - Checked all 24 affected reveal/theme/viewport combinations. Native text passed the 4.5:1 contrast check, with no detected canvas overflow, missing slide images, or JavaScript exceptions. Inspected the completed question slide and refreshed the main-slide preview. Visible wording, speaker notes, and presentation behavior are unchanged.
+
+Slide 7 layout and palette on 2026-11-09:
+
+- Reflowed each four-item ledger into a 2-by-2 grid. Enlarged labels from 32 to 36 slide pixels and icons from 38 to 48, using the card widths more evenly. The takeaway now places its equation and accounting context side by side.
+- Uses raspberry for Effort, brown for Value, orange for the icons and takeaway, and cream card surfaces in light mode. The orange takeaway keeps white text on the darker orange fill. Dark mode retains dark card surfaces with bright orange icons. Icon contrast exceeds 3:1 in both themes.
+- Moved the rule about counting each outcome's value once below the two cards. It still appears with the Value reveal, before the final takeaway. Reading order, wording, speaker notes, and timing are unchanged.
+- Checked all three reveals in both themes at both resolutions: 12 states, with no detected contrast failures, canvas overflow, missing images, or JavaScript exceptions. Confirmed the takeaway stays above the footer, inspected completed slides in both themes, and refreshed the main-slide preview. Other slides are unchanged.
