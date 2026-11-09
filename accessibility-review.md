@@ -47,3 +47,11 @@ Slide 2's learning and adaptation update makes the human effort explicit with "B
 - Checked all three slide 2 reveal states in both themes at 1600 x 900 and 1280 x 720: 12 states, with no detected text outside the slide or viewport, body overflow, footer overlap, or JavaScript exceptions.
 - Compared the notes with the visible material at each reveal and inspected the completed light slide and initial dark slide. Updated the main-slide visual preview.
 - Current spoken main-talk notes total 951 words, leaving about 125 seconds at 120 words per minute. Slide 2 retains its 30-second target and the total budget remains 600 seconds. Edited slide text and notes use ASCII; `git diff --check` passes.
+
+Speaker-notes polish on 2026-11-09:
+
+- Polished all 14 main slides and 23 backups for spoken clarity, shorter phrasing, natural pauses, and transitions tied to the current slide.
+- Slide 3 now follows Change / Count / Decide before explaining the Van Wijk extension. Each question has its own speaking beat, and the count step explains why the intervention target matters.
+- Checked the spoken notes against the visible content at all 40 main slide/reveal states and all 23 static backups. Numerical explanations stay with their supporting figures. Background study details without a local visual anchor remain available in reference-only notes.
+- Main-talk notes still total 951 words, excluding reveal cues and references. At 120 words per minute, every main slide fits its existing target with room for pauses and clicks; the full talk leaves about 125 seconds within its 10-minute budget. This is a pacing estimate, not a timed rehearsal.
+- All markup outside the speaker-note templates, including visible slides, figures, presentation code, and timing targets, is byte-for-byte unchanged. Original reveal cues and reference paragraphs are preserved. Edited notes use ASCII, and `git diff --check` passes. The visual preview remains current.
