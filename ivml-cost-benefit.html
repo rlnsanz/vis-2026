@@ -792,12 +792,12 @@
       /* Slide 02: let the comparison fill the available projection area. */
       #slide-2 .talk-heading { font-size: 64px; }
       #slide-2 .talk-body { gap: 32px; }
-      #slide-2 .choice-compare { grid-template-columns: minmax(0, 1fr) 80px minmax(0, 1fr); gap: 24px; }
+      #slide-2 .choice-compare { grid-template-columns: minmax(0, 1fr) 112px minmax(0, 1fr); gap: 32px; }
       #slide-2 .choice-route { padding: 24px; }
       #slide-2 .choice-route .anchor-icon { width: 96px; height: 96px; }
       #slide-2 .choice-route h3 { font-size: 64px; line-height: 1.1; letter-spacing: -0.035em; margin: 20px 0; }
       #slide-2 .choice-route p { font-size: 42px; line-height: 1.3; }
-      #slide-2 .choice-vs { font-size: 40px; }
+      #slide-2 .choice-vs { position: relative; left: -64px; align-self: start; padding-top: 143px; font-size: 64px; line-height: 1.1; }
       #slide-2 .question-band { font-size: 48px; line-height: 1.2; padding: 26px 32px; text-wrap: balance; }
       .main-slide .route-anchors { gap: 44px; }
       .main-slide .route-anchor { position: relative; border-top: 2px solid var(--anchor-line); padding: 24px 12px 0 0; }
@@ -866,28 +866,30 @@
       .dark .main-slide .talk-roadmap li[aria-current="step"] svg { color: var(--target-text); }
       .dark .main-slide .talk-roadmap li[aria-current="step"] { border-color: var(--target-text); }
 
-      /* The ledger uses the card widths and all four VIS palette colors. */
-      #slide-7 { --band-color: var(--vis-orange-panel); }
-      #slide-7 .talk-body { gap: 18px; padding: 24px 0; }
+      /* Light ledger surfaces keep the VIS accents legible. */
+      #slide-7 { --band-color: #fff3e8; --band-ink: var(--vis-brown); }
+      #slide-7 .talk-body { gap: 28px; padding: 24px 0; }
       #slide-7 .anchor-two { gap: 32px; }
-      #slide-7 .ledger-anchor { padding: 22px 26px 26px; background: var(--vis-cream); }
-      #slide-7 .ledger-anchor h3 { margin-bottom: 28px; }
-      #slide-7 .ledger-items { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 24px; }
-      #slide-7 .ledger-anchor-row { grid-template-columns: 48px minmax(0, 1fr); gap: 14px; align-items: start; margin-top: 0; }
-      #slide-7 .ledger-anchor-row svg { width: 48px; height: 48px; color: var(--vis-orange-panel); }
+      #slide-7 .ledger-anchor { padding: 24px 30px 32px; background: #fffdfb; }
+      #slide-7 .ledger-anchor h3 { margin-bottom: 32px; }
+      #slide-7 .ledger-anchor.anchor-cost h3 { background: #fcecf2; color: var(--vis-raspberry-text); }
+      #slide-7 .ledger-anchor.anchor-good h3 { background: #f7eee6; color: var(--vis-brown); }
+      #slide-7 .ledger-items { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+      #slide-7 .ledger-anchor-row { grid-template-columns: 40px minmax(0, 1fr); gap: 16px; align-items: start; min-height: 84px; margin-top: 0; }
+      #slide-7 .ledger-anchor-row svg { width: 40px; height: 40px; color: var(--vis-orange-panel); }
       .dark #slide-7 .ledger-anchor { background: var(--anchor-panel); }
       .dark #slide-7 .ledger-anchor-row svg { color: var(--vis-orange); }
-      #slide-7 .ledger-anchor-row p { font-size: 36px; line-height: 1.25; }
-      #slide-7 .anchor-band { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; }
+      #slide-7 .ledger-anchor-row p { font-size: 32px; line-height: 1.3; }
+      #slide-7 .anchor-band { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; padding: 26px 30px; }
       #slide-7 .anchor-band .anchor-copy { font-size: 36px; line-height: 1.25; }
 
       /* Update costs: aligned stages, with a distinct palette color per stage. */
       #slide-8 .talk-body { justify-content: space-evenly; gap: 20px; padding: 20px 0; }
       #slide-8 .update-anchor { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; align-items: stretch; }
-      #slide-8 .update-anchor .anchor-step { display: grid; grid-template-rows: 44px 108px 52px auto; align-content: start; border-top: 5px solid var(--stage-color); padding: 20px 22px; background: var(--vis-cream); color: var(--slide-copy); border-radius: 0 0 12px 12px; }
-      #slide-8 .update-anchor .anchor-step:nth-child(1) { --stage-color: var(--vis-orange); --stage-ink: var(--vis-orange-text); }
-      #slide-8 .update-anchor .anchor-step:nth-child(2) { --stage-color: var(--vis-raspberry); --stage-ink: var(--vis-raspberry-text); }
-      #slide-8 .update-anchor .anchor-step:nth-child(3) { --stage-color: var(--vis-brown); --stage-ink: var(--vis-brown); }
+      #slide-8 .update-anchor .anchor-step { display: grid; grid-template-rows: 44px 108px 52px auto; align-content: start; border-top: 5px solid var(--stage-color); padding: 20px 22px; background: var(--stage-background); color: var(--slide-copy); border-radius: 0 0 12px 12px; }
+      #slide-8 .update-anchor .anchor-step:nth-child(1) { --stage-color: var(--vis-orange); --stage-ink: var(--vis-orange-text); --stage-background: #fff8f2; }
+      #slide-8 .update-anchor .anchor-step:nth-child(2) { --stage-color: var(--vis-raspberry); --stage-ink: var(--vis-raspberry-text); --stage-background: #fff7fa; }
+      #slide-8 .update-anchor .anchor-step:nth-child(3) { --stage-color: var(--vis-brown); --stage-ink: var(--vis-brown); --stage-background: #fffdfb; }
       #slide-8 .update-anchor .anchor-number { font-size: 30px; color: var(--stage-ink); }
       #slide-8 .update-anchor .anchor-hero { font-size: 88px; color: var(--stage-ink); align-self: center; }
       #slide-8 .update-anchor .anchor-icon { width: 96px; height: 96px; color: var(--stage-ink); align-self: center; }
@@ -988,9 +990,9 @@
 </div><div class="decision-title-footer"><div><p class="title-authors">Yixuan Wang, <strong>Rolando Garcia</strong>, Alex Endert, Ross Maciejewski</p><p class="title-affiliations">Arizona State University - Georgia Institute of Technology</p></div><div class="decision-logos"><div class="decision-asu-mark"><img data-image="asu-logo" alt="Arizona State University"/></div><img data-image="vis-logo" alt="IEEE VIS 2026"/></div></div><template class="speaker-notes"><p>I'm Rolando Garcia, presenting joint work with Yixuan Wang, Alex Endert, and Ross Maciejewski. We study the costs and benefits of interactive visual machine learning. Our question is: where is human effort worth its cost?</p></template></section>
         <!-- SLIDE 02: Useful compared with what? -->
         <section class="slide-section main-slide talk-slide decision-slide framework-slide hidden slide-animate flex-1 flex flex-col " id="slide-2" data-title="2. Useful compared with what?" data-budget="30" data-talk-section="intervention"><header class="talk-top"><div><p class="talk-kicker">The design question</p><h2 class="talk-heading">Useful compared with what?</h2></div><span class="talk-counter">02 / 14</span></header><div class="talk-body"><div class="choice-compare">
-<div class="choice-route"><div class="anchor-accent"><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="18" r="10"/><path d="M14 54v-9c0-20 36-20 36 0v9M23 54V43m18 11V43"/></svg></div><h3>Add interaction</h3><p>Build. Learn. Use. Adapt.</p></div><div class="choice-vs">vs.</div>
+<div class="choice-route"><div class="anchor-accent"><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="18" r="10"/><path d="M14 54v-9c0-20 36-20 36 0v9M23 54V43m18 11V43"/></svg></div><h3>Add interaction</h3><p>Build. Learn. Use. Adapt.</p></div><div class="choice-vs" data-reveal="1">vs.</div>
 <div class="choice-route" data-reveal="1"><div class="anchor-accent"><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><circle cx="30" cy="32" r="22"/><circle cx="30" cy="32" r="11"/><path d="M30 32 52 10m-12 0h12v12"/></svg></div><h3>Invest elsewhere</h3><p>Data. Model. Automation.</p></div></div>
-<div class="anchor-band question-band" data-reveal="2">Is adding interaction worth more than improving the data or model?</div></div><footer class="photo-footer" aria-label="Paper reference"><nav class="talk-roadmap" aria-label="Talk progress"><ol><li aria-current="step"><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><circle cx="30" cy="32" r="22"/><circle cx="30" cy="32" r="11"/><path d="M30 32 52 10m-12 0h12v12"/></svg><span>Change</span></li><li><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M12 12h40v42H12zM22 24h20M22 34h8m8 0h4M22 44h8m8 0h4"/></svg><span>Count</span></li><li><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M10 12v42h46M16 45l36-26M16 22l36 20"/><path d="M34 16v38" stroke-width="1.25" stroke-dasharray="3 3"/><circle cx="34" cy="32" r="4" fill="currentColor"/></svg><span>Decide</span></li></ol></nav><span class="photo-footer-title">Cost-Benefit Modeling of Interactive Visual Machine Learning Systems</span><a href="https://vader.lab.asu.edu/docs/publications/pdf/2026/IVML_paper.pdf" target="_blank" rel="noopener noreferrer" aria-label="Read the paper PDF"><img data-image="paper-qr" width="72" height="72" alt="QR code for the paper PDF"/></a></footer><template class="speaker-notes"><p>Building an interactive tool takes work. The analyst has to learn it, explore results, and adapt when the model changes.</p><p class="reveal-cue" data-click="1">[CLICK 1] Reveal other investment routes.</p><p>Could better data, a different model, or automation offer more value? We can also combine these investments.</p><p class="reveal-cue" data-click="2">[CLICK 2] Reveal the decision question.</p><p>Which investment gives us more value for the effort? That's the comparison we'll make.</p><p class="notes-reference"><strong>Reference only:</strong> Paper Sec. 4.1, especially Eq. 11: perceptual and interaction effort (C_P, C_E), plus re-alignment after model changes and update delays (C_R). Initial interface learning is an adoption cost made explicit here; the paper does not separately parameterize a learning curve. Expertise variation remains a limitation in Sec. 6.</p></template></section>
+<div class="anchor-band question-band" data-reveal="2">Is adding interaction worth more than improving the data or model?</div></div><footer class="photo-footer" aria-label="Paper reference"><nav class="talk-roadmap" aria-label="Talk progress"><ol><li aria-current="step"><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><circle cx="30" cy="32" r="22"/><circle cx="30" cy="32" r="11"/><path d="M30 32 52 10m-12 0h12v12"/></svg><span>Change</span></li><li><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M12 12h40v42H12zM22 24h20M22 34h8m8 0h4M22 44h8m8 0h4"/></svg><span>Count</span></li><li><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M10 12v42h46M16 45l36-26M16 22l36 20"/><path d="M34 16v38" stroke-width="1.25" stroke-dasharray="3 3"/><circle cx="34" cy="32" r="4" fill="currentColor"/></svg><span>Decide</span></li></ol></nav><span class="photo-footer-title">Cost-Benefit Modeling of Interactive Visual Machine Learning Systems</span><a href="https://vader.lab.asu.edu/docs/publications/pdf/2026/IVML_paper.pdf" target="_blank" rel="noopener noreferrer" aria-label="Read the paper PDF"><img data-image="paper-qr" width="72" height="72" alt="QR code for the paper PDF"/></a></footer><template class="speaker-notes"><p>Building an interactive tool takes work. The analyst has to learn it, explore results, and adapt when the model changes.</p><p class="reveal-cue" data-click="1">[CLICK 1] Reveal vs. and other investment routes.</p><p>Could better data, a different model, or automation offer more value? We can also combine these investments.</p><p class="reveal-cue" data-click="2">[CLICK 2] Reveal the decision question.</p><p>Which investment gives us more value for the effort? That's the comparison we'll make.</p><p class="notes-reference"><strong>Reference only:</strong> Paper Sec. 4.1, especially Eq. 11: perceptual and interaction effort (C_P, C_E), plus re-alignment after model changes and update delays (C_R). Initial interface learning is an adoption cost made explicit here; the paper does not separately parameterize a learning curve. Expertise variation remains a limitation in Sec. 6.</p></template></section>
         <!-- SLIDE 03: Put interaction where it creates value (and then stop) -->
         <section class="slide-section main-slide talk-slide decision-slide framework-slide hidden slide-animate flex-1 flex flex-col " id="slide-3" data-title="3. Put interaction where it creates value (and then stop)" data-budget="35" data-talk-section="intervention"><header class="talk-top"><div><p class="talk-kicker">Our contribution</p><h2 class="talk-heading">Put interaction where it creates value <em data-reveal="1">(and then stop)</em></h2></div><span class="talk-counter">03 / 14</span></header><div class="talk-body"><div class="anchor-three route-anchors">
 <article class="route-anchor"><span class="anchor-number">01</span><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><circle cx="30" cy="32" r="22"/><circle cx="30" cy="32" r="11"/><path d="M30 32 52 10m-12 0h12v12"/></svg><h3>Change</h3><p class="anchor-copy">Data, model,<br>or understanding?</p></article>
@@ -1054,10 +1056,10 @@
               <div class="anchor-panel ledger-anchor anchor-cost">
                 <h3>Effort</h3>
                 <div class="ledger-items">
-                <div class="ledger-anchor-row"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="18"/><path d="M24 12v13l9 5"/></svg><p class="anchor-copy">Correct + explore</p></div>
+                <div class="ledger-anchor-row"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="18"/><path d="M24 12v13l9 5"/></svg><p class="anchor-copy">Correct, explore</p></div>
                 <div class="ledger-anchor-row"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="12" y="12" width="24" height="24" rx="3"/><path d="M18 4v8M30 4v8M18 36v8M30 36v8M4 18h8M4 30h8M36 18h8M36 30h8"/></svg><p class="anchor-copy">Training x update count</p></div>
-                <div class="ledger-anchor-row"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M38 16a16 16 0 1 0 1 17M38 5v12H26"/></svg><p class="anchor-copy">Review + resume</p></div>
-                <div class="ledger-anchor-row"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M7 40V16l17-9 17 9v24H7zM17 40V26h14v14M17 17h14"/></svg><p class="anchor-copy">Build + adopt + maintain</p></div>
+                <div class="ledger-anchor-row"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M38 16a16 16 0 1 0 1 17M38 5v12H26"/></svg><p class="anchor-copy">Review, resume</p></div>
+                <div class="ledger-anchor-row"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M7 40V16l17-9 17 9v24H7zM17 40V26h14v14M17 17h14"/></svg><p class="anchor-copy">Build, adopt, maintain</p></div>
                 </div>
               </div>
               <div class="anchor-panel ledger-anchor anchor-good" data-reveal="1">
@@ -1070,15 +1072,15 @@
                 </div>
               </div>
             </div>
-            <div class="anchor-band" data-reveal="2"><p class="anchor-copy"><strong>Net value = benefits - costs</strong></p><p class="anchor-note">Over a stated period. Measure inputs; expose assumptions.</p></div>
+            <div class="anchor-band" data-reveal="2"><p class="anchor-copy"><strong>Net value = benefits - costs</strong></p><p class="anchor-note">Count costs and benefits over the same period.</p></div>
           </div>
 
           <footer class="photo-footer" aria-label="Paper reference"><nav class="talk-roadmap" aria-label="Talk progress"><ol><li><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><circle cx="30" cy="32" r="22"/><circle cx="30" cy="32" r="11"/><path d="M30 32 52 10m-12 0h12v12"/></svg><span>Change</span></li><li aria-current="step"><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M12 12h40v42H12zM22 24h20M22 34h8m8 0h4M22 44h8m8 0h4"/></svg><span>Count</span></li><li><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M10 12v42h46M16 45l36-26M16 22l36 20"/><path d="M34 16v38" stroke-width="1.25" stroke-dasharray="3 3"/><circle cx="34" cy="32" r="4" fill="currentColor"/></svg><span>Decide</span></li></ol></nav><span class="photo-footer-title">Cost-Benefit Modeling of Interactive Visual Machine Learning Systems</span><a href="https://vader.lab.asu.edu/docs/publications/pdf/2026/IVML_paper.pdf" target="_blank" rel="noopener noreferrer" aria-label="Read the paper PDF"><img data-image="paper-qr" width="72" height="72" alt="QR code for the paper PDF"/></a></footer><template class="speaker-notes">
             <p>All the effort means more than session time. On the effort side, we start with correction and exploration. Updates can add training costs, time to review changed results, and time to resume work. We also include building, adopting, and maintaining the tool.</p>
             <p class="reveal-cue" data-click="1">[CLICK 1] Reveal the value side.</p>
-            <p>On the value side, better predictions can improve the task, and less recurring work can save labor. Knowledge can help us make decisions and prevent costly failures. These outcomes are rarely measured, so we have to estimate their value, even roughly.</p>
+            <p>On the value side, better predictions can improve the task, and less recurring work can save labor. Avoiding failures can prevent costly harm. Useful knowledge can support better decisions. Where these benefits are unmeasured, we need explicit estimates of their value.</p>
             <p class="reveal-cue" data-click="2">[CLICK 2] Reveal net value and the accounting period.</p>
-            <p>We subtract those costs from the benefits over a stated period. We measure the inputs we can and make the remaining assumptions explicit.</p>
+            <p>Choose how long we expect to use the tool, so we can compare the cost of building and adopting it with benefits that accumulate through repeated use. Measure analyst time and compute use, then state the prices used to convert them to costs and how we estimate the benefits. Subtract costs from benefits over that same time horizon.</p>
             <p class="notes-reference"><strong>Reference only:</strong> Paper Sec. 4, Eqs. 7-16. Count each outcome's value once. Knowledge may also have intrinsic value; do not add a second credit for knowledge already valued through another pathway.</p>
           </template>
         </section>
@@ -1088,24 +1090,24 @@
           <div class="talk-body">
             <div class="anchor-flow update-anchor">
               <div class="anchor-step anchor-accent"><p class="anchor-number">01. Correct</p><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M13 45l-3 10 10-3 31-31-7-7-31 31zM38 20l7 7M10 55h43"/></svg><strong>Analyst time</strong><p class="anchor-note">Correct segmentation labels</p></div>
-              <div class="anchor-step anchor-accent" data-reveal="1"><p class="anchor-number">02. Train</p><p class="anchor-hero metric-with-unit">23 <span class="anchor-copy metric-unit">s</span></p><p class="anchor-copy">Reported latency</p><p class="anchor-note">~$0.02 compute<br>Assumed $3/GPU-hour</p></div>
+              <div class="anchor-step anchor-accent" data-reveal="1"><p class="anchor-number">02. Train</p><p class="anchor-hero metric-with-unit">23 <span class="anchor-copy metric-unit">s</span></p><p class="anchor-copy">Reported training time</p><p class="anchor-note">~$0.02 compute<br>Assumed $3/GPU-hour</p></div>
               <div class="anchor-step anchor-cost" data-reveal="2"><p class="anchor-number">03. Review + resume</p><p class="anchor-hero">$3</p><p class="anchor-copy">Per update</p><p class="anchor-note">Assumed 1.5 min at $2/min</p></div>
             </div>
             <div class="update-total" data-reveal="3" aria-label="3 updates = approximately $0.06 compute + $9 recovery"><strong>3 updates</strong><p class="update-compute"><b>~$0.06</b> compute</p><p class="update-recovery"><b>$9</b> recovery</p></div>
-            <div class="update-question" data-reveal="4"><p class="anchor-copy"><strong>How much delay is worth it?</strong></p><p class="anchor-note">Depends on benefit and recovery cost. No universal limit.</p></div>
+            <div class="update-question" data-reveal="4"><p class="anchor-copy"><strong>Count review and recovery with every update.</strong></p><p class="anchor-note">Here, human effort costs more than compute.</p></div>
           </div>
 
           <footer class="photo-footer" aria-label="Paper reference"><nav class="talk-roadmap" aria-label="Talk progress"><ol><li><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><circle cx="30" cy="32" r="22"/><circle cx="30" cy="32" r="11"/><path d="M30 32 52 10m-12 0h12v12"/></svg><span>Change</span></li><li aria-current="step"><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M12 12h40v42H12zM22 24h20M22 34h8m8 0h4M22 44h8m8 0h4"/></svg><span>Count</span></li><li><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M10 12v42h46M16 45l36-26M16 22l36 20"/><path d="M34 16v38" stroke-width="1.25" stroke-dasharray="3 3"/><circle cx="34" cy="32" r="4" fill="currentColor"/></svg><span>Decide</span></li></ol></nav><span class="photo-footer-title">Cost-Benefit Modeling of Interactive Visual Machine Learning Systems</span><a href="https://vader.lab.asu.edu/docs/publications/pdf/2026/IVML_paper.pdf" target="_blank" rel="noopener noreferrer" aria-label="Read the paper PDF"><img data-image="paper-qr" width="72" height="72" alt="QR code for the paper PDF"/></a></footer><template class="speaker-notes">
             <p>We start with the time spent correcting labels.</p>
-            <p class="reveal-cue" data-click="1">[CLICK 1] Reveal training latency and compute cost.</p>
+            <p class="reveal-cue" data-click="1">[CLICK 1] Reveal training time and compute cost.</p>
             <p>Training takes twenty-three seconds in MitoVis. At our assumed GPU price, that's about two cents.</p>
             <p class="reveal-cue" data-click="2">[CLICK 2] Reveal review and resumption cost.</p>
             <p>Suppose reviewing predictions and resuming work takes ninety seconds. At two dollars a minute, that's three dollars.</p>
             <p class="reveal-cue" data-click="3">[CLICK 3] Reveal the repeated overhead.</p>
             <p>Three updates therefore cost about six cents for computing and nine dollars for recovery, besides the correction time.</p>
-            <p class="reveal-cue" data-click="4">[CLICK 4] Reveal the delay decision.</p>
-            <p>How much delay is worth it? That depends on the benefit and recovery cost, so there's no universal limit.</p>
-            <p class="notes-reference"><strong>Reference only:</strong> Paper Eqs. 10-11 and Sec. 5.1. Rounded update-only costs exclude initial processing. Recovery and prices are assumptions. This is an application of the accounting framework, not a validated numerical latency bound.</p>
+            <p class="reveal-cue" data-click="4">[CLICK 4] Reveal the accounting takeaway.</p>
+            <p>Under these assumptions, reviewing predictions and getting back to work costs far more than compute. Each update adds that human effort, so cheaper training alone may do little to reduce the total. Count review and recovery with every update.</p>
+            <p class="notes-reference"><strong>Reference only:</strong> Paper Eqs. 10-11 and Sec. 5.1. Rounded update-only costs exclude initial processing. Recovery and prices are assumptions. This illustrates update costs under the stated assumptions.</p>
           </template>
         </section>
         <!-- SLIDE 09: What must one accuracy point be worth? -->
@@ -1145,7 +1147,7 @@
           <header class="talk-top"><div><p class="talk-kicker">Comparing V with hypothetical alternative A</p><h2 class="talk-heading">Covering costs is only the first test</h2></div><span class="talk-counter">10 / 14</span></header>
           <div class="talk-body">
 <div class="decision-chart-layout">
-              <figure><svg class="story-figure decision-chart" viewBox="0 0 980 520" role="img" aria-label="Illustrative comparison: MitoVis (V) costs 2040 dollars more than hypothetical A for two additional percentage points of classifier accuracy. One percentage point means, for example, 80 to 81 percent accuracy. U is the dollar value of one percentage point of accuracy for this workload. V minus A net value equals two times U minus 2040 dollars, with a tie at 1020 dollars per percentage point of accuracy. Below that value A has higher net value; above it V has higher net value. Manual work remains another option.">
+              <figure><svg class="story-figure decision-chart" viewBox="0 0 980 520" role="img" aria-label="Illustrative comparison: MitoVis (V) costs 2040 dollars more than hypothetical A for two additional percentage points of classifier accuracy. One percentage point means, for example, 80 to 81 percent accuracy. U is the dollar value of one percentage point of accuracy for this workload. V minus A net value equals two times U minus 2040 dollars, with a tie at 1020 dollars per percentage point of accuracy. Below that value A has higher net value; above it V has higher net value. The comparison assumes equal manual savings and no other cost differences.">
                 <text x="130" y="40" font-size="29" font-weight="700">V - A net value ($)</text>
                 <rect data-reveal="2" class="story-cost-panel" x="130" y="80" width="377.4" height="350" rx="10"/>
                 <rect data-reveal="2" class="story-benefit-panel" x="507.4" y="80" width="362.6" height="350" rx="10"/>
@@ -1169,13 +1171,13 @@
                 <div class="anchor-divider" data-reveal="2"><p class="anchor-hero anchor-accent">$1,020</p><p class="anchor-label">per point: V and A tie</p></div>
               </div>
             </div>
-            <p class="anchor-note">Illustrative comparison. Same manual credit and output target; other added costs = 0. No measured ranking. Manual work remains an option.</p>
+            <p class="anchor-note">Illustrative comparison: equal manual savings; no other cost differences.</p>
           </div>
 
           <footer class="photo-footer" aria-label="Paper reference"><nav class="talk-roadmap" aria-label="Talk progress"><ol><li><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><circle cx="30" cy="32" r="22"/><circle cx="30" cy="32" r="11"/><path d="M30 32 52 10m-12 0h12v12"/></svg><span>Change</span></li><li><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M12 12h40v42H12zM22 24h20M22 34h8m8 0h4M22 44h8m8 0h4"/></svg><span>Count</span></li><li aria-current="step"><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M10 12v42h46M16 45l36-26M16 22l36 20"/><path d="M34 16v38" stroke-width="1.25" stroke-dasharray="3 3"/><circle cx="34" cy="32" r="4" fill="currentColor"/></svg><span>Decide</span></li></ol></nav><span class="photo-footer-title">Cost-Benefit Modeling of Interactive Visual Machine Learning Systems</span><a href="https://vader.lab.asu.edu/docs/publications/pdf/2026/IVML_paper.pdf" target="_blank" rel="noopener noreferrer" aria-label="Read the paper PDF"><img data-image="paper-qr" width="72" height="72" alt="QR code for the paper PDF"/></a></footer><template class="speaker-notes">
             <p>Covering costs still leaves us with a choice. Here, V is MitoVis, and A is a hypothetical editor with a separate training script. Both learn from corrections. V costs two thousand forty dollars more for two extra accuracy points.</p>
             <p class="reveal-cue" data-click="1">[CLICK 1] Reveal incremental net value.</p>
-            <p>We value the extra accuracy and subtract the extra cost. Their equal savings in manual work cancel out.</p>
+            <p>We value the extra accuracy and subtract the extra cost. Their equal savings in manual work cancel out; we assume no other cost differences.</p>
             <p class="reveal-cue" data-click="2">[CLICK 2] Reveal the tie and which workflow leads.</p>
             <p>They tie at one thousand twenty dollars per point. Below that, A offers more net value; above it, MitoVis does. So covering costs alone doesn't settle which tool to choose.</p>
             <p class="notes-reference"><strong>Reference only:</strong> A inputs and full arithmetic: backup 01. This teaching comparison extends the paper scenario; it is not a measured system ranking. Other adoption and maintenance differences are assumed zero and need measurement.</p>
@@ -2101,7 +2103,7 @@
               <article class="decision-panel">
                 <h3>Cognitive re-alignment</h3>
                 <div class="decision-arithmetic math-serif"><p>C<sub>R,j</sub> = C<sub>eval</sub>(M<sub>j</sub>, M<sub>j-1</sub>)</p><p>+ P<sub>resume</sub>(t<sub>train,j</sub>; tau)</p></div>
-                <div class="framework-target-detail"><p>C<sub>eval</sub>: review changed outputs</p><p>P<sub>resume</sub>: resume after waiting</p><p>Resumption effort rises beyond latency tau.</p></div>
+                <div class="framework-target-detail"><p>C<sub>eval</sub>: review changed outputs</p><p>P<sub>resume</sub>: resume after waiting</p><p>Resumption effort rises beyond delay threshold tau.</p></div>
               </article>
             </div>
             <div class="framework-feedback"><strong class="math-serif">Update costs = Sum<sub>j=1</sub><sup>N<sub>iter</sub></sup> (C<sub>M,j</sub> + C<sub>R,j</sub>)</strong><p>N<sub>iter</sub>: interaction-triggered update count; j: update index.</p></div>
