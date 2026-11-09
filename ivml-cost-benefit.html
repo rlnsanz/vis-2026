@@ -3,11 +3,11 @@
   EDITING GUIDE -- everything stays in this file; no build step or network is needed.
   1. STYLES: global typography, animation settings, and slide overview layout.
   2. SLIDES: "SLIDE 01"-"SLIDE 14" form the 10-minute talk. "BACKUP 01"-"BACKUP 23" hold detail.
-     The main story follows one stakeholder choosing between workflows.
-     The overview returns at section changes; footers track the current section.
+     The main story introduces the framework, then applies it to learning and fixed-model inspection.
+     The contribution overview sets three questions; footers track their progression.
      Arrow navigation stops at the closing slide; choose backup slides from Grid.
      data-backup-section groups backups under topic headers and quick links in Grid.
-     Each main slide's data-budget is its target duration in seconds (12:00 draft total).
+     Each main slide's data-budget is its target duration in seconds (10:00 total).
      Each section's data-title labels the grid/presenter; its speaker-notes template
      supplies the notes drawer and presenter. Use <p> for separate note paragraphs.
      Overview notes follow the visible questions. Explain workflow details and
@@ -622,6 +622,50 @@
       .dark .decision-title-footer, .dark .decision-facts, .dark .decision-metrics,
       .dark .decision-table th, .dark .decision-table td, .dark .decision-evidence > div { border-color: #475569; }
 
+
+      /* Framework-first main talk: simplified loops and explicit accounting. */
+      .framework-slide .talk-body { gap: 24px; }
+      .framework-route { list-style: none; padding: 0; margin: 0; }
+      .framework-route li { display: flex; align-items: center; gap: 28px; padding: 22px 0; border-bottom: 1px solid #cbd5e1; }
+      .framework-route li:last-child { border: 0; }
+      .framework-route li > span { font-size: 32px; font-weight: 750; color: #4338ca; }
+      .framework-route h3 { margin-bottom: 8px; }
+      .framework-route p { font-size: 29px; line-height: 1.35; color: var(--slide-copy); }
+      .framework-loop { display: flex; flex-direction: column; gap: 32px; }
+      .framework-flow { display: grid; align-items: center; gap: 14px; margin: 12px 0 18px; }
+      .foundation-flow { grid-template-columns: 1fr 55px 1fr 55px 1fr; }
+      .learning-flow { grid-template-columns: 1.1fr 40px 1.05fr 40px .95fr 40px 1.1fr 40px .9fr; }
+      .framework-flow strong { display: flex; align-items: center; justify-content: center; min-height: 100px; padding: 16px 10px; border: 2px solid #94a3b8; border-radius: 12px; font-size: 29px; line-height: 1.25; text-align: center; }
+      .framework-flow > span { font-size: 28px; text-align: center; }
+      .learning-flow strong:nth-child(-n+5) { border-color: #6366f1; background: #eef2ff; }
+      .framework-feedback { border-left: 5px solid #6366f1; padding: 16px 24px; background: #eef2ff; border-radius: 0 10px 10px 0; }
+      .framework-feedback > strong { display: block; font-size: 32px; line-height: 1.3; margin-bottom: 10px; }
+      .framework-feedback p { font-size: 28px; line-height: 1.4; color: var(--slide-copy); }
+      .framework-targets .decision-panel { padding: 22px; }
+      .framework-targets .decision-label { font-size: 25px; }
+      .framework-targets h3 { font-size: 32px; }
+      .framework-targets p { font-size: 28px; }
+      .framework-data { border-top-color: #2b70b7; }
+      .framework-model { border-top-color: #7043a0; }
+      .framework-target-detail { border-top: 1px solid #cbd5e1; margin-top: 24px; padding-top: 12px; }
+      .framework-target-detail > strong { display: block; font-size: 25px; margin: 12px 0 8px; }
+      .framework-ledger { gap: 50px; }
+      .framework-ledger > div:first-child { border-color: #e11d48; }
+      .framework-ledger > div:last-child { border-color: #059669; }
+      .framework-ledger ul { font-size: 29px; line-height: 1.45; }
+      .framework-ledger li { margin-bottom: 18px; }
+      .framework-ledger .decision-muted { font-size: 27px; margin-top: 18px; }
+      .framework-calculation p { font-size: 28px; line-height: 1.4; color: var(--slide-copy); }
+      .framework-slide .framework-assumption { font-size: 25px; line-height: 1.4; border-top: 1px solid #cbd5e1; padding-top: 16px; color: var(--slide-copy); }
+      .framework-slide .framework-panel-note { font-size: 26px; line-height: 1.35; margin-top: 22px; }
+      .framework-benefit-line { stroke: #047857; stroke-width: 5; fill: none; }
+      .framework-cost-line { stroke: #be123c; stroke-width: 5; fill: none; }
+      .dark .framework-route li, .dark .framework-target-detail, .dark .framework-assumption { border-color: #475569; }
+      .dark .framework-route li > span { color: #a5b4fc; }
+      .dark .learning-flow strong:nth-child(-n+5), .dark .framework-feedback { background: #24264a; }
+      .dark .framework-benefit-line { stroke: #6ee7b7; }
+      .dark .framework-cost-line { stroke: #fda4af; }
+
       /* Projection legibility for the technical backup slides. Slide units are
          measured on the 1600 x 900 canvas, before fitting it to the display. */
       .legacy-backup { font-size: 24px; line-height: 1.3; }
@@ -715,11 +759,11 @@
       <!-- 2. SLIDES -- each slide keeps its title, visible content, and notes together. -->
       <main class="w-full h-full flex-1 rounded-3xl shadow-2xl border border-slate-200/90 dark:border-slate-700/80 bg-[#f8fafc] dark:bg-[#131b2e] overflow-hidden flex flex-col justify-between relative" id="slideCanvas">
         <!-- SLIDE 01: Cost-Benefit Modeling of Interactive Visual Machine Learning Systems -->
-        <section class="slide-section talk-slide decision-slide slide-animate flex-1 flex flex-col decision-title" id="slide-1" data-title="1. Cost-Benefit Modeling of IVML Systems" data-budget="25">
+        <section class="slide-section talk-slide decision-slide slide-animate flex-1 flex flex-col decision-title" id="slide-1" data-title="1. Cost-Benefit Modeling of IVML Systems" data-budget="20">
           <header class="talk-top"><div><p class="talk-kicker">IEEE VIS 2026</p><h1 class="talk-heading"><span class="block">Cost-Benefit Modeling of</span> <span class="block">Interactive Visual</span> <span class="block">Machine Learning Systems</span></h1></div></header>
           <div class="talk-body">
             <div class="decision-opening">
-              <p class="decision-big">When does a new visualization earn its place?</p>
+              <p class="decision-big">Where is human interaction worth its cost?</p>
             </div>
             <div class="decision-title-footer">
               <div><p class="title-authors">Yixuan Wang, <strong>Rolando Garcia</strong>, Alex Endert, Ross Maciejewski</p>
@@ -727,193 +771,181 @@
               <div class="decision-logos"><div class="decision-asu-mark"><img data-image="asu-logo" alt="Arizona State University"/></div><img data-image="vis-logo" alt="IEEE VIS 2026"/></div>
             </div></div>
           <template class="speaker-notes">
-            <p>I&#x27;m Rolando Garcia, presenting joint work with Yixuan Wang, Alex Endert, and Ross Maciejewski. In interactive visual machine learning, people inspect results and give feedback through a visual interface.</p>
-            <p>Our question is whether a new visualization workflow creates enough additional value to justify choosing it over the alternatives.</p>
+            <p>I'm Rolando Garcia, presenting joint work with Yixuan Wang, Alex Endert, and Ross Maciejewski. Interactive visual machine learning lets people inspect results and guide learning. We ask where that human involvement is worth its cost.</p>
           </template>
         </section>
         <!-- SLIDE 02: Useful compared with what? -->
-        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-2" data-title="2. Useful compared with what?" data-budget="35">
-          <header class="talk-top"><div><p class="talk-kicker">The evaluation problem</p><h2 class="talk-heading">Useful compared with what?</h2></div><span class="talk-counter">02 / 14</span></header>
+        <section class="slide-section talk-slide decision-slide framework-slide hidden slide-animate flex-1 flex flex-col " id="slide-2" data-title="2. Useful compared with what?" data-budget="30" data-talk-section="intervention">
+          <header class="talk-top"><div><p class="talk-kicker">The design and evaluation problem</p><h2 class="talk-heading">Useful compared with what?</h2></div><span class="talk-counter">02 / 14</span></header>
           <div class="talk-body">
-            <div class="decision-two">
-              <article class="decision-panel"><p class="decision-label">The current workflow</p><h3>Does it help?</h3><p>Compare with manual work<br>or the previous workflow.</p></article>
-              <article class="decision-panel decision-highlight" data-reveal="1"><p class="decision-label">Credible alternatives</p><h3>What does it add?</h3><p>Compare with the strongest<br>practical alternatives.</p></article>
-            </div>
-            <p class="decision-takeaway" data-reveal="2">Beating a weak baseline leaves the real contribution uncertain.</p></div>
+<div class="decision-two">
+ <article class="decision-panel"><p class="decision-label">Interaction can help</p><h3>It also takes work.</h3><p>Build the interface.<br>Spend analyst time.<br>Retrain and review.</p></article>
+ <article class="decision-panel decision-highlight" data-reveal="1"><p class="decision-label">Credible alternatives</p><h3>Where should effort go?</h3><p>Improve the data.<br>Revise the model or training.<br>Use an automated workflow.</p></article>
+</div><p class="decision-takeaway" data-reveal="2">Compare the value added and the effort required.</p></div>
+          <nav class="talk-roadmap" aria-label="Talk progress"><ol><li aria-current="step">Identify the intervention</li><li>Account for costs and benefits</li><li>Make the decision</li></ol></nav>
           <template class="speaker-notes">
-            <p>A new system can look impressive when the previous workflow had no suitable tool. That tells us it helps.</p>
-            <p class="reveal-cue" data-click="1">[CLICK 1] Reveal credible alternatives: "What does it add?"</p>
-            <p>But would another available approach help just as much, at lower cost?</p>
-            <p class="reveal-cue" data-click="2">[CLICK 2] Reveal the weak-baseline takeaway.</p>
-            <p>The challenge is to take that comparison seriously. Put yourself in the position of someone choosing a tool: what does this proposal add over the strongest practical alternatives? That&#x27;s the decision we want the cost model to support.</p>
+            <p>Interaction helps, but someone builds the interface, uses it, and reviews the results after training.</p>
+            <p class="reveal-cue" data-click="1">[CLICK 1] Reveal the alternatives.</p>
+            <p>Could improving the data, revising the model or training, or using an automated workflow deliver more value for that effort?</p>
+            <p class="reveal-cue" data-click="2">[CLICK 2] Reveal the comparison question.</p>
+            <p>The design question is where the next investment pays off.</p>
           </template>
         </section>
-        <!-- SLIDE 03: When is a new visualization worth using? -->
-        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col" id="slide-3" data-title="3. Compare workflows - Overview" data-budget="60" data-overview-step="1">
-          <header class="talk-top"><div><p class="talk-kicker">Talk overview</p><h2 class="talk-heading">When is a new visualization worth using?</h2></div><span class="talk-counter">03 / 14</span></header>
+        <!-- SLIDE 03: Our contribution: a decision framework -->
+        <section class="slide-section talk-slide decision-slide framework-slide hidden slide-animate flex-1 flex flex-col " id="slide-3" data-title="3. Our contribution: a decision framework" data-budget="35" data-talk-section="intervention">
+          <header class="talk-top"><div><p class="talk-kicker">From the design question to the model</p><h2 class="talk-heading">Our contribution: a decision framework</h2></div><span class="talk-counter">03 / 14</span></header>
           <div class="talk-body">
-            <div class="talk-route-layout">
-              <p class="route-intro">We'll work through one lab's choice of tools.</p>
-              <ol class="talk-route" aria-label="Talk overview">
-                <li data-route-state="current" aria-current="step"><span class="route-marker" aria-hidden="true">01</span><h3>What does the new tool add over the alternatives?</h3></li>
-                <li data-route-state="upcoming"><span class="route-marker" aria-hidden="true">02</span><h3>Is the improvement worth the time and money?</h3></li>
-                <li data-route-state="upcoming"><span class="route-marker" aria-hidden="true">03</span><h3>What do we still need to measure?</h3></li>
-              </ol>
-            </div>
-          </div>
+<p class="decision-lead">Extend Van Wijk's economic model of visualization to include machine learning.</p>
+<ol class="framework-route">
+ <li><span>01</span><div><h3>What does interaction change?</h3><p>Data, model, or understanding.</p></div></li>
+ <li><span>02</span><div><h3>Which costs and benefits follow?</h3><p>Measurable effort and application-specific value.</p></div></li>
+ <li><span>03</span><div><h3>When is that interaction worth it?</h3><p>Break-even, affordable delay, and when to stop.</p></div></li>
+</ol></div>
+          <nav class="talk-roadmap" aria-label="Talk progress"><ol><li aria-current="step">Identify the intervention</li><li>Account for costs and benefits</li><li>Make the decision</li></ol></nav>
           <template class="speaker-notes">
-            <p>We'll work through one lab's choice of tools using these three questions.</p>
-            <p>First, what does the new tool add over the alternatives? We need a comparison, because showing that a tool helps does not tell us whether the lab should choose it over another tool.</p>
-            <p>Second, is the improvement worth the time and money? Does it offset the time spent learning and using a new tool, the effort of making sense of changing results, and the cost of building and running it?</p>
-            <p>Third, what do we still need to measure? We'll ask which parts of that decision are supported by evidence and which still depend on assumptions. That tells us what measurements would help the lab choose. We'll begin with the first question: what does the new tool add?</p>
+            <p>Our contribution extends Van Wijk's economic model of visualization with machine learning.</p>
+            <p>First, what does interaction change? That determines which costs and benefits we need to count. Second, how do we measure and value those changes? Third, when do those benefits justify the effort, the delay, and another interaction?</p>
+            <p>We will follow those questions through a learning workflow and a fixed-model audit.</p>
+            <p class="notes-reference"><strong>Reference only:</strong> Paper Secs. 3-5. The framework is structured accounting with conditional examples; its predictive accuracy is not established.</p>
           </template>
         </section>
-        <!-- SLIDE 04: Which workflow should the lab invest in? -->
-        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-4" data-title="4. Which workflow should the lab invest in?" data-budget="55" data-talk-section="compare">
-          <header class="talk-top"><div><p class="talk-kicker">Running example - MitoVis</p><h2 class="talk-heading">Which workflow should the lab invest in?</h2></div><span class="talk-counter">04 / 14</span></header>
+        <!-- SLIDE 04: Learning changes the visualization loop -->
+        <section class="slide-section talk-slide decision-slide framework-slide hidden slide-animate flex-1 flex flex-col " id="slide-4" data-title="4. Learning changes the visualization loop" data-budget="50" data-talk-section="intervention">
+          <header class="talk-top"><div><p class="talk-kicker">Extending Van Wijk (2005)</p><h2 class="talk-heading">Learning changes the visualization loop</h2></div><span class="talk-counter">04 / 14</span></header>
           <div class="talk-body">
-            <div class="decision-case">
-              <figure><div class="decision-interface-frame"><img class="decision-interface" data-image="mitovis-interface" alt="Detail of the MitoVis image viewer showing neuronal predictions, correction tools, and the fine-tuning control."/></div><figcaption>MitoVis: image viewer and correction controls (detail).</figcaption></figure>
-              <div><p class="decision-lead">You run a lab with limited expert time.</p><p>Proofread segmentation masks and improve the model used in later analysis.</p><p class="decision-question" data-reveal="3">Which is better for this lab: A or V?</p></div>
-            </div>
-            <div class="decision-options">
-              <div data-reveal="1"><strong>Manual workflow</strong><span>Annotate masks and neurite labels by hand.</span></div>
-              <div data-reveal="2"><strong>A - Image editor + script</strong><span>Correct predictions -> save labels -> train separately -> reload.</span></div>
-              <div data-reveal="3"><strong>V - MitoVis workflow</strong><span>Suggest similar branches; correct labels and retrain.</span></div>
-            </div></div>
+<div class="framework-loop">
+ <div><p class="decision-label">Foundation: visualization creates knowledge at a cost</p>
+ <div class="framework-flow foundation-flow"><strong>Data</strong><span>-&gt;</span><strong>Visualization</strong><span>-&gt;</span><strong>Knowledge</strong></div>
+ <p class="decision-muted">Knowledge -&gt; interaction -&gt; changes to the view</p></div>
+ <div data-reveal="1"><p class="decision-label">Our extension: add learning, model state, and derived outputs</p>
+ <div class="framework-flow learning-flow"><strong>Data +<br>model state</strong><span>-&gt;</span><strong>Learning /<br>inference</strong><span>-&gt;</span><strong>Predictions</strong><span>-&gt;</span><strong>Visualization</strong><span>-&gt;</span><strong>Knowledge</strong></div></div>
+ <div class="framework-feedback" data-reveal="2"><strong>Interaction can change the data, the model, or the view.</strong><p>Learning updates add computation and a fresh interpretation of results.</p></div>
+</div></div>
+          <nav class="talk-roadmap" aria-label="Talk progress"><ol><li aria-current="step">Identify the intervention</li><li>Account for costs and benefits</li><li>Make the decision</li></ol></nav>
           <template class="speaker-notes">
-            <p>You run a lab studying neuronal mitochondria, with limited expert time.</p>
-            <p class="reveal-cue" data-click="1">[CLICK 1] Reveal the manual reference.</p>
-            <p>Manual work means drawing and labeling structures by hand.</p>
-            <p class="reveal-cue" data-click="2">[CLICK 2] Reveal proposed alternative A: an image editor and a separate training script.</p>
-            <p>For A, think of napari: a scientific image viewer with editable label layers over microscopy images. Experts fix boundaries or relabel whole regions.</p>
-            <p>The model supplies the initial annotations. Corrected neurite labels feed a separate script to fine-tune the same classifier; experts then reload predictions. The editor can also be used manually. A is ML-assisted because predictions and corrections form a learning loop.</p>
-            <p class="reveal-cue" data-click="3">[CLICK 3] Reveal workflow V: MitoVis.</p>
-            <p>After you correct a label, MitoVis suggests similar neuron branches to inspect. You can correct their labels, retrain the classifier, and review new predictions in one interface.</p>
-            <p>So which is better for this lab, A or V? A cost model is a good start for making each workflow's costs and benefits explicit.</p>
-            <p class="notes-reference"><strong>Reference only:</strong> Sources: paper Sec. 5.1; <a href="https://ieeevis.b-cdn.net/vis_2022/posters/v-vis-posters-1021-summary.pdf">MitoVis visual guides</a>.</p>
+            <p>Van Wijk gives us the starting point: visualization turns data into knowledge at a cost. That knowledge guides interaction, which changes the view.</p>
+            <p class="reveal-cue" data-click="1">[CLICK 1] Reveal learning, model state, and predictions.</p>
+            <p>We make machine learning explicit. Data and model state feed a learning process, producing predictions or other outputs for visualization. The model can change during analysis.</p>
+            <p class="reveal-cue" data-click="2">[CLICK 2] Reveal the feedback targets and added costs.</p>
+            <p>Interaction can now change the data, the model, or just the view. An update can require computation and a fresh interpretation of the results. Those feedback paths determine the economic terms we need.</p>
+            <p class="notes-reference"><strong>Reference only:</strong> Simplified conceptual rendering of paper Fig. 1 and Sec. 3.1. Complete state/process notation and original diagram remain in backups 06-08.</p>
           </template>
         </section>
-        <!-- SLIDE 05: We can reason with incomplete evidence. -->
-        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-5" data-title="5. We can reason with incomplete evidence." data-budget="45" data-talk-section="compare">
-          <header class="talk-top"><div><p class="talk-kicker">Why a cost model?</p><h2 class="talk-heading">We can reason with incomplete evidence.</h2></div><span class="talk-counter">05 / 14</span></header>
+        <!-- SLIDE 05: What interaction changes determines the trade-off -->
+        <section class="slide-section talk-slide decision-slide framework-slide hidden slide-animate flex-1 flex flex-col " id="slide-5" data-title="5. What interaction changes determines the trade-off" data-budget="50" data-talk-section="intervention">
+          <header class="talk-top"><div><p class="talk-kicker">Three intervention targets</p><h2 class="talk-heading">What interaction changes determines the trade-off</h2></div><span class="talk-counter">05 / 14</span></header>
           <div class="talk-body">
-            <div class="comparison-inputs">
-              <div><p class="decision-label">Available evidence</p><p>Task time and model outcomes.</p></div>
-              <div data-reveal="1"><p class="decision-label">Explicit assumptions</p><p>Unmeasured costs and plausible values.</p></div>
-            </div>
-            <div class="comparison-question" data-reveal="2">
-              <p class="decision-label">A: proposed editor + script / V: MitoVis</p>
-              <h3>When would V be worth more than A?</h3>
-              <p>Test the assumptions that change the choice.</p>
-            </div></div>
-          <nav class="talk-roadmap" aria-label="Talk progress"><ol><li aria-current="step">Compare workflows</li><li>Model value</li><li>Test the contribution</li></ol></nav>
+<div class="decision-three framework-targets">
+ <article class="decision-panel framework-data"><p class="decision-label">01 - Data iteration</p><h3>Improve the inputs</h3><p>Correct labels, features,<br>or sample weights.</p><div class="framework-target-detail"><strong>Effort</strong><p>Correction + any training / review</p><strong>Value</strong><p>Better predictions; less downstream work</p></div></article>
+ <article class="decision-panel framework-model" data-reveal="1"><p class="decision-label">02 - Model / specification</p><h3>Steer learning</h3><p>Adjust parameters,<br>constraints, or training.</p><div class="framework-target-detail"><strong>Effort</strong><p>Steering + any optimization / review</p><strong>Value</strong><p>Better predictions; less downstream work</p></div></article>
+ <article class="decision-panel" data-reveal="2"><p class="decision-label">03 - Understanding</p><h3>Inspect a fixed model</h3><p>Explore predictions,<br>uncertainty, or failures.</p><div class="framework-target-detail"><strong>Effort</strong><p>Exploration + interpretation</p><strong>Value</strong><p>Knowledge; failure prevention</p></div></article>
+</div><p class="decision-muted" data-reveal="2">One system can combine targets. A fixed-model inspection adds no retraining within that loop.</p></div>
+          <nav class="talk-roadmap" aria-label="Talk progress"><ol><li aria-current="step">Identify the intervention</li><li>Account for costs and benefits</li><li>Make the decision</li></ol></nav>
           <template class="speaker-notes">
-            <p>A complete comparison takes engineering and expert time. We can begin with available evidence: measured task times and model outcomes, logs, or prior studies.</p>
-            <p class="reveal-cue" data-click="1">[CLICK 1] Reveal explicit assumptions alongside available evidence.</p>
-            <p>Where evidence is missing, state estimates and plausible ranges. The paper lets us use the model terms that matter for the decision.</p>
-            <p class="reveal-cue" data-click="2">[CLICK 2] Reveal the conditional comparison and the measurement priority.</p>
-            <p>When would MitoVis be preferrable to the alternatives? If plausible assumptions reverse the choice, that points to evidence worth gathering. These are conditional answers; an empirical comparison is still needed to establish an advantage.</p>
-            <p class="notes-reference"><strong>Reference only:</strong> Paper Sec. 5, pp. 5-6, instantiates selected terms using reported quantities and proxies. Sec. 6, p. 9, supports modular use of measurements, literature baselines, system logs, and sensitivity ranges under realistic project constraints. It explicitly complements empirical evaluation and does not establish that end-to-end comparisons are prohibitive. Prioritizing evidence that could change the choice is this talk's inference from that framework. A is a proposed comparator with invented teaching inputs, not a measured head-to-head result. The model's predictive accuracy remains future work.</p>
+            <p>For data iteration, people correct labels, features, or weights. Correction takes effort; training on those changes adds computation and review. The benefit can be better predictions or less downstream work.</p>
+            <p class="reveal-cue" data-click="1">[CLICK 1] Reveal model or specification iteration.</p>
+            <p>For model iteration, people change parameters, constraints, or training choices. Here the effort goes into steering and optimization, followed by review.</p>
+            <p class="reveal-cue" data-click="2">[CLICK 2] Reveal understanding a fixed model.</p>
+            <p>For understanding, people inspect predictions and failures while the model stays fixed. Value comes from knowledge and failure prevention. One system can combine these targets. We will first follow data correction into retraining.</p>
+            <p class="notes-reference"><strong>Reference only:</strong> Paper Secs. 3.2 and 4.3. Training and review terms apply when the interaction triggers an update.</p>
           </template>
         </section>
-        <!-- SLIDE 06: When is a new visualization worth using? -->
-        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col" id="slide-6" data-title="6. Model value - Overview" data-budget="50" data-overview-step="2">
-          <header class="talk-top"><div><p class="talk-kicker">Back to the overview - Step 2 of 3</p><h2 class="talk-heading">When is a new visualization worth using?</h2></div><span class="talk-counter">06 / 14</span></header>
+        <!-- SLIDE 06: Follow a correction through MitoVis -->
+        <section class="slide-section talk-slide decision-slide framework-slide hidden slide-animate flex-1 flex flex-col " id="slide-6" data-title="6. Follow a correction through MitoVis" data-budget="50" data-talk-section="intervention">
+          <header class="talk-top"><div><p class="talk-kicker">Worked example - data iteration and retraining</p><h2 class="talk-heading">Follow a correction through MitoVis</h2></div><span class="talk-counter">06 / 14</span></header>
           <div class="talk-body">
-            <div class="talk-route-layout">
-              <p class="route-intro">We've framed the choice. Now let's weigh the benefits and costs.</p>
-              <ol class="talk-route" aria-label="Talk overview">
-                <li data-route-state="complete"><span class="route-marker" aria-hidden="true">OK</span><h3><span class="sr-only">Completed: </span>What does the new tool add over the alternatives?</h3></li>
-                <li data-route-state="current" aria-current="step"><span class="route-marker" aria-hidden="true">02</span><h3>Is the improvement worth the time and money?</h3></li>
-                <li data-route-state="upcoming"><span class="route-marker" aria-hidden="true">03</span><h3>What do we still need to measure?</h3></li>
-              </ol>
-            </div>
-          </div>
+<div class="decision-case">
+ <figure><div class="decision-interface-frame"><img class="decision-interface" data-image="mitovis-interface" alt="MitoVis viewer with neuronal predictions, correction tools, and a fine-tuning control."/></div><figcaption>MitoVis: image viewer and correction controls.</figcaption></figure>
+ <div><p class="decision-lead">A lab analyzes neuronal mitochondria.</p><p>Proofread masks and correct neurite labels.</p><p class="decision-question" data-reveal="1">Correct labels -&gt; retrain classifier -&gt; review predictions</p><p class="decision-muted" data-reveal="1">Visual suggestions help find similar branches to inspect.</p></div>
+</div>
+<div class="decision-facts" data-reveal="2"><div><strong>Reported workflow time</strong><span>19.0 min vs. 191.4 min manual work</span></div><div><strong>Reported classifier accuracy</strong><span>77.0% -&gt; 87.1% across three iterations</span></div></div>
+<p class="decision-takeaway" data-reveal="2">What are these improvements worth to the lab?</p></div>
+          <nav class="talk-roadmap" aria-label="Talk progress"><ol><li aria-current="step">Identify the intervention</li><li>Account for costs and benefits</li><li>Make the decision</li></ol></nav>
           <template class="speaker-notes">
-            <p>We've framed the first question: what does the new tool add over the alternatives? We can start with available measurements and explicit assumptions, then identify which unknowns could change the choice.</p>
-            <p>Now we're at the highlighted second question: is the improvement worth the time and money? A tool can improve the outcome and still demand more time or money than that improvement is worth to the lab.</p>
-            <p>That's why we now need to weigh benefits and costs together. We'll ask how much improvement would justify the cost, and when the lab would be better off choosing an alternative.</p>
+            <p>Consider a lab analyzing neuronal mitochondria. Experts inspect the image, proofread masks, and correct neurite labels.</p>
+            <p class="reveal-cue" data-click="1">[CLICK 1] Reveal the correction, retraining, and review loop.</p>
+            <p>MitoVis suggests similar branches to inspect. Corrected labels feed classifier retraining, and the expert reviews the new predictions. This connects data iteration to model improvement.</p>
+            <p class="reveal-cue" data-click="2">[CLICK 2] Reveal the reported time and accuracy results.</p>
+            <p>The reported workflow takes nineteen minutes versus 191.4 minutes manually. Classifier accuracy rises from seventy-seven to 87.1 percent across three iterations. These are measurable outcomes. To decide whether the workflow is worthwhile, we need the value of those improvements and the effort required.</p>
+            <p class="notes-reference"><strong>Reference only:</strong> Paper Sec. 5.1. Classification accuracy is distinct from segmentation-mask quality. <a href="https://ieeevis.b-cdn.net/vis_2022/posters/v-vis-posters-1021-summary.pdf">MitoVis visual guides</a>.</p>
           </template>
         </section>
-        <!-- SLIDE 07: Every workflow needs the same cost-benefit ledger. -->
-        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-7" data-title="7. Every workflow needs the same cost-benefit ledger." data-budget="60" data-talk-section="model">
-          <header class="talk-top"><div><p class="talk-kicker">A shared cost-benefit model</p><h2 class="talk-heading">Every workflow needs the same cost-benefit ledger.</h2></div><span class="talk-counter">07 / 14</span></header>
+        <!-- SLIDE 07: Turn the workflow into measurable costs and benefits -->
+        <section class="slide-section talk-slide decision-slide framework-slide hidden slide-animate flex-1 flex flex-col " id="slide-7" data-title="7. Turn the workflow into measurable costs and benefits" data-budget="50" data-talk-section="account">
+          <header class="talk-top"><div><p class="talk-kicker">Accounting for the intervention</p><h2 class="talk-heading">Turn the workflow into measurable costs and benefits</h2></div><span class="talk-counter">07 / 14</span></header>
           <div class="talk-body">
-            <div class="decision-ledger">
-              <div><p class="decision-label">Expected benefits</p><h3>What changes for the lab?</h3><ul><li>Less manual work</li><li>Better downstream predictions</li><li>Fewer failures; useful knowledge</li></ul></div>
-              <div data-reveal="1"><p class="decision-label">Expected costs</p><h3>What does it take?</h3><ul><li>Development and integration</li><li>Learning, interaction, and review</li><li>Compute and maintenance</li></ul></div>
-            </div>
-            <div class="decision-facts"><div data-reveal="2"><strong>Reported MitoVis outcomes</strong><span>19.0 min vs. 191.4 min manual work;<br>classifier accuracy: 77.0% -> 87.1%.</span></div><div data-reveal="3"><strong>Our valuation scenario</strong><span>Three 19-minute sessions, with assumed labor prices and development cost.</span></div></div>
-            <p class="decision-takeaway" data-reveal="4">Net value = benefits - costs.</p></div>
-          <nav class="talk-roadmap" aria-label="Talk progress"><ol><li>Compare workflows</li><li aria-current="step">Model value</li><li>Test the contribution</li></ol></nav>
+<div class="decision-ledger framework-ledger">
+ <div><p class="decision-label">Measure the effort</p><ul><li>Analyst time: correction and exploration</li><li>Interaction frequency and update count</li><li>Training latency and compute use</li><li>Time to review and resume analysis</li></ul><p class="decision-muted">Also include development, adoption, and maintenance.</p></div>
+ <div data-reveal="1"><p class="decision-label">Connect outcomes to value</p><ul><li>Model improvement -&gt; task utility</li><li>Less recurring work -&gt; operational savings</li><li>Prevented failures -&gt; avoided losses</li><li>Knowledge -&gt; better-informed decisions</li></ul><p class="decision-muted">Count each outcome's value once.</p></div>
+</div><div class="framework-feedback" data-reveal="2"><strong>Net value = benefits - costs, over a stated period of use.</strong><p>Use measurements where available; expose assumptions and plausible ranges.</p></div></div>
+          <nav class="talk-roadmap" aria-label="Talk progress"><ol><li>Identify the intervention</li><li aria-current="step">Account for costs and benefits</li><li>Make the decision</li></ol></nav>
           <template class="speaker-notes">
-            <p>Use the same ledger for every workflow. Benefits include avoided manual work, better predictions, reduced risk, and useful knowledge.</p>
-            <p class="reveal-cue" data-click="1">[CLICK 1] Reveal the cost side of the ledger.</p>
-            <p>Costs include development, human effort, and computation, plus the work of adopting and maintaining the tool. Count each outcome once.</p>
-            <p class="reveal-cue" data-click="2">[CLICK 2] Reveal the reported time and accuracy outcomes.</p>
-            <p>MitoVis reports nineteen minutes versus 191.4 minutes of manual work, and a neurite-wise classification gain from seventy-seven to 87.1 percent.</p>
-            <p class="reveal-cue" data-click="3">[CLICK 3] Reveal the illustrative valuation assumptions.</p>
-            <p>The paper combines these measurements into an illustrative three-session scenario with assumed prices.</p>
-            <p class="reveal-cue" data-click="4">[CLICK 4] Reveal "Net value = benefits - costs."</p>
-            <p>Subtract costs from benefits to get net value. The next step is to compare that net value across workflows.</p>
-            <p class="notes-reference"><strong>Reference only:</strong> Paper Secs. 4-5.1. Reported outcomes combined into an illustrative economic scenario.</p>
+            <p>The workflow tells us what to measure: analyst time, interaction frequency, update count, training latency, and the time needed to review and resume. Development, adoption, and maintenance also belong in the account.</p>
+            <p class="reveal-cue" data-click="1">[CLICK 1] Reveal the benefit pathways.</p>
+            <p>Then connect outcomes to value. Better predictions have task utility. Less recurring correction saves labor. Preventing a failure avoids a loss. Knowledge can improve decisions. If one outcome produces several of these descriptions, count its value only once.</p>
+            <p class="reveal-cue" data-click="2">[CLICK 2] Reveal net value and the accounting period.</p>
+            <p>Subtract costs from benefits over a stated period. Use measurements where possible, and make the remaining assumptions explicit.</p>
+            <p class="notes-reference"><strong>Reference only:</strong> Paper Sec. 4, Eqs. 7-16. Knowledge may also have intrinsic value; do not add a second credit for knowledge already valued through another pathway.</p>
           </template>
         </section>
-        <!-- SLIDE 08: Model updates also consume expert attention. -->
-        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-8" data-title="8. Model updates also consume expert attention." data-budget="45" data-talk-section="model">
-          <header class="talk-top"><div><p class="talk-kicker">Count the expert's time, too</p><h2 class="talk-heading">Model updates also consume expert attention.</h2></div><span class="talk-counter">08 / 14</span></header>
+        <!-- SLIDE 08: Each update repeats training and recovery costs -->
+        <section class="slide-section talk-slide decision-slide framework-slide hidden slide-animate flex-1 flex flex-col " id="slide-8" data-title="8. Each update repeats training and recovery costs" data-budget="50" data-talk-section="account">
+          <header class="talk-top"><div><p class="talk-kicker">Interaction frequency and affordable latency</p><h2 class="talk-heading">Each update repeats training and recovery costs</h2></div><span class="talk-counter">08 / 14</span></header>
           <div class="talk-body">
-            <div class="decision-three decision-update">
-              <article><p class="decision-label">01 - Steer</p><h3>Correct outputs</h3><p>Choose what the model should learn from.</p></article>
-              <article data-reveal="1"><p class="decision-label">02 - Wait</p><h3>Fine-tune</h3><p>Reported update latency:<br><strong>23 seconds.</strong></p></article>
-              <article data-reveal="2"><p class="decision-label">03 - Review</p><h3>Regain context</h3><p>Interpret changed outputs and resume analysis.</p></article>
-            </div>
-            <div class="decision-two decision-metrics"><div data-reveal="1"><p class="decision-label">GPU cost per update</p><strong>~$0.02</strong><p>23 seconds at an assumed $3/hour.</p></div><div data-reveal="2"><p class="decision-label">Assumed reorientation cost</p><strong>$3.00</strong><p>1.5 minutes at $2/minute.</p></div></div>
-            <p class="decision-takeaway" data-reveal="3">Count interaction and post-update review separately.</p></div>
-          <nav class="talk-roadmap" aria-label="Talk progress"><ol><li>Compare workflows</li><li aria-current="step">Model value</li><li>Test the contribution</li></ol></nav>
+<div class="decision-three decision-update">
+ <article><p class="decision-label">01 - Correct</p><h3>Analyst time</h3><p>Choose and edit labels.</p></article>
+ <article data-reveal="1"><p class="decision-label">02 - Train</p><h3>23 seconds</h3><p>Reported update latency.<br>~$0.02 at an assumed $3/GPU-hour.</p></article>
+ <article data-reveal="2"><p class="decision-label">03 - Review and resume</p><h3>$3 per update</h3><p>Assumed 1.5 minutes<br>at $2/minute.</p></article>
+</div>
+<div class="framework-feedback" data-reveal="3"><strong>Repeated overhead = sum of training and recovery costs.</strong><p>Three updates: ~$0.06 compute + $9 recovery, under these assumptions.</p></div>
+<div data-reveal="4"><p class="decision-takeaway">How much delay can the added benefit justify?</p><p class="decision-muted">A latency bound depends on benefit and measured training / recovery costs.</p></div></div>
+          <nav class="talk-roadmap" aria-label="Talk progress"><ol><li>Identify the intervention</li><li aria-current="step">Account for costs and benefits</li><li>Make the decision</li></ol></nav>
           <template class="speaker-notes">
-            <p>One cost is easy to overlook.</p>
-            <p class="reveal-cue" data-click="1">[CLICK 1] Reveal fine-tuning latency and the ~$0.02 GPU cost.</p>
-            <p>MitoVis reports a twenty-three-second update, costing about two cents at our assumed GPU price.</p>
-            <p class="reveal-cue" data-click="2">[CLICK 2] Reveal post-update review and the assumed $3 expert cost.</p>
-            <p>After the expert corrects outputs and the model updates, someone has to inspect what changed. We assume ninety seconds to reorient afterward: three dollars of expert time. That overhead needs measurement, but it shows why compute cost alone can miss the larger expense.</p>
-            <p class="reveal-cue" data-click="3">[CLICK 3] Reveal the reminder to measure review separately.</p>
-            <p>Separate direct interaction from post-update review so each minute is counted once.</p>
-            <p class="notes-reference"><strong>Reference only:</strong> Paper Sec. 5.1. Update latency is reported; prices and reorientation time are assumed.</p>
+            <p>Start with the analyst correcting labels.</p>
+            <p class="reveal-cue" data-click="1">[CLICK 1] Reveal training latency and compute cost.</p>
+            <p>MitoVis reports a twenty-three-second update. At our assumed GPU price, that costs about two cents.</p>
+            <p class="reveal-cue" data-click="2">[CLICK 2] Reveal review and resumption cost.</p>
+            <p>Assume another ninety seconds to review and resume: three dollars of expert time.</p>
+            <p class="reveal-cue" data-click="3">[CLICK 3] Reveal the repeated overhead.</p>
+            <p>Three updates repeat that overhead: about six cents of compute and nine dollars of recovery, beyond direct correction.</p>
+            <p class="reveal-cue" data-click="4">[CLICK 4] Reveal the latency decision.</p>
+            <p>How much delay can the added benefit justify? Measure how delay changes training and recovery costs, then find where those costs exhaust the benefit. More updates must justify their extra effort with extra value.</p>
+            <p class="notes-reference"><strong>Reference only:</strong> Paper Eqs. 10-11 and Sec. 5.1. Rounded update-only costs exclude initial processing. Recovery and prices are assumptions. This is an application of the accounting framework, not a validated numerical latency bound.</p>
           </template>
         </section>
-        <!-- SLIDE 09: Covering its costs does not make it the best choice. -->
-        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-9" data-title="9. Covering its costs does not make it the best choice." data-budget="70" data-talk-section="model">
-          <header class="talk-top"><div><p class="talk-kicker">Worked example - A is hypothetical</p><h2 class="talk-heading">Covering its costs does not make it the best choice.</h2></div><span class="talk-counter">09 / 14</span></header>
+        <!-- SLIDE 09: Break-even: what must the improvement be worth? -->
+        <section class="slide-section talk-slide decision-slide framework-slide hidden slide-animate flex-1 flex flex-col " id="slide-9" data-title="9. Break-even: what must the improvement be worth?" data-budget="70" data-talk-section="decide">
+          <header class="talk-top"><div><p class="talk-kicker">MitoVis - the paper's illustrative scenario</p><h2 class="talk-heading">Break-even: what must the improvement be worth?</h2></div><span class="talk-counter">09 / 14</span></header>
           <div class="talk-body">
-            <table class="decision-table"><caption>Illustrative three-session workload - $1,000 per percentage point of accuracy.</caption>
-              <thead><tr><th scope="col">Input</th><th scope="col">A - Alternative<br><span>Hypothetical inputs</span></th><th scope="col">V - MitoVis<br><span>Paper scenario</span></th><th scope="col" data-reveal="2">V - A<br><span>What V adds</span></th></tr></thead>
-              <tbody><tr><th scope="row">Development</th><td>$8,000</td><td>$10,000</td><td data-reveal="2">+$2,000</td></tr>
-              <tr><th scope="row">Human + compute</th><td>$83</td><td>$123</td><td data-reveal="2">+$40</td></tr>
-              <tr><th scope="row">Other added costs (assumed)</th><td>$0</td><td>$0</td><td data-reveal="2">$0</td></tr>
-              <tr><th scope="row">Avoided manual work</th><td>$1,148</td><td>$1,148</td><td data-reveal="2">$0</td></tr>
-              <tr><th scope="row">Classifier gain</th><td>8.1 points</td><td>10.1 points</td><td data-reveal="2">+2 points</td></tr>
-              <tr class="decision-result-row" data-reveal="1"><th scope="row">Net value</th><td>+$1,165</td><td>+$1,125</td><td class="decision-negative" data-reveal="2">-$40</td></tr></tbody>
-            </table>
-            <p class="decision-takeaway" data-reveal="2">V costs $2,040 more for 2 extra accuracy points.</p></div>
-          <nav class="talk-roadmap" aria-label="Talk progress"><ol><li>Compare workflows</li><li aria-current="step">Model value</li><li>Test the contribution</li></ol></nav>
+<div class="decision-chart-layout"><figure><svg class="story-figure decision-chart" viewBox="0 0 980 520" role="img" aria-label="Illustrative MitoVis net value relative to the manual-work reference. Net value is 10.1 times U minus 8974.68 dollars. It crosses zero at about 889 dollars per percentage point of classifier accuracy. Linear axes; U ranges from zero to 2000 dollars per point.">
+<text x="145" y="40" font-size="29" font-weight="700">Net value vs. manual reference ($)</text>
+<path class="story-line" d="M 145 70 V 430 M 145 271 H 870"/>
+<text x="130" y="120" font-size="27" text-anchor="end">+10,000</text><text x="130" y="280" font-size="27" text-anchor="end">0</text><text x="130" y="439" font-size="27" text-anchor="end">-10,000</text>
+<path data-reveal="1" class="story-indigo-line" d="M 145 413.7 L 870 92.4"/>
+<g data-reveal="2"><path class="story-line" d="M 467.1 100 V 440" stroke-dasharray="6 6"/><circle cx="467.1" cy="271" r="9" fill="#4f46e5"/><text class="story-accent" x="467.1" y="463" font-size="30" font-weight="700" text-anchor="middle">~889</text><text class="story-green" x="560" y="350" font-size="32" font-weight="700">Benefits cover costs</text></g>
+<text x="145" y="463" font-size="28" text-anchor="middle">0</text><text x="870" y="463" font-size="28" text-anchor="middle">2,000</text><text x="510" y="510" font-size="29" text-anchor="middle">U: value per percentage point of accuracy ($)</text>
+</svg><figcaption data-reveal="1">Net value = $1,148.40 + 10.1U - $10,123.08.</figcaption></figure>
+<div class="decision-chart-notes framework-calculation">
+ <div><p class="decision-label">Modeled cost</p><h3>$10,123.08</h3><p>$10,000 development +<br>$123.08 human and compute cost.</p></div>
+ <div><p class="decision-label">Benefits</p><p>$1,148.40 manual-work credit<br>+ 10.1 accuracy points x U.</p></div>
+ <div data-reveal="2"><h3>~$889 per point</h3><p>Ask the lab for a defensible value range.</p></div>
+</div></div>
+<p class="framework-assumption">Illustrative aggregation: 3 x 19-minute sessions; $2/min labor; $3/GPU-hour; 1.5-minute recovery per update. One accuracy point: 80% -&gt; 81%.</p></div>
+          <nav class="talk-roadmap" aria-label="Talk progress"><ol><li>Identify the intervention</li><li>Account for costs and benefits</li><li aria-current="step">Make the decision</li></ol></nav>
           <template class="speaker-notes">
-            <p>Give alternative A hypothetical costs and outcomes. V uses the paper&#x27;s MitoVis scenario. The table lists development and running costs, assumes other added costs are zero, and credits both with the same avoided manual work. The final input is the classifier gain. Dollar values are rounded.</p>
-            <p class="reveal-cue" data-click="1">[CLICK 1] Reveal net values. Pause: both are positive, but A is $40 ahead.</p>
-            <p>At one thousand dollars per accuracy point, both have positive net value against manual work. Yet A delivers forty dollars more.</p>
-            <p class="reveal-cue" data-click="2">[CLICK 2] Reveal the V - A column and the $2,040-for-2-points takeaway.</p>
-            <p>The last column shows why: V costs two thousand and forty dollars more for two extra points. Are those points worth enough? For a real adoption decision, use costs still to be incurred and measured outcomes. Here, the comparison is illustrative.</p>
-            <p class="notes-reference"><strong>Reference only:</strong> Rounded dollars; one point = one percentage point. V: paper Sec. 5.1. Full arithmetic: backup 01. The workflows assume comparable corrected outputs; downstream model utility excludes benefits already credited to those outputs.</p>
+            <p>Here is the paper's break-even question. The scenario combines three nineteen-minute sessions with assumed labor and compute prices, recovery time, and development cost. Total modeled cost is 10,123 dollars. Benefits are a 1,148-dollar manual-work credit plus the value of the 10.1-point classifier gain. One point means, for example, eighty to eighty-one percent accuracy.</p>
+            <p class="reveal-cue" data-click="1">[CLICK 1] Reveal the net-value line and equation.</p>
+            <p>U is the value of one accuracy point for this workload. The horizontal axis varies that value. The vertical axis subtracts modeled costs from benefits. Classifier value must be additional to the corrected outputs already credited.</p>
+            <p class="reveal-cue" data-click="2">[CLICK 2] Reveal the break-even threshold.</p>
+            <p>The line crosses zero at about 889 dollars per point. Ask the lab for a defensible range. A range crossing that threshold leaves the decision unresolved.</p>
+            <p class="notes-reference"><strong>Reference only:</strong> Paper Sec. 5.1. Linear-axis rendering of the same break-even relationship as Fig. 2, left. Exact threshold: (10123.08 - 1148.40) / 10.1 = 888.582... . Manual credit is offset by runtime costs. This aggregation is not an observed three-session experiment. Full assumptions: backup 21.</p>
           </template>
         </section>
-        <!-- SLIDE 10: How much must the extra improvement be worth? -->
-        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-10" data-title="10. How much must the extra improvement be worth?" data-budget="85" data-talk-section="model">
-          <header class="talk-top"><div><p class="talk-kicker">MitoVis (V) vs. hypothetical A</p><h2 class="talk-heading">How much must the extra improvement be worth?</h2></div><span class="talk-counter">10 / 14</span></header>
+        <!-- SLIDE 10: Covering its costs does not make it the best choice -->
+        <section class="slide-section talk-slide decision-slide framework-slide hidden slide-animate flex-1 flex flex-col " id="slide-10" data-title="10. Covering its costs does not make it the best choice" data-budget="50" data-talk-section="decide">
+          <header class="talk-top"><div><p class="talk-kicker">Compare a credible alternative - A is hypothetical</p><h2 class="talk-heading">Covering its costs does not make it the best choice</h2></div><span class="talk-counter">10 / 14</span></header>
           <div class="talk-body">
-            <p class="decision-lead">V costs <strong>$2,040 more</strong> for <strong>+2 percentage points of classifier accuracy.</strong></p>
-            <div class="decision-chart-layout">
-              <figure><svg class="story-figure decision-chart" viewBox="0 0 980 520" role="img" aria-label="Illustrative comparison: MitoVis (V) costs 2040 dollars more than hypothetical A for two additional percentage points of classifier accuracy. One percentage point means, for example, 80 to 81 percent accuracy. U is the dollar value of one percentage point of accuracy for this workload. V minus A net value equals two times U minus 2040 dollars, with a tie at 1020 dollars per percentage point of accuracy. Below that value A has higher net value; above it V has higher net value. Manual work remains another option.">
+<div class="decision-chart-layout"><figure><svg class="story-figure decision-chart" viewBox="0 0 980 520" role="img" aria-label="Illustrative comparison: MitoVis (V) costs 2040 dollars more than hypothetical A for two additional percentage points of classifier accuracy. One percentage point means, for example, 80 to 81 percent accuracy. U is the dollar value of one percentage point of accuracy for this workload. V minus A net value equals two times U minus 2040 dollars, with a tie at 1020 dollars per percentage point of accuracy. Below that value A has higher net value; above it V has higher net value. Manual work remains another option.">
                 <text x="130" y="40" font-size="29" font-weight="700">V - A net value ($)</text>
                 <rect data-reveal="2" class="story-cost-panel" x="130" y="80" width="377.4" height="350" rx="10"/>
                 <rect data-reveal="2" class="story-benefit-panel" x="507.4" y="80" width="362.6" height="350" rx="10"/>
@@ -931,100 +963,96 @@
                 <text x="870" y="463" font-size="28" text-anchor="middle">2,000</text>
                 <text x="500" y="510" font-size="29" text-anchor="middle">U: value per percentage point of accuracy ($)</text>
               </svg><figcaption data-reveal="1">V - A net value = (2 x U) - $2,040.</figcaption></figure>
-              <div class="decision-chart-notes">
-                <div><p class="decision-label">1 percentage point of accuracy</p><p class="decision-muted decision-unit-example">Example: 80% -> 81% accuracy.</p></div>
-                <div data-reveal="3"><p class="decision-label">At $1,000 per percentage point</p><h3>V trails A by $40.</h3></div>
-                <div data-reveal="4"><p class="decision-label">At $1,500 per percentage point</p><h3>V leads A by $960.</h3></div>
-                <div data-reveal="5"><h3>Defensible value range?</h3><p class="decision-muted">A range spanning $1,020 per percentage point leaves A vs. V unresolved.</p></div>
-              </div>
-            </div>
-          </div>
-          <nav class="talk-roadmap" aria-label="Talk progress"><ol><li>Compare workflows</li><li aria-current="step">Model value</li><li>Test the contribution</li></ol></nav>
+<div class="decision-chart-notes framework-calculation">
+ <div><p class="decision-label">A - proposed editor + training script</p><p>V - MitoVis: integrated visual guidance and retraining.</p></div>
+ <div><p class="decision-label">Invented A inputs vs. paper V scenario</p><h3>V costs $2,040 more</h3><p>For +2 percentage points of classifier accuracy.</p></div>
+ <div data-reveal="2"><h3>Tie at $1,020 per point</h3><p>Below: A has higher net value.<br>Above: V has higher net value.</p></div>
+</div></div>
+<p class="framework-assumption">Same manual-work credit and corrected-output target. Other added costs assumed zero. No measured head-to-head result; manual work remains an option.</p></div>
+          <nav class="talk-roadmap" aria-label="Talk progress"><ol><li>Identify the intervention</li><li>Account for costs and benefits</li><li aria-current="step">Make the decision</li></ol></nav>
           <template class="speaker-notes">
-            <p>V buys two extra percentage points of classifier accuracy for two thousand and forty dollars more. One percentage point means, for example, eighty to eighty-one percent accuracy. U is its dollar value for this workload. The vertical axis compares V's net value with A's.</p>
-            <p class="reveal-cue" data-click="1">[CLICK 1] Reveal the net-value line and its equation.</p>
-            <p>Value the extra accuracy at two times U, then subtract the extra cost.</p>
-            <p class="reveal-cue" data-click="2">[CLICK 2] Reveal the $1,020 threshold and the A-ahead / V-ahead regions.</p>
-            <p>They tie at one thousand and twenty dollars per percentage point of accuracy. Below it, A has higher net value; above it, V does.</p>
-            <p class="reveal-cue" data-click="3">[CLICK 3] Reveal the $1,000 example: V trails by $40.</p>
-            <p>At one thousand dollars per percentage point, the extra accuracy is worth two thousand dollars: V trails A by forty.</p>
-            <p class="reveal-cue" data-click="4">[CLICK 4] Reveal the $1,500 example: V leads by $960.</p>
-            <p>At fifteen hundred dollars per percentage point, it is worth three thousand dollars: V leads by nine hundred and sixty. Manual work remains an option.</p>
-            <p class="reveal-cue" data-click="5">[CLICK 5] Reveal the stakeholder question and the unresolved range.</p>
-            <p>Ask the lab for a defensible range. Above the threshold favors V; below favors A. A range crossing it leaves the choice unresolved.</p>
-            <p class="notes-reference"><strong>Reference only:</strong> Illustrative A-V comparison with linear utility. Manual work remains another option. Backup 02 covers valuing insight through changed decisions, avoided losses, or effort for a defined knowledge outcome.</p>
+            <p>Now compare MitoVis with an image editor and a separate training script. Both use predictions and corrections in a learning loop. A is a proposed alternative with invented inputs. Under those assumptions, MitoVis costs 2,040 dollars more and gains two extra accuracy points.</p>
+            <p class="reveal-cue" data-click="1">[CLICK 1] Reveal incremental net value.</p>
+            <p>The line values those two points, then subtracts the extra cost. The shared manual-work credit cancels.</p>
+            <p class="reveal-cue" data-click="2">[CLICK 2] Reveal the comparative threshold.</p>
+            <p>They tie at 1,020 dollars per point. Below that, A has higher net value; above it, MitoVis does. Covering costs against manual work does not settle the choice between tools.</p>
+            <p class="notes-reference"><strong>Reference only:</strong> A inputs and full arithmetic: backup 01. This teaching comparison extends the paper scenario; it is not a measured system ranking. Other adoption and maintenance differences are assumed zero and need measurement.</p>
           </template>
         </section>
-        <!-- SLIDE 11: Repeated use can change the decision. -->
-        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-11" data-title="11. Repeated use can change the decision." data-budget="50" data-talk-section="model">
-          <header class="talk-top"><div><p class="talk-kicker">Illustrative reuse across independent workloads</p><h2 class="talk-heading">Repeated use can change the decision.</h2></div><span class="talk-counter">11 / 14</span></header>
+        <!-- SLIDE 11: A fixed model can create value through failure prevention -->
+        <section class="slide-section talk-slide decision-slide framework-slide hidden slide-animate flex-1 flex flex-col " id="slide-11" data-title="11. A fixed model can create value through failure prevention" data-budget="45" data-talk-section="decide">
+          <header class="talk-top"><div><p class="talk-kicker">A second application - understanding model behavior</p><h2 class="talk-heading">A fixed model can create value through failure prevention</h2></div><span class="talk-counter">11 / 14</span></header>
           <div class="talk-body">
-            <div class="decision-reuse-setup"><p class="decision-lead">Share the extra $2,000 development cost.</p><p class="decision-muted">Assume +2 accuracy points and +$40 runtime per workload;<br>no added learning or maintenance cost.</p></div>
-            <div class="decision-three decision-reuse">
-              <article class="decision-panel"><p class="decision-label">1 workload</p><strong>$1,020</strong><p>Required value per point.</p></article>
-              <article class="decision-panel" data-reveal="1"><p class="decision-label">10 workloads</p><strong>$120</strong><p>Required value per point.</p></article>
-              <article class="decision-panel" data-reveal="2"><p class="decision-label">100 workloads</p><strong>$30</strong><p>Required value per point.</p></article>
-            </div>
-            <p class="decision-takeaway" data-reveal="3">Follow actual use to test whether this advantage lasts.</p></div>
-          <nav class="talk-roadmap" aria-label="Talk progress"><ol><li>Compare workflows</li><li aria-current="step">Model value</li><li>Test the contribution</li></ol></nav>
+<div class="decision-two">
+ <article class="decision-panel"><p class="decision-label">Inspect data-poisoning vulnerabilities</p><h3>Data and model stay fixed.</h3><p>Explore failures.<br>Interpret the evidence.<br>Use the findings to prevent harm.</p><p class="framework-panel-note">No interaction-triggered retraining within the audit.</p></article>
+ <article class="decision-panel decision-highlight" data-reveal="1"><p class="decision-label">Failure-prevention value</p><h3>Expected avoided loss</h3><p>Knowledge factor<br>x prevention probability<br>x failure loss</p></article>
+</div>
+<div class="framework-feedback" data-reveal="2"><strong>Illustrative break-even: failure loss &gt;= $10,038.</strong><p>$10,000 development + $38 expert effort. Full identification and prevention assumed; lower prevention probability raises the threshold.</p></div>
+<p class="framework-assumption" data-reveal="2">Normalized 19-minute audit at $2/minute, not an observed duration. Initial training is outside this audit's accounting boundary.</p></div>
+          <nav class="talk-roadmap" aria-label="Talk progress"><ol><li>Identify the intervention</li><li>Account for costs and benefits</li><li aria-current="step">Make the decision</li></ol></nav>
           <template class="speaker-notes">
-            <p>This reuse projection assumes each independent workload delivers the same two-point advantage for forty dollars of extra running cost, with no extra learning or maintenance cost. We share the additional two thousand dollars of development. The first card charges it all to one workload.</p>
-            <p class="reveal-cue" data-click="1">[CLICK 1] Reveal 10 workloads: $120 per point.</p>
-            <p>Spread the extra two thousand dollars across ten independent workloads, and the required value falls from one thousand and twenty to one hundred and twenty dollars per point.</p>
-            <p class="reveal-cue" data-click="2">[CLICK 2] Reveal 100 workloads: $30 per point.</p>
-            <p>Across a hundred, it falls to thirty.</p>
-            <p class="reveal-cue" data-click="3">[CLICK 3] Reveal the need to follow actual use.</p>
-            <p>Each workload must separately realize its benefit. Reusing one improved model does not create another accuracy gain. Follow actual use to see whether the projected advantage lasts.</p>
-            <p class="notes-reference"><strong>Reference only:</strong> Illustrative reuse: development shared across independent workloads; no added learning or maintenance cost.</p>
+            <p>The second application inspects a fixed model for data-poisoning vulnerabilities. The analyst explores failures without retraining.</p>
+            <p class="reveal-cue" data-click="1">[CLICK 1] Reveal the avoided-loss pathway.</p>
+            <p>Expected avoided loss depends on knowledge, prevention probability, and the loss at stake.</p>
+            <p class="reveal-cue" data-click="2">[CLICK 2] Reveal the conditional break-even example.</p>
+            <p>The paper assumes ten thousand dollars of development and thirty-eight dollars of effort. With full identification and prevention, a failure must cost at least 10,038 dollars to cover that expense. Lower prevention probability raises the threshold. The nineteen-minute audit is illustrative.</p>
+            <p class="notes-reference"><strong>Reference only:</strong> Paper Sec. 5.2 and Eq. 15. Knowledge factor is the bounded knowledge-to-action term, Delta K. Original figure and assumptions: backups 04 and 22.</p>
           </template>
         </section>
-        <!-- SLIDE 12: When is a new visualization worth using? -->
-        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col" id="slide-12" data-title="12. Test the contribution - Overview" data-budget="55" data-overview-step="3">
-          <header class="talk-top"><div><p class="talk-kicker">Back to the overview - Step 3 of 3</p><h2 class="talk-heading">When is a new visualization worth using?</h2></div><span class="talk-counter">12 / 14</span></header>
+        <!-- SLIDE 12: Stop when the next interaction costs more than it adds -->
+        <section class="slide-section talk-slide decision-slide framework-slide hidden slide-animate flex-1 flex flex-col " id="slide-12" data-title="12. Stop when the next interaction costs more than it adds" data-budget="45" data-talk-section="decide">
+          <header class="talk-top"><div><p class="talk-kicker">From choosing a workflow to allocating analyst time</p><h2 class="talk-heading">Stop when the next interaction costs more than it adds</h2></div><span class="talk-counter">12 / 14</span></header>
           <div class="talk-body">
-            <div class="talk-route-layout">
-              <p class="route-intro">The example shows when the choice changes. Now let's look at the missing evidence.</p>
-              <ol class="talk-route" aria-label="Talk overview">
-                <li data-route-state="complete"><span class="route-marker" aria-hidden="true">OK</span><h3><span class="sr-only">Completed: </span>What does the new tool add over the alternatives?</h3></li>
-                <li data-route-state="complete"><span class="route-marker" aria-hidden="true">OK</span><h3><span class="sr-only">Completed: </span>Is the improvement worth the time and money?</h3></li>
-                <li data-route-state="current" aria-current="step"><span class="route-marker" aria-hidden="true">03</span><h3>What do we still need to measure?</h3></li>
-              </ol>
-            </div>
-          </div>
+<div class="decision-chart-layout">
+<figure><svg class="story-figure decision-chart" viewBox="0 0 980 520" role="img" aria-label="Schematic marginal benefit and marginal cost over analysis time. Benefit falls as useful findings are exhausted; cost rises. Their crossing marks the modeled stopping point. No numerical duration is predicted.">
+<text x="115" y="38" font-size="29" font-weight="700">Expected value and cost of more analysis</text>
+<path class="story-line" d="M 115 65 V 430 H 900"/>
+<path class="framework-benefit-line" d="M 135 95 C 280 140 355 235 520 275 S 770 355 880 365"/>
+<text class="story-green" x="220" y="100" font-size="30" font-weight="700">Marginal benefit</text>
+<g data-reveal="1"><path class="framework-cost-line" d="M 135 365 C 350 340 650 245 880 150"/><text class="story-rose" x="675" y="135" font-size="30" font-weight="700">Marginal cost</text></g>
+<g data-reveal="2"><path class="story-line" d="M 526.1 276.5 V 430" stroke-dasharray="6 6"/><circle cx="526.1" cy="276.5" r="10" fill="#4f46e5"/><text class="story-accent" x="526.1" y="468" font-size="30" text-anchor="middle" font-weight="700">Modeled stopping point</text></g>
+<text x="880" y="510" font-size="29" text-anchor="end">Analysis time -&gt;</text>
+</svg><figcaption>Schematic: diminishing benefit and rising cost. No prescribed session length.</figcaption></figure>
+<div class="decision-chart-notes framework-calculation">
+ <div><p class="decision-label">Fixed-model audit</p><h3>Useful findings become harder to obtain.</h3></div>
+ <div data-reveal="1"><p>The cost of further analysis can rise with fatigue.</p></div>
+ <div data-reveal="2"><h3>At the crossing:</h3><p>The expected benefit of more analysis equals its cost.</p><p class="framework-panel-note">Faster discovery can bring this point earlier.</p></div>
+</div></div></div>
+          <nav class="talk-roadmap" aria-label="Talk progress"><ol><li>Identify the intervention</li><li>Account for costs and benefits</li><li aria-current="step">Make the decision</li></ol></nav>
           <template class="speaker-notes">
-            <p>The first two questions brought us from what the new tool adds over the alternatives to whether that improvement is worth the time and money. The example showed how those answers can change the choice.</p>
-            <p>Now we're at the highlighted third question: what do we still need to measure? To answer the first question, we need evidence of the improvement over alternatives. To answer the second, we need evidence of the time and money required.</p>
-            <p>So this last section turns those questions into measurements. We'll identify the missing evidence needed to decide whether the tool is worth using.</p>
+            <p>How long should we use a worthwhile workflow? In this fixed-model audit, the green curve shows diminishing benefit as useful findings become harder to obtain.</p>
+            <p class="reveal-cue" data-click="1">[CLICK 1] Reveal marginal cost.</p>
+            <p>The red curve shows the cost of more analysis, which can rise with fatigue.</p>
+            <p class="reveal-cue" data-click="2">[CLICK 2] Reveal the crossing and stopping decision.</p>
+            <p>At the crossing, further analysis costs as much as it adds. Continuing reduces net value under these assumptions. Faster discovery can bring this point earlier. Actual stopping requires measurements of benefit and cost over time.</p>
+            <p class="notes-reference"><strong>Reference only:</strong> Conceptual rendering of the marginal-efficiency analysis in paper Sec. 5.2. The paper figure uses assumed discovery and cost curves; its sensitivity results, not observed or recommended durations, remain in backups 05 and 23.</p>
           </template>
         </section>
-        <!-- SLIDE 13: What evidence would make the contribution convincing? -->
-        <section class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col " id="slide-13" data-title="13. What evidence would make the contribution convincing?" data-budget="50" data-talk-section="test">
-          <header class="talk-top"><div><p class="talk-kicker">From worked scenarios to comparative measurements</p><h2 class="talk-heading">What evidence would make the contribution convincing?</h2></div><span class="talk-counter">13 / 14</span></header>
+        <!-- SLIDE 13: Measure the quantities that could change the decision -->
+        <section class="slide-section talk-slide decision-slide framework-slide hidden slide-animate flex-1 flex flex-col " id="slide-13" data-title="13. Measure the quantities that could change the decision" data-budget="35" data-talk-section="decide">
+          <header class="talk-top"><div><p class="talk-kicker">Putting the framework to work</p><h2 class="talk-heading">Measure the quantities that could change the decision</h2></div><span class="talk-counter">13 / 14</span></header>
           <div class="talk-body">
-            <div class="decision-evidence">
-              <div><p class="decision-label">01 - Compare</p><h3>Strong alternatives</h3><p>Use the same task and the strongest practical comparison workflows.</p></div>
-              <div data-reveal="1"><p class="decision-label">02 - Measure</p><h3>Outcomes and effort</h3><p>Measure output quality, expert effort, update recovery, and adoption costs.</p></div>
-              <div data-reveal="2"><p class="decision-label">03 - Follow up</p><h3>Value in practice</h3><p>Test whether the advantage survives uncertain values, real costs, and continued use.</p></div>
-            </div>
-            <p class="decision-takeaway" data-reveal="3">Use a common task and ledger to compare many systems.</p>
-          </div>
-          <nav class="talk-roadmap" aria-label="Talk progress"><ol><li>Compare workflows</li><li>Model value</li><li aria-current="step">Test the contribution</li></ol></nav>
+<div class="decision-three">
+ <article class="decision-panel"><p class="decision-label">01 - Choose the target</p><h3>Define the comparison</h3><p>Same task and period.<br>Credible alternatives.<br>Relevant feedback paths.</p></article>
+ <article class="decision-panel" data-reveal="1"><p class="decision-label">02 - Fill the account</p><h3>Measure effort and outcomes</h3><p>Logs, task measurements,<br>and stakeholder values.<br>State missing inputs.</p></article>
+ <article class="decision-panel" data-reveal="2"><p class="decision-label">03 - Test the decision</p><h3>Vary uncertain inputs</h3><p>Does the choice change?<br>How much delay is affordable?<br>When should interaction stop?</p></article>
+</div><p class="decision-takeaway" data-reveal="2">The framework exposes conditions; comparative measurements test them.</p></div>
+          <nav class="talk-roadmap" aria-label="Talk progress"><ol><li>Identify the intervention</li><li>Account for costs and benefits</li><li aria-current="step">Make the decision</li></ol></nav>
           <template class="speaker-notes">
-            <p>This gives us an evaluation agenda. Compare strong alternatives on the same task.</p>
-            <p class="reveal-cue" data-click="1">[CLICK 1] Reveal the outcomes and effort to measure.</p>
-            <p>Measure the outcomes and effort in the ledger, including adoption and update recovery.</p>
-            <p class="reveal-cue" data-click="2">[CLICK 2] Reveal follow-up: uncertain values and continued use.</p>
-            <p>Test whether the advantage survives plausible values and costs, then follow continued use.</p>
-            <p class="reveal-cue" data-click="3">[CLICK 3] Reveal the common-ledger evaluation agenda.</p>
-            <p>For ten or twenty systems, use a common task and ledger so the comparisons mean something. The paper supplies the framework and worked scenarios. Comparative measurements are the next step. They would let us say where a proposed workflow adds value, and where an existing approach is the better investment.</p>
+            <p>To use the framework, define the task, period, intervention target, and credible alternatives.</p>
+            <p class="reveal-cue" data-click="1">[CLICK 1] Reveal the measurements.</p>
+            <p>Fill the account with logs, task measurements, and stakeholder values. State the missing inputs.</p>
+            <p class="reveal-cue" data-click="2">[CLICK 2] Reveal sensitivity and empirical evaluation.</p>
+            <p>Vary those inputs. If the preferred workflow, affordable delay, or stopping point changes, that identifies evidence worth gathering. These conditional scenarios do not validate the model's predictions. Comparative measurements and continued use are the next test.</p>
+            <p class="notes-reference"><strong>Reference only:</strong> Paper Sec. 6. Selecting measurements likely to change the decision is the talk's application of the modular accounting framework. It complements empirical evaluation.</p>
           </template>
         </section>
-        <!-- SLIDE 14: Thank you - paper and contact links. -->
-        <section class="slide-section talk-slide decision-slide decision-closing hidden slide-animate flex-1 flex flex-col" id="slide-14" data-title="14. Thank you - paper and contact links" data-budget="35" data-talk-section="test">
+        <!-- SLIDE 14: Contribution recap and contacts -->
+        <section class="slide-section talk-slide decision-slide decision-closing hidden slide-animate flex-1 flex flex-col" id="slide-14" data-title="14. Thank you - paper and contact links" data-budget="20" data-talk-section="decide">
           <header class="talk-top"><div><p class="talk-kicker">Thank you.</p><h2 class="talk-heading closing-paper-title"><span class="block">Cost-Benefit Modeling of</span> <span class="block">Interactive Visual Machine Learning Systems</span></h2></div><span class="talk-counter">14 / 14</span></header>
           <div class="talk-body">
-            <p class="closing-takeaway">What does it add? When is that worth its cost?</p>
-            <div class="decision-closing-points" data-reveal="1"><span><strong>Compare workflows</strong><br>Same task, learner, and period of use.</span><span><strong>Model value</strong><br>Find where the choice changes.</span><span><strong>Test the contribution</strong><br>Measure the advantage in use.</span></div>
+            <p class="closing-takeaway">Where should human effort go, and when is it worth the cost?</p>
+            <div class="decision-closing-points" data-reveal="1"><span><strong>Identify the intervention</strong><br>Data, model, or understanding.</span><span><strong>Account for costs and benefits</strong><br>Measure effort and value.</span><span><strong>Make the decision</strong><br>Break even, tolerate delay, stop.</span></div>
             <div class="closing-footer" data-reveal="2">
               <div class="closing-details"><p class="closing-authors">Yixuan Wang, <strong>Rolando Garcia</strong>,<br>Alex Endert, Ross Maciejewski</p><p class="decision-job">Now on the faculty job market</p><p class="closing-contact"><span>Email: <a href="mailto:rolando.garcia@asu.edu">rolando.garcia@asu.edu</a></span><span>Homepage: <a href="https://rlnsanz.github.io" target="_blank" rel="noopener noreferrer">rlnsanz.github.io</a></span></p></div>
               <div class="closing-qr-links" aria-label="Scan or click to read the paper and connect">
@@ -1033,13 +1061,13 @@
               </div>
             </div>
           </div>
-          <nav class="talk-roadmap" aria-label="Talk progress"><ol><li>Compare workflows</li><li>Model value</li><li aria-current="step">Test the contribution</li></ol></nav>
+          <nav class="talk-roadmap" aria-label="Talk progress"><ol><li>Identify the intervention</li><li>Account for costs and benefits</li><li aria-current="step">Make the decision</li></ol></nav>
           <template class="speaker-notes">
-            <p>Judge a new workflow by what it adds over credible alternatives and whether that addition earns its cost.</p>
-            <p class="reveal-cue" data-click="1">[CLICK 1] Return to the overview's three stages as a recap.</p>
-            <p>We compared workflows on equal terms, modeled where the choice changes, and identified the evidence still needed.</p>
-            <p class="reveal-cue" data-click="2">[CLICK 2] Reveal the authors, contact details, job-market note, and paper and LinkedIn QR codes. This is the final build.</p>
-            <p>I'm on the faculty job market and would welcome a conversation. Scan the Paper code to read the paper, or LinkedIn to connect with me. Thank you.</p>
+            <p>Where should human effort go?</p>
+            <p class="reveal-cue" data-click="1">[CLICK 1] Reveal the contribution recap.</p>
+            <p>Identify the intervention, measure its costs and benefits, and find when it is worthwhile.</p>
+            <p class="reveal-cue" data-click="2">[CLICK 2] Reveal contacts, job-market note, and QR links.</p>
+            <p>I'm on the faculty job market. Please connect. Thank you.</p>
           </template>
         </section>
         <!-- BACKUP 01: Assumptions behind the illustrative comparison -->
@@ -1059,7 +1087,7 @@
             <div class="decision-three"><article class="decision-panel"><p class="decision-label">Connect to an outcome</p><h3>What changes?</h3><p>Identify a decision, prevented failure, or recurring task affected by the knowledge.</p></article><article class="decision-panel"><p class="decision-label">Keep uncertainty visible</p><h3>What is plausible?</h3><p>Use ranges for outcome value and prevention probability. Find where the ranking changes.</p></article><article class="decision-panel"><p class="decision-label">When value stays unpriced</p><h3>What can we compare?</h3><p>Compare effort to a defined knowledge outcome; report remaining trade-offs explicitly.</p></article></div>
             <p class="decision-takeaway">A useful threshold can expose missing evidence without supplying a winner.</p>
             <p class="decision-muted">Knowledge already credited through predictions or avoided failures receives no second benefit credit.</p></div>
-          <template class="speaker-notes"><p>Insight is not a universal unit with a universal price. Ask the stakeholder what decision the knowledge enables and how likely it is to change the outcome. The fixed-model audit in backup illustrates avoided-loss valuation, conditional on prevention probability. If knowledge has value of its own but no defensible monetary estimate, keep it unpriced or compare resources needed to achieve a specified knowledge outcome. That supports a partial comparison without manufacturing an economic ranking.</p>
+          <template class="speaker-notes"><p>Insight is not a universal unit with a universal price. Ask the stakeholder what decision the knowledge enables and how likely it is to change the outcome. The fixed-model audit in the main talk illustrates avoided-loss valuation, conditional on prevention probability. If knowledge has value of its own but no defensible monetary estimate, keep it unpriced or compare resources needed to achieve a specified knowledge outcome. That supports a partial comparison without manufacturing an economic ranking.</p>
             <p class="notes-reference"><strong>Reference only:</strong> Paper Sec. 4.2: knowledge and risk-reduction pathways. Ranges and task-based comparisons are proposed evaluation choices.</p>
           </template></section>
         <!-- BACKUP 03: MitoVis: When do data and model improvements pay off? -->
@@ -1138,7 +1166,7 @@
               </div>
             </div>
           </div>
-          <template class="speaker-notes"><p>The workflow has three interaction targets. Changing data can trigger training and review. Steering model state can also require re-optimization and review. Changing only the view leaves the model fixed and builds understanding. This taxonomy maps each workflow to the cost and benefit terms in the ledger. It is available here for technical questions.</p>
+          <template class="speaker-notes"><p>The workflow has three interaction targets. Changing data can trigger training and review. Steering model state can also require re-optimization and review. Changing only the view leaves the model fixed and builds understanding. This taxonomy maps each workflow to the cost and benefit terms in the ledger. The complete workflow is retained here for technical questions.</p>
             <p class="notes-reference"><strong>Reference only:</strong> Paper Fig. 1, p. 3. Extends Van Wijk (2005). Follow the three interaction targets.</p>
           </template>
         </section>
