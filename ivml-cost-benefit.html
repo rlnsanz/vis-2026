@@ -763,6 +763,7 @@
       .main-slide .framework-assumption { font-size: 30px; line-height: 1.35; padding-top: 14px; }
       .main-slide .mitovis-metrics { display: flex; flex-direction: column; gap: 34px; }
       .main-slide .mitovis-accuracy { font-size: 56px; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; }
+      .main-slide .mitovis-loop { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
       .main-slide .mitovis-loop .anchor-icon { width: 44px; height: 44px; }
       .main-slide .mitovis-loop .anchor-step strong { font-size: 30px; }
       .main-slide .ledger-anchor-row { display: grid; grid-template-columns: 46px 1fr; gap: 18px; align-items: center; margin-top: 22px; }
@@ -784,12 +785,22 @@
       .main-slide .choice-route p { font-size: 30px; line-height: 1.5; }
       .main-slide .choice-vs { font-size: 32px; text-align: center; font-weight: 600; }
       .main-slide .question-band { font-size: 38px; font-weight: 750; line-height: 1.25; }
+      /* Slide 02: let the comparison fill the available projection area. */
+      #slide-2 .talk-heading { font-size: 64px; }
+      #slide-2 .talk-body { gap: 32px; }
+      #slide-2 .choice-compare { grid-template-columns: minmax(0, 1fr) 80px minmax(0, 1fr); gap: 24px; }
+      #slide-2 .choice-route { padding: 24px; }
+      #slide-2 .choice-route .anchor-icon { width: 96px; height: 96px; }
+      #slide-2 .choice-route h3 { font-size: 64px; line-height: 1.1; letter-spacing: -0.035em; margin: 20px 0; }
+      #slide-2 .choice-route p { font-size: 42px; line-height: 1.3; }
+      #slide-2 .choice-vs { font-size: 40px; }
+      #slide-2 .question-band { font-size: 48px; line-height: 1.2; padding: 26px 32px; text-wrap: balance; }
       .main-slide .route-anchors { gap: 44px; }
       .main-slide .route-anchor { position: relative; border-top: 2px solid var(--anchor-line); padding: 24px 12px 0 0; }
       .main-slide .route-anchor .anchor-icon { margin: 32px 0 30px; width: 96px; height: 96px; color: var(--anchor-accent); }
       .main-slide .route-anchor h3 { font-size: 48px; margin-bottom: 16px; letter-spacing: -0.035em; }
       .main-slide .route-anchor .anchor-copy { max-width: 350px; }
-      .main-slide .contribution-line { display: flex; align-items: center; gap: 18px; font-size: 30px; color: var(--slide-copy); padding-top: 20px; border-top: 1px solid var(--anchor-line); }
+      .main-slide .contribution-line { display: block; width: 100%; font-size: 40px; color: var(--slide-copy); margin-top: 20px; padding-top: 32px; }
       .main-slide .workflow-spine { width: 100%; height: 400px; }
       .main-slide .target-anchor { padding: 28px; border: 1px solid var(--anchor-line); border-radius: 18px; background: var(--anchor-panel); }
       .main-slide .target-anchor .anchor-icon { width: 84px; height: 84px; margin: 18px 0; }
@@ -866,6 +877,34 @@
       #slide-7 .ledger-accounting-note { padding-left: 2px; }
       #slide-7 .anchor-band { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; }
       #slide-7 .anchor-band .anchor-copy { font-size: 36px; line-height: 1.25; }
+
+      /* Update costs: aligned stages, with a distinct palette color per stage. */
+      #slide-8 .talk-body { justify-content: space-evenly; gap: 20px; padding: 20px 0; }
+      #slide-8 .update-anchor { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; align-items: stretch; }
+      #slide-8 .update-anchor .anchor-step { display: grid; grid-template-rows: 44px 108px 52px auto; align-content: start; border-top: 5px solid var(--stage-color); padding: 20px 22px; background: var(--vis-cream); color: var(--slide-copy); border-radius: 0 0 12px 12px; }
+      #slide-8 .update-anchor .anchor-step:nth-child(1) { --stage-color: var(--vis-orange); --stage-ink: var(--vis-orange-text); }
+      #slide-8 .update-anchor .anchor-step:nth-child(2) { --stage-color: var(--vis-raspberry); --stage-ink: var(--vis-raspberry-text); }
+      #slide-8 .update-anchor .anchor-step:nth-child(3) { --stage-color: var(--vis-brown); --stage-ink: var(--vis-brown); }
+      #slide-8 .update-anchor .anchor-number { font-size: 30px; color: var(--stage-ink); }
+      #slide-8 .update-anchor .anchor-hero { font-size: 88px; color: var(--stage-ink); align-self: center; }
+      #slide-8 .update-anchor .anchor-icon { width: 96px; height: 96px; color: var(--stage-ink); align-self: center; }
+      #slide-8 .update-anchor .anchor-copy { font-size: 34px; line-height: 1.2; align-self: center; }
+      #slide-8 .update-anchor strong { font-size: 40px; margin: 0; color: var(--stage-ink); align-self: center; }
+      #slide-8 .update-anchor .anchor-note { font-size: 30px; line-height: 1.25; }
+      #slide-8 .update-total { display: grid; grid-template-columns: 0.8fr 1fr 1fr; align-items: center; gap: 24px; padding: 18px 24px; border-top: 2px solid var(--anchor-line); border-bottom: 2px solid var(--anchor-line); }
+      #slide-8 .update-total > strong { font-size: 36px; }
+      #slide-8 .update-total p { font-size: 32px; line-height: 1.2; }
+      #slide-8 .update-total b { font-size: 60px; line-height: 1.05; margin-right: 12px; }
+      #slide-8 .update-total .update-compute { color: var(--vis-raspberry-text); }
+      #slide-8 .update-total .update-recovery { color: var(--vis-brown); }
+      #slide-8 .update-question .anchor-copy { font-size: 40px; line-height: 1.2; }
+      #slide-8 .update-question .anchor-note { margin-top: 8px; }
+      .dark #slide-8 .update-anchor .anchor-step { background: var(--anchor-panel); }
+      .dark #slide-8 .update-anchor .anchor-step:nth-child(1) { --stage-ink: #ffbf8f; }
+      .dark #slide-8 .update-anchor .anchor-step:nth-child(2) { --stage-ink: #f6b0cc; }
+      .dark #slide-8 .update-anchor .anchor-step:nth-child(3) { --stage-ink: #e9caaa; --stage-color: #e9caaa; }
+      .dark #slide-8 .update-total .update-compute { color: #f6b0cc; }
+      .dark #slide-8 .update-total .update-recovery { color: #e9caaa; }
 
       /* Projection sizes include diagram scaling; subscripts stay legible in equations. */
       .slide-section sub, .slide-section sup { font-size: max(0.85em, 26px); }
@@ -949,12 +988,12 @@
 <div class="choice-route"><div class="anchor-accent"><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="18" r="10"/><path d="M14 54v-9c0-20 36-20 36 0v9M23 54V43m18 11V43"/></svg></div><h3>Add interaction</h3><p>Build. Learn. Use. Adapt.</p></div><div class="choice-vs">vs.</div>
 <div class="choice-route" data-reveal="1"><div class="anchor-accent"><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><circle cx="30" cy="32" r="22"/><circle cx="30" cy="32" r="11"/><path d="M30 32 52 10m-12 0h12v12"/></svg></div><h3>Invest elsewhere</h3><p>Data. Model. Automation.</p></div></div>
 <div class="anchor-band question-band" data-reveal="2">Is adding interaction worth more than improving the data or model?</div></div><footer class="photo-footer" aria-label="Paper reference"><nav class="talk-roadmap" aria-label="Talk progress"><ol><li aria-current="step"><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><circle cx="30" cy="32" r="22"/><circle cx="30" cy="32" r="11"/><path d="M30 32 52 10m-12 0h12v12"/></svg><span>Change</span></li><li><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M12 12h40v42H12zM22 24h20M22 34h8m8 0h4M22 44h8m8 0h4"/></svg><span>Count</span></li><li><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M10 12v42h46M16 45l36-26M16 22l36 20"/><path d="M34 16v38" stroke-width="1.25" stroke-dasharray="3 3"/><circle cx="34" cy="32" r="4" fill="currentColor"/></svg><span>Decide</span></li></ol></nav><span class="photo-footer-title">Cost-Benefit Modeling of Interactive Visual Machine Learning Systems</span><a href="https://vader.lab.asu.edu/docs/publications/pdf/2026/IVML_paper.pdf" target="_blank" rel="noopener noreferrer" aria-label="Read the paper PDF"><img data-image="paper-qr" width="72" height="72" alt="QR code for the paper PDF"/></a></footer><template class="speaker-notes"><p>Building an interactive tool takes work. The analyst has to learn it, explore results, and adapt when the model changes.</p><p class="reveal-cue" data-click="1">[CLICK 1] Reveal other investment routes.</p><p>Could better data, a different model, or automation offer more value? We can also combine these investments.</p><p class="reveal-cue" data-click="2">[CLICK 2] Reveal the decision question.</p><p>Which investment gives us more value for the effort? That's the comparison we'll make.</p><p class="notes-reference"><strong>Reference only:</strong> Paper Sec. 4.1, especially Eq. 11: perceptual and interaction effort (C_P, C_E), plus re-alignment after model changes and update delays (C_R). Initial interface learning is an adoption cost made explicit here; the paper does not separately parameterize a learning curve. Expertise variation remains a limitation in Sec. 6.</p></template></section>
-        <!-- SLIDE 03: Three questions guide the decision -->
-        <section class="slide-section main-slide talk-slide decision-slide framework-slide hidden slide-animate flex-1 flex flex-col " id="slide-3" data-title="3. Three questions guide the decision" data-budget="35" data-talk-section="intervention"><header class="talk-top"><div><p class="talk-kicker">Our contribution</p><h2 class="talk-heading">Three questions guide the decision</h2></div><span class="talk-counter">03 / 14</span></header><div class="talk-body"><div class="anchor-three route-anchors">
+        <!-- SLIDE 03: Put interaction where it creates value (and then stop) -->
+        <section class="slide-section main-slide talk-slide decision-slide framework-slide hidden slide-animate flex-1 flex flex-col " id="slide-3" data-title="3. Put interaction where it creates value (and then stop)" data-budget="35" data-talk-section="intervention"><header class="talk-top"><div><p class="talk-kicker">Our contribution</p><h2 class="talk-heading">Put interaction where it creates value <em data-reveal="1">(and then stop)</em></h2></div><span class="talk-counter">03 / 14</span></header><div class="talk-body"><div class="anchor-three route-anchors">
 <article class="route-anchor"><span class="anchor-number">01</span><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><circle cx="30" cy="32" r="22"/><circle cx="30" cy="32" r="11"/><path d="M30 32 52 10m-12 0h12v12"/></svg><h3>Change</h3><p class="anchor-copy">Data, model,<br>or understanding?</p></article>
 <article class="route-anchor"><span class="anchor-number">02</span><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M12 12h40v42H12zM22 24h20M22 34h8m8 0h4M22 44h8m8 0h4"/></svg><h3>Count</h3><p class="anchor-copy">Which costs<br>and benefits follow?</p></article>
 <article class="route-anchor"><span class="anchor-number">03</span><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M10 12v42h46M16 45l36-26M16 22l36 20"/><path d="M34 16v38" stroke-width="1.25" stroke-dasharray="3 3"/><circle cx="34" cy="32" r="4" fill="currentColor"/></svg><h3>Decide</h3><p class="anchor-copy">Worth the effort?<br>How long to continue?</p></article></div>
-<p class="contribution-line"><strong>Van Wijk's economic model of visualization</strong><span>+</span><strong class="anchor-accent">Machine learning</strong></p></div><footer class="photo-footer" aria-label="Paper reference"><nav class="talk-roadmap" aria-label="Talk progress"><ol><li aria-current="step"><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><circle cx="30" cy="32" r="22"/><circle cx="30" cy="32" r="11"/><path d="M30 32 52 10m-12 0h12v12"/></svg><span>Change</span></li><li><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M12 12h40v42H12zM22 24h20M22 34h8m8 0h4M22 44h8m8 0h4"/></svg><span>Count</span></li><li><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M10 12v42h46M16 45l36-26M16 22l36 20"/><path d="M34 16v38" stroke-width="1.25" stroke-dasharray="3 3"/><circle cx="34" cy="32" r="4" fill="currentColor"/></svg><span>Decide</span></li></ol></nav><span class="photo-footer-title">Cost-Benefit Modeling of Interactive Visual Machine Learning Systems</span><a href="https://vader.lab.asu.edu/docs/publications/pdf/2026/IVML_paper.pdf" target="_blank" rel="noopener noreferrer" aria-label="Read the paper PDF"><img data-image="paper-qr" width="72" height="72" alt="QR code for the paper PDF"/></a></footer><template class="speaker-notes"><p>The investment decision leads to three questions.</p><p>First, what does interaction change: the data, the model, or our understanding?</p><p>That tells us what to count: the effort required and the value created.</p><p>Then we ask whether that value justifies the effort, and how long we should continue.</p><p>We connect these questions by extending Van Wijk's economic model of visualization with machine learning.</p><p class="notes-reference"><strong>Reference only:</strong> Paper Secs. 3-5. The framework is structured accounting with conditional examples; predictive accuracy is not established.</p></template></section>
+<p class="contribution-line"><strong>Van Wijk's economic model of visualization</strong> <span>+</span> <strong class="anchor-accent">Machine learning</strong></p></div><footer class="photo-footer" aria-label="Paper reference"><nav class="talk-roadmap" aria-label="Talk progress"><ol><li aria-current="step"><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><circle cx="30" cy="32" r="22"/><circle cx="30" cy="32" r="11"/><path d="M30 32 52 10m-12 0h12v12"/></svg><span>Change</span></li><li><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M12 12h40v42H12zM22 24h20M22 34h8m8 0h4M22 44h8m8 0h4"/></svg><span>Count</span></li><li><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M10 12v42h46M16 45l36-26M16 22l36 20"/><path d="M34 16v38" stroke-width="1.25" stroke-dasharray="3 3"/><circle cx="34" cy="32" r="4" fill="currentColor"/></svg><span>Decide</span></li></ol></nav><span class="photo-footer-title">Cost-Benefit Modeling of Interactive Visual Machine Learning Systems</span><a href="https://vader.lab.asu.edu/docs/publications/pdf/2026/IVML_paper.pdf" target="_blank" rel="noopener noreferrer" aria-label="Read the paper PDF"><img data-image="paper-qr" width="72" height="72" alt="QR code for the paper PDF"/></a></footer><template class="speaker-notes"><p>More visualization or more interaction does not automatically create more value. The comparison we just posed leads to a design principle: put interaction where it creates value.</p><p>First, identify what it changes: the data, the model, or our understanding. That determines which costs and benefits to count, and whether the value justifies the effort.</p><p>We connect these questions by extending Van Wijk's economic model of visualization with machine learning.</p><p class="reveal-cue" data-click="1">[CLICK 1] Reveal (and then stop).</p><p>And then stop. Even a worthwhile workflow can reach a point where the next interaction costs more than the value it adds. Our framework asks both where to invest human effort and when to stop.</p><p class="notes-reference"><strong>Reference only:</strong> Paper Secs. 3-5. The framework is structured accounting with conditional examples; predictive accuracy is not established.</p></template></section>
         <!-- SLIDE 04: Learning changes the loop -->
         <section class="slide-section main-slide talk-slide decision-slide framework-slide hidden slide-animate flex-1 flex flex-col " id="slide-4" data-title="4. Learning changes the loop" data-budget="50" data-talk-section="intervention"><header class="talk-top"><div><p class="talk-kicker">From Van Wijk to interactive ML</p><h2 class="talk-heading">Learning changes the loop</h2></div><span class="talk-counter">04 / 14</span></header><div class="talk-body"><svg class="story-figure workflow-spine" viewBox="0 0 1440 475" role="img" aria-label="Visualization takes data through a view to knowledge. Learning and model state are inserted into that same path. Interaction can feed back to data, model, or the view.">
 <defs><marker id="main-spine-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 1 10 5 0 9Z" fill="#806a5a"/></marker></defs>
@@ -975,7 +1014,7 @@
 </div><footer class="photo-footer" aria-label="Paper reference"><nav class="talk-roadmap" aria-label="Talk progress"><ol><li aria-current="step"><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><circle cx="30" cy="32" r="22"/><circle cx="30" cy="32" r="11"/><path d="M30 32 52 10m-12 0h12v12"/></svg><span>Change</span></li><li><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M12 12h40v42H12zM22 24h20M22 34h8m8 0h4M22 44h8m8 0h4"/></svg><span>Count</span></li><li><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M10 12v42h46M16 45l36-26M16 22l36 20"/><path d="M34 16v38" stroke-width="1.25" stroke-dasharray="3 3"/><circle cx="34" cy="32" r="4" fill="currentColor"/></svg><span>Decide</span></li></ol></nav><span class="photo-footer-title">Cost-Benefit Modeling of Interactive Visual Machine Learning Systems</span><a href="https://vader.lab.asu.edu/docs/publications/pdf/2026/IVML_paper.pdf" target="_blank" rel="noopener noreferrer" aria-label="Read the paper PDF"><img data-image="paper-qr" width="72" height="72" alt="QR code for the paper PDF"/></a></footer><template class="speaker-notes"><p>First, cleaner labels and features may reveal relationships that simple regression can capture, reducing computing and maintenance costs.</p><p class="reveal-cue" data-click="1">[CLICK 1] Reveal model and training choices.</p><p>Second, we choose a model, objectives, and constraints, then fit, tune, diagnose errors, and validate on held-out data. Each run takes computing resources and analyst time to interpret its results.</p><p class="reveal-cue" data-click="2">[CLICK 2] Reveal the understanding target.</p><p>Third, we understand what changed and why. Comparing two versions can build mastery and speed up iteration. These targets can overlap, so we include any training and review they require. Let's see correction and retraining in practice.</p><p class="notes-reference"><strong>Reference only:</strong> Paper Secs. 3.2 and 4.3; Sec. 4.1 for re-alignment after model updates. Simple regression, version comparison, and A/B testing are explanatory examples. Mastery and iteration speed describe potential learning and workflow benefits. Include training and review costs when the chosen approach requires them. If prediction improvement is valued through correction time saved, count that saving once.</p><p class="notes-reference"><strong>Reference only:</strong> Studying a fixed model adds no retraining. This case is discussed with its visible example on slide 11.</p></template></section>
         <!-- SLIDE 06: From correction to better predictions -->
         <section class="slide-section main-slide talk-slide decision-slide framework-slide hidden slide-animate flex-1 flex flex-col" id="slide-6" data-title="6. From correction to better predictions" data-budget="50" data-talk-section="intervention">
-          <header class="talk-top"><div><p class="talk-kicker">MitoVis / learning from corrections</p><h2 class="talk-heading">From correction to better predictions</h2></div><span class="talk-counter">06 / 14</span></header>
+          <header class="talk-top"><div><p class="talk-kicker">Learning from corrections with MitoVis</p><h2 class="talk-heading">From correction to better predictions</h2></div><span class="talk-counter">06 / 14</span></header>
           <div class="talk-body">
             <div class="anchor-layout mitovis-anchor">
               <figure>
@@ -983,15 +1022,13 @@
                 <figcaption>Neuronal mitochondria: proofread masks and labels.</figcaption>
                 <div class="anchor-flow mitovis-loop anchor-divider" data-reveal="1" aria-label="Correct labels, retrain the classifier, then review its predictions.">
                   <div class="anchor-step"><svg class="anchor-icon anchor-accent" viewBox="0 0 64 64" aria-hidden="true"><path d="M13 45l-3 10 10-3 31-31-7-7-31 31zM38 20l7 7M10 55h43"/></svg><strong>Correct</strong></div>
-                  <span class="anchor-arrow" aria-hidden="true">-&gt;</span>
                   <div class="anchor-step"><svg class="anchor-icon anchor-accent" viewBox="0 0 64 64" aria-hidden="true"><path d="M49 22A20 20 0 1 0 50 41M49 9v14H35"/></svg><strong>Retrain</strong></div>
-                  <span class="anchor-arrow" aria-hidden="true">-&gt;</span>
                   <div class="anchor-step"><svg class="anchor-icon anchor-accent" viewBox="0 0 64 64" aria-hidden="true"><path d="M6 32s10-17 26-17 26 17 26 17-10 17-26 17S6 32 6 32z"/><circle cx="32" cy="32" r="8"/></svg><strong>Review</strong></div>
                 </div>
               </figure>
               <div class="mitovis-metrics" data-reveal="2">
                 <div><p class="anchor-label">Reported workflow time</p><p class="anchor-hero anchor-accent metric-with-unit">19 <span class="anchor-copy metric-unit">min</span></p><p class="anchor-note">191.4 min manually</p></div>
-                <div><p class="anchor-label">Reported classifier accuracy</p><p class="mitovis-accuracy"><span class="anchor-copy">77.0% -&gt;</span> <span class="anchor-good">87.1%</span></p><p class="anchor-note">Across three iterations</p></div>
+                <div><p class="anchor-label">Reported classifier accuracy</p><p class="mitovis-accuracy"><span class="anchor-copy">77.0% to</span> <span class="anchor-good">87.1%</span></p><p class="anchor-note">Across three iterations</p></div>
               </div>
             </div>
             <p class="anchor-copy" data-reveal="2">What are these gains worth to the lab?</p>
@@ -1008,7 +1045,7 @@
         </section>
         <!-- SLIDE 07: Count effort. Value outcomes. -->
         <section class="slide-section main-slide talk-slide decision-slide framework-slide hidden slide-animate flex-1 flex flex-col" id="slide-7" data-title="7. Count effort. Value outcomes." data-budget="50" data-talk-section="account">
-          <header class="talk-top"><div><p class="talk-kicker">The accounting / effort and value</p><h2 class="talk-heading">Count effort. Value outcomes.</h2></div><span class="talk-counter">07 / 14</span></header>
+          <header class="talk-top"><div><p class="talk-kicker">Accounting for effort and value</p><h2 class="talk-heading">Count effort. Value outcomes.</h2></div><span class="talk-counter">07 / 14</span></header>
           <div class="talk-body">
             <div class="anchor-two">
               <div class="anchor-panel ledger-anchor anchor-cost">
@@ -1045,17 +1082,15 @@
         </section>
         <!-- SLIDE 08: Every update has a human cost -->
         <section class="slide-section main-slide talk-slide decision-slide framework-slide hidden slide-animate flex-1 flex flex-col" id="slide-8" data-title="8. Every update has a human cost" data-budget="50" data-talk-section="account">
-          <header class="talk-top"><div><p class="talk-kicker">Repeated updates / compute and recovery</p><h2 class="talk-heading">Every update has a human cost</h2></div><span class="talk-counter">08 / 14</span></header>
+          <header class="talk-top"><div><p class="talk-kicker">Compute and recovery across repeated updates</p><h2 class="talk-heading">Every update has a human cost</h2></div><span class="talk-counter">08 / 14</span></header>
           <div class="talk-body">
             <div class="anchor-flow update-anchor">
-              <div class="anchor-step anchor-accent"><p class="anchor-number">01 / Correct</p><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M13 45l-3 10 10-3 31-31-7-7-31 31zM38 20l7 7M10 55h43"/></svg><strong>Analyst time</strong></div>
-              <span class="anchor-arrow" data-reveal="1" aria-hidden="true">-&gt;</span>
-              <div class="anchor-step anchor-accent" data-reveal="1"><p class="anchor-number">02 / Train</p><p class="anchor-hero metric-with-unit">23 <span class="anchor-copy metric-unit">s</span></p><p class="anchor-copy">Reported latency</p><p class="anchor-note">~$0.02 at assumed $3/GPU-hour</p></div>
-              <span class="anchor-arrow" data-reveal="2" aria-hidden="true">-&gt;</span>
-              <div class="anchor-step anchor-cost" data-reveal="2"><p class="anchor-number">03 / Review + resume</p><p class="anchor-hero">$3</p><p class="anchor-copy">Per update</p><p class="anchor-note">Assumed 1.5 min at $2/min</p></div>
+              <div class="anchor-step anchor-accent"><p class="anchor-number">01. Correct</p><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M13 45l-3 10 10-3 31-31-7-7-31 31zM38 20l7 7M10 55h43"/></svg><strong>Analyst time</strong><p class="anchor-note">Correct segmentation labels</p></div>
+              <div class="anchor-step anchor-accent" data-reveal="1"><p class="anchor-number">02. Train</p><p class="anchor-hero metric-with-unit">23 <span class="anchor-copy metric-unit">s</span></p><p class="anchor-copy">Reported latency</p><p class="anchor-note">~$0.02 compute<br>Assumed $3/GPU-hour</p></div>
+              <div class="anchor-step anchor-cost" data-reveal="2"><p class="anchor-number">03. Review + resume</p><p class="anchor-hero">$3</p><p class="anchor-copy">Per update</p><p class="anchor-note">Assumed 1.5 min at $2/min</p></div>
             </div>
-            <div class="anchor-band" data-reveal="3"><p class="anchor-copy"><strong>3 updates = ~$0.06 compute + $9 recovery</strong></p></div>
-            <div data-reveal="4"><p class="anchor-copy"><strong>How much delay is worth it?</strong></p><p class="anchor-note">Depends on benefit and recovery cost. No universal limit.</p></div>
+            <div class="update-total" data-reveal="3" aria-label="3 updates = approximately $0.06 compute + $9 recovery"><strong>3 updates</strong><p class="update-compute"><b>~$0.06</b> compute</p><p class="update-recovery"><b>$9</b> recovery</p></div>
+            <div class="update-question" data-reveal="4"><p class="anchor-copy"><strong>How much delay is worth it?</strong></p><p class="anchor-note">Depends on benefit and recovery cost. No universal limit.</p></div>
           </div>
 
           <footer class="photo-footer" aria-label="Paper reference"><nav class="talk-roadmap" aria-label="Talk progress"><ol><li><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><circle cx="30" cy="32" r="22"/><circle cx="30" cy="32" r="11"/><path d="M30 32 52 10m-12 0h12v12"/></svg><span>Change</span></li><li aria-current="step"><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M12 12h40v42H12zM22 24h20M22 34h8m8 0h4M22 44h8m8 0h4"/></svg><span>Count</span></li><li><svg class="anchor-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M10 12v42h46M16 45l36-26M16 22l36 20"/><path d="M34 16v38" stroke-width="1.25" stroke-dasharray="3 3"/><circle cx="34" cy="32" r="4" fill="currentColor"/></svg><span>Decide</span></li></ol></nav><span class="photo-footer-title">Cost-Benefit Modeling of Interactive Visual Machine Learning Systems</span><a href="https://vader.lab.asu.edu/docs/publications/pdf/2026/IVML_paper.pdf" target="_blank" rel="noopener noreferrer" aria-label="Read the paper PDF"><img data-image="paper-qr" width="72" height="72" alt="QR code for the paper PDF"/></a></footer><template class="speaker-notes">
@@ -1073,7 +1108,7 @@
         </section>
         <!-- SLIDE 09: What must one accuracy point be worth? -->
         <section class="slide-section main-slide talk-slide decision-slide framework-slide hidden slide-animate flex-1 flex flex-col " id="slide-9" data-title="9. What must one accuracy point be worth?" data-budget="70" data-talk-section="decide">
-          <header class="talk-top"><div><p class="talk-kicker">MitoVis | Illustrative break-even</p><h2 class="talk-heading">What must one accuracy point be worth?</h2></div><span class="talk-counter">09 / 14</span></header>
+          <header class="talk-top"><div><p class="talk-kicker">MitoVis: illustrative break-even</p><h2 class="talk-heading">What must one accuracy point be worth?</h2></div><span class="talk-counter">09 / 14</span></header>
           <div class="talk-body">
 <div class="decision-chart-layout">
               <figure><svg class="story-figure decision-chart" viewBox="0 0 980 520" role="img" aria-label="Illustrative MitoVis net value relative to the manual-work reference. Net value is 10.1 times U minus 8974.68 dollars. It crosses zero at about 889 dollars per percentage point of classifier accuracy. Linear axes; U ranges from zero to 2000 dollars per point.">
@@ -1105,7 +1140,7 @@
         </section>
         <!-- SLIDE 10: Covering costs is only the first test -->
         <section class="slide-section main-slide talk-slide decision-slide framework-slide hidden slide-animate flex-1 flex flex-col " id="slide-10" data-title="10. Covering costs is only the first test" data-budget="50" data-talk-section="decide">
-          <header class="talk-top"><div><p class="talk-kicker">V vs. A | A is hypothetical</p><h2 class="talk-heading">Covering costs is only the first test</h2></div><span class="talk-counter">10 / 14</span></header>
+          <header class="talk-top"><div><p class="talk-kicker">Comparing V with hypothetical alternative A</p><h2 class="talk-heading">Covering costs is only the first test</h2></div><span class="talk-counter">10 / 14</span></header>
           <div class="talk-body">
 <div class="decision-chart-layout">
               <figure><svg class="story-figure decision-chart" viewBox="0 0 980 520" role="img" aria-label="Illustrative comparison: MitoVis (V) costs 2040 dollars more than hypothetical A for two additional percentage points of classifier accuracy. One percentage point means, for example, 80 to 81 percent accuracy. U is the dollar value of one percentage point of accuracy for this workload. V minus A net value equals two times U minus 2040 dollars, with a tie at 1020 dollars per percentage point of accuracy. Below that value A has higher net value; above it V has higher net value. Manual work remains another option.">
@@ -1146,7 +1181,7 @@
         </section>
         <!-- SLIDE 11: Understanding can prevent costly failures -->
         <section class="slide-section main-slide talk-slide decision-slide framework-slide hidden slide-animate flex-1 flex flex-col " id="slide-11" data-title="11. Understanding can prevent costly failures" data-budget="45" data-talk-section="decide">
-          <header class="talk-top"><div><p class="talk-kicker">Fixed-model audit | Data poisoning</p><h2 class="talk-heading">Understanding can prevent costly failures</h2></div><span class="talk-counter">11 / 14</span></header>
+          <header class="talk-top"><div><p class="talk-kicker">Fixed-model audit: data poisoning</p><h2 class="talk-heading">Understanding can prevent costly failures</h2></div><span class="talk-counter">11 / 14</span></header>
           <div class="talk-body">
 <div class="anchor-layout">
               <figure>
@@ -1257,7 +1292,7 @@
             </div></div><template class="speaker-notes"><p>Where is human effort worth its cost?</p><p class="reveal-cue" data-click="1">[CLICK 1] Reveal the three decisions.</p><p>What changes? Which costs and benefits follow? And when should we stop?</p><p class="reveal-cue" data-click="2">[CLICK 2] Reveal contacts, job-market note, and QR links.</p><p>I'm on the faculty job market. Let's connect. Thank you.</p></template></section>
         <!-- BACKUP 01: Assumptions behind the illustrative comparison -->
         <section data-backup="true" id="slide-15" class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 01. Assumptions behind the illustrative comparison" data-backup-section="Comparison and valuation">
-          <header class="talk-top"><div><p class="talk-kicker">Backup | Comparison and valuation</p><h2 class="talk-heading">Assumptions behind the illustrative comparison</h2></div><span class="talk-counter">Backup 01 / 23</span></header>
+          <header class="talk-top"><div><p class="talk-kicker">Backup: Comparison and valuation</p><h2 class="talk-heading">Assumptions behind the illustrative comparison</h2></div><span class="talk-counter">Backup 01 / 23</span></header>
           <div class="talk-body">
             <div class="decision-two"><div class="decision-panel"><h3>V: paper scenario</h3><p>Development $10,000; runtime $123.08.<br>Classifier gain 10.1 points.<br>Avoided manual work $1,148.40.</p></div><div class="decision-panel"><h3>A: hypothetical alternative</h3><p>Development $8,000; runtime $83.08.<br>Classifier gain 8.1 points.<br>Same avoided manual work.</p></div></div>
             <div class="decision-arithmetic"><p>Net V = $1,148.40 + 10.1U - $10,123.08.</p><p>Net A = $1,148.40 + 8.1U - $8,083.08.</p><p>Net V - Net A = 2U - $2,040; tie at U = $1,020 / point.</p><p>With N independent workloads: tie at U = ($2,000/N + $40) / 2.</p></div>
@@ -1270,7 +1305,7 @@
           </template></section>
         <!-- BACKUP 02: What if we cannot put a price on insight? -->
         <section data-backup="true" id="slide-16" class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 02. What if we cannot put a price on insight?" data-backup-section="Comparison and valuation">
-          <header class="talk-top"><div><p class="talk-kicker">Backup | Comparison and valuation</p><h2 class="talk-heading">What if we cannot put a price on insight?</h2></div><span class="talk-counter">Backup 02 / 23</span></header>
+          <header class="talk-top"><div><p class="talk-kicker">Backup: Comparison and valuation</p><h2 class="talk-heading">What if we cannot put a price on insight?</h2></div><span class="talk-counter">Backup 02 / 23</span></header>
           <div class="talk-body">
             <div class="decision-three"><article class="decision-panel"><p class="decision-label">Connect to an outcome</p><h3>What changes?</h3><p>Identify a decision, prevented failure, or recurring task affected by the knowledge.</p></article><article class="decision-panel"><p class="decision-label">Keep uncertainty visible</p><h3>What is plausible?</h3><p>Use ranges for outcome value and prevention probability. Find where the ranking changes.</p></article><article class="decision-panel"><p class="decision-label">When value stays unpriced</p><h3>What can we compare?</h3><p>Compare effort to a defined knowledge outcome; report remaining trade-offs explicitly.</p></article></div>
             <p class="decision-takeaway">A useful threshold can expose missing evidence without supplying a winner.</p>
@@ -1283,7 +1318,7 @@
           </template></section>
         <!-- BACKUP 03: MitoVis: When do data and model improvements pay off? -->
         <section data-backup="true" id="slide-17" class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 03. MitoVis: When do data and model improvements pay off?" data-backup-section="Worked examples and stopping">
-          <header class="talk-top"><div><p class="talk-kicker">Backup | Worked examples and stopping</p><h2 class="talk-heading">MitoVis: When do data and model improvements pay off?</h2></div><span class="talk-counter">Backup 03 / 23</span></header>
+          <header class="talk-top"><div><p class="talk-kicker">Backup: Worked examples and stopping</p><h2 class="talk-heading">MitoVis: When do data and model improvements pay off?</h2></div><span class="talk-counter">Backup 03 / 23</span></header>
           <div class="talk-body">
             <div class="paper-figure-layout">
               <figure class="paper-figure">
@@ -1306,7 +1341,7 @@
         </section>
         <!-- BACKUP 04: A fixed model can create value through failure prevention -->
         <section data-backup="true" id="slide-18" class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 04. A fixed model can create value through failure prevention" data-backup-section="Worked examples and stopping">
-          <header class="talk-top"><div><p class="talk-kicker">Backup | Worked examples and stopping</p><h2 class="talk-heading">A fixed model can create value through failure prevention</h2></div><span class="talk-counter">Backup 04 / 23</span></header>
+          <header class="talk-top"><div><p class="talk-kicker">Backup: Worked examples and stopping</p><h2 class="talk-heading">A fixed model can create value through failure prevention</h2></div><span class="talk-counter">Backup 04 / 23</span></header>
           <div class="talk-body">
             <div class="paper-figure-layout">
               <figure class="paper-figure">
@@ -1329,7 +1364,7 @@
         </section>
         <!-- BACKUP 05: Stop when the next interaction costs more than it adds -->
         <section data-backup="true" id="slide-19" class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 05. Stop when the next interaction costs more than it adds" data-backup-section="Worked examples and stopping">
-          <header class="talk-top"><div><p class="talk-kicker">Backup | Worked examples and stopping</p><h2 class="talk-heading">Stop when the next interaction costs more than it adds</h2></div><span class="talk-counter">Backup 05 / 23</span></header>
+          <header class="talk-top"><div><p class="talk-kicker">Backup: Worked examples and stopping</p><h2 class="talk-heading">Stop when the next interaction costs more than it adds</h2></div><span class="talk-counter">Backup 05 / 23</span></header>
           <div class="talk-body">
             <div class="paper-figure-layout">
               <figure class="paper-figure">
@@ -1352,7 +1387,7 @@
         </section>
         <!-- BACKUP 06: What interaction changes determines the trade-off -->
         <section data-backup="true" id="slide-20" class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 06. What interaction changes determines the trade-off" data-backup-section="Workflow and interaction targets">
-          <header class="talk-top"><div><p class="talk-kicker">Backup | Workflow and interaction targets</p><h2 class="talk-heading">What interaction changes determines the trade-off</h2></div><span class="talk-counter">Backup 06 / 23</span></header>
+          <header class="talk-top"><div><p class="talk-kicker">Backup: Workflow and interaction targets</p><h2 class="talk-heading">What interaction changes determines the trade-off</h2></div><span class="talk-counter">Backup 06 / 23</span></header>
           <div class="talk-body">
             <div class="paper-figure-layout paper-figure-layout--workflow">
               <figure class="paper-figure">
@@ -2030,7 +2065,7 @@
         <!-- BACKUP 13: Costs: Upfront Development and Ongoing Session Effort -->
         <section id="slide-27" class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col"
           data-title="Backup 13. Costs: Upfront Development and Ongoing Session Effort" data-backup="true" data-backup-section="Cost-benefit equations">
-          <header class="talk-top"><div><p class="talk-kicker">Backup | Cost-benefit equations</p><h2 class="talk-heading">Costs: development and session effort</h2></div><span class="talk-counter">Backup 13 / 23</span></header>
+          <header class="talk-top"><div><p class="talk-kicker">Backup: Cost-benefit equations</p><h2 class="talk-heading">Costs: development and session effort</h2></div><span class="talk-counter">Backup 13 / 23</span></header>
           <div class="talk-body">
             <div class="decision-arithmetic math-serif">
               <p>C<sub>IVML</sub><sup>total</sup>(T) = C<sub>IVML</sub><sup>dev</sup></p>
@@ -2052,7 +2087,7 @@
         <!-- BACKUP 14: Costs: Model Training and Cognitive Re-alignment -->
         <section id="slide-28" class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col"
           data-title="Backup 14. Costs: Model Training and Cognitive Re-alignment" data-backup="true" data-backup-section="Cost-benefit equations">
-          <header class="talk-top"><div><p class="talk-kicker">Backup | Cost-benefit equations</p><h2 class="talk-heading">Model updates add training and re-alignment costs</h2></div><span class="talk-counter">Backup 14 / 23</span></header>
+          <header class="talk-top"><div><p class="talk-kicker">Backup: Cost-benefit equations</p><h2 class="talk-heading">Model updates add training and re-alignment costs</h2></div><span class="talk-counter">Backup 14 / 23</span></header>
           <div class="talk-body">
             <div class="decision-two">
               <article class="decision-panel">
@@ -2079,7 +2114,7 @@
         <!-- BACKUP 15: Benefits: Savings, Predictions, Risk Reduction, and Knowledge -->
         <section id="slide-29" class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col"
           data-title="Backup 15. Benefits: Savings, Predictions, Risk Reduction, and Knowledge" data-backup="true" data-backup-section="Cost-benefit equations">
-          <header class="talk-top"><div><p class="talk-kicker">Backup | Cost-benefit equations</p><h2 class="talk-heading">Four benefit pathways</h2></div><span class="talk-counter">Backup 15 / 23</span></header>
+          <header class="talk-top"><div><p class="talk-kicker">Backup: Cost-benefit equations</p><h2 class="talk-heading">Four benefit pathways</h2></div><span class="talk-counter">Backup 15 / 23</span></header>
           <div class="talk-body">
             <p class="decision-lead math-serif">B<sub>IVML</sub><sup>total</sup>(T) = B<sub>ds</sub>(T) + B<sub>model</sub>(T) + B<sub>risk</sub>(T) + B<sub>K</sub>(T)</p>
             <div class="decision-two">
@@ -2488,7 +2523,7 @@
         <!-- BACKUP 19: Applying the Framework: Map the Variables -->
         <section id="slide-33" class="slide-section talk-slide decision-slide hidden slide-animate flex-1 flex flex-col"
           data-title="Backup 19. Applying the Framework: Map the Variables" data-backup="true" data-backup-section="Applying the framework">
-          <header class="talk-top"><div><p class="talk-kicker">Backup | Applying the framework</p><h2 class="talk-heading">Applying the framework: map the variables</h2></div><span class="talk-counter">Backup 19 / 23</span></header>
+          <header class="talk-top"><div><p class="talk-kicker">Backup: Applying the framework</p><h2 class="talk-heading">Applying the framework: map the variables</h2></div><span class="talk-counter">Backup 19 / 23</span></header>
           <div class="talk-body">
             <div class="decision-two">
               <article class="decision-panel"><h3>Why these cases?</h3><p class="decision-label">MitoVis and a fixed-model audit</p><div class="decision-arithmetic"><p>Different interaction targets</p><p>Published measurements</p><p>Contrasting costs and benefits</p></div></article>
@@ -2568,7 +2603,7 @@
         </section>
         <!-- BACKUP 21: MitoVis: Assumptions behind the $889 threshold -->
         <section id="slide-35" class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 21. MitoVis: Assumptions behind the $889 threshold" data-backup="true" data-backup-section="Assumptions and calculations">
-          <header class="talk-top"><div><p class="talk-kicker">Backup | Assumptions and calculations</p><h2 class="talk-heading">MitoVis: Assumptions behind the $889 threshold</h2></div><span class="talk-counter">Backup 21 / 23</span></header>
+          <header class="talk-top"><div><p class="talk-kicker">Backup: Assumptions and calculations</p><h2 class="talk-heading">MitoVis: Assumptions behind the $889 threshold</h2></div><span class="talk-counter">Backup 21 / 23</span></header>
           <div class="talk-body"><div class="talk-backup-calculation"><div><img class="backup-interface" data-image="mitovis-interface" alt="MitoVis interface for neuronal segmentation correction and model fine-tuning"/><h3>Illustrative inputs</h3><p>3 x 19-minute sessions; $2/min labor</p><p>32 s initial processing + 3 x 23 s fine-tuning; $3/hr GPU</p><p>3 x 1.5-minute re-alignment periods; $10,000 development</p></div><div><h3>Calculation</h3><p>Runtime: $114.00 + $0.08 + $9.00 = $123.08</p><p>Total cost: $10,123.08</p><p>Benefit: $1,148.40 + 10.1 * U<sub>M</sub></p><p>U<sub>M</sub>: dollars per percentage point of accuracy.</p><p class="talk-formula">U<sub>M</sub> ~ ($10,123.08 - $1,148.40) / 10.1 ~$889</p></div></div></div>
           <footer class="photo-footer" aria-label="Paper reference"><span class="photo-footer-title">Cost-Benefit Modeling of Interactive Visual Machine Learning Systems</span><a href="https://vader.lab.asu.edu/docs/publications/pdf/2026/IVML_paper.pdf" target="_blank" rel="noopener noreferrer" aria-label="Read the paper PDF"><img data-image="paper-qr" width="72" height="72" alt="QR code for the paper PDF"/></a></footer><template class="speaker-notes">
             <p>The inputs on the left combine three nineteen-minute sessions with assumed labor and GPU prices, re-alignment time, and an illustrative estimate of development cost. The paper aggregates reported measurements in this way; it does not report an observed three-session experiment.</p>
@@ -2581,7 +2616,7 @@
         </section>
         <!-- BACKUP 22: Fixed-model audit: Assumptions behind the $10,038 threshold -->
         <section id="slide-36" class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 22. Fixed-model audit: Assumptions behind the $10,038 threshold" data-backup="true" data-backup-section="Assumptions and calculations">
-          <header class="talk-top"><div><p class="talk-kicker">Backup | Assumptions and calculations</p><h2 class="talk-heading">Fixed-model audit: Assumptions behind the $10,038 threshold</h2></div><span class="talk-counter">Backup 22 / 23</span></header>
+          <header class="talk-top"><div><p class="talk-kicker">Backup: Assumptions and calculations</p><h2 class="talk-heading">Fixed-model audit: Assumptions behind the $10,038 threshold</h2></div><span class="talk-counter">Backup 22 / 23</span></header>
           <div class="talk-body"><div class="talk-backup-calculation"><div><img class="backup-interface" data-image="stingray-interface" alt="Ma and colleagues' visual analytics interface for inspecting data poisoning vulnerabilities"/><h3>Illustrative inputs</h3><p>19-minute normalized audit; $2/min labor</p><p>$10,000 development cost</p><p>Initial training outside the accounting boundary; no model updates</p></div><div><h3>Conditional upper-bound calculation</h3><p>Total cost: $10,000 + $38 = $10,038</p><p>Risk benefit: Delta K * P<sub>fp</sub> * C<sub>f</sub></p><p class="talk-formula">C<sub>f</sub> >= $10,038 / (Delta K * P<sub>fp</sub>)</p><p>At Delta K = P<sub>fp</sub> = 1, the threshold is $10,038.</p></div></div></div>
           <footer class="photo-footer" aria-label="Paper reference"><span class="photo-footer-title">Cost-Benefit Modeling of Interactive Visual Machine Learning Systems</span><a href="https://vader.lab.asu.edu/docs/publications/pdf/2026/IVML_paper.pdf" target="_blank" rel="noopener noreferrer" aria-label="Read the paper PDF"><img data-image="paper-qr" width="72" height="72" alt="QR code for the paper PDF"/></a></footer><template class="speaker-notes">
             <p>The nineteen-minute audit on the left is a normalized duration for comparison, rather than a measured audit duration. At two dollars per minute, labor costs thirty-eight dollars. Adding an illustrative development cost of ten thousand dollars gives the total on the right: ten thousand thirty-eight dollars. Initial training is outside this calculation, and there are no model updates.</p>
@@ -2593,7 +2628,7 @@
         </section>
         <!-- BACKUP 23: Stopping times depend on information discovery and cost assumptions -->
         <section id="slide-37" class="slide-section talk-slide hidden slide-animate flex-1 flex flex-col" data-title="Backup 23. Stopping times depend on information discovery and cost assumptions" data-backup="true" data-backup-section="Assumptions and calculations">
-          <header class="talk-top"><div><p class="talk-kicker">Backup | Assumptions and calculations</p><h2 class="talk-heading">Stopping times depend on information discovery and cost assumptions</h2></div><span class="talk-counter">Backup 23 / 23</span></header>
+          <header class="talk-top"><div><p class="talk-kicker">Backup: Assumptions and calculations</p><h2 class="talk-heading">Stopping times depend on information discovery and cost assumptions</h2></div><span class="talk-counter">Backup 23 / 23</span></header>
           <div class="talk-body"><div class="talk-backup-calculation"><div><h3>Illustrative marginal model</h3><p>Time t is in minutes.</p><p class="talk-formula">MC(t) = 2e<sup>0.00348t</sup> + s<sub>C</sub>(t)</p><p class="talk-formula">MB(t) = 10,123.08 lambda e<sup>-lambda t</sup></p><p>Retraining at minutes 19, 38, and 57 adds ~$1.01/min for three minutes after each update.</p></div><div><h3>MitoVis sensitivity results</h3><p>lambda = 0.01 -> ~291 minutes</p><p>lambda = 0.03 -> ~150 minutes</p><p>lambda = 0.05 -> ~103 minutes</p><p>lambda describes how quickly useful information is found.</p></div></div></div>
           <footer class="photo-footer" aria-label="Paper reference"><span class="photo-footer-title">Cost-Benefit Modeling of Interactive Visual Machine Learning Systems</span><a href="https://vader.lab.asu.edu/docs/publications/pdf/2026/IVML_paper.pdf" target="_blank" rel="noopener noreferrer" aria-label="Read the paper PDF"><img data-image="paper-qr" width="72" height="72" alt="QR code for the paper PDF"/></a></footer><template class="speaker-notes">
             <p>On the left, marginal cost is the cost of another minute of interaction. It rises over time through a term used to represent fatigue. Marginal benefit is the value gained from that additional minute, and it declines exponentially. The model sets the total benefit budget to the break-even system cost of ten thousand one hundred twenty-three dollars and eight cents. It adds a three-minute retraining window after minutes nineteen, thirty-eight, and fifty-seven, at about one dollar and one cent per minute.</p>
