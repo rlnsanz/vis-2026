@@ -5,9 +5,11 @@ Open [ivml-cost-benefit.html](ivml-cost-benefit.html) directly in a browser. The
 
 The [slide readability review](accessibility-review.md) records text reductions, diagram fixes, and verification across both themes and presentation/laptop resolutions. The [main-slide visual preview](main-slides-preview.png) shows every completed main slide.
 
+The deck uses the [IEEE VIS 2026 palette](https://ieeevis.org/year/2026/welcome/): orange `#df6824`, raspberry `#bb4a72`, brown `#693a19`, and cream `#f3dfcf`. Saturated callout bands and card headers carry the conference colors. The intervention cards distinguish Data in orange, Model in raspberry, and Understanding in brown. The title slide uses a large two-line title and the decision question, followed by authors, affiliations, and logos. Darker text shades and pale dark-mode accents preserve contrast. The palette covers editable diagrams, backups, and presenter controls; source images and their matching figure legends retain their original colors.
+
 The main talk follows the contribution in the [highlighted abstract](HighlightedAbstract.pdf): extend Van Wijk's economic model with machine learning, distinguish three interaction targets, and use measurable costs and benefits to decide where interaction is worthwhile. MitoVis supplies the detailed example. A fixed-model audit shows how understanding can create value through failure prevention. The comparison with credible alternatives retains the central concern in Ross's [round-one feedback](round1-feedback.txt).
 
-There are 14 main slides, 23 backups, and 1,030 words of spoken main-talk script, excluding references and reveal cues. Per-slide budgets total **10:00**. At 120 words per minute, the script takes about 8:35, leaving about 85 seconds for reveals, pointing, and pauses. This is a pacing estimate; rehearse the diagrams and numerical examples against the slide targets.
+There are 14 main slides, 23 backups, and 1,031 words of spoken main-talk script, excluding references and reveal cues. Per-slide budgets total **10:00**. At 120 words per minute, the script takes about 8:36, leaving about 84 seconds for reveals, pointing, and pauses. This is a pacing estimate; rehearse the diagrams and numerical examples against the slide targets.
 
 - Left/Right or Space advances reveals and slides, stopping at slide 14.
 - **G** opens the overview. Section links above the previews jump to backup topics; each backup repeats its topic in the header.

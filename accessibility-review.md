@@ -96,3 +96,29 @@ Read-aloud speaker-script pass on 2026-11-09:
 - Corrected the presenter's next-slide preview to exclude click instructions as well as references. Checked rendered notes and cue states at all 63 slide/reveal states in both the presentation and presenter views: 126 states, with no JavaScript exceptions or mismatches. Inspected the presenter view with the revised slide 5 script.
 - Main-talk script totals 1,030 words, about 8:35 at 120 words per minute, leaving about 85 seconds within the unchanged 600-second target. Each main slide retains time for pauses within its existing budget. This is a pacing estimate, not a timed rehearsal.
 - Slide content, figures, styles, embedded assets, reveal metadata, and timing targets are unchanged. The only presentation-code change filters click cues out of the next-slide script preview. The visual preview remains current. Edited spoken text uses ASCII, and `git diff --check` passes.
+
+VIS 2026 palette update on 2026-11-09:
+
+- Matched the conference site's orange `#df6824`, raspberry `#bb4a72`, brown `#693a19`, and cream `#f3dfcf`, using its [official stylesheet](https://ieeevis.org/year/2026/_astro/DefaultLayout.vvxjtq71.css). Added darker text shades, warm light surfaces, and pale accents on dark brown surfaces for dark mode.
+- Applied the palette to all editable slides and diagrams, the overview, speaker-note cues, and presenter controls. Costs use raspberry; benefits use brown. Original embedded figures and their corresponding legend swatches retain their source colors.
+- Checked all 63 slide/reveal states in both themes at 1600 x 900 and 1280 x 720: 252 states and 5,348 native HTML/SVG text checks. No sampled text contrast below 4.5:1, canvas overflow, missing slide images, or JavaScript exceptions were detected. Contrast checks use a conservative background tint for the main-slide gradients; text embedded in raster figures is outside this check.
+- Inspected title, target, ledger, chart, backup-diagram, overview, and presenter views. Refreshed `main-slides-preview.png` from the 14 completed main slides.
+- Confirmed forward and reverse reveals, the slide-14 navigation stop, all 37 overview previews, and the 600-second target. Slide text, speaker notes, layout markup, navigation code, image data, and the vendor runtime are unchanged by this palette pass. All 14 Decide icons retain their thin dashed vertical guide.
+
+Stronger VIS color use on 2026-11-09:
+
+- Replaced pale takeaway panels with saturated orange, raspberry, and brown bands. Raspberry now carries more headings, primary accents, backup labels, and presenter controls. Colored header strips and borders make the intervention cards and effort/value ledger more distinct.
+- Filled the title diagram's equal-sized boxes with orange for Data, raspberry for Model, and brown for Understanding. Split the connectors into three matching colors and retained a neutral human-effort hub. The intervention cards repeat these target colors. White text on raspberry and brown, and dark text on orange, keep the filled labels readable in both themes.
+- Rendered all 252 slide/reveal/theme/viewport combinations again. All 5,348 sampled native HTML/SVG text checks passed 4.5:1 contrast, with no detected canvas overflow, missing slide images, or JavaScript exceptions. Inspected the completed title in both themes and the intervention cards and ledger at full size.
+- Refreshed the main-slide preview. Speaker notes, slide text, timing targets, navigation code, image data, and the vendor runtime are unchanged; the title diagram's paths were split only to color the three existing connectors independently. All 14 dashed Decide guides remain intact.
+
+Metric-unit spacing on 2026-11-09:
+
+- Removed the large numerals' inherited negative letter spacing from `min` on slide 6 and `s` on slide 8. Both metrics now use normal unit lettering, baseline alignment, and an explicit 12-slide-pixel gap between the number and its unit.
+- Checked all 32 affected reveal/theme/viewport combinations, with no detected text contrast failures, canvas overflow, missing images, or JavaScript exceptions. Inspected slide 6 and refreshed the main-slide preview. Speaker notes and metric values are unchanged.
+
+Title-slide simplification on 2026-11-09:
+
+- Removed the title diagram and its unused styles. Expanded the title to two 84-pixel lines, retaining the visible decision question, authors, affiliations, and logos.
+- Aligned the opening note with the title and decision question instead of the removed intervention-target figure. The title slide has 35 spoken words within its unchanged 20-second target; the full main-talk script now has 1,031 words.
+- Checked the title slide in both themes at 1600 x 900 and 1280 x 720, with no detected contrast failures, canvas overflow, missing images, or JavaScript exceptions. Inspected both themes and refreshed the main-slide preview. All other slide content, notes, reveal metadata, and timing targets are unchanged.
