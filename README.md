@@ -3,9 +3,11 @@ Presentation initialized by Yixuan W.
 
 Open [ivml-cost-benefit.html](ivml-cost-benefit.html) directly in a browser. The presentation is self-contained: no server, build step, or network is needed.
 
+The [slide readability review](accessibility-review.md) records text reductions, diagram fixes, and verification across both themes and presentation/laptop resolutions. The [main-slide visual preview](main-slides-preview.png) shows every completed main slide.
+
 The main talk follows the contribution in the [highlighted abstract](HighlightedAbstract.pdf): extend Van Wijk's economic model with machine learning, distinguish three interaction targets, and use measurable costs and benefits to decide where interaction is worthwhile. MitoVis supplies the detailed example. A fixed-model audit shows how understanding can create value through failure prevention. The comparison with credible alternatives retains the central concern in Ross's [round-one feedback](round1-feedback.txt).
 
-There are 14 main slides, 23 backups, and 1,006 words of spoken main-talk notes, excluding references and reveal cues. Per-slide budgets total **10:00**. At 120 words per minute, the notes take about 8:23, leaving about 97 seconds for reveals, pointing, and pauses. This is a pacing estimate; rehearse the diagrams and numerical examples against the slide targets.
+There are 14 main slides, 23 backups, and 942 words of spoken main-talk notes, excluding references and reveal cues. Per-slide budgets total **10:00**. At 120 words per minute, the notes take about 7:51, leaving about 129 seconds for reveals, pointing, and pauses. This is a pacing estimate; rehearse the diagrams and numerical examples against the slide targets.
 
 - Left/Right or Space advances reveals and slides, stopping at slide 14.
 - **G** opens the overview. Section links above the previews jump to backup topics; each backup repeats its topic in the header.
@@ -17,18 +19,20 @@ There are 14 main slides, 23 backups, and 1,006 words of spoken main-talk notes,
 | --- | --- | --- | --- |
 | 1 | Cost-Benefit Modeling of IVML Systems | 20s | 0:20 |
 | 2 | Useful compared with what? | 30s | 0:50 |
-| 3 | Our contribution: a decision framework | 35s | 1:25 |
-| 4 | Learning changes the visualization loop | 50s | 2:15 |
-| 5 | What interaction changes determines the trade-off | 50s | 3:05 |
-| 6 | Follow a correction through MitoVis | 50s | 3:55 |
-| 7 | Turn the workflow into measurable costs and benefits | 50s | 4:45 |
-| 8 | Each update repeats training and recovery costs | 50s | 5:35 |
-| 9 | Break-even: what must the improvement be worth? | 70s | 6:45 |
-| 10 | Covering its costs does not make it the best choice | 50s | 7:35 |
-| 11 | A fixed model can create value through failure prevention | 45s | 8:20 |
-| 12 | Stop when the next interaction costs more than it adds | 45s | 9:05 |
-| 13 | Measure the quantities that could change the decision | 35s | 9:40 |
+| 3 | Three questions guide the decision | 35s | 1:25 |
+| 4 | Learning changes the loop | 50s | 2:15 |
+| 5 | Correct. Steer. Inspect. | 50s | 3:05 |
+| 6 | From correction to better predictions | 50s | 3:55 |
+| 7 | Count effort. Value outcomes. | 50s | 4:45 |
+| 8 | Every update has a human cost | 50s | 5:35 |
+| 9 | What must one accuracy point be worth? | 70s | 6:45 |
+| 10 | Covering costs is only the first test | 50s | 7:35 |
+| 11 | Understanding can prevent costly failures | 45s | 8:20 |
+| 12 | Stop when the next interaction adds no net value | 45s | 9:05 |
+| 13 | Measure what could change the decision | 35s | 9:40 |
 | 14 | Thank you - paper and contact links | 20s | 10:00 |
+
+Main slides use a recurring visual shorthand: **Change / Count / Decide**, with matching icons in the contribution overview, section footer, and closing recap. Large result and threshold numbers anchor the worked examples; explanatory detail stays in the notes.
 
 Slide 3 introduces the framework before the worked example: identify the intervention, account for value and effort, and decide whether and when to interact. Slides 4-5 explain the extension to Van Wijk and the three targets: improve data, revise the model or training specification, and understand a fixed model. The main workflow diagram simplifies the paper's notation for progressive explanation; the full workflow and equations remain in backup.
 
