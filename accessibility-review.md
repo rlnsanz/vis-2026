@@ -134,3 +134,34 @@ Slide 7 layout and palette on 2026-11-09:
 - Uses raspberry for Effort, brown for Value, orange for the icons and takeaway, and cream card surfaces in light mode. The orange takeaway keeps white text on the darker orange fill. Dark mode retains dark card surfaces with bright orange icons. Icon contrast exceeds 3:1 in both themes.
 - Moved the rule about counting each outcome's value once below the two cards. It still appears with the Value reveal, before the final takeaway. Reading order, wording, speaker notes, and timing are unchanged.
 - Checked all three reveals in both themes at both resolutions: 12 states, with no detected contrast failures, canvas overflow, missing images, or JavaScript exceptions. Confirmed the takeaway stays above the footer, inspected completed slides in both themes, and refreshed the main-slide preview. Other slides are unchanged.
+
+Slide 11 case introduction and explanation on 2026-11-09:
+
+- Introduced the fixed-model data-poisoning audit as the second case, based on paper Sec. 5.2 and Fig. 3 (p. 8). Replaced the abstract eye/shield diagram with the sequence: inspect a fixed model, act on the finding, and avoid a costly failure. Withholding a vulnerable model is explicitly an explanatory example.
+- Revealed the action and prevention together, then the illustrative cost and conditional $10,038 threshold. Kept the full-identification/prevention assumption and lower-certainty qualification beside the number; retained the normalized duration and initial-training exclusion beside the cost.
+- Aligned the spoken notes with all three reveal states and retained provenance, the risk-benefit equation, and the normalized-duration explanation in reference notes.
+- Checked all 12 reveal/theme/viewport combinations at 1600 x 900 and 1280 x 720: no detected text contrast failures, slide-canvas overflow, missing images, or JavaScript exceptions. Inspected completed light and dark slides. Refreshed the overview from all 14 current main slides. Edited slide text and notes use ASCII.
+
+Removed the fixed-model audit from the main talk on 2026-11-09:
+
+- Removed former main slide 11 and its slide-specific styles. Renumbered the remaining main slides to 1-13 and backup IDs to 14-36, preserving all 23 backups and their topic labels. Updated slide counters and the closing-slide CSS selector.
+- Checked the new transition: the workflow comparison now leads directly to the stopping question. The stopping slide's existing notes introduce that question without relying on the removed audit.
+- Main-slide targets now total 9:15. The remaining spoken script has 1,171 words, about 9:46 at 120 words/minute before pauses; removal saves 88 words, approximately 44 seconds. This remains a tight pacing estimate, not a rehearsal result. Updated README timing and slide descriptions.
+- Browser checks verified contiguous IDs, 13 main slides, 23 backups, 36 Grid previews, forward navigation from comparison to stopping, and the navigation stop at the closing slide. No JavaScript exceptions were detected. Refreshed the overview from all 13 completed main slides; git diff --check passes.
+
+Slide 11 stopping decision readability on 2026-11-09:
+
+- Increased chart labels from 36 to 44 SVG units, body text from 32 to 40 slide pixels, and the final explanation from 30 to 36. Added weight to chart labels and body text.
+- Shortened the chart heading and findings statement, split the stopping equality into two lines, and increased spacing between ideas. Corrected the spoken curve colors to match the figure.
+- Checked all three reveal states in both themes at 1600 x 900 and 1280 x 720. No detected text overflow, footer overlap, or JavaScript exceptions. Inspected completed light and dark slides, compared notes with each reveal, and refreshed the main-slide preview. Edited text uses ASCII; git diff --check passes.
+
+Slide 11 takeaway clarification on 2026-11-09:
+
+- Replaced the faster-discovery claim with "More findings do not always justify more analysis." The spoken notes explain that a useful finding can still be worth less than the effort needed to obtain it. Backup sensitivity results retain their specific assumed-curve context.
+- Checked all three reveals in both themes at both presentation sizes, with no detected text overflow, footer overlap, or JavaScript exceptions. Inspected the completed light slide and refreshed the main-slide preview.
+
+Removed the application checklist on 2026-11-09:
+
+- Removed former slide 12 (Compare / Measure / Vary). The stopping slide now leads directly to the closing recap. Its final spoken paragraph explains that the examples give conditions to test and that establishing value requires measurements in the intended use.
+- Renumbered the closing slide to 12 and backup IDs to 13-35; all 23 backup contents are preserved apart from IDs. Updated counters, closing-slide styling, README, and the main-slide preview. Targets total 8:40; the 1,132-word script takes about 9:26 at 120 words/minute before pauses.
+- Verified contiguous IDs, 35 Grid previews, forward navigation from stopping to closing, and the closing navigation limit. Checked all reveals of the last two slides in both themes at 1600 x 900 and 1280 x 720 (24 states), with no detected body overflow, footer overlap, or JavaScript exceptions. Inspected the closing slide. Edited notes use ASCII; git diff --check passes.
