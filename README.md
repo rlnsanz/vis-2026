@@ -23,7 +23,7 @@ There are 12 main slides, 23 backups, and 1,132 words of spoken main-talk script
 | 2 | Useful compared with what? | 30s | 0:50 |
 | 3 | Put interaction where it creates value (and then stop) | 35s | 1:25 |
 | 4 | Learning changes the loop | 50s | 2:15 |
-| 5 | Correct. Steer. Understand. | 50s | 3:05 |
+| 5 | What you change shapes the cost and payoff | 50s | 3:05 |
 | 6 | Correct what you see. Retrain the model. | 50s | 3:55 |
 | 7 | Count the costs. Put a number on the value. | 50s | 4:45 |
 | 8 | Every update has a human cost | 50s | 5:35 |
